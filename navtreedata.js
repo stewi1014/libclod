@@ -25,7 +25,6 @@
 var NAVTREE =
 [
   [ "clod", "index.html", [
-    [ "readme", "md_src_region_old_platform_windows_readme.html", null ],
     [ "libclod", "md_README.html", [
       [ "Public headers", "md_README.html#autotoc_md1", [
         [ "Dependencies", "md_README.html#autotoc_md2", null ],
