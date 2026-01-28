@@ -206,7 +206,7 @@ clod_nbt_compound(
 	const char **end,
 	ptrdiff_t *free,
 	clod_nbt_type type,
-	sstr name
+	clod_sstr name
 );
 
 /**
@@ -219,7 +219,7 @@ clod_nbt_compound(
  */
 CLOD_API CLOD_PURE CLOD_NONNULL(1, 2)
 union clod_nbt_tag *
-clod_nbt_compound_get(const union clod_nbt_payload *compound, const char *end, sstr name);
+clod_nbt_compound_get(const union clod_nbt_payload *compound, const char *end, clod_sstr name);
 
 /**
  * Get an element in a list payload.

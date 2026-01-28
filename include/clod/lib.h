@@ -24,7 +24,6 @@
 	#define CLOD_PURE __attribute__((pure))
 	#define CLOD_INLINE __attribute__ ((always_inline))
 #else
-	//
 	#error "Unknown toolchain"
 #endif
 

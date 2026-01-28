@@ -24,12 +24,21 @@
 /** Library ABI version. */
 #define CLOD_REGION_VERSION 1
 
-/** A region storage instance, enabling interaction with region files. */
+/**
+ * @struct clod_region
+ * A region storage instance, enabling interaction with region files.
+ */
 struct clod_region;
-/** Configuration parameters for the region storage.
- * Field zero values imply defaults. */
+/**
+ * @struct clod_region_opts
+ * Configuration parameters for the region storage.
+ * Field zero values imply defaults.
+ */
 struct clod_region_opts;
-/** Used to iterate over existing chunks in a region storage. */
+/**
+ * @struct clod_region_iter
+ * Used to iterate over existing chunks in a region storage.
+ */
 struct clod_region_iter;
 
 /**

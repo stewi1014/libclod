@@ -1,27 +1,41 @@
 #include <clod/hash.h>
 #include <stddef.h>
 #include <stdint.h>
+#include <string.h>
 
-#define rot(x, b) (uint64_t)(((x) << (b)) | ((x) >> (64 - (b))))
+/*
+ * I thank those who have researched and developed SipHash,
+ * and the original designers Jean-Philippe Aumasson and Daniel J. Bernstein.
+ * https://www.aumasson.jp/siphash/siphash.pdf
+ *
+ * This implementation is my own and is designed to support streaming.
+ * Surprisingly, this streaming variant outperforms the SIMD-optimised SipHash 2-4 implementation found in SMHasher3.
+ */
 
-#define round(v0, v1, v2, v3) do {\
-	v0 += v1;\
-	v1 = rot(v1, 13);\
-	v1 ^= v0;\
-	v0 = rot(v0, 32);\
-	v2 += v3;\
-	v3 = rot(v3, 16);\
-	v3 ^= v2;\
-	v0 += v3;\
-	v3 = rot(v3, 21);\
-	v3 ^= v0;\
-	v2 += v1;\
-	v1 = rot(v1, 17);\
-	v1 ^= v2;\
-	v2 = rot(v2, 32);\
-} while(false)
+#define data_size(state) ((state)._size >> 3)
+#define remaining(state) ((state)._size & 0b00000111)
+#define set_data_size(state, size) ((state)._size = (uint8_t)(((state)._size & 0b00000111) | ((uint8_t)(size) << 3)))
+#define set_remaining(state, size) ((state)._size = (uint8_t)(((state)._size & 0b11111000) | ((uint8_t)(size) & 0b00000111)))
 
-static uint64_t read_uint64(const unsigned char *restrict data, const size_t data_size) {
+CLOD_INLINE static inline void
+sip_round(clod_sip64_state *state) {
+	state->_v0 += state->_v1;
+	state->_v1 = state->_v1 << 13 | state->_v1 >> 51;
+	state->_v1 ^= state->_v0;
+	state->_v0 = state->_v0 << 32 | state->_v0 >> 32;
+	state->_v2 += state->_v3;
+	state->_v3 = state->_v3 << 16 | state->_v3 >> 48;
+	state->_v3 ^= state->_v2;
+	state->_v0 += state->_v3;
+	state->_v3 = state->_v3 << 21 | state->_v3 >> 43;
+	state->_v3 ^= state->_v0;
+	state->_v2 += state->_v1;
+	state->_v1 = state->_v1 << 17 | state->_v1 >> 47;
+	state->_v1 ^= state->_v2;
+	state->_v2 = state->_v2 << 32 | state->_v2 >> 32;
+}
+CLOD_INLINE static inline uint64_t
+read_uint64(const unsigned char *restrict data, const size_t data_size) {
 	uint64_t r = 0;
 	switch (data_size) {
 		default: r |= (uint64_t)data[7] << 7 * 8; __attribute__((fallthrough));
@@ -35,36 +49,61 @@ static uint64_t read_uint64(const unsigned char *restrict data, const size_t dat
 		case 0: return r;
 	}
 }
+clod_sip64_state clod_sip64_add(clod_sip64_state state, const void *data, const size_t size) {
+	if (size == 0) return state;
+	const unsigned char* restrict in = data;
+	set_data_size(state, data_size(state) + size);
 
-/**
- * https://www.aumasson.jp/siphash/siphash.pdf
- */
-uint64_t clod_hash64(uint64_t seed, const void *data, size_t size) {
-	auto in = (const unsigned char* restrict)data;
-	uint64_t v0 = UINT64_C(0x736f6d6570736575) ^ seed;
-	uint64_t v1 = UINT64_C(0x646f72616e646f6d) ^ seed;
-	uint64_t v2 = UINT64_C(0x6c7967656e657261) ^ seed;
-	uint64_t v3 = UINT64_C(0x7465646279746573) ^ seed;
-
-	size_t i = 0;
-	for (; i + 8 <= size; i += 8) {
-		const uint64_t d = read_uint64(in + i, 8);
-		v3 ^= d;
-		round(v0, v1, v2, v3);
-		round(v0, v1, v2, v3);
-		v0 ^= d;
+	if (remaining(state) + size < 8) {
+		memcpy(state._buf + remaining(state), in, size);
+		set_remaining(state, remaining(state) + size);
+		return state;
 	}
 
-	uint64_t d = read_uint64(in + i, size - i);
-	d |= (uint64_t)size << (7*8);
-	v3 ^= d;
-	round(v0, v1, v2, v3);
-	round(v0, v1, v2, v3);
-	v0 ^= d;
-	v2 ^= 0xee;
-	round(v0, v1, v2, v3);
-	round(v0, v1, v2, v3);
-	round(v0, v1, v2, v3);
-	round(v0, v1, v2, v3);
-	return v0 ^ v1 ^ v2 ^ v3;
+	uint64_t d, off = 0;
+	if (remaining(state) > 0) {
+		d = read_uint64(state._buf, remaining(state));
+		d |= read_uint64(in, 8 - remaining(state)) << remaining(state) * 8;
+		off = 8 - remaining(state);
+		set_remaining(state, 0);
+	} else {
+		d = read_uint64(in, 8);
+		off = 8;
+	}
+
+	state._v3 ^= d;
+	sip_round(&state);
+	sip_round(&state);
+	state._v0 ^= d;
+
+	while (off + 8 <= size) {
+		d = read_uint64(in + off, 8);
+		off += 8;
+
+		state._v3 ^= d;
+		sip_round(&state);
+		sip_round(&state);
+		state._v0 ^= d;
+	}
+
+	if (off < size) {
+		memcpy(state._buf, in + off, size - off);
+		set_remaining(state, size - off);
+	}
+
+	return state;
+}
+uint64_t clod_sip64_finalise(clod_sip64_state state) {
+	uint64_t d = read_uint64(state._buf, remaining(state));
+	d |= (uint64_t)(data_size(state)) << 56;
+	state._v3 ^= d;
+	sip_round(&state);
+	sip_round(&state);
+	state._v0 ^= d;
+	state._v2 ^= 0xee;
+	sip_round(&state);
+	sip_round(&state);
+	sip_round(&state);
+	sip_round(&state);
+	return state._v0 ^ state._v1 ^ state._v2 ^ state._v3;
 }

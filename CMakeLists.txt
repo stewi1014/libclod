@@ -1,14 +1,14 @@
 cmake_minimum_required(VERSION 4.0)
-project(libclod LANGUAGES C)
-add_library(clod SHARED)
-include(CTest)
-enable_testing()
-
 set(
     CMAKE_C_STANDARD 23
     CMAKE_C_STANDARD_REQUIRED ON
 )
 
+project(libclod LANGUAGES C)
+include(CTest)
+enable_testing()
+
+add_library(clod SHARED)
 set_target_properties(clod PROPERTIES SOVERSION 1)
 target_include_directories(clod PUBLIC include)
 target_compile_definitions(clod PRIVATE _GNU_SOURCE _FILE_OFFSET_BITS=64)

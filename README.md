@@ -1,7 +1,7 @@
 # libclod
 C library for interacting with NBT, region files, LOD data and other things.
 
-## Public headers
+### Public headers
 
 - `compression.h` - Generalised interface for compression algorithms.
 - `hash.h` - Hashing functions.

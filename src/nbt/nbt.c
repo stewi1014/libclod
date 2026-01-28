@@ -113,7 +113,7 @@ clod_nbt_compound(
 	const char **end,
 	ptrdiff_t *free,
 	const clod_nbt_type type,
-	sstr name
+	clod_sstr name
 ) {
 	size_t off = 0;
 	while (
@@ -123,10 +123,9 @@ clod_nbt_compound(
 		union clod_nbt_tag *elem = ptr_add(compound, *end, off);
 		const size_t elem_size = clod_nbt_tag_size(elem, *end);
 		if (elem_size == 0) return nullptr;
-		if (sstr_cmp(sstr(elem->name, be(elem->name_size)), name)) {
+		if (clod_sstr_cmp(clod_sstr_wrap(elem->name, be(elem->name_size)), name)) {
 			if (type == CLOD_NBT_ZERO) {
 				// delete
-				__builtin
 				memmove(elem, ptr_add(elem, *end, elem_size), available(elem, *end) - elem_size);
 				memset(available())
 			}

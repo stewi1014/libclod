@@ -160,8 +160,13 @@ static bool rebuild(struct clod_table *t, const size_t new_table_size) {
 	memcpy(t, &new, sizeof(new));
 	return true;
 }
+uint64_t default_hash(uint64_t seed, const void *data, size_t data_size) {
+	auto state = clod_sip64_init(seed);
+	state = clod_sip64_add(state, data, data_size);
+	return clod_sip64_finalise(state);
+}
 static void apply_default_opts(struct clod_table_opts *opts) {
-	if (!opts->hash_func) opts->hash_func = clod_hash64;
+	if (!opts->hash_func) opts->hash_func = default_hash;
 	if (!opts->cmp_func) opts->cmp_func = memcmp;
 }
 struct clod_table *clod_table_create(const struct clod_table_opts *opts) {

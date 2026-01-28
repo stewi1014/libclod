@@ -37,7 +37,16 @@ enum clod_compression_result {
 	CLOD_COMPRESSION_ALLOC_FAILED = 5
 };
 
+/**
+ * @struct clod_compressor
+ * Allocated resources to be reused between compressions.
+ */
 struct clod_compressor;
+
+/**
+ * @struct clod_decompressor
+ * Allocated resources to be reused between decompressions.
+ */
 struct clod_decompressor;
 
 /**
