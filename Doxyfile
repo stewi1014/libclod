@@ -1,9 +1,9 @@
-PROJECT_NAME            = "clod"
-PROJECT_BRIEF           = "C library and tools for working with minecraft and LOD data"
+PROJECT_NAME            = "libclod"
+PROJECT_BRIEF           = "C library for interacting with NBT, region files, LOD data and other things.a"
 OUTPUT_DIRECTORY        = docs
 RECURSIVE               = YES
 SOURCE_BROWSER          = YES
-FILE_PATTERNS           = *.c *.h *.java *.md
+FILE_PATTERNS           = *.c *.h README.md
 INPUT                   = include src java golang test README.md
 VERBATIM_HEADERS        = YES
 REFERENCES_RELATION     = YES
