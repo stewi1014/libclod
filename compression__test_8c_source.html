@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.6"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>clod: test/compression/compression_test.c Source File</title>
+<title>libclod: test/compression/compression_test.c Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -25,9 +25,9 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">clod
+   <div id="projectname">libclod
    </div>
-   <div id="projectbrief">C library and tools for working with minecraft and LOD data</div>
+   <div id="projectbrief">C library for interacting with NBT, region files, LOD data and other things.a</div>
   </td>
  </tr>
  </tbody>
@@ -105,9 +105,9 @@ $(document).ready(function(){initNavTree('compression__test_8c_source.html','');
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="keywordtype">void</span> compression_test(uint64_t algo) {</div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    <span class="keyword">const</span> <span class="keywordtype">size_t</span> data_size = <span class="keyword">sizeof</span>(data);</div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    <span class="keyword">struct </span>clod_compressor *compressor = <a class="code hl_function" href="compression_8h.html#a33b63475f9b56be574909e3d1d83e8ff">clod_compressor_init</a>();</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    <span class="keyword">struct </span><a class="code hl_struct" href="structclod__compressor.html">clod_compressor</a> *compressor = <a class="code hl_function" href="compression_8h.html#a33b63475f9b56be574909e3d1d83e8ff">clod_compressor_init</a>();</div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    check(compressor != <span class="keyword">nullptr</span>);</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <span class="keyword">struct </span>clod_decompressor *decompressor = <a class="code hl_function" href="compression_8h.html#a69d69ad30053ad90066c3c7b84c154bd">clod_decompressor_init</a>();</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <span class="keyword">struct </span><a class="code hl_struct" href="structclod__decompressor.html">clod_decompressor</a> *decompressor = <a class="code hl_function" href="compression_8h.html#a69d69ad30053ad90066c3c7b84c154bd">clod_decompressor_init</a>();</div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    check(decompressor != <span class="keyword">nullptr</span>);</div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <span class="keywordtype">size_t</span> compressed_size;</div>
@@ -182,6 +182,8 @@ $(document).ready(function(){initNavTree('compression__test_8c_source.html','');
 <div class="ttc" id="acompression_8h_html_a5f69a6eefae31a4fec58fd56cf156abd"><div class="ttname"><a href="compression_8h.html#a5f69a6eefae31a4fec58fd56cf156abd">clod_decompressor_free</a></div><div class="ttdeci">void clod_decompressor_free(struct clod_decompressor *ctx)</div><div class="ttdef"><b>Definition:</b> <a href="decompress_8c_source.html#l00032">decompress.c:32</a></div></div>
 <div class="ttc" id="acompression_8h_html_a69d69ad30053ad90066c3c7b84c154bd"><div class="ttname"><a href="compression_8h.html#a69d69ad30053ad90066c3c7b84c154bd">clod_decompressor_init</a></div><div class="ttdeci">struct clod_decompressor * clod_decompressor_init()</div><div class="ttdef"><b>Definition:</b> <a href="decompress_8c_source.html#l00026">decompress.c:26</a></div></div>
 <div class="ttc" id="acompression_8h_html_ad3a65545898b7195a49627412ed828b0"><div class="ttname"><a href="compression_8h.html#ad3a65545898b7195a49627412ed828b0">clod_decompress</a></div><div class="ttdeci">enum clod_compression_result clod_decompress(struct clod_decompressor *ctx, void *dst, size_t dst_size, const void *src, size_t src_size, size_t *decompressed_size, uint64_t algo)</div><div class="ttdef"><b>Definition:</b> <a href="decompress_8c_source.html#l00061">decompress.c:61</a></div></div>
+<div class="ttc" id="astructclod__compressor_html"><div class="ttname"><a href="structclod__compressor.html">clod_compressor</a></div><div class="ttdef"><b>Definition:</b> <a href="compress_8c_source.html#l00007">compress.c:7</a></div></div>
+<div class="ttc" id="astructclod__decompressor_html"><div class="ttname"><a href="structclod__decompressor.html">clod_decompressor</a></div><div class="ttdef"><b>Definition:</b> <a href="decompress_8c_source.html#l00007">decompress.c:7</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

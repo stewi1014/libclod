@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.6"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>clod: include/clod/nbt.h File Reference</title>
+<title>libclod: include/clod/nbt.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -25,9 +25,9 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">clod
+   <div id="projectname">libclod
    </div>
-   <div id="projectbrief">C library and tools for working with minecraft and LOD data</div>
+   <div id="projectbrief">C library for interacting with NBT, region files, LOD data and other things.a</div>
   </td>
  </tr>
  </tbody>
@@ -93,85 +93,79 @@ $(document).ready(function(){initNavTree('nbt_8h.html',''); initResizable(); });
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#define-members">Macros</a> &#124;
-<a href="#typedef-members">Typedefs</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">nbt.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-
-<p>Sized string library.  
-<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;<a class="el" href="lib_8h_source.html">clod/lib.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="big__endian_8h_source.html">clod/big_endian.h</a>&gt;</code><br />
-<code>#include &lt;clod/sstr.h&gt;</code><br />
+<code>#include &lt;<a class="el" href="sstr_8h_source.html">clod/sstr.h</a>&gt;</code><br />
 <code>#include &lt;stddef.h&gt;</code><br />
 </div>
 <p><a href="nbt_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">union &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="unionclod__nbt__tag.html">clod_nbt_tag</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">union &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="unionclod__nbt__payload.html">clod_nbt_payload</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclod__nbt__iter.html">clod_nbt_iter</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:ga60c425a2dfbdf6038fcc23df8a4cf4b4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__nbt.html#ga60c425a2dfbdf6038fcc23df8a4cf4b4">CLOD_NBT_ZERO</a>&#160;&#160;&#160;0</td></tr>
+<tr class="memitem:ga60c425a2dfbdf6038fcc23df8a4cf4b4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__nbt.html#ga60c425a2dfbdf6038fcc23df8a4cf4b4">CLOD_NBT_ZERO</a>&#160;&#160;&#160;(char)(0)</td></tr>
 <tr class="separator:ga60c425a2dfbdf6038fcc23df8a4cf4b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa6e4f73677405263b8095efd8c082924"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__nbt.html#gaa6e4f73677405263b8095efd8c082924">CLOD_NBT_INT8</a>&#160;&#160;&#160;1</td></tr>
+<tr class="memitem:gaa6e4f73677405263b8095efd8c082924"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__nbt.html#gaa6e4f73677405263b8095efd8c082924">CLOD_NBT_INT8</a>&#160;&#160;&#160;(char)(1)</td></tr>
 <tr class="separator:gaa6e4f73677405263b8095efd8c082924"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga74825fec4856cba8ee1d52c40fc5ef64"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__nbt.html#ga74825fec4856cba8ee1d52c40fc5ef64">CLOD_NBT_INT16</a>&#160;&#160;&#160;2</td></tr>
+<tr class="memitem:ga74825fec4856cba8ee1d52c40fc5ef64"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__nbt.html#ga74825fec4856cba8ee1d52c40fc5ef64">CLOD_NBT_INT16</a>&#160;&#160;&#160;(char)(2)</td></tr>
 <tr class="separator:ga74825fec4856cba8ee1d52c40fc5ef64"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga210cc05cbc86583de271a852550f7e5e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__nbt.html#ga210cc05cbc86583de271a852550f7e5e">CLOD_NBT_INT32</a>&#160;&#160;&#160;3</td></tr>
+<tr class="memitem:ga210cc05cbc86583de271a852550f7e5e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__nbt.html#ga210cc05cbc86583de271a852550f7e5e">CLOD_NBT_INT32</a>&#160;&#160;&#160;(char)(3)</td></tr>
 <tr class="separator:ga210cc05cbc86583de271a852550f7e5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaf7179b049633801eca78a33bd3595058"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__nbt.html#gaf7179b049633801eca78a33bd3595058">CLOD_NBT_INT64</a>&#160;&#160;&#160;4</td></tr>
+<tr class="memitem:gaf7179b049633801eca78a33bd3595058"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__nbt.html#gaf7179b049633801eca78a33bd3595058">CLOD_NBT_INT64</a>&#160;&#160;&#160;(char)(4)</td></tr>
 <tr class="separator:gaf7179b049633801eca78a33bd3595058"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga8ea71da3105e3093885c5305ce519989"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__nbt.html#ga8ea71da3105e3093885c5305ce519989">CLOD_NBT_FLOAT32</a>&#160;&#160;&#160;5</td></tr>
+<tr class="memitem:ga8ea71da3105e3093885c5305ce519989"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__nbt.html#ga8ea71da3105e3093885c5305ce519989">CLOD_NBT_FLOAT32</a>&#160;&#160;&#160;(char)(5)</td></tr>
 <tr class="separator:ga8ea71da3105e3093885c5305ce519989"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaf2ee9379a3f6c879b5f496187182f1f6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__nbt.html#gaf2ee9379a3f6c879b5f496187182f1f6">CLOD_NBT_FLOAT64</a>&#160;&#160;&#160;6</td></tr>
+<tr class="memitem:gaf2ee9379a3f6c879b5f496187182f1f6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__nbt.html#gaf2ee9379a3f6c879b5f496187182f1f6">CLOD_NBT_FLOAT64</a>&#160;&#160;&#160;(char)(6)</td></tr>
 <tr class="separator:gaf2ee9379a3f6c879b5f496187182f1f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gad61c0a448f0e52e80a2de7e7c055778b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__nbt.html#gad61c0a448f0e52e80a2de7e7c055778b">CLOD_NBT_INT8_ARRAY</a>&#160;&#160;&#160;7</td></tr>
+<tr class="memitem:gad61c0a448f0e52e80a2de7e7c055778b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__nbt.html#gad61c0a448f0e52e80a2de7e7c055778b">CLOD_NBT_INT8_ARRAY</a>&#160;&#160;&#160;(char)(7)</td></tr>
 <tr class="separator:gad61c0a448f0e52e80a2de7e7c055778b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gacd9fb19e659e75fb40a1f2b6e0175d33"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__nbt.html#gacd9fb19e659e75fb40a1f2b6e0175d33">CLOD_NBT_INT32_ARRAY</a>&#160;&#160;&#160;11</td></tr>
+<tr class="memitem:gacd9fb19e659e75fb40a1f2b6e0175d33"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__nbt.html#gacd9fb19e659e75fb40a1f2b6e0175d33">CLOD_NBT_INT32_ARRAY</a>&#160;&#160;&#160;(char)(11)</td></tr>
 <tr class="separator:gacd9fb19e659e75fb40a1f2b6e0175d33"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga90118438f3c9985cb3268804ca163f81"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__nbt.html#ga90118438f3c9985cb3268804ca163f81">CLOD_NBT_INT64_ARRAY</a>&#160;&#160;&#160;12</td></tr>
+<tr class="memitem:ga90118438f3c9985cb3268804ca163f81"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__nbt.html#ga90118438f3c9985cb3268804ca163f81">CLOD_NBT_INT64_ARRAY</a>&#160;&#160;&#160;(char)(12)</td></tr>
 <tr class="separator:ga90118438f3c9985cb3268804ca163f81"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gafada044b3c93a4fd2afe47621084ff10"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__nbt.html#gafada044b3c93a4fd2afe47621084ff10">CLOD_NBT_STRING</a>&#160;&#160;&#160;8</td></tr>
+<tr class="memitem:gafada044b3c93a4fd2afe47621084ff10"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__nbt.html#gafada044b3c93a4fd2afe47621084ff10">CLOD_NBT_STRING</a>&#160;&#160;&#160;(char)(8)</td></tr>
 <tr class="separator:gafada044b3c93a4fd2afe47621084ff10"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa413f4ec043e76e1f85b87311cf4ccf5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__nbt.html#gaa413f4ec043e76e1f85b87311cf4ccf5">CLOD_NBT_LIST</a>&#160;&#160;&#160;9</td></tr>
+<tr class="memitem:gaa413f4ec043e76e1f85b87311cf4ccf5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__nbt.html#gaa413f4ec043e76e1f85b87311cf4ccf5">CLOD_NBT_LIST</a>&#160;&#160;&#160;(char)(9)</td></tr>
 <tr class="separator:gaa413f4ec043e76e1f85b87311cf4ccf5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga94ce04a4e0171ab03e78fd9ec9ba2fe6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__nbt.html#ga94ce04a4e0171ab03e78fd9ec9ba2fe6">CLOD_NBT_COMPOUND</a>&#160;&#160;&#160;10</td></tr>
+<tr class="memitem:ga94ce04a4e0171ab03e78fd9ec9ba2fe6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__nbt.html#ga94ce04a4e0171ab03e78fd9ec9ba2fe6">CLOD_NBT_COMPOUND</a>&#160;&#160;&#160;(char)(10)</td></tr>
 <tr class="separator:ga94ce04a4e0171ab03e78fd9ec9ba2fe6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
-Typedefs</h2></td></tr>
-<tr class="memitem:gab0131284f383c6a5b5ddbc527bcb0904"><td class="memItemLeft" align="right" valign="top">typedef signed char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__nbt.html#gab0131284f383c6a5b5ddbc527bcb0904">clod_nbt_type</a></td></tr>
-<tr class="separator:gab0131284f383c6a5b5ddbc527bcb0904"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaaa53b26bf20a60d75cbf8964720a5412"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__nbt.html#gaaa53b26bf20a60d75cbf8964720a5412">CLOD_NBT_ROOT_COMPOUND_INIT</a>&#160;&#160;&#160;((char[]){CLOD_NBT_COMPOUND, 0, 0, 0})</td></tr>
+<tr class="separator:gaaa53b26bf20a60d75cbf8964720a5412"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga73fa3ee5c0447b1c3fd27d30f7338607"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__nbt.html#ga73fa3ee5c0447b1c3fd27d30f7338607">CLOD_NBT_ROOT_LIST_INIT</a>(type)&#160;&#160;&#160;((char[]){CLOD_NBT_LIST, type, 0, 0, 0, 0})</td></tr>
+<tr class="separator:ga73fa3ee5c0447b1c3fd27d30f7338607"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9a14899bedf73f9c5fae1f944a32fae4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__nbt.html#ga9a14899bedf73f9c5fae1f944a32fae4">CLOD_NBT_ITER_ZERO</a>&#160;&#160;&#160;{ .type = CLOD_NBT_ZERO }</td></tr>
+<tr class="separator:ga9a14899bedf73f9c5fae1f944a32fae4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:gab50a78a1325e510bd54f93913c758283"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__nbt.html#gab50a78a1325e510bd54f93913c758283">clod_nbt_payload_size</a> (const union <a class="el" href="unionclod__nbt__payload.html">clod_nbt_payload</a> *payload, clod_nbt_type payload_type, const char *end)</td></tr>
-<tr class="separator:gab50a78a1325e510bd54f93913c758283"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gad11be51d4f14601e1d3c39db0847ead6"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__nbt.html#gad11be51d4f14601e1d3c39db0847ead6">clod_nbt_tag_size</a> (const union <a class="el" href="unionclod__nbt__tag.html">clod_nbt_tag</a> *tag, const char *end)</td></tr>
-<tr class="separator:gad11be51d4f14601e1d3c39db0847ead6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga8a389675940eb98f07b7143d2a159710"><td class="memItemLeft" align="right" valign="top">union <a class="el" href="unionclod__nbt__payload.html">clod_nbt_payload</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__nbt.html#ga8a389675940eb98f07b7143d2a159710">clod_nbt_tag_payload</a> (const union <a class="el" href="unionclod__nbt__tag.html">clod_nbt_tag</a> *tag, const char *end, clod_nbt_type payload_type)</td></tr>
-<tr class="separator:ga8a389675940eb98f07b7143d2a159710"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga97b6865c1d4b0db174a57ea8c2437caf"><td class="memItemLeft" align="right" valign="top">union <a class="el" href="unionclod__nbt__tag.html">clod_nbt_tag</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__nbt.html#ga97b6865c1d4b0db174a57ea8c2437caf">clod_nbt_compound</a> (union <a class="el" href="unionclod__nbt__payload.html">clod_nbt_payload</a> *compound, const char **end, ptrdiff_t *free, clod_nbt_type type, <a class="el" href="structsstr.html">sstr</a> name)</td></tr>
-<tr class="separator:ga97b6865c1d4b0db174a57ea8c2437caf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gabc76cee609c4aa30560b4a6d22aedeb1"><td class="memItemLeft" align="right" valign="top">union <a class="el" href="unionclod__nbt__tag.html">clod_nbt_tag</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__nbt.html#gabc76cee609c4aa30560b4a6d22aedeb1">clod_nbt_compound_get</a> (const union <a class="el" href="unionclod__nbt__payload.html">clod_nbt_payload</a> *compound, const char *end, <a class="el" href="structsstr.html">sstr</a> name)</td></tr>
-<tr class="separator:gabc76cee609c4aa30560b4a6d22aedeb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa0c908240a13d87d7131704b90625b34"><td class="memItemLeft" align="right" valign="top">union <a class="el" href="unionclod__nbt__payload.html">clod_nbt_payload</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__nbt.html#gaa0c908240a13d87d7131704b90625b34">clod_nbt_list_get</a> (const union <a class="el" href="unionclod__nbt__payload.html">clod_nbt_payload</a> *list, const char *end, size_t index)</td></tr>
-<tr class="separator:gaa0c908240a13d87d7131704b90625b34"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaafce0662b4e8563d4904e1f502f20ff2"><td class="memItemLeft" align="right" valign="top">union <a class="el" href="unionclod__nbt__payload.html">clod_nbt_payload</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__nbt.html#gaafce0662b4e8563d4904e1f502f20ff2">clod_nbt_list_set</a> (union <a class="el" href="unionclod__nbt__payload.html">clod_nbt_payload</a> *list, const char **end, ptrdiff_t *end_offset, clod_nbt_type type, size_t index)</td></tr>
-<tr class="separator:gaafce0662b4e8563d4904e1f502f20ff2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaac3e1213f7bf610040b14223faafa4ef"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__nbt.html#gaac3e1213f7bf610040b14223faafa4ef">clod_nbt_payload_size</a> (const char *restrict payload, const void *end, char payload_type)</td></tr>
+<tr class="separator:gaac3e1213f7bf610040b14223faafa4ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae4d9a53d493a1436d27c2a6003da5b24"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__nbt.html#gae4d9a53d493a1436d27c2a6003da5b24">clod_nbt_tag_size</a> (const char *restrict tag, const void *end)</td></tr>
+<tr class="separator:gae4d9a53d493a1436d27c2a6003da5b24"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gabe26362ef6d69ff8c73e9d7ec5d65340"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__nbt.html#gabe26362ef6d69ff8c73e9d7ec5d65340">clod_nbt_tag_payload</a> (const char *restrict tag, const void *end)</td></tr>
+<tr class="separator:gabe26362ef6d69ff8c73e9d7ec5d65340"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa01cbbcf1268d5c60ceff583c8c54eb0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structclod__sstr.html">clod_sstr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__nbt.html#gaa01cbbcf1268d5c60ceff583c8c54eb0">clod_nbt_tag_name</a> (const char *tag, const void *end)</td></tr>
+<tr class="separator:gaa01cbbcf1268d5c60ceff583c8c54eb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4f997214997da93a2a650a67c77085c7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__nbt.html#ga4f997214997da93a2a650a67c77085c7">clod_nbt_iter_next</a> (const char *restrict payload, const void *end, char payload_type, struct <a class="el" href="structclod__nbt__iter.html">clod_nbt_iter</a> *iter)</td></tr>
+<tr class="separator:ga4f997214997da93a2a650a67c77085c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3378fb9d1e2f15b80b2f8c182286df90"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__nbt.html#ga3378fb9d1e2f15b80b2f8c182286df90">clod_nbt_compound_get</a> (const char *restrict compound, const void *end, <a class="el" href="structclod__sstr.html">clod_sstr</a> name)</td></tr>
+<tr class="separator:ga3378fb9d1e2f15b80b2f8c182286df90"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9fca765c573fbf9e149d2164825d0c14"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__nbt.html#ga9fca765c573fbf9e149d2164825d0c14">clod_nbt_compound_add</a> (char *restrict compound, const void **end, ptrdiff_t *free, <a class="el" href="structclod__sstr.html">clod_sstr</a> name, char type)</td></tr>
+<tr class="separator:ga9fca765c573fbf9e149d2164825d0c14"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga92d6b3742af8f64bdfbd32b8b58dff36"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__nbt.html#ga92d6b3742af8f64bdfbd32b8b58dff36">clod_nbt_compound_del</a> (char *restrict compound, const void **end, ptrdiff_t *free, <a class="el" href="structclod__sstr.html">clod_sstr</a> name)</td></tr>
+<tr class="separator:ga92d6b3742af8f64bdfbd32b8b58dff36"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7cb5a2816ab7af52697bd8b93edf2f7d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__nbt.html#ga7cb5a2816ab7af52697bd8b93edf2f7d">clod_nbt_list_resize</a> (char *restrict list, const char **end, ptrdiff_t *free, char type, uint32_t length)</td></tr>
+<tr class="separator:ga7cb5a2816ab7af52697bd8b93edf2f7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Sized string library. </p>
-<p>A few simple methods for dealing with strings when an explicit size is needed instead of being zero terminated. </p>
-
-<p class="definition">Definition in file <a class="el" href="nbt_8h_source.html">nbt.h</a>.</p>
-</div></div><!-- contents -->
+</div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

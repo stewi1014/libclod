@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.6"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>clod: test/nbt/parse_level.c Source File</title>
+<title>libclod: test/nbt/parse_level.c Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -25,9 +25,9 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">clod
+   <div id="projectname">libclod
    </div>
-   <div id="projectbrief">C library and tools for working with minecraft and LOD data</div>
+   <div id="projectbrief">C library for interacting with NBT, region files, LOD data and other things.a</div>
   </td>
  </tr>
  </tbody>
@@ -103,11 +103,11 @@ $(document).ready(function(){initNavTree('parse__level_8c_source.html',''); init
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>};</div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="keywordtype">int</span> main() {</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    <span class="keyword">const</span> <span class="keywordtype">size_t</span> res = <a class="code hl_function" href="group__nbt.html#gad11be51d4f14601e1d3c39db0847ead6">clod_nbt_tag_size</a>((<span class="keywordtype">void</span>*)level_data, level_data + <span class="keyword">sizeof</span>(level_data));</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    <span class="keyword">const</span> <span class="keywordtype">size_t</span> res = <a class="code hl_function" href="group__nbt.html#gae4d9a53d493a1436d27c2a6003da5b24">clod_nbt_tag_size</a>((<span class="keywordtype">void</span>*)level_data, level_data + <span class="keyword">sizeof</span>(level_data));</div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    check(res == <span class="keyword">sizeof</span>(level_data));</div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>}</div>
-<div class="ttc" id="agroup__nbt_html_gad11be51d4f14601e1d3c39db0847ead6"><div class="ttname"><a href="group__nbt.html#gad11be51d4f14601e1d3c39db0847ead6">clod_nbt_tag_size</a></div><div class="ttdeci">size_t clod_nbt_tag_size(const union clod_nbt_tag *tag, const char *end)</div></div>
-<div class="ttc" id="anbt_8h_html"><div class="ttname"><a href="nbt_8h.html">nbt.h</a></div><div class="ttdoc">Sized string library.</div></div>
+<div class="ttc" id="agroup__nbt_html_gae4d9a53d493a1436d27c2a6003da5b24"><div class="ttname"><a href="group__nbt.html#gae4d9a53d493a1436d27c2a6003da5b24">clod_nbt_tag_size</a></div><div class="ttdeci">size_t clod_nbt_tag_size(const char *restrict tag, const void *end)</div><div class="ttdef"><b>Definition:</b> <a href="nbt_8c_source.html#l00093">nbt.c:93</a></div></div>
+<div class="ttc" id="anbt_8h_html"><div class="ttname"><a href="nbt_8h.html">nbt.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

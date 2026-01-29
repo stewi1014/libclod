@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.6"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>clod: src/region/platform/unix/file.c Source File</title>
+<title>libclod: src/region/platform/unix/file.c Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -25,9 +25,9 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">clod
+   <div id="projectname">libclod
    </div>
-   <div id="projectbrief">C library and tools for working with minecraft and LOD data</div>
+   <div id="projectbrief">C library for interacting with NBT, region files, LOD data and other things.a</div>
   </td>
  </tr>
  </tbody>
@@ -112,14 +112,14 @@ $(document).ready(function(){initNavTree('file_8c_source.html',''); initResizabl
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <span class="keywordtype">bool</span> writeable;</div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>};</div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="keyword">enum</span> <a class="code hl_enumeration" href="group__region.html#ga9e5053f4d6bd4efc2f4ba2352276e4d5">clod_region_result</a> file_open(file *f, <span class="keyword">const</span> dir d, <span class="keyword">const</span> <span class="keywordtype">char</span> *name, <span class="keyword">const</span> <span class="keywordtype">bool</span> create, <span class="keyword">const</span> <span class="keyword">struct</span> clod_region_opts *opts) {</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="keyword">enum</span> <a class="code hl_enumeration" href="group__region.html#ga9e5053f4d6bd4efc2f4ba2352276e4d5">clod_region_result</a> file_open(file *f, <span class="keyword">const</span> dir d, <span class="keyword">const</span> <span class="keywordtype">char</span> *name, <span class="keyword">const</span> <span class="keywordtype">bool</span> create, <span class="keyword">const</span> <span class="keyword">struct</span> <a class="code hl_struct" href="structclod__region__opts.html">clod_region_opts</a> *opts) {</div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <span class="keywordtype">int</span> o_flags = 0;</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <span class="keywordflow">if</span> (opts-&gt;mode == CLOD_REGION_MODE_RDWR) o_flags |= O_RDWR;</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <span class="keywordflow">if</span> (opts-&gt;mode == CLOD_REGION_MODE_RDONLY) o_flags |= O_RDONLY;</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <span class="keywordflow">if</span> (opts-&gt;<a class="code hl_variable" href="structclod__region__opts.html#a28035120dc32ffc93355cf4223027a67">mode</a> == CLOD_REGION_MODE_RDWR) o_flags |= O_RDWR;</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <span class="keywordflow">if</span> (opts-&gt;<a class="code hl_variable" href="structclod__region__opts.html#a28035120dc32ffc93355cf4223027a67">mode</a> == CLOD_REGION_MODE_RDONLY) o_flags |= O_RDONLY;</div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="keywordflow">if</span> (create) o_flags |= O_CREAT;</div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    mode_t o_mode = 0664;</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="keywordflow">if</span> (opts-&gt;unix_file_perms) o_mode = opts-&gt;unix_file_perms;</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="keywordflow">if</span> (opts-&gt;<a class="code hl_variable" href="structclod__region__opts.html#ab90dfb75626c0a15366333ca9399df83">unix_file_perms</a>) o_mode = opts-&gt;<a class="code hl_variable" href="structclod__region__opts.html#ab90dfb75626c0a15366333ca9399df83">unix_file_perms</a>;</div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="keyword">const</span> <span class="keywordtype">int</span> fd = openat((<span class="keywordtype">int</span>)(intptr_t)d, name, o_flags, o_mode);</div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="keywordflow">if</span> (fd &lt; 0) {</div>
@@ -150,7 +150,7 @@ $(document).ready(function(){initNavTree('file_8c_source.html',''); initResizabl
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>#endif</div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="keywordtype">int</span> prot = PROT_READ;</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    if (opts-&gt;mode == CLOD_REGION_MODE_RDWR) prot |= PROT_WRITE;</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    if (opts-&gt;<a class="code hl_variable" href="structclod__region__opts.html#a28035120dc32ffc93355cf4223027a67">mode</a> == CLOD_REGION_MODE_RDWR) prot |= PROT_WRITE;</div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <span class="keywordtype">void</span> *map = <span class="keyword">nullptr</span>;</div>
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="keywordflow">if</span> (size &gt; 0) {</div>
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        map = mmap(<span class="keyword">nullptr</span>, size, prot, MAP_SHARED, fd, 0);</div>
@@ -172,7 +172,7 @@ $(document).ready(function(){initNavTree('file_8c_source.html',''); initResizabl
 <div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    file_struct-&gt;map = map;</div>
 <div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    file_struct-&gt;size = size;</div>
 <div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    file_struct-&gt;fd = fd;</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    file_struct-&gt;writeable = opts-&gt;mode == CLOD_REGION_MODE_RDWR;</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    file_struct-&gt;writeable = opts-&gt;<a class="code hl_variable" href="structclod__region__opts.html#a28035120dc32ffc93355cf4223027a67">mode</a> == CLOD_REGION_MODE_RDWR;</div>
 <div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    *f = (uintptr_t)file_struct;</div>
 <div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="group__region.html#gga9e5053f4d6bd4efc2f4ba2352276e4d5ae12bb61e00ea4eb8ffe1856fe1065a45">CLOD_REGION_OK</a>;</div>
 <div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>}</div>
@@ -233,10 +233,13 @@ $(document).ready(function(){initNavTree('file_8c_source.html',''); initResizabl
 <div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>    free(file_struct);</div>
 <div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>    <span class="keywordflow">return</span> res;</div>
 <div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>}</div>
-<div class="ttc" id="agroup__region_html_ga9e5053f4d6bd4efc2f4ba2352276e4d5"><div class="ttname"><a href="group__region.html#ga9e5053f4d6bd4efc2f4ba2352276e4d5">clod_region_result</a></div><div class="ttdeci">clod_region_result</div><div class="ttdef"><b>Definition:</b> <a href="region_8h_source.html#l00042">region.h:42</a></div></div>
-<div class="ttc" id="agroup__region_html_gga9e5053f4d6bd4efc2f4ba2352276e4d5a9d47a2ca353c9ca27d2a5ca7abe925db"><div class="ttname"><a href="group__region.html#gga9e5053f4d6bd4efc2f4ba2352276e4d5a9d47a2ca353c9ca27d2a5ca7abe925db">CLOD_REGION_NOT_FOUND</a></div><div class="ttdeci">@ CLOD_REGION_NOT_FOUND</div><div class="ttdef"><b>Definition:</b> <a href="region_8h_source.html#l00056">region.h:55</a></div></div>
-<div class="ttc" id="agroup__region_html_gga9e5053f4d6bd4efc2f4ba2352276e4d5ac37f4ae63905afb5ef5099a1825fe271"><div class="ttname"><a href="group__region.html#gga9e5053f4d6bd4efc2f4ba2352276e4d5ac37f4ae63905afb5ef5099a1825fe271">CLOD_REGION_INVALID_USAGE</a></div><div class="ttdeci">@ CLOD_REGION_INVALID_USAGE</div><div class="ttdef"><b>Definition:</b> <a href="region_8h_source.html#l00048">region.h:48</a></div></div>
-<div class="ttc" id="agroup__region_html_gga9e5053f4d6bd4efc2f4ba2352276e4d5ae12bb61e00ea4eb8ffe1856fe1065a45"><div class="ttname"><a href="group__region.html#gga9e5053f4d6bd4efc2f4ba2352276e4d5ae12bb61e00ea4eb8ffe1856fe1065a45">CLOD_REGION_OK</a></div><div class="ttdeci">@ CLOD_REGION_OK</div><div class="ttdef"><b>Definition:</b> <a href="region_8h_source.html#l00044">region.h:44</a></div></div>
+<div class="ttc" id="agroup__region_html_ga9e5053f4d6bd4efc2f4ba2352276e4d5"><div class="ttname"><a href="group__region.html#ga9e5053f4d6bd4efc2f4ba2352276e4d5">clod_region_result</a></div><div class="ttdeci">clod_region_result</div><div class="ttdef"><b>Definition:</b> <a href="region_8h_source.html#l00051">region.h:51</a></div></div>
+<div class="ttc" id="agroup__region_html_gga9e5053f4d6bd4efc2f4ba2352276e4d5a9d47a2ca353c9ca27d2a5ca7abe925db"><div class="ttname"><a href="group__region.html#gga9e5053f4d6bd4efc2f4ba2352276e4d5a9d47a2ca353c9ca27d2a5ca7abe925db">CLOD_REGION_NOT_FOUND</a></div><div class="ttdeci">@ CLOD_REGION_NOT_FOUND</div><div class="ttdef"><b>Definition:</b> <a href="region_8h_source.html#l00065">region.h:64</a></div></div>
+<div class="ttc" id="agroup__region_html_gga9e5053f4d6bd4efc2f4ba2352276e4d5ac37f4ae63905afb5ef5099a1825fe271"><div class="ttname"><a href="group__region.html#gga9e5053f4d6bd4efc2f4ba2352276e4d5ac37f4ae63905afb5ef5099a1825fe271">CLOD_REGION_INVALID_USAGE</a></div><div class="ttdeci">@ CLOD_REGION_INVALID_USAGE</div><div class="ttdef"><b>Definition:</b> <a href="region_8h_source.html#l00057">region.h:57</a></div></div>
+<div class="ttc" id="agroup__region_html_gga9e5053f4d6bd4efc2f4ba2352276e4d5ae12bb61e00ea4eb8ffe1856fe1065a45"><div class="ttname"><a href="group__region.html#gga9e5053f4d6bd4efc2f4ba2352276e4d5ae12bb61e00ea4eb8ffe1856fe1065a45">CLOD_REGION_OK</a></div><div class="ttdeci">@ CLOD_REGION_OK</div><div class="ttdef"><b>Definition:</b> <a href="region_8h_source.html#l00053">region.h:53</a></div></div>
+<div class="ttc" id="astructclod__region__opts_html"><div class="ttname"><a href="structclod__region__opts.html">clod_region_opts</a></div><div class="ttdef"><b>Definition:</b> <a href="region_8h_source.html#l00195">region.h:195</a></div></div>
+<div class="ttc" id="astructclod__region__opts_html_a28035120dc32ffc93355cf4223027a67"><div class="ttname"><a href="structclod__region__opts.html#a28035120dc32ffc93355cf4223027a67">clod_region_opts::mode</a></div><div class="ttdeci">uint8_t mode</div><div class="ttdef"><b>Definition:</b> <a href="region_8h_source.html#l00203">region.h:203</a></div></div>
+<div class="ttc" id="astructclod__region__opts_html_ab90dfb75626c0a15366333ca9399df83"><div class="ttname"><a href="structclod__region__opts.html#ab90dfb75626c0a15366333ca9399df83">clod_region_opts::unix_file_perms</a></div><div class="ttdeci">uint32_t unix_file_perms</div><div class="ttdef"><b>Definition:</b> <a href="region_8h_source.html#l00214">region.h:214</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

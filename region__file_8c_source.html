@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.6"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>clod: src/region/region_file.c Source File</title>
+<title>libclod: src/region/region_file.c Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -25,9 +25,9 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">clod
+   <div id="projectname">libclod
    </div>
-   <div id="projectbrief">C library and tools for working with minecraft and LOD data</div>
+   <div id="projectbrief">C library for interacting with NBT, region files, LOD data and other things.a</div>
   </td>
  </tr>
  </tbody>
@@ -99,9 +99,9 @@ $(document).ready(function(){initNavTree('region__file_8c_source.html',''); init
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;error.h&quot;</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="keyword">enum</span> <a class="code hl_enumeration" href="group__region.html#ga9e5053f4d6bd4efc2f4ba2352276e4d5">clod_region_result</a> region_file_open(<span class="keyword">const</span> <span class="keyword">struct</span> clod_region *r, <span class="keyword">struct</span> region_file **rf_ptr, <span class="keyword">const</span> int64_t *pos, <span class="keyword">const</span> <span class="keywordtype">bool</span> create) {</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="keyword">enum</span> <a class="code hl_enumeration" href="group__region.html#ga9e5053f4d6bd4efc2f4ba2352276e4d5">clod_region_result</a> region_file_open(<span class="keyword">const</span> <span class="keyword">struct</span> <a class="code hl_struct" href="structclod__region.html">clod_region</a> *r, <span class="keyword">struct</span> region_file **rf_ptr, <span class="keyword">const</span> int64_t *pos, <span class="keyword">const</span> <span class="keywordtype">bool</span> create) {</div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>    <span class="keywordtype">char</span> filename[REGION_FILENAME_MAX + 1];</div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>    filename_make(filename, r-&gt;opts.prefix, r-&gt;opts.region_ext, pos, r-&gt;opts.dims);</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>    filename_make(filename, r-&gt;opts.<a class="code hl_variable" href="structclod__region__opts.html#abaceb9aa2a1f50b1ced8783d3daa875d">prefix</a>, r-&gt;opts.<a class="code hl_variable" href="structclod__region__opts.html#a9db86be91ea361acfc5ee7784c7efe6f">region_ext</a>, pos, r-&gt;opts.<a class="code hl_variable" href="structclod__region__opts.html#a24ca3ee90d0982a7858b429c2ba448e7">dims</a>);</div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    file f;</div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    <span class="keyword">auto</span> <span class="keyword">const</span> res = file_open(&amp;f, r-&gt;d, filename, create, &amp;r-&gt;opts);</div>
@@ -129,9 +129,13 @@ $(document).ready(function(){initNavTree('region__file_8c_source.html',''); init
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    free(f);</div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="keywordflow">return</span> res;</div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>}</div>
-<div class="ttc" id="agroup__region_html_ga9e5053f4d6bd4efc2f4ba2352276e4d5"><div class="ttname"><a href="group__region.html#ga9e5053f4d6bd4efc2f4ba2352276e4d5">clod_region_result</a></div><div class="ttdeci">clod_region_result</div><div class="ttdef"><b>Definition:</b> <a href="region_8h_source.html#l00042">region.h:42</a></div></div>
-<div class="ttc" id="agroup__region_html_gga9e5053f4d6bd4efc2f4ba2352276e4d5ac37f4ae63905afb5ef5099a1825fe271"><div class="ttname"><a href="group__region.html#gga9e5053f4d6bd4efc2f4ba2352276e4d5ac37f4ae63905afb5ef5099a1825fe271">CLOD_REGION_INVALID_USAGE</a></div><div class="ttdeci">@ CLOD_REGION_INVALID_USAGE</div><div class="ttdef"><b>Definition:</b> <a href="region_8h_source.html#l00048">region.h:48</a></div></div>
-<div class="ttc" id="agroup__region_html_gga9e5053f4d6bd4efc2f4ba2352276e4d5ae12bb61e00ea4eb8ffe1856fe1065a45"><div class="ttname"><a href="group__region.html#gga9e5053f4d6bd4efc2f4ba2352276e4d5ae12bb61e00ea4eb8ffe1856fe1065a45">CLOD_REGION_OK</a></div><div class="ttdeci">@ CLOD_REGION_OK</div><div class="ttdef"><b>Definition:</b> <a href="region_8h_source.html#l00044">region.h:44</a></div></div>
+<div class="ttc" id="agroup__region_html_ga9e5053f4d6bd4efc2f4ba2352276e4d5"><div class="ttname"><a href="group__region.html#ga9e5053f4d6bd4efc2f4ba2352276e4d5">clod_region_result</a></div><div class="ttdeci">clod_region_result</div><div class="ttdef"><b>Definition:</b> <a href="region_8h_source.html#l00051">region.h:51</a></div></div>
+<div class="ttc" id="agroup__region_html_gga9e5053f4d6bd4efc2f4ba2352276e4d5ac37f4ae63905afb5ef5099a1825fe271"><div class="ttname"><a href="group__region.html#gga9e5053f4d6bd4efc2f4ba2352276e4d5ac37f4ae63905afb5ef5099a1825fe271">CLOD_REGION_INVALID_USAGE</a></div><div class="ttdeci">@ CLOD_REGION_INVALID_USAGE</div><div class="ttdef"><b>Definition:</b> <a href="region_8h_source.html#l00057">region.h:57</a></div></div>
+<div class="ttc" id="agroup__region_html_gga9e5053f4d6bd4efc2f4ba2352276e4d5ae12bb61e00ea4eb8ffe1856fe1065a45"><div class="ttname"><a href="group__region.html#gga9e5053f4d6bd4efc2f4ba2352276e4d5ae12bb61e00ea4eb8ffe1856fe1065a45">CLOD_REGION_OK</a></div><div class="ttdeci">@ CLOD_REGION_OK</div><div class="ttdef"><b>Definition:</b> <a href="region_8h_source.html#l00053">region.h:53</a></div></div>
+<div class="ttc" id="astructclod__region__opts_html_a24ca3ee90d0982a7858b429c2ba448e7"><div class="ttname"><a href="structclod__region__opts.html#a24ca3ee90d0982a7858b429c2ba448e7">clod_region_opts::dims</a></div><div class="ttdeci">uint8_t dims</div><div class="ttdef"><b>Definition:</b> <a href="region_8h_source.html#l00199">region.h:199</a></div></div>
+<div class="ttc" id="astructclod__region__opts_html_a9db86be91ea361acfc5ee7784c7efe6f"><div class="ttname"><a href="structclod__region__opts.html#a9db86be91ea361acfc5ee7784c7efe6f">clod_region_opts::region_ext</a></div><div class="ttdeci">char region_ext[10+1]</div><div class="ttdef"><b>Definition:</b> <a href="region_8h_source.html#l00220">region.h:220</a></div></div>
+<div class="ttc" id="astructclod__region__opts_html_abaceb9aa2a1f50b1ced8783d3daa875d"><div class="ttname"><a href="structclod__region__opts.html#abaceb9aa2a1f50b1ced8783d3daa875d">clod_region_opts::prefix</a></div><div class="ttdeci">char prefix[30+1]</div><div class="ttdef"><b>Definition:</b> <a href="region_8h_source.html#l00217">region.h:217</a></div></div>
+<div class="ttc" id="astructclod__region_html"><div class="ttname"><a href="structclod__region.html">clod_region</a></div><div class="ttdef"><b>Definition:</b> <a href="region__impl_8h_source.html#l00011">region_impl.h:11</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

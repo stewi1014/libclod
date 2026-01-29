@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['delimiter_0',['delimiter',['../unionclod__nbt__payload.html#a2adb649ebbe495529affdd2cceb76fc4',1,'clod_nbt_payload']]]
+  ['index_0',['index',['../structclod__nbt__iter.html#a41e6e82218283fd0d2707eafd28b71ba',1,'clod_nbt_iter']]]
 ];

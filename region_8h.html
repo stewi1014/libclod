@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.6"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>clod: include/clod/region.h File Reference</title>
+<title>libclod: include/clod/region.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -25,9 +25,9 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">clod
+   <div id="projectname">libclod
    </div>
-   <div id="projectbrief">C library and tools for working with minecraft and LOD data</div>
+   <div id="projectbrief">C library for interacting with NBT, region files, LOD data and other things.a</div>
   </td>
  </tr>
  </tbody>
@@ -91,6 +91,7 @@ $(document).ready(function(){initNavTree('region_8h.html',''); initResizable(); 
 
 <div class="header">
   <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
 <a href="#define-members">Macros</a> &#124;
 <a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a>  </div>
@@ -103,6 +104,11 @@ $(document).ready(function(){initNavTree('region_8h.html',''); initResizable(); 
 </div>
 <p><a href="region_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclod__region__opts.html">clod_region_opts</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:ga66208641dc846d8ad041b018369e0598"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__region.html#ga66208641dc846d8ad041b018369e0598">CLOD_REGION_VERSION</a>&#160;&#160;&#160;1</td></tr>
@@ -153,21 +159,21 @@ Enumerations</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:gae4606a5895754b7973db723871e48b61"><td class="memItemLeft" align="right" valign="top">struct clod_region *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__region.html#gae4606a5895754b7973db723871e48b61">clod_region_open</a> (const char *path, const struct clod_region_opts *opts)</td></tr>
+<tr class="memitem:gae4606a5895754b7973db723871e48b61"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structclod__region.html">clod_region</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__region.html#gae4606a5895754b7973db723871e48b61">clod_region_open</a> (const char *path, const struct <a class="el" href="structclod__region__opts.html">clod_region_opts</a> *opts)</td></tr>
 <tr class="separator:gae4606a5895754b7973db723871e48b61"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga3db218a42df6ebaf7e0aea70d715bc39"><td class="memItemLeft" align="right" valign="top">enum <a class="el" href="group__region.html#ga9e5053f4d6bd4efc2f4ba2352276e4d5">clod_region_result</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__region.html#ga3db218a42df6ebaf7e0aea70d715bc39">clod_region_read</a> (struct clod_region *region, const int64_t *pos, uint8_t *buff, size_t buff_size, size_t *size)</td></tr>
+<tr class="memitem:ga3db218a42df6ebaf7e0aea70d715bc39"><td class="memItemLeft" align="right" valign="top">enum <a class="el" href="group__region.html#ga9e5053f4d6bd4efc2f4ba2352276e4d5">clod_region_result</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__region.html#ga3db218a42df6ebaf7e0aea70d715bc39">clod_region_read</a> (struct <a class="el" href="structclod__region.html">clod_region</a> *region, const int64_t *pos, uint8_t *buff, size_t buff_size, size_t *size)</td></tr>
 <tr class="separator:ga3db218a42df6ebaf7e0aea70d715bc39"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa4dd6bd26f738b803ce56d31e73c8c96"><td class="memItemLeft" align="right" valign="top">enum <a class="el" href="group__region.html#ga9e5053f4d6bd4efc2f4ba2352276e4d5">clod_region_result</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__region.html#gaa4dd6bd26f738b803ce56d31e73c8c96">clod_region_write</a> (struct clod_region *region, const int64_t *pos, const uint8_t *buff, size_t buff_size)</td></tr>
+<tr class="memitem:gaa4dd6bd26f738b803ce56d31e73c8c96"><td class="memItemLeft" align="right" valign="top">enum <a class="el" href="group__region.html#ga9e5053f4d6bd4efc2f4ba2352276e4d5">clod_region_result</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__region.html#gaa4dd6bd26f738b803ce56d31e73c8c96">clod_region_write</a> (struct <a class="el" href="structclod__region.html">clod_region</a> *region, const int64_t *pos, const uint8_t *buff, size_t buff_size)</td></tr>
 <tr class="separator:gaa4dd6bd26f738b803ce56d31e73c8c96"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga46d10dbc713b1a588bfd64f1df1be9ac"><td class="memItemLeft" align="right" valign="top">enum <a class="el" href="group__region.html#ga9e5053f4d6bd4efc2f4ba2352276e4d5">clod_region_result</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__region.html#ga46d10dbc713b1a588bfd64f1df1be9ac">clod_region_mtime</a> (struct clod_region *region, const int64_t *pos, time_t *mtime)</td></tr>
+<tr class="memitem:ga46d10dbc713b1a588bfd64f1df1be9ac"><td class="memItemLeft" align="right" valign="top">enum <a class="el" href="group__region.html#ga9e5053f4d6bd4efc2f4ba2352276e4d5">clod_region_result</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__region.html#ga46d10dbc713b1a588bfd64f1df1be9ac">clod_region_mtime</a> (struct <a class="el" href="structclod__region.html">clod_region</a> *region, const int64_t *pos, time_t *mtime)</td></tr>
 <tr class="separator:ga46d10dbc713b1a588bfd64f1df1be9ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gabc75537688ace3a1a629c58ebccf317b"><td class="memItemLeft" align="right" valign="top">struct clod_region_iter *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__region.html#gabc75537688ace3a1a629c58ebccf317b">clod_region_iter_start</a> (struct clod_region *region)</td></tr>
+<tr class="memitem:gabc75537688ace3a1a629c58ebccf317b"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structclod__region__iter.html">clod_region_iter</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__region.html#gabc75537688ace3a1a629c58ebccf317b">clod_region_iter_start</a> (struct <a class="el" href="structclod__region.html">clod_region</a> *region)</td></tr>
 <tr class="separator:gabc75537688ace3a1a629c58ebccf317b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gacf8173268fd72dcf817ebfe22ff5d475"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__region.html#gacf8173268fd72dcf817ebfe22ff5d475">clod_region_iter_next</a> (struct clod_region_iter *iter, int64_t *pos)</td></tr>
+<tr class="memitem:gacf8173268fd72dcf817ebfe22ff5d475"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__region.html#gacf8173268fd72dcf817ebfe22ff5d475">clod_region_iter_next</a> (struct <a class="el" href="structclod__region__iter.html">clod_region_iter</a> *iter, int64_t *pos)</td></tr>
 <tr class="separator:gacf8173268fd72dcf817ebfe22ff5d475"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga6811ac8ed653bc1e77646e87491ee580"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__region.html#ga6811ac8ed653bc1e77646e87491ee580">clod_region_iter_end</a> (struct clod_region_iter *iter)</td></tr>
+<tr class="memitem:ga6811ac8ed653bc1e77646e87491ee580"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__region.html#ga6811ac8ed653bc1e77646e87491ee580">clod_region_iter_end</a> (struct <a class="el" href="structclod__region__iter.html">clod_region_iter</a> *iter)</td></tr>
 <tr class="separator:ga6811ac8ed653bc1e77646e87491ee580"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga2def35799e8269eb70d540c251a293e9"><td class="memItemLeft" align="right" valign="top">enum <a class="el" href="group__region.html#ga9e5053f4d6bd4efc2f4ba2352276e4d5">clod_region_result</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__region.html#ga2def35799e8269eb70d540c251a293e9">clod_region_close</a> (struct clod_region *r)</td></tr>
+<tr class="memitem:ga2def35799e8269eb70d540c251a293e9"><td class="memItemLeft" align="right" valign="top">enum <a class="el" href="group__region.html#ga9e5053f4d6bd4efc2f4ba2352276e4d5">clod_region_result</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__region.html#ga2def35799e8269eb70d540c251a293e9">clod_region_close</a> (struct <a class="el" href="structclod__region.html">clod_region</a> *r)</td></tr>
 <tr class="separator:ga2def35799e8269eb70d540c251a293e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->

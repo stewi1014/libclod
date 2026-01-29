@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['compound_0',['compound',['../unionclod__nbt__payload.html#a9946fca9ef446f5dafed42029f113123',1,'clod_nbt_payload']]]
+  ['dims_0',['dims',['../structclod__region__opts.html#a24ca3ee90d0982a7858b429c2ba448e7',1,'clod_region_opts']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['delimiter_0',['delimiter',['../unionclod__nbt__payload.html#a2adb649ebbe495529affdd2cceb76fc4',1,'clod_nbt_payload']]]
+  ['dims_0',['dims',['../structclod__region__opts.html#a24ca3ee90d0982a7858b429c2ba448e7',1,'clod_region_opts']]]
 ];

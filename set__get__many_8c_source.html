@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.6"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>clod: test/table/set_get_many.c Source File</title>
+<title>libclod: test/table/set_get_many.c Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -25,9 +25,9 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">clod
+   <div id="projectname">libclod
    </div>
-   <div id="projectbrief">C library and tools for working with minecraft and LOD data</div>
+   <div id="projectbrief">C library for interacting with NBT, region files, LOD data and other things.a</div>
   </td>
  </tr>
  </tbody>
@@ -113,7 +113,7 @@ $(document).ready(function(){initNavTree('set__get__many_8c_source.html',''); in
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>        check(<a class="code hl_function" href="group__table.html#ga0461d4310832868c49bc80d92ae97380">clod_table_add</a>(t, &amp;elems[i], 4) == <span class="keyword">nullptr</span>);</div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    }</div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; NUM_ELEMS; i++) {</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>        check(<a class="code hl_function" href="group__table.html#ga0461d4310832868c49bc80d92ae97380">clod_table_add</a>(t, &amp;elems[i], 4) == &amp;elems[i + 1]);</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>        check(<a class="code hl_function" href="group__table.html#ga0461d4310832868c49bc80d92ae97380">clod_table_add</a>(t, &amp;elems[i], 4) == &amp;elems[i]);</div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    }</div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; NUM_ELEMS; i++) {</div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        <span class="keyword">const</span> <span class="keywordtype">int</span> *p = &amp;i;</div>
@@ -136,12 +136,12 @@ $(document).ready(function(){initNavTree('set__get__many_8c_source.html',''); in
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="keywordflow">return</span> EXIT_SUCCESS;</div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>}</div>
-<div class="ttc" id="agroup__table_html_ga0461d4310832868c49bc80d92ae97380"><div class="ttname"><a href="group__table.html#ga0461d4310832868c49bc80d92ae97380">clod_table_add</a></div><div class="ttdeci">void * clod_table_add(struct clod_table *t, const void *element, size_t key_size)</div><div class="ttdef"><b>Definition:</b> <a href="table_8c_source.html#l00189">table.c:189</a></div></div>
-<div class="ttc" id="agroup__table_html_ga239b3e23b7e9a91d1e32014257e8ee5a"><div class="ttname"><a href="group__table.html#ga239b3e23b7e9a91d1e32014257e8ee5a">clod_table_destroy</a></div><div class="ttdeci">void clod_table_destroy(struct clod_table *t)</div><div class="ttdef"><b>Definition:</b> <a href="table_8c_source.html#l00182">table.c:182</a></div></div>
-<div class="ttc" id="agroup__table_html_ga9e9bc355477840c482ea564f31b39239"><div class="ttname"><a href="group__table.html#ga9e9bc355477840c482ea564f31b39239">clod_table_set</a></div><div class="ttdeci">void * clod_table_set(struct clod_table *t, const void *element, size_t key_size)</div><div class="ttdef"><b>Definition:</b> <a href="table_8c_source.html#l00198">table.c:198</a></div></div>
-<div class="ttc" id="agroup__table_html_gaaa4f82888b60e6a15ad73726a81c835a"><div class="ttname"><a href="group__table.html#gaaa4f82888b60e6a15ad73726a81c835a">clod_table_create</a></div><div class="ttdeci">struct clod_table * clod_table_create(const struct clod_table_opts *opts)</div><div class="ttdef"><b>Definition:</b> <a href="table_8c_source.html#l00167">table.c:167</a></div></div>
-<div class="ttc" id="agroup__table_html_gacca658a9b075d4f6d5b551d637f14290"><div class="ttname"><a href="group__table.html#gacca658a9b075d4f6d5b551d637f14290">clod_table_get</a></div><div class="ttdeci">void * clod_table_get(const struct clod_table *t, const void *key, size_t key_size)</div><div class="ttdef"><b>Definition:</b> <a href="table_8c_source.html#l00207">table.c:207</a></div></div>
-<div class="ttc" id="agroup__table_html_gae007e3135fdf976ccd71b3b2f485c441"><div class="ttname"><a href="group__table.html#gae007e3135fdf976ccd71b3b2f485c441">clod_table_del</a></div><div class="ttdeci">void * clod_table_del(struct clod_table *t, const void *key, size_t key_size)</div><div class="ttdef"><b>Definition:</b> <a href="table_8c_source.html#l00216">table.c:216</a></div></div>
+<div class="ttc" id="agroup__table_html_ga0461d4310832868c49bc80d92ae97380"><div class="ttname"><a href="group__table.html#ga0461d4310832868c49bc80d92ae97380">clod_table_add</a></div><div class="ttdeci">void * clod_table_add(struct clod_table *t, const void *element, size_t key_size)</div><div class="ttdef"><b>Definition:</b> <a href="table_8c_source.html#l00194">table.c:194</a></div></div>
+<div class="ttc" id="agroup__table_html_ga239b3e23b7e9a91d1e32014257e8ee5a"><div class="ttname"><a href="group__table.html#ga239b3e23b7e9a91d1e32014257e8ee5a">clod_table_destroy</a></div><div class="ttdeci">void clod_table_destroy(struct clod_table *t)</div><div class="ttdef"><b>Definition:</b> <a href="table_8c_source.html#l00187">table.c:187</a></div></div>
+<div class="ttc" id="agroup__table_html_ga9e9bc355477840c482ea564f31b39239"><div class="ttname"><a href="group__table.html#ga9e9bc355477840c482ea564f31b39239">clod_table_set</a></div><div class="ttdeci">void * clod_table_set(struct clod_table *t, const void *element, size_t key_size)</div><div class="ttdef"><b>Definition:</b> <a href="table_8c_source.html#l00203">table.c:203</a></div></div>
+<div class="ttc" id="agroup__table_html_gaaa4f82888b60e6a15ad73726a81c835a"><div class="ttname"><a href="group__table.html#gaaa4f82888b60e6a15ad73726a81c835a">clod_table_create</a></div><div class="ttdeci">struct clod_table * clod_table_create(const struct clod_table_opts *opts)</div><div class="ttdef"><b>Definition:</b> <a href="table_8c_source.html#l00172">table.c:172</a></div></div>
+<div class="ttc" id="agroup__table_html_gacca658a9b075d4f6d5b551d637f14290"><div class="ttname"><a href="group__table.html#gacca658a9b075d4f6d5b551d637f14290">clod_table_get</a></div><div class="ttdeci">void * clod_table_get(const struct clod_table *t, const void *key, size_t key_size)</div><div class="ttdef"><b>Definition:</b> <a href="table_8c_source.html#l00212">table.c:212</a></div></div>
+<div class="ttc" id="agroup__table_html_gae007e3135fdf976ccd71b3b2f485c441"><div class="ttname"><a href="group__table.html#gae007e3135fdf976ccd71b3b2f485c441">clod_table_del</a></div><div class="ttdeci">void * clod_table_del(struct clod_table *t, const void *key, size_t key_size)</div><div class="ttdef"><b>Definition:</b> <a href="table_8c_source.html#l00221">table.c:221</a></div></div>
 <div class="ttc" id="atable_8h_html"><div class="ttname"><a href="table_8h.html">table.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

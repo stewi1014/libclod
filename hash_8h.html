@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.6"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>clod: include/clod/hash.h File Reference</title>
+<title>libclod: include/clod/hash.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -25,9 +25,9 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">clod
+   <div id="projectname">libclod
    </div>
-   <div id="projectbrief">C library and tools for working with minecraft and LOD data</div>
+   <div id="projectbrief">C library for interacting with NBT, region files, LOD data and other things.a</div>
   </td>
  </tr>
  </tbody>
@@ -104,50 +104,56 @@ $(document).ready(function(){initNavTree('hash_8h.html',''); initResizable(); })
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:gac0ebf8d62550f8e88bf2270917c218e2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__crc.html#gac0ebf8d62550f8e88bf2270917c218e2">CLOD_CRC64_INIT</a>&#160;&#160;&#160;UINT64_C(0)</td></tr>
-<tr class="separator:gac0ebf8d62550f8e88bf2270917c218e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gab241a0b1a65e435123369668757e804b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__crc.html#gab241a0b1a65e435123369668757e804b">clod_crc64_finalise</a>(crc)&#160;&#160;&#160;((uint64_t)((uint64_t)crc ^ UINT64_C(0)))</td></tr>
+<tr class="memitem:gae4491c7187bf0d4dac90113d8e5bb3bb"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__hash.html#gae4491c7187bf0d4dac90113d8e5bb3bb">clod_sip64_init</a>(seed)</td></tr>
+<tr class="separator:gae4491c7187bf0d4dac90113d8e5bb3bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga86909978d31f5c30b6f81d1d1e338bad"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__hash.html#ga86909978d31f5c30b6f81d1d1e338bad">clod_sip64</a>(seed,  data,  size)&#160;&#160;&#160;<a class="el" href="group__hash.html#ga614d5bf14c7d9712f5730270766f88e6">clod_sip64_finalise</a>(<a class="el" href="group__hash.html#gaaefe591a503d0c93d185a0a69a197ef2">clod_sip64_add</a>(<a class="el" href="group__hash.html#gae4491c7187bf0d4dac90113d8e5bb3bb">clod_sip64_init</a>(seed), data, size))</td></tr>
+<tr class="separator:ga86909978d31f5c30b6f81d1d1e338bad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga06d5b2deed2eea28e80d2d40062a94f3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__hash.html#ga06d5b2deed2eea28e80d2d40062a94f3">clod_crc64_init</a>()&#160;&#160;&#160;UINT64_C(0x0)</td></tr>
+<tr class="separator:ga06d5b2deed2eea28e80d2d40062a94f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab241a0b1a65e435123369668757e804b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__hash.html#gab241a0b1a65e435123369668757e804b">clod_crc64_finalise</a>(crc)&#160;&#160;&#160;((uint64_t)((uint64_t)crc ^ UINT64_C(0x0)))</td></tr>
 <tr class="separator:gab241a0b1a65e435123369668757e804b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga9ccf20727107bd5e8eb9078b3ae9eccb"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__crc.html#ga9ccf20727107bd5e8eb9078b3ae9eccb">clod_crc64</a>(data,  size)&#160;&#160;&#160;clod_crc64_finalise(<a class="el" href="group__crc.html#ga54b1ea9b3947481f166d318c466a039d">clod_crc64_add</a>(CLOD_CRC64_INIT, data, size))</td></tr>
+<tr class="memitem:ga9ccf20727107bd5e8eb9078b3ae9eccb"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__hash.html#ga9ccf20727107bd5e8eb9078b3ae9eccb">clod_crc64</a>(data,  size)&#160;&#160;&#160;clod_crc64_finalise(<a class="el" href="group__hash.html#ga54b1ea9b3947481f166d318c466a039d">clod_crc64_add</a>(clod_crc64_init(), data, size))</td></tr>
 <tr class="separator:ga9ccf20727107bd5e8eb9078b3ae9eccb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga994ba80bfd39fb4a615a6ebf880abc89"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__crc.html#ga994ba80bfd39fb4a615a6ebf880abc89">CLOD_CRC32_INIT</a>&#160;&#160;&#160;UINT32_C(0xFFFFFFFF)</td></tr>
-<tr class="separator:ga994ba80bfd39fb4a615a6ebf880abc89"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga688b5c7889b654506285770e8bad203b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__crc.html#ga688b5c7889b654506285770e8bad203b">clod_crc32_finalise</a>(crc)&#160;&#160;&#160;((uint32_t)((uint32_t)crc ^ UINT32_C(0xFFFFFFFF)))</td></tr>
+<tr class="memitem:gafce7ca69c1b86a6aa44396032c4a8f9a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__hash.html#gafce7ca69c1b86a6aa44396032c4a8f9a">clod_crc32_init</a>()&#160;&#160;&#160;UINT32_C(0xFFFFFFFF)</td></tr>
+<tr class="separator:gafce7ca69c1b86a6aa44396032c4a8f9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga688b5c7889b654506285770e8bad203b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__hash.html#ga688b5c7889b654506285770e8bad203b">clod_crc32_finalise</a>(crc)&#160;&#160;&#160;((uint32_t)((uint32_t)crc ^ UINT32_C(0xFFFFFFFF)))</td></tr>
 <tr class="separator:ga688b5c7889b654506285770e8bad203b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gacd6b930197a662010f86bf03fc47a0d3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__crc.html#gacd6b930197a662010f86bf03fc47a0d3">clod_crc32</a>(data,  size)&#160;&#160;&#160;clod_crc32_finalise(<a class="el" href="group__crc.html#ga81307715e33c7cb5678f977baae58415">clod_crc32_add</a>(CLOD_CRC32_INIT, data, size))</td></tr>
+<tr class="memitem:gacd6b930197a662010f86bf03fc47a0d3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__hash.html#gacd6b930197a662010f86bf03fc47a0d3">clod_crc32</a>(data,  size)&#160;&#160;&#160;clod_crc32_finalise(<a class="el" href="group__hash.html#ga81307715e33c7cb5678f977baae58415">clod_crc32_add</a>(clod_crc32_init(), data, size))</td></tr>
 <tr class="separator:gacd6b930197a662010f86bf03fc47a0d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga40fc8594db743688088fea322b398e85"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__crc.html#ga40fc8594db743688088fea322b398e85">CLOD_CRC24_INIT</a>&#160;&#160;&#160;UINT32_C(0xB704CE)</td></tr>
-<tr class="separator:ga40fc8594db743688088fea322b398e85"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gac7812450c3601ddbee37e176e12a015f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__crc.html#gac7812450c3601ddbee37e176e12a015f">clod_crc24_finalise</a>(crc)&#160;&#160;&#160;((uint32_t)((uint32_t)crc ^ UINT32_C(0x0)))</td></tr>
+<tr class="memitem:gada10c89d90d70243d58b21c306383233"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__hash.html#gada10c89d90d70243d58b21c306383233">clod_crc24_init</a>()&#160;&#160;&#160;UINT32_C(0xB704CE)</td></tr>
+<tr class="separator:gada10c89d90d70243d58b21c306383233"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac7812450c3601ddbee37e176e12a015f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__hash.html#gac7812450c3601ddbee37e176e12a015f">clod_crc24_finalise</a>(crc)&#160;&#160;&#160;((uint32_t)((uint32_t)crc ^ UINT32_C(0x0)))</td></tr>
 <tr class="separator:gac7812450c3601ddbee37e176e12a015f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa10f6be477f2b7c9d3d6e06c55e3ecc6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__crc.html#gaa10f6be477f2b7c9d3d6e06c55e3ecc6">clod_crc24</a>(data,  size)&#160;&#160;&#160;clod_crc24_finalise(<a class="el" href="group__crc.html#ga7252d02eb9df44dc25c2b20f0bd94baf">clod_crc24_add</a>(CLOD_CRC24_INIT, data, size))</td></tr>
+<tr class="memitem:gaa10f6be477f2b7c9d3d6e06c55e3ecc6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__hash.html#gaa10f6be477f2b7c9d3d6e06c55e3ecc6">clod_crc24</a>(data,  size)&#160;&#160;&#160;clod_crc24_finalise(<a class="el" href="group__hash.html#ga7252d02eb9df44dc25c2b20f0bd94baf">clod_crc24_add</a>(clod_crc24_init(), data, size))</td></tr>
 <tr class="separator:gaa10f6be477f2b7c9d3d6e06c55e3ecc6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga574c364bf4e1b40104c8fadbc3b79ff0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__crc.html#ga574c364bf4e1b40104c8fadbc3b79ff0">CLOD_CRC16_INIT</a>&#160;&#160;&#160;UINT16_C(0)</td></tr>
-<tr class="separator:ga574c364bf4e1b40104c8fadbc3b79ff0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gab39d5c1cba431f4aa2779ac8bdf68b82"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__crc.html#gab39d5c1cba431f4aa2779ac8bdf68b82">clod_crc16_finalise</a>(crc)&#160;&#160;&#160;((uint16_t)((uint16_t)crc ^ UINT16_C(0)))</td></tr>
+<tr class="memitem:ga62034d48f335675ae10d18459e3f9706"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__hash.html#ga62034d48f335675ae10d18459e3f9706">clod_crc16_init</a>()&#160;&#160;&#160;UINT16_C(0x0)</td></tr>
+<tr class="separator:ga62034d48f335675ae10d18459e3f9706"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab39d5c1cba431f4aa2779ac8bdf68b82"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__hash.html#gab39d5c1cba431f4aa2779ac8bdf68b82">clod_crc16_finalise</a>(crc)&#160;&#160;&#160;((uint16_t)((uint16_t)crc ^ UINT16_C(0x0)))</td></tr>
 <tr class="separator:gab39d5c1cba431f4aa2779ac8bdf68b82"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaec246c916d1b9a392781fb89fbc81240"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__crc.html#gaec246c916d1b9a392781fb89fbc81240">clod_crc16</a>(data,  size)&#160;&#160;&#160;clod_crc16_finalise(<a class="el" href="group__crc.html#gadc7c1cf85eeaaf4ef997f44f103d72b6">clod_crc16_add</a>(CLOD_CRC16_INIT, data, size))</td></tr>
+<tr class="memitem:gaec246c916d1b9a392781fb89fbc81240"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__hash.html#gaec246c916d1b9a392781fb89fbc81240">clod_crc16</a>(data,  size)&#160;&#160;&#160;clod_crc16_finalise(<a class="el" href="group__hash.html#gadc7c1cf85eeaaf4ef997f44f103d72b6">clod_crc16_add</a>(clod_crc16_init(), data, size))</td></tr>
 <tr class="separator:gaec246c916d1b9a392781fb89fbc81240"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga268e244a6a35e46f4dd53bc0925b97d8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__crc.html#ga268e244a6a35e46f4dd53bc0925b97d8">CLOD_CRC8_INIT</a>&#160;&#160;&#160;UINT8_C(0)</td></tr>
-<tr class="separator:ga268e244a6a35e46f4dd53bc0925b97d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga5395f5450fd1a947affcadd4271c61e3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__crc.html#ga5395f5450fd1a947affcadd4271c61e3">clod_crc8_finalise</a>(crc)&#160;&#160;&#160;((uint8_t)((uint8_t)crc ^ UINT8_C(0)))</td></tr>
+<tr class="memitem:ga0298ed49e52c82225c87d4a925a48e30"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__hash.html#ga0298ed49e52c82225c87d4a925a48e30">clod_crc8_init</a>()&#160;&#160;&#160;UINT8_C(0x0)</td></tr>
+<tr class="separator:ga0298ed49e52c82225c87d4a925a48e30"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5395f5450fd1a947affcadd4271c61e3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__hash.html#ga5395f5450fd1a947affcadd4271c61e3">clod_crc8_finalise</a>(crc)&#160;&#160;&#160;((uint8_t)((uint8_t)crc ^ UINT8_C(0x0)))</td></tr>
 <tr class="separator:ga5395f5450fd1a947affcadd4271c61e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gac852e1ffa9689d3639a3c243b3017fb6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__crc.html#gac852e1ffa9689d3639a3c243b3017fb6">clod_crc8</a>(data,  size)&#160;&#160;&#160;clod_crc8_finalise(<a class="el" href="group__crc.html#ga67801a1899e1ba817087bffe2cd682cc">clod_crc8_add</a>(CLOD_CRC8_INIT, data, size))</td></tr>
+<tr class="memitem:gac852e1ffa9689d3639a3c243b3017fb6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__hash.html#gac852e1ffa9689d3639a3c243b3017fb6">clod_crc8</a>(data,  size)&#160;&#160;&#160;clod_crc8_finalise(<a class="el" href="group__hash.html#ga67801a1899e1ba817087bffe2cd682cc">clod_crc8_add</a>(clod_crc8_init(), data, size))</td></tr>
 <tr class="separator:gac852e1ffa9689d3639a3c243b3017fb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:gaca90f154f375224af68e7c72c6a83987"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__hash.html#gaca90f154f375224af68e7c72c6a83987">clod_hash64</a> (uint64_t seed, const void *data, size_t size)</td></tr>
-<tr class="separator:gaca90f154f375224af68e7c72c6a83987"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga54b1ea9b3947481f166d318c466a039d"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__crc.html#ga54b1ea9b3947481f166d318c466a039d">clod_crc64_add</a> (uint64_t crc, const void *data, size_t data_len)</td></tr>
+<tr class="memitem:gaaefe591a503d0c93d185a0a69a197ef2"><td class="memItemLeft" align="right" valign="top">clod_sip64_state&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__hash.html#gaaefe591a503d0c93d185a0a69a197ef2">clod_sip64_add</a> (clod_sip64_state state, const void *data, size_t size)</td></tr>
+<tr class="separator:gaaefe591a503d0c93d185a0a69a197ef2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga614d5bf14c7d9712f5730270766f88e6"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__hash.html#ga614d5bf14c7d9712f5730270766f88e6">clod_sip64_finalise</a> (clod_sip64_state state)</td></tr>
+<tr class="separator:ga614d5bf14c7d9712f5730270766f88e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga54b1ea9b3947481f166d318c466a039d"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__hash.html#ga54b1ea9b3947481f166d318c466a039d">clod_crc64_add</a> (uint64_t crc, const void *data, size_t data_len)</td></tr>
 <tr class="separator:ga54b1ea9b3947481f166d318c466a039d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga81307715e33c7cb5678f977baae58415"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__crc.html#ga81307715e33c7cb5678f977baae58415">clod_crc32_add</a> (uint32_t crc, const void *data, size_t data_len)</td></tr>
+<tr class="memitem:ga81307715e33c7cb5678f977baae58415"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__hash.html#ga81307715e33c7cb5678f977baae58415">clod_crc32_add</a> (uint32_t crc, const void *data, size_t data_len)</td></tr>
 <tr class="separator:ga81307715e33c7cb5678f977baae58415"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga7252d02eb9df44dc25c2b20f0bd94baf"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__crc.html#ga7252d02eb9df44dc25c2b20f0bd94baf">clod_crc24_add</a> (uint32_t crc, const void *data, size_t data_len)</td></tr>
+<tr class="memitem:ga7252d02eb9df44dc25c2b20f0bd94baf"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__hash.html#ga7252d02eb9df44dc25c2b20f0bd94baf">clod_crc24_add</a> (uint32_t crc, const void *data, size_t data_len)</td></tr>
 <tr class="separator:ga7252d02eb9df44dc25c2b20f0bd94baf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gadc7c1cf85eeaaf4ef997f44f103d72b6"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__crc.html#gadc7c1cf85eeaaf4ef997f44f103d72b6">clod_crc16_add</a> (uint16_t crc, const void *data, size_t data_len)</td></tr>
+<tr class="memitem:gadc7c1cf85eeaaf4ef997f44f103d72b6"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__hash.html#gadc7c1cf85eeaaf4ef997f44f103d72b6">clod_crc16_add</a> (uint16_t crc, const void *data, size_t data_len)</td></tr>
 <tr class="separator:gadc7c1cf85eeaaf4ef997f44f103d72b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga67801a1899e1ba817087bffe2cd682cc"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__crc.html#ga67801a1899e1ba817087bffe2cd682cc">clod_crc8_add</a> (uint8_t crc, const void *data, size_t data_len)</td></tr>
+<tr class="memitem:ga67801a1899e1ba817087bffe2cd682cc"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__hash.html#ga67801a1899e1ba817087bffe2cd682cc">clod_crc8_add</a> (uint8_t crc, const void *data, size_t data_len)</td></tr>
 <tr class="separator:ga67801a1899e1ba817087bffe2cd682cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.6"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>clod: include/clod/big_endian.h File Reference</title>
+<title>libclod: include/clod/big_endian.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -25,9 +25,9 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">clod
+   <div id="projectname">libclod
    </div>
-   <div id="projectbrief">C library and tools for working with minecraft and LOD data</div>
+   <div id="projectbrief">C library for interacting with NBT, region files, LOD data and other things.a</div>
   </td>
  </tr>
  </tbody>
@@ -91,10 +91,14 @@ $(document).ready(function(){initNavTree('big__endian_8h.html',''); initResizabl
 
 <div class="header">
   <div class="summary">
-<a href="#define-members">Macros</a>  </div>
+<a href="#define-members">Macros</a> &#124;
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">big_endian.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Methods for big-endian encoding numbers.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;<a class="el" href="lib_8h_source.html">clod/lib.h</a>&gt;</code><br />
 <code>#include &lt;limits.h&gt;</code><br />
 <code>#include &lt;stdint.h&gt;</code><br />
@@ -103,453 +107,1705 @@ $(document).ready(function(){initNavTree('big__endian_8h.html',''); initResizabl
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:a574a53bc8cf451d675512d47450e0c88"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="big__endian_8h.html#a574a53bc8cf451d675512d47450e0c88">bei8</a>(val)&#160;&#160;&#160;bei8_enc_ (val)</td></tr>
-<tr class="separator:a574a53bc8cf451d675512d47450e0c88"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5c1ef4027417894e44c1c5ed41b08117"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="big__endian_8h.html#a5c1ef4027417894e44c1c5ed41b08117">bei16</a>(val)&#160;&#160;&#160;bei16_enc_(val)</td></tr>
-<tr class="separator:a5c1ef4027417894e44c1c5ed41b08117"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac5506565fde000ded7ca4c5d1c5682a9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="big__endian_8h.html#ac5506565fde000ded7ca4c5d1c5682a9">bei24</a>(val)&#160;&#160;&#160;bei24_enc_(val)</td></tr>
-<tr class="separator:ac5506565fde000ded7ca4c5d1c5682a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7c73a97a0563dcbea2440a7427c2a627"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="big__endian_8h.html#a7c73a97a0563dcbea2440a7427c2a627">bei32</a>(val)&#160;&#160;&#160;bei32_enc_(val)</td></tr>
-<tr class="separator:a7c73a97a0563dcbea2440a7427c2a627"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aee5ee45c67e6ba8b7f9261c422ba718c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="big__endian_8h.html#aee5ee45c67e6ba8b7f9261c422ba718c">bei40</a>(val)&#160;&#160;&#160;bei40_enc_(val)</td></tr>
-<tr class="separator:aee5ee45c67e6ba8b7f9261c422ba718c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afceed90bcbf0ae4c802ce3256074e546"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="big__endian_8h.html#afceed90bcbf0ae4c802ce3256074e546">bei48</a>(val)&#160;&#160;&#160;bei48_enc_(val)</td></tr>
-<tr class="separator:afceed90bcbf0ae4c802ce3256074e546"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7ab99375d41bdab1c73b826667232aad"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="big__endian_8h.html#a7ab99375d41bdab1c73b826667232aad">bei56</a>(val)&#160;&#160;&#160;bei56_enc_(val)</td></tr>
-<tr class="separator:a7ab99375d41bdab1c73b826667232aad"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9e3c80eb4894d1c83f922b7d668f730b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="big__endian_8h.html#a9e3c80eb4894d1c83f922b7d668f730b">bei64</a>(val)&#160;&#160;&#160;bei64_enc_(val)</td></tr>
-<tr class="separator:a9e3c80eb4894d1c83f922b7d668f730b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0f49d2a42e003e1dd8feb589fde967be"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="big__endian_8h.html#a0f49d2a42e003e1dd8feb589fde967be">beu8</a>(val)&#160;&#160;&#160;beu8_enc_ (val)</td></tr>
-<tr class="separator:a0f49d2a42e003e1dd8feb589fde967be"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a827583d928aecb6223ce999b19ca4119"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="big__endian_8h.html#a827583d928aecb6223ce999b19ca4119">beu16</a>(val)&#160;&#160;&#160;beu16_enc_(val)</td></tr>
-<tr class="separator:a827583d928aecb6223ce999b19ca4119"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afbc9ac66307a70c9b65cf6a7da99df9c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="big__endian_8h.html#afbc9ac66307a70c9b65cf6a7da99df9c">beu24</a>(val)&#160;&#160;&#160;beu24_enc_(val)</td></tr>
-<tr class="separator:afbc9ac66307a70c9b65cf6a7da99df9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adb1867d0ca6e37ff9e0a582dd6a8f3b3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="big__endian_8h.html#adb1867d0ca6e37ff9e0a582dd6a8f3b3">beu32</a>(val)&#160;&#160;&#160;beu32_enc_(val)</td></tr>
-<tr class="separator:adb1867d0ca6e37ff9e0a582dd6a8f3b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4bcfc415119e37fb00c5945c228f3bec"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="big__endian_8h.html#a4bcfc415119e37fb00c5945c228f3bec">beu40</a>(val)&#160;&#160;&#160;beu40_enc_(val)</td></tr>
-<tr class="separator:a4bcfc415119e37fb00c5945c228f3bec"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5be984c73b593b853a91118bf5fa9c7a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="big__endian_8h.html#a5be984c73b593b853a91118bf5fa9c7a">beu48</a>(val)&#160;&#160;&#160;beu48_enc_(val)</td></tr>
-<tr class="separator:a5be984c73b593b853a91118bf5fa9c7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6889d08954e2d1835f1b18f3ba4bcaaf"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="big__endian_8h.html#a6889d08954e2d1835f1b18f3ba4bcaaf">beu56</a>(val)&#160;&#160;&#160;beu56_enc_(val)</td></tr>
-<tr class="separator:a6889d08954e2d1835f1b18f3ba4bcaaf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6d0e6f7fd9a5dfd5271869223be19e84"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="big__endian_8h.html#a6d0e6f7fd9a5dfd5271869223be19e84">beu64</a>(val)&#160;&#160;&#160;beu64_enc_(val)</td></tr>
-<tr class="separator:a6d0e6f7fd9a5dfd5271869223be19e84"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a66f0f2f82b563b1a2af75c1596eb6633"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="big__endian_8h.html#a66f0f2f82b563b1a2af75c1596eb6633">bef32</a>(val)&#160;&#160;&#160;bef32_enc_(val)</td></tr>
-<tr class="separator:a66f0f2f82b563b1a2af75c1596eb6633"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af4d015a0d4598120447c6c1ba9b3a78e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="big__endian_8h.html#af4d015a0d4598120447c6c1ba9b3a78e">bef64</a>(val)&#160;&#160;&#160;bef64_enc_(val)</td></tr>
-<tr class="separator:af4d015a0d4598120447c6c1ba9b3a78e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6b02c488471f8bfa6bdbd4ec46ec4830"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="big__endian_8h.html#a6b02c488471f8bfa6bdbd4ec46ec4830">be</a>(be)</td></tr>
-<tr class="separator:a6b02c488471f8bfa6bdbd4ec46ec4830"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a12847e60796af4ae9db3bf05652b6381"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="big__endian_8h.html#a12847e60796af4ae9db3bf05652b6381">BEU8_MAX</a>&#160;&#160;&#160;UINT8_C(0xFF)</td></tr>
+<tr class="separator:a12847e60796af4ae9db3bf05652b6381"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01de334568b7e951c3f2baf09232f6d7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="big__endian_8h.html#a01de334568b7e951c3f2baf09232f6d7">BEU16_MAX</a>&#160;&#160;&#160;UINT16_C(0xFFFF)</td></tr>
+<tr class="separator:a01de334568b7e951c3f2baf09232f6d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b032f6ba7e60c9ed0ebc163f59f420f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="big__endian_8h.html#a6b032f6ba7e60c9ed0ebc163f59f420f">BEU24_MAX</a>&#160;&#160;&#160;UINT32_C(0xFFFFFF)</td></tr>
+<tr class="separator:a6b032f6ba7e60c9ed0ebc163f59f420f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a899522e96ce8445d5b7c4d628e993632"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="big__endian_8h.html#a899522e96ce8445d5b7c4d628e993632">BEU32_MAX</a>&#160;&#160;&#160;UINT32_C(0xFFFFFFFF)</td></tr>
+<tr class="separator:a899522e96ce8445d5b7c4d628e993632"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac871f61d568e938a25ece6ad2f30faf9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="big__endian_8h.html#ac871f61d568e938a25ece6ad2f30faf9">BEU40_MAX</a>&#160;&#160;&#160;UINT64_C(0xFFFFFFFFFF)</td></tr>
+<tr class="separator:ac871f61d568e938a25ece6ad2f30faf9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c8e7a97f7e7317bb718a6a03313d982"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="big__endian_8h.html#a2c8e7a97f7e7317bb718a6a03313d982">BEU48_MAX</a>&#160;&#160;&#160;UINT64_C(0xFFFFFFFFFFFF)</td></tr>
+<tr class="separator:a2c8e7a97f7e7317bb718a6a03313d982"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaefae4e0e9786829feba369486ad6ec6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="big__endian_8h.html#aaefae4e0e9786829feba369486ad6ec6">BEU56_MAX</a>&#160;&#160;&#160;UINT64_C(0xFFFFFFFFFFFFFF)</td></tr>
+<tr class="separator:aaefae4e0e9786829feba369486ad6ec6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab3dabf4df824034a7d461843a4ecdf57"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="big__endian_8h.html#ab3dabf4df824034a7d461843a4ecdf57">BEU64_MAX</a>&#160;&#160;&#160;UINT64_C(0xFFFFFFFFFFFFFFFF)</td></tr>
+<tr class="separator:ab3dabf4df824034a7d461843a4ecdf57"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aba10ff96adbc1abc1fc4d29692407d87"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="big__endian_8h.html#aba10ff96adbc1abc1fc4d29692407d87">BEI8_MIN</a>&#160;&#160;&#160;INT8_C(-0x80)</td></tr>
+<tr class="separator:aba10ff96adbc1abc1fc4d29692407d87"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a10c67bec72d2ee94c2a29651ca79ef64"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="big__endian_8h.html#a10c67bec72d2ee94c2a29651ca79ef64">BEI16_MIN</a>&#160;&#160;&#160;INT16_C(-0x8000)</td></tr>
+<tr class="separator:a10c67bec72d2ee94c2a29651ca79ef64"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa4ef701d12a21eba9cddd7933ab44750"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="big__endian_8h.html#aa4ef701d12a21eba9cddd7933ab44750">BEI24_MIN</a>&#160;&#160;&#160;INT32_C(-0x800000)</td></tr>
+<tr class="separator:aa4ef701d12a21eba9cddd7933ab44750"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a499a6c44722eb0ff659b2c6ebab3c0ed"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="big__endian_8h.html#a499a6c44722eb0ff659b2c6ebab3c0ed">BEI32_MIN</a>&#160;&#160;&#160;INT32_C(-0x80000000)</td></tr>
+<tr class="separator:a499a6c44722eb0ff659b2c6ebab3c0ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a066161bc1e4b6df16e46e2f2df592e2f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="big__endian_8h.html#a066161bc1e4b6df16e46e2f2df592e2f">BEI40_MIN</a>&#160;&#160;&#160;INT64_C(-0x8000000000)</td></tr>
+<tr class="separator:a066161bc1e4b6df16e46e2f2df592e2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a52108f6dca7471fd374a8e6464571828"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="big__endian_8h.html#a52108f6dca7471fd374a8e6464571828">BEI48_MIN</a>&#160;&#160;&#160;INT64_C(-0x800000000000)</td></tr>
+<tr class="separator:a52108f6dca7471fd374a8e6464571828"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a60aa4edb3750a08b3539fd15052e42d9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="big__endian_8h.html#a60aa4edb3750a08b3539fd15052e42d9">BEI56_MIN</a>&#160;&#160;&#160;INT64_C(-0x80000000000000)</td></tr>
+<tr class="separator:a60aa4edb3750a08b3539fd15052e42d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2fba2eb9c6e7c59754fac13e768687bd"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="big__endian_8h.html#a2fba2eb9c6e7c59754fac13e768687bd">BEI64_MIN</a>&#160;&#160;&#160;INT64_C(-0x8000000000000000)</td></tr>
+<tr class="separator:a2fba2eb9c6e7c59754fac13e768687bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e22fe67d2c32d9e940a6990682934cc"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="big__endian_8h.html#a9e22fe67d2c32d9e940a6990682934cc">BEI8_MAX</a>&#160;&#160;&#160;INT8_C(0x7F)</td></tr>
+<tr class="separator:a9e22fe67d2c32d9e940a6990682934cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a102941a31d41de569b16990c900f7eb4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="big__endian_8h.html#a102941a31d41de569b16990c900f7eb4">BEI16_MAX</a>&#160;&#160;&#160;INT16_C(0x7FFF)</td></tr>
+<tr class="separator:a102941a31d41de569b16990c900f7eb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ae1bf5cdf51c224cb8b015a19dd2853"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="big__endian_8h.html#a5ae1bf5cdf51c224cb8b015a19dd2853">BEI24_MAX</a>&#160;&#160;&#160;INT32_C(0x7FFFFF)</td></tr>
+<tr class="separator:a5ae1bf5cdf51c224cb8b015a19dd2853"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a23311d908aabcdf0b84088663058fae7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="big__endian_8h.html#a23311d908aabcdf0b84088663058fae7">BEI32_MAX</a>&#160;&#160;&#160;INT32_C(0x7FFFFFFF)</td></tr>
+<tr class="separator:a23311d908aabcdf0b84088663058fae7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00a3a26b1a0c3cb749bf22dd7a1b6f76"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="big__endian_8h.html#a00a3a26b1a0c3cb749bf22dd7a1b6f76">BEI40_MAX</a>&#160;&#160;&#160;INT64_C(0x7FFFFFFFFF)</td></tr>
+<tr class="separator:a00a3a26b1a0c3cb749bf22dd7a1b6f76"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af11ddd456520be1b1e403f59938e60c3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="big__endian_8h.html#af11ddd456520be1b1e403f59938e60c3">BEI48_MAX</a>&#160;&#160;&#160;INT64_C(0x7FFFFFFFFFFF)</td></tr>
+<tr class="separator:af11ddd456520be1b1e403f59938e60c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf87e23cf2de6a4aa8469254789f493d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="big__endian_8h.html#acf87e23cf2de6a4aa8469254789f493d">BEI56_MAX</a>&#160;&#160;&#160;INT64_C(0x7FFFFFFFFFFFFF)</td></tr>
+<tr class="separator:acf87e23cf2de6a4aa8469254789f493d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a11994056317138e617cc05be6eb51303"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="big__endian_8h.html#a11994056317138e617cc05be6eb51303">BEI64_MAX</a>&#160;&#160;&#160;INT64_C(0x7FFFFFFFFFFFFFFF)</td></tr>
+<tr class="separator:a11994056317138e617cc05be6eb51303"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a0a0a50e6f2432ece898dfb496ebe3b9f"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="big__endian_8h.html#a0a0a50e6f2432ece898dfb496ebe3b9f">beu8_enc</a> (char ptr[1], const uint8_t val)</td></tr>
+<tr class="separator:a0a0a50e6f2432ece898dfb496ebe3b9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac8e77ed33edf86552b667e6a5a3fbc45"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="big__endian_8h.html#ac8e77ed33edf86552b667e6a5a3fbc45">beu16_enc</a> (char ptr[2], const uint16_t val)</td></tr>
+<tr class="separator:ac8e77ed33edf86552b667e6a5a3fbc45"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe1f81e58a19e25f2dfd0c51da260ec4"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="big__endian_8h.html#afe1f81e58a19e25f2dfd0c51da260ec4">beu24_enc</a> (char ptr[3], const uint32_t val)</td></tr>
+<tr class="separator:afe1f81e58a19e25f2dfd0c51da260ec4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a212a131a4cd73bb3c02d5fca0268aab7"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="big__endian_8h.html#a212a131a4cd73bb3c02d5fca0268aab7">beu32_enc</a> (char ptr[4], const uint32_t val)</td></tr>
+<tr class="separator:a212a131a4cd73bb3c02d5fca0268aab7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a72921d3746225ed775566a36268b2b52"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="big__endian_8h.html#a72921d3746225ed775566a36268b2b52">beu40_enc</a> (char ptr[5], const uint64_t val)</td></tr>
+<tr class="separator:a72921d3746225ed775566a36268b2b52"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f2e4ddb6ac0b033d46c61a18cf38c99"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="big__endian_8h.html#a6f2e4ddb6ac0b033d46c61a18cf38c99">beu48_enc</a> (char ptr[6], const uint64_t val)</td></tr>
+<tr class="separator:a6f2e4ddb6ac0b033d46c61a18cf38c99"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a40493e044a600de2c3a4db7a11ff72c4"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="big__endian_8h.html#a40493e044a600de2c3a4db7a11ff72c4">beu56_enc</a> (char ptr[7], const uint64_t val)</td></tr>
+<tr class="separator:a40493e044a600de2c3a4db7a11ff72c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a68c2ce4930b9535de302d85eeda43c9b"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="big__endian_8h.html#a68c2ce4930b9535de302d85eeda43c9b">beu64_enc</a> (char ptr[8], const uint64_t val)</td></tr>
+<tr class="separator:a68c2ce4930b9535de302d85eeda43c9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8cbf4b14b0c452de78ddcdb00740153f"><td class="memItemLeft" align="right" valign="top">static uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="big__endian_8h.html#a8cbf4b14b0c452de78ddcdb00740153f">beu8_dec</a> (const char ptr[1])</td></tr>
+<tr class="separator:a8cbf4b14b0c452de78ddcdb00740153f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abefd7cb8b37f77e2c3f1ff715b9fa70e"><td class="memItemLeft" align="right" valign="top">static uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="big__endian_8h.html#abefd7cb8b37f77e2c3f1ff715b9fa70e">beu16_dec</a> (const char ptr[2])</td></tr>
+<tr class="separator:abefd7cb8b37f77e2c3f1ff715b9fa70e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1c1b3800ba5e5123129d1e9dfcec8bb0"><td class="memItemLeft" align="right" valign="top">static uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="big__endian_8h.html#a1c1b3800ba5e5123129d1e9dfcec8bb0">beu24_dec</a> (const char ptr[3])</td></tr>
+<tr class="separator:a1c1b3800ba5e5123129d1e9dfcec8bb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeab38d1789f9fd6ed6a12d0f1490ef48"><td class="memItemLeft" align="right" valign="top">static uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="big__endian_8h.html#aeab38d1789f9fd6ed6a12d0f1490ef48">beu32_dec</a> (const char ptr[4])</td></tr>
+<tr class="separator:aeab38d1789f9fd6ed6a12d0f1490ef48"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adab74150928945f737193c4d6896086c"><td class="memItemLeft" align="right" valign="top">static uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="big__endian_8h.html#adab74150928945f737193c4d6896086c">beu40_dec</a> (const char ptr[5])</td></tr>
+<tr class="separator:adab74150928945f737193c4d6896086c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ace7c0a80a1f0aafcb35d3952703f2e2b"><td class="memItemLeft" align="right" valign="top">static uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="big__endian_8h.html#ace7c0a80a1f0aafcb35d3952703f2e2b">beu48_dec</a> (const char ptr[6])</td></tr>
+<tr class="separator:ace7c0a80a1f0aafcb35d3952703f2e2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c3ff2c425fdde7f7585702f974a9524"><td class="memItemLeft" align="right" valign="top">static uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="big__endian_8h.html#a2c3ff2c425fdde7f7585702f974a9524">beu56_dec</a> (const char ptr[7])</td></tr>
+<tr class="separator:a2c3ff2c425fdde7f7585702f974a9524"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1c2ab1514621c4253707442a5b913c9e"><td class="memItemLeft" align="right" valign="top">static uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="big__endian_8h.html#a1c2ab1514621c4253707442a5b913c9e">beu64_dec</a> (const char ptr[8])</td></tr>
+<tr class="separator:a1c2ab1514621c4253707442a5b913c9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adb8622ffc0f69fc62bd59a0450f1b586"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="big__endian_8h.html#adb8622ffc0f69fc62bd59a0450f1b586">bei8_enc</a> (char ptr[1], const int8_t val)</td></tr>
+<tr class="separator:adb8622ffc0f69fc62bd59a0450f1b586"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb720010a770b7d2678c6e3eccb4f3ac"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="big__endian_8h.html#abb720010a770b7d2678c6e3eccb4f3ac">bei16_enc</a> (char ptr[2], const int16_t val)</td></tr>
+<tr class="separator:abb720010a770b7d2678c6e3eccb4f3ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc240a7d272908eadf356ec4139119d1"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="big__endian_8h.html#afc240a7d272908eadf356ec4139119d1">bei24_enc</a> (char ptr[3], const int32_t val)</td></tr>
+<tr class="separator:afc240a7d272908eadf356ec4139119d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa0eb6b8cbd1544ee8a4de0e5321cd408"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="big__endian_8h.html#aa0eb6b8cbd1544ee8a4de0e5321cd408">bei32_enc</a> (char ptr[4], const int32_t val)</td></tr>
+<tr class="separator:aa0eb6b8cbd1544ee8a4de0e5321cd408"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a531a8e1c6ce92feaf6d06989e666fae3"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="big__endian_8h.html#a531a8e1c6ce92feaf6d06989e666fae3">bei40_enc</a> (char ptr[5], const int64_t val)</td></tr>
+<tr class="separator:a531a8e1c6ce92feaf6d06989e666fae3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ca9e8715431b2e93692b38b64fe1518"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="big__endian_8h.html#a9ca9e8715431b2e93692b38b64fe1518">bei48_enc</a> (char ptr[6], const int64_t val)</td></tr>
+<tr class="separator:a9ca9e8715431b2e93692b38b64fe1518"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1de64630d7e16edbed9efb5567d69208"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="big__endian_8h.html#a1de64630d7e16edbed9efb5567d69208">bei56_enc</a> (char ptr[7], const int64_t val)</td></tr>
+<tr class="separator:a1de64630d7e16edbed9efb5567d69208"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab8e6a632befd63347432f9b6a277f462"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="big__endian_8h.html#ab8e6a632befd63347432f9b6a277f462">bei64_enc</a> (char ptr[8], const int64_t val)</td></tr>
+<tr class="separator:ab8e6a632befd63347432f9b6a277f462"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a171388fcc981f2ef41877c5fc0cd7249"><td class="memItemLeft" align="right" valign="top">static int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="big__endian_8h.html#a171388fcc981f2ef41877c5fc0cd7249">bei8_dec</a> (const char ptr[1])</td></tr>
+<tr class="separator:a171388fcc981f2ef41877c5fc0cd7249"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a846857ce0626c99382aa9f2d1d6ccbe4"><td class="memItemLeft" align="right" valign="top">static int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="big__endian_8h.html#a846857ce0626c99382aa9f2d1d6ccbe4">bei16_dec</a> (const char ptr[2])</td></tr>
+<tr class="separator:a846857ce0626c99382aa9f2d1d6ccbe4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6984110baaee7fc60270d72c95cfc244"><td class="memItemLeft" align="right" valign="top">static int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="big__endian_8h.html#a6984110baaee7fc60270d72c95cfc244">bei24_dec</a> (const char ptr[3])</td></tr>
+<tr class="separator:a6984110baaee7fc60270d72c95cfc244"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4fa520d3ff55f1a06b8893b5f049f83b"><td class="memItemLeft" align="right" valign="top">static int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="big__endian_8h.html#a4fa520d3ff55f1a06b8893b5f049f83b">bei32_dec</a> (const char ptr[4])</td></tr>
+<tr class="separator:a4fa520d3ff55f1a06b8893b5f049f83b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa58952a7738ebda6ef6f7db1b7c57fde"><td class="memItemLeft" align="right" valign="top">static int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="big__endian_8h.html#aa58952a7738ebda6ef6f7db1b7c57fde">bei40_dec</a> (const char ptr[5])</td></tr>
+<tr class="separator:aa58952a7738ebda6ef6f7db1b7c57fde"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f5e7df2d6be65a73cd53e52074ea49b"><td class="memItemLeft" align="right" valign="top">static int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="big__endian_8h.html#a3f5e7df2d6be65a73cd53e52074ea49b">bei48_dec</a> (const char ptr[6])</td></tr>
+<tr class="separator:a3f5e7df2d6be65a73cd53e52074ea49b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae623a9b3726923960b455cee97edf220"><td class="memItemLeft" align="right" valign="top">static int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="big__endian_8h.html#ae623a9b3726923960b455cee97edf220">bei56_dec</a> (const char ptr[7])</td></tr>
+<tr class="separator:ae623a9b3726923960b455cee97edf220"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af86be7ede39b3bb61f54ede3d71e9828"><td class="memItemLeft" align="right" valign="top">static int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="big__endian_8h.html#af86be7ede39b3bb61f54ede3d71e9828">bei64_dec</a> (const char ptr[8])</td></tr>
+<tr class="separator:af86be7ede39b3bb61f54ede3d71e9828"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac6b620941336fa844c56fd1bec32a8fa"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="big__endian_8h.html#ac6b620941336fa844c56fd1bec32a8fa">bef32_enc</a> (char ptr[4], const float f)</td></tr>
+<tr class="separator:ac6b620941336fa844c56fd1bec32a8fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afa7b21a54add179c1a795e2bd52aed70"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="big__endian_8h.html#afa7b21a54add179c1a795e2bd52aed70">bef64_enc</a> (char ptr[8], const double f)</td></tr>
+<tr class="separator:afa7b21a54add179c1a795e2bd52aed70"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad523583f995c86d58141a37b98adbb41"><td class="memItemLeft" align="right" valign="top">static float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="big__endian_8h.html#ad523583f995c86d58141a37b98adbb41">bef32_dec</a> (const char ptr[4])</td></tr>
+<tr class="separator:ad523583f995c86d58141a37b98adbb41"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2032be3ccbe3137023333cffa3fb4730"><td class="memItemLeft" align="right" valign="top">static double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="big__endian_8h.html#a2032be3ccbe3137023333cffa3fb4730">bef64_dec</a> (const char ptr[8])</td></tr>
+<tr class="separator:a2032be3ccbe3137023333cffa3fb4730"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>@breif A silly header-only library for interacting with unaligned big-endian integers.</p>
-<div class="fragment"><div class="line">beu24 three_byte_integer;</div>
-<div class="line">three_byte_integer = beu24(5);</div>
-<div class="line">uint32_t v = be(three_byte_integer);</div>
-<div class="line">assert(v == 5);</div>
-</div><!-- fragment --> 
+<div class="textblock"><p>Methods for big-endian encoding numbers. </p>
+
 <p class="definition">Definition in file <a class="el" href="big__endian_8h_source.html">big_endian.h</a>.</p>
 </div><h2 class="groupheader">Macro Definition Documentation</h2>
-<a id="a574a53bc8cf451d675512d47450e0c88" name="a574a53bc8cf451d675512d47450e0c88"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a574a53bc8cf451d675512d47450e0c88">&#9670;&#160;</a></span>bei8</h2>
+<a id="a12847e60796af4ae9db3bf05652b6381" name="a12847e60796af4ae9db3bf05652b6381"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a12847e60796af4ae9db3bf05652b6381">&#9670;&#160;</a></span>BEU8_MAX</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define bei8</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">val</td><td>)</td>
-          <td>&#160;&#160;&#160;bei8_enc_ (val)</td>
+          <td class="memname">#define BEU8_MAX&#160;&#160;&#160;UINT8_C(0xFF)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="big__endian_8h_source.html#l00035">35</a> of file <a class="el" href="big__endian_8h_source.html">big_endian.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="big__endian_8h_source.html#l00018">18</a> of file <a class="el" href="big__endian_8h_source.html">big_endian.h</a>.</p>
 
 </div>
 </div>
-<a id="a5c1ef4027417894e44c1c5ed41b08117" name="a5c1ef4027417894e44c1c5ed41b08117"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5c1ef4027417894e44c1c5ed41b08117">&#9670;&#160;</a></span>bei16</h2>
+<a id="a01de334568b7e951c3f2baf09232f6d7" name="a01de334568b7e951c3f2baf09232f6d7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a01de334568b7e951c3f2baf09232f6d7">&#9670;&#160;</a></span>BEU16_MAX</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define bei16</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">val</td><td>)</td>
-          <td>&#160;&#160;&#160;bei16_enc_(val)</td>
+          <td class="memname">#define BEU16_MAX&#160;&#160;&#160;UINT16_C(0xFFFF)</td>
         </tr>
       </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="big__endian_8h_source.html#l00019">19</a> of file <a class="el" href="big__endian_8h_source.html">big_endian.h</a>.</p>
+
+</div>
+</div>
+<a id="a6b032f6ba7e60c9ed0ebc163f59f420f" name="a6b032f6ba7e60c9ed0ebc163f59f420f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6b032f6ba7e60c9ed0ebc163f59f420f">&#9670;&#160;</a></span>BEU24_MAX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BEU24_MAX&#160;&#160;&#160;UINT32_C(0xFFFFFF)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="big__endian_8h_source.html#l00020">20</a> of file <a class="el" href="big__endian_8h_source.html">big_endian.h</a>.</p>
+
+</div>
+</div>
+<a id="a899522e96ce8445d5b7c4d628e993632" name="a899522e96ce8445d5b7c4d628e993632"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a899522e96ce8445d5b7c4d628e993632">&#9670;&#160;</a></span>BEU32_MAX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BEU32_MAX&#160;&#160;&#160;UINT32_C(0xFFFFFFFF)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="big__endian_8h_source.html#l00021">21</a> of file <a class="el" href="big__endian_8h_source.html">big_endian.h</a>.</p>
+
+</div>
+</div>
+<a id="ac871f61d568e938a25ece6ad2f30faf9" name="ac871f61d568e938a25ece6ad2f30faf9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac871f61d568e938a25ece6ad2f30faf9">&#9670;&#160;</a></span>BEU40_MAX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BEU40_MAX&#160;&#160;&#160;UINT64_C(0xFFFFFFFFFF)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="big__endian_8h_source.html#l00022">22</a> of file <a class="el" href="big__endian_8h_source.html">big_endian.h</a>.</p>
+
+</div>
+</div>
+<a id="a2c8e7a97f7e7317bb718a6a03313d982" name="a2c8e7a97f7e7317bb718a6a03313d982"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c8e7a97f7e7317bb718a6a03313d982">&#9670;&#160;</a></span>BEU48_MAX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BEU48_MAX&#160;&#160;&#160;UINT64_C(0xFFFFFFFFFFFF)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="big__endian_8h_source.html#l00023">23</a> of file <a class="el" href="big__endian_8h_source.html">big_endian.h</a>.</p>
+
+</div>
+</div>
+<a id="aaefae4e0e9786829feba369486ad6ec6" name="aaefae4e0e9786829feba369486ad6ec6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaefae4e0e9786829feba369486ad6ec6">&#9670;&#160;</a></span>BEU56_MAX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BEU56_MAX&#160;&#160;&#160;UINT64_C(0xFFFFFFFFFFFFFF)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="big__endian_8h_source.html#l00024">24</a> of file <a class="el" href="big__endian_8h_source.html">big_endian.h</a>.</p>
+
+</div>
+</div>
+<a id="ab3dabf4df824034a7d461843a4ecdf57" name="ab3dabf4df824034a7d461843a4ecdf57"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab3dabf4df824034a7d461843a4ecdf57">&#9670;&#160;</a></span>BEU64_MAX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BEU64_MAX&#160;&#160;&#160;UINT64_C(0xFFFFFFFFFFFFFFFF)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="big__endian_8h_source.html#l00025">25</a> of file <a class="el" href="big__endian_8h_source.html">big_endian.h</a>.</p>
+
+</div>
+</div>
+<a id="aba10ff96adbc1abc1fc4d29692407d87" name="aba10ff96adbc1abc1fc4d29692407d87"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aba10ff96adbc1abc1fc4d29692407d87">&#9670;&#160;</a></span>BEI8_MIN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BEI8_MIN&#160;&#160;&#160;INT8_C(-0x80)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="big__endian_8h_source.html#l00045">45</a> of file <a class="el" href="big__endian_8h_source.html">big_endian.h</a>.</p>
+
+</div>
+</div>
+<a id="a10c67bec72d2ee94c2a29651ca79ef64" name="a10c67bec72d2ee94c2a29651ca79ef64"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a10c67bec72d2ee94c2a29651ca79ef64">&#9670;&#160;</a></span>BEI16_MIN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BEI16_MIN&#160;&#160;&#160;INT16_C(-0x8000)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="big__endian_8h_source.html#l00046">46</a> of file <a class="el" href="big__endian_8h_source.html">big_endian.h</a>.</p>
+
+</div>
+</div>
+<a id="aa4ef701d12a21eba9cddd7933ab44750" name="aa4ef701d12a21eba9cddd7933ab44750"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa4ef701d12a21eba9cddd7933ab44750">&#9670;&#160;</a></span>BEI24_MIN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BEI24_MIN&#160;&#160;&#160;INT32_C(-0x800000)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="big__endian_8h_source.html#l00047">47</a> of file <a class="el" href="big__endian_8h_source.html">big_endian.h</a>.</p>
+
+</div>
+</div>
+<a id="a499a6c44722eb0ff659b2c6ebab3c0ed" name="a499a6c44722eb0ff659b2c6ebab3c0ed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a499a6c44722eb0ff659b2c6ebab3c0ed">&#9670;&#160;</a></span>BEI32_MIN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BEI32_MIN&#160;&#160;&#160;INT32_C(-0x80000000)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="big__endian_8h_source.html#l00048">48</a> of file <a class="el" href="big__endian_8h_source.html">big_endian.h</a>.</p>
+
+</div>
+</div>
+<a id="a066161bc1e4b6df16e46e2f2df592e2f" name="a066161bc1e4b6df16e46e2f2df592e2f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a066161bc1e4b6df16e46e2f2df592e2f">&#9670;&#160;</a></span>BEI40_MIN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BEI40_MIN&#160;&#160;&#160;INT64_C(-0x8000000000)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="big__endian_8h_source.html#l00049">49</a> of file <a class="el" href="big__endian_8h_source.html">big_endian.h</a>.</p>
+
+</div>
+</div>
+<a id="a52108f6dca7471fd374a8e6464571828" name="a52108f6dca7471fd374a8e6464571828"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a52108f6dca7471fd374a8e6464571828">&#9670;&#160;</a></span>BEI48_MIN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BEI48_MIN&#160;&#160;&#160;INT64_C(-0x800000000000)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="big__endian_8h_source.html#l00050">50</a> of file <a class="el" href="big__endian_8h_source.html">big_endian.h</a>.</p>
+
+</div>
+</div>
+<a id="a60aa4edb3750a08b3539fd15052e42d9" name="a60aa4edb3750a08b3539fd15052e42d9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a60aa4edb3750a08b3539fd15052e42d9">&#9670;&#160;</a></span>BEI56_MIN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BEI56_MIN&#160;&#160;&#160;INT64_C(-0x80000000000000)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="big__endian_8h_source.html#l00051">51</a> of file <a class="el" href="big__endian_8h_source.html">big_endian.h</a>.</p>
+
+</div>
+</div>
+<a id="a2fba2eb9c6e7c59754fac13e768687bd" name="a2fba2eb9c6e7c59754fac13e768687bd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2fba2eb9c6e7c59754fac13e768687bd">&#9670;&#160;</a></span>BEI64_MIN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BEI64_MIN&#160;&#160;&#160;INT64_C(-0x8000000000000000)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="big__endian_8h_source.html#l00052">52</a> of file <a class="el" href="big__endian_8h_source.html">big_endian.h</a>.</p>
+
+</div>
+</div>
+<a id="a9e22fe67d2c32d9e940a6990682934cc" name="a9e22fe67d2c32d9e940a6990682934cc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9e22fe67d2c32d9e940a6990682934cc">&#9670;&#160;</a></span>BEI8_MAX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BEI8_MAX&#160;&#160;&#160;INT8_C(0x7F)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="big__endian_8h_source.html#l00054">54</a> of file <a class="el" href="big__endian_8h_source.html">big_endian.h</a>.</p>
+
+</div>
+</div>
+<a id="a102941a31d41de569b16990c900f7eb4" name="a102941a31d41de569b16990c900f7eb4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a102941a31d41de569b16990c900f7eb4">&#9670;&#160;</a></span>BEI16_MAX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BEI16_MAX&#160;&#160;&#160;INT16_C(0x7FFF)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="big__endian_8h_source.html#l00055">55</a> of file <a class="el" href="big__endian_8h_source.html">big_endian.h</a>.</p>
+
+</div>
+</div>
+<a id="a5ae1bf5cdf51c224cb8b015a19dd2853" name="a5ae1bf5cdf51c224cb8b015a19dd2853"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5ae1bf5cdf51c224cb8b015a19dd2853">&#9670;&#160;</a></span>BEI24_MAX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BEI24_MAX&#160;&#160;&#160;INT32_C(0x7FFFFF)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="big__endian_8h_source.html#l00056">56</a> of file <a class="el" href="big__endian_8h_source.html">big_endian.h</a>.</p>
+
+</div>
+</div>
+<a id="a23311d908aabcdf0b84088663058fae7" name="a23311d908aabcdf0b84088663058fae7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a23311d908aabcdf0b84088663058fae7">&#9670;&#160;</a></span>BEI32_MAX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BEI32_MAX&#160;&#160;&#160;INT32_C(0x7FFFFFFF)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="big__endian_8h_source.html#l00057">57</a> of file <a class="el" href="big__endian_8h_source.html">big_endian.h</a>.</p>
+
+</div>
+</div>
+<a id="a00a3a26b1a0c3cb749bf22dd7a1b6f76" name="a00a3a26b1a0c3cb749bf22dd7a1b6f76"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a00a3a26b1a0c3cb749bf22dd7a1b6f76">&#9670;&#160;</a></span>BEI40_MAX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BEI40_MAX&#160;&#160;&#160;INT64_C(0x7FFFFFFFFF)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="big__endian_8h_source.html#l00058">58</a> of file <a class="el" href="big__endian_8h_source.html">big_endian.h</a>.</p>
+
+</div>
+</div>
+<a id="af11ddd456520be1b1e403f59938e60c3" name="af11ddd456520be1b1e403f59938e60c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af11ddd456520be1b1e403f59938e60c3">&#9670;&#160;</a></span>BEI48_MAX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BEI48_MAX&#160;&#160;&#160;INT64_C(0x7FFFFFFFFFFF)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="big__endian_8h_source.html#l00059">59</a> of file <a class="el" href="big__endian_8h_source.html">big_endian.h</a>.</p>
+
+</div>
+</div>
+<a id="acf87e23cf2de6a4aa8469254789f493d" name="acf87e23cf2de6a4aa8469254789f493d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acf87e23cf2de6a4aa8469254789f493d">&#9670;&#160;</a></span>BEI56_MAX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BEI56_MAX&#160;&#160;&#160;INT64_C(0x7FFFFFFFFFFFFF)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="big__endian_8h_source.html#l00060">60</a> of file <a class="el" href="big__endian_8h_source.html">big_endian.h</a>.</p>
+
+</div>
+</div>
+<a id="a11994056317138e617cc05be6eb51303" name="a11994056317138e617cc05be6eb51303"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a11994056317138e617cc05be6eb51303">&#9670;&#160;</a></span>BEI64_MAX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BEI64_MAX&#160;&#160;&#160;INT64_C(0x7FFFFFFFFFFFFFFF)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="big__endian_8h_source.html#l00061">61</a> of file <a class="el" href="big__endian_8h_source.html">big_endian.h</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="a0a0a50e6f2432ece898dfb496ebe3b9f" name="a0a0a50e6f2432ece898dfb496ebe3b9f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0a0a50e6f2432ece898dfb496ebe3b9f">&#9670;&#160;</a></span>beu8_enc()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void beu8_enc </td>
+          <td>(</td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>ptr</em>[1], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const uint8_t&#160;</td>
+          <td class="paramname"><em>val</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="big__endian_8h_source.html#l00027">27</a> of file <a class="el" href="big__endian_8h_source.html">big_endian.h</a>.</p>
+
+</div>
+</div>
+<a id="ac8e77ed33edf86552b667e6a5a3fbc45" name="ac8e77ed33edf86552b667e6a5a3fbc45"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac8e77ed33edf86552b667e6a5a3fbc45">&#9670;&#160;</a></span>beu16_enc()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void beu16_enc </td>
+          <td>(</td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>ptr</em>[2], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const uint16_t&#160;</td>
+          <td class="paramname"><em>val</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="big__endian_8h_source.html#l00028">28</a> of file <a class="el" href="big__endian_8h_source.html">big_endian.h</a>.</p>
+
+</div>
+</div>
+<a id="afe1f81e58a19e25f2dfd0c51da260ec4" name="afe1f81e58a19e25f2dfd0c51da260ec4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afe1f81e58a19e25f2dfd0c51da260ec4">&#9670;&#160;</a></span>beu24_enc()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void beu24_enc </td>
+          <td>(</td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>ptr</em>[3], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const uint32_t&#160;</td>
+          <td class="paramname"><em>val</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="big__endian_8h_source.html#l00029">29</a> of file <a class="el" href="big__endian_8h_source.html">big_endian.h</a>.</p>
+
+</div>
+</div>
+<a id="a212a131a4cd73bb3c02d5fca0268aab7" name="a212a131a4cd73bb3c02d5fca0268aab7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a212a131a4cd73bb3c02d5fca0268aab7">&#9670;&#160;</a></span>beu32_enc()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void beu32_enc </td>
+          <td>(</td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>ptr</em>[4], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const uint32_t&#160;</td>
+          <td class="paramname"><em>val</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="big__endian_8h_source.html#l00030">30</a> of file <a class="el" href="big__endian_8h_source.html">big_endian.h</a>.</p>
+
+</div>
+</div>
+<a id="a72921d3746225ed775566a36268b2b52" name="a72921d3746225ed775566a36268b2b52"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a72921d3746225ed775566a36268b2b52">&#9670;&#160;</a></span>beu40_enc()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void beu40_enc </td>
+          <td>(</td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>ptr</em>[5], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const uint64_t&#160;</td>
+          <td class="paramname"><em>val</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="big__endian_8h_source.html#l00031">31</a> of file <a class="el" href="big__endian_8h_source.html">big_endian.h</a>.</p>
+
+</div>
+</div>
+<a id="a6f2e4ddb6ac0b033d46c61a18cf38c99" name="a6f2e4ddb6ac0b033d46c61a18cf38c99"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6f2e4ddb6ac0b033d46c61a18cf38c99">&#9670;&#160;</a></span>beu48_enc()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void beu48_enc </td>
+          <td>(</td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>ptr</em>[6], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const uint64_t&#160;</td>
+          <td class="paramname"><em>val</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="big__endian_8h_source.html#l00032">32</a> of file <a class="el" href="big__endian_8h_source.html">big_endian.h</a>.</p>
+
+</div>
+</div>
+<a id="a40493e044a600de2c3a4db7a11ff72c4" name="a40493e044a600de2c3a4db7a11ff72c4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a40493e044a600de2c3a4db7a11ff72c4">&#9670;&#160;</a></span>beu56_enc()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void beu56_enc </td>
+          <td>(</td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>ptr</em>[7], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const uint64_t&#160;</td>
+          <td class="paramname"><em>val</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="big__endian_8h_source.html#l00033">33</a> of file <a class="el" href="big__endian_8h_source.html">big_endian.h</a>.</p>
+
+</div>
+</div>
+<a id="a68c2ce4930b9535de302d85eeda43c9b" name="a68c2ce4930b9535de302d85eeda43c9b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a68c2ce4930b9535de302d85eeda43c9b">&#9670;&#160;</a></span>beu64_enc()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void beu64_enc </td>
+          <td>(</td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>ptr</em>[8], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const uint64_t&#160;</td>
+          <td class="paramname"><em>val</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="big__endian_8h_source.html#l00034">34</a> of file <a class="el" href="big__endian_8h_source.html">big_endian.h</a>.</p>
+
+</div>
+</div>
+<a id="a8cbf4b14b0c452de78ddcdb00740153f" name="a8cbf4b14b0c452de78ddcdb00740153f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8cbf4b14b0c452de78ddcdb00740153f">&#9670;&#160;</a></span>beu8_dec()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static uint8_t beu8_dec </td>
+          <td>(</td>
+          <td class="paramtype">const char&#160;</td>
+          <td class="paramname"><em>ptr</em>[1]</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="big__endian_8h_source.html#l00036">36</a> of file <a class="el" href="big__endian_8h_source.html">big_endian.h</a>.</p>
 
 </div>
 </div>
-<a id="ac5506565fde000ded7ca4c5d1c5682a9" name="ac5506565fde000ded7ca4c5d1c5682a9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac5506565fde000ded7ca4c5d1c5682a9">&#9670;&#160;</a></span>bei24</h2>
+<a id="abefd7cb8b37f77e2c3f1ff715b9fa70e" name="abefd7cb8b37f77e2c3f1ff715b9fa70e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abefd7cb8b37f77e2c3f1ff715b9fa70e">&#9670;&#160;</a></span>beu16_dec()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">#define bei24</td>
+          <td class="memname">static uint16_t beu16_dec </td>
           <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">val</td><td>)</td>
-          <td>&#160;&#160;&#160;bei24_enc_(val)</td>
+          <td class="paramtype">const char&#160;</td>
+          <td class="paramname"><em>ptr</em>[2]</td><td>)</td>
+          <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="big__endian_8h_source.html#l00037">37</a> of file <a class="el" href="big__endian_8h_source.html">big_endian.h</a>.</p>
 
 </div>
 </div>
-<a id="a7c73a97a0563dcbea2440a7427c2a627" name="a7c73a97a0563dcbea2440a7427c2a627"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7c73a97a0563dcbea2440a7427c2a627">&#9670;&#160;</a></span>bei32</h2>
+<a id="a1c1b3800ba5e5123129d1e9dfcec8bb0" name="a1c1b3800ba5e5123129d1e9dfcec8bb0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1c1b3800ba5e5123129d1e9dfcec8bb0">&#9670;&#160;</a></span>beu24_dec()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">#define bei32</td>
+          <td class="memname">static uint32_t beu24_dec </td>
           <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">val</td><td>)</td>
-          <td>&#160;&#160;&#160;bei32_enc_(val)</td>
+          <td class="paramtype">const char&#160;</td>
+          <td class="paramname"><em>ptr</em>[3]</td><td>)</td>
+          <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="big__endian_8h_source.html#l00038">38</a> of file <a class="el" href="big__endian_8h_source.html">big_endian.h</a>.</p>
 
 </div>
 </div>
-<a id="aee5ee45c67e6ba8b7f9261c422ba718c" name="aee5ee45c67e6ba8b7f9261c422ba718c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aee5ee45c67e6ba8b7f9261c422ba718c">&#9670;&#160;</a></span>bei40</h2>
+<a id="aeab38d1789f9fd6ed6a12d0f1490ef48" name="aeab38d1789f9fd6ed6a12d0f1490ef48"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeab38d1789f9fd6ed6a12d0f1490ef48">&#9670;&#160;</a></span>beu32_dec()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">#define bei40</td>
+          <td class="memname">static uint32_t beu32_dec </td>
           <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">val</td><td>)</td>
-          <td>&#160;&#160;&#160;bei40_enc_(val)</td>
+          <td class="paramtype">const char&#160;</td>
+          <td class="paramname"><em>ptr</em>[4]</td><td>)</td>
+          <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="big__endian_8h_source.html#l00039">39</a> of file <a class="el" href="big__endian_8h_source.html">big_endian.h</a>.</p>
 
 </div>
 </div>
-<a id="afceed90bcbf0ae4c802ce3256074e546" name="afceed90bcbf0ae4c802ce3256074e546"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afceed90bcbf0ae4c802ce3256074e546">&#9670;&#160;</a></span>bei48</h2>
+<a id="adab74150928945f737193c4d6896086c" name="adab74150928945f737193c4d6896086c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adab74150928945f737193c4d6896086c">&#9670;&#160;</a></span>beu40_dec()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">#define bei48</td>
+          <td class="memname">static uint64_t beu40_dec </td>
           <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">val</td><td>)</td>
-          <td>&#160;&#160;&#160;bei48_enc_(val)</td>
+          <td class="paramtype">const char&#160;</td>
+          <td class="paramname"><em>ptr</em>[5]</td><td>)</td>
+          <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="big__endian_8h_source.html#l00040">40</a> of file <a class="el" href="big__endian_8h_source.html">big_endian.h</a>.</p>
 
 </div>
 </div>
-<a id="a7ab99375d41bdab1c73b826667232aad" name="a7ab99375d41bdab1c73b826667232aad"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7ab99375d41bdab1c73b826667232aad">&#9670;&#160;</a></span>bei56</h2>
+<a id="ace7c0a80a1f0aafcb35d3952703f2e2b" name="ace7c0a80a1f0aafcb35d3952703f2e2b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ace7c0a80a1f0aafcb35d3952703f2e2b">&#9670;&#160;</a></span>beu48_dec()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">#define bei56</td>
+          <td class="memname">static uint64_t beu48_dec </td>
           <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">val</td><td>)</td>
-          <td>&#160;&#160;&#160;bei56_enc_(val)</td>
+          <td class="paramtype">const char&#160;</td>
+          <td class="paramname"><em>ptr</em>[6]</td><td>)</td>
+          <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="big__endian_8h_source.html#l00041">41</a> of file <a class="el" href="big__endian_8h_source.html">big_endian.h</a>.</p>
 
 </div>
 </div>
-<a id="a9e3c80eb4894d1c83f922b7d668f730b" name="a9e3c80eb4894d1c83f922b7d668f730b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9e3c80eb4894d1c83f922b7d668f730b">&#9670;&#160;</a></span>bei64</h2>
+<a id="a2c3ff2c425fdde7f7585702f974a9524" name="a2c3ff2c425fdde7f7585702f974a9524"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c3ff2c425fdde7f7585702f974a9524">&#9670;&#160;</a></span>beu56_dec()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">#define bei64</td>
+          <td class="memname">static uint64_t beu56_dec </td>
           <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">val</td><td>)</td>
-          <td>&#160;&#160;&#160;bei64_enc_(val)</td>
+          <td class="paramtype">const char&#160;</td>
+          <td class="paramname"><em>ptr</em>[7]</td><td>)</td>
+          <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="big__endian_8h_source.html#l00042">42</a> of file <a class="el" href="big__endian_8h_source.html">big_endian.h</a>.</p>
 
 </div>
 </div>
-<a id="a0f49d2a42e003e1dd8feb589fde967be" name="a0f49d2a42e003e1dd8feb589fde967be"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0f49d2a42e003e1dd8feb589fde967be">&#9670;&#160;</a></span>beu8</h2>
+<a id="a1c2ab1514621c4253707442a5b913c9e" name="a1c2ab1514621c4253707442a5b913c9e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1c2ab1514621c4253707442a5b913c9e">&#9670;&#160;</a></span>beu64_dec()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">#define beu8</td>
+          <td class="memname">static uint64_t beu64_dec </td>
           <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">val</td><td>)</td>
-          <td>&#160;&#160;&#160;beu8_enc_ (val)</td>
+          <td class="paramtype">const char&#160;</td>
+          <td class="paramname"><em>ptr</em>[8]</td><td>)</td>
+          <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="big__endian_8h_source.html#l00071">71</a> of file <a class="el" href="big__endian_8h_source.html">big_endian.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="big__endian_8h_source.html#l00043">43</a> of file <a class="el" href="big__endian_8h_source.html">big_endian.h</a>.</p>
 
 </div>
 </div>
-<a id="a827583d928aecb6223ce999b19ca4119" name="a827583d928aecb6223ce999b19ca4119"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a827583d928aecb6223ce999b19ca4119">&#9670;&#160;</a></span>beu16</h2>
+<a id="adb8622ffc0f69fc62bd59a0450f1b586" name="adb8622ffc0f69fc62bd59a0450f1b586"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adb8622ffc0f69fc62bd59a0450f1b586">&#9670;&#160;</a></span>bei8_enc()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">#define beu16</td>
+          <td class="memname">static void bei8_enc </td>
           <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">val</td><td>)</td>
-          <td>&#160;&#160;&#160;beu16_enc_(val)</td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>ptr</em>[1], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int8_t&#160;</td>
+          <td class="paramname"><em>val</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="big__endian_8h_source.html#l00063">63</a> of file <a class="el" href="big__endian_8h_source.html">big_endian.h</a>.</p>
+
+</div>
+</div>
+<a id="abb720010a770b7d2678c6e3eccb4f3ac" name="abb720010a770b7d2678c6e3eccb4f3ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abb720010a770b7d2678c6e3eccb4f3ac">&#9670;&#160;</a></span>bei16_enc()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void bei16_enc </td>
+          <td>(</td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>ptr</em>[2], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int16_t&#160;</td>
+          <td class="paramname"><em>val</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="big__endian_8h_source.html#l00064">64</a> of file <a class="el" href="big__endian_8h_source.html">big_endian.h</a>.</p>
+
+</div>
+</div>
+<a id="afc240a7d272908eadf356ec4139119d1" name="afc240a7d272908eadf356ec4139119d1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afc240a7d272908eadf356ec4139119d1">&#9670;&#160;</a></span>bei24_enc()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void bei24_enc </td>
+          <td>(</td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>ptr</em>[3], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int32_t&#160;</td>
+          <td class="paramname"><em>val</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="big__endian_8h_source.html#l00065">65</a> of file <a class="el" href="big__endian_8h_source.html">big_endian.h</a>.</p>
+
+</div>
+</div>
+<a id="aa0eb6b8cbd1544ee8a4de0e5321cd408" name="aa0eb6b8cbd1544ee8a4de0e5321cd408"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa0eb6b8cbd1544ee8a4de0e5321cd408">&#9670;&#160;</a></span>bei32_enc()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void bei32_enc </td>
+          <td>(</td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>ptr</em>[4], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int32_t&#160;</td>
+          <td class="paramname"><em>val</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="big__endian_8h_source.html#l00066">66</a> of file <a class="el" href="big__endian_8h_source.html">big_endian.h</a>.</p>
+
+</div>
+</div>
+<a id="a531a8e1c6ce92feaf6d06989e666fae3" name="a531a8e1c6ce92feaf6d06989e666fae3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a531a8e1c6ce92feaf6d06989e666fae3">&#9670;&#160;</a></span>bei40_enc()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void bei40_enc </td>
+          <td>(</td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>ptr</em>[5], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int64_t&#160;</td>
+          <td class="paramname"><em>val</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="big__endian_8h_source.html#l00067">67</a> of file <a class="el" href="big__endian_8h_source.html">big_endian.h</a>.</p>
+
+</div>
+</div>
+<a id="a9ca9e8715431b2e93692b38b64fe1518" name="a9ca9e8715431b2e93692b38b64fe1518"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9ca9e8715431b2e93692b38b64fe1518">&#9670;&#160;</a></span>bei48_enc()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void bei48_enc </td>
+          <td>(</td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>ptr</em>[6], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int64_t&#160;</td>
+          <td class="paramname"><em>val</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="big__endian_8h_source.html#l00068">68</a> of file <a class="el" href="big__endian_8h_source.html">big_endian.h</a>.</p>
+
+</div>
+</div>
+<a id="a1de64630d7e16edbed9efb5567d69208" name="a1de64630d7e16edbed9efb5567d69208"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1de64630d7e16edbed9efb5567d69208">&#9670;&#160;</a></span>bei56_enc()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void bei56_enc </td>
+          <td>(</td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>ptr</em>[7], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int64_t&#160;</td>
+          <td class="paramname"><em>val</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="big__endian_8h_source.html#l00069">69</a> of file <a class="el" href="big__endian_8h_source.html">big_endian.h</a>.</p>
+
+</div>
+</div>
+<a id="ab8e6a632befd63347432f9b6a277f462" name="ab8e6a632befd63347432f9b6a277f462"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab8e6a632befd63347432f9b6a277f462">&#9670;&#160;</a></span>bei64_enc()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void bei64_enc </td>
+          <td>(</td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>ptr</em>[8], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int64_t&#160;</td>
+          <td class="paramname"><em>val</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="big__endian_8h_source.html#l00070">70</a> of file <a class="el" href="big__endian_8h_source.html">big_endian.h</a>.</p>
+
+</div>
+</div>
+<a id="a171388fcc981f2ef41877c5fc0cd7249" name="a171388fcc981f2ef41877c5fc0cd7249"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a171388fcc981f2ef41877c5fc0cd7249">&#9670;&#160;</a></span>bei8_dec()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int8_t bei8_dec </td>
+          <td>(</td>
+          <td class="paramtype">const char&#160;</td>
+          <td class="paramname"><em>ptr</em>[1]</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="big__endian_8h_source.html#l00072">72</a> of file <a class="el" href="big__endian_8h_source.html">big_endian.h</a>.</p>
 
 </div>
 </div>
-<a id="afbc9ac66307a70c9b65cf6a7da99df9c" name="afbc9ac66307a70c9b65cf6a7da99df9c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afbc9ac66307a70c9b65cf6a7da99df9c">&#9670;&#160;</a></span>beu24</h2>
+<a id="a846857ce0626c99382aa9f2d1d6ccbe4" name="a846857ce0626c99382aa9f2d1d6ccbe4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a846857ce0626c99382aa9f2d1d6ccbe4">&#9670;&#160;</a></span>bei16_dec()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">#define beu24</td>
+          <td class="memname">static int16_t bei16_dec </td>
           <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">val</td><td>)</td>
-          <td>&#160;&#160;&#160;beu24_enc_(val)</td>
+          <td class="paramtype">const char&#160;</td>
+          <td class="paramname"><em>ptr</em>[2]</td><td>)</td>
+          <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="big__endian_8h_source.html#l00073">73</a> of file <a class="el" href="big__endian_8h_source.html">big_endian.h</a>.</p>
 
 </div>
 </div>
-<a id="adb1867d0ca6e37ff9e0a582dd6a8f3b3" name="adb1867d0ca6e37ff9e0a582dd6a8f3b3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adb1867d0ca6e37ff9e0a582dd6a8f3b3">&#9670;&#160;</a></span>beu32</h2>
+<a id="a6984110baaee7fc60270d72c95cfc244" name="a6984110baaee7fc60270d72c95cfc244"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6984110baaee7fc60270d72c95cfc244">&#9670;&#160;</a></span>bei24_dec()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">#define beu32</td>
+          <td class="memname">static int32_t bei24_dec </td>
           <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">val</td><td>)</td>
-          <td>&#160;&#160;&#160;beu32_enc_(val)</td>
+          <td class="paramtype">const char&#160;</td>
+          <td class="paramname"><em>ptr</em>[3]</td><td>)</td>
+          <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="big__endian_8h_source.html#l00074">74</a> of file <a class="el" href="big__endian_8h_source.html">big_endian.h</a>.</p>
 
 </div>
 </div>
-<a id="a4bcfc415119e37fb00c5945c228f3bec" name="a4bcfc415119e37fb00c5945c228f3bec"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4bcfc415119e37fb00c5945c228f3bec">&#9670;&#160;</a></span>beu40</h2>
+<a id="a4fa520d3ff55f1a06b8893b5f049f83b" name="a4fa520d3ff55f1a06b8893b5f049f83b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4fa520d3ff55f1a06b8893b5f049f83b">&#9670;&#160;</a></span>bei32_dec()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">#define beu40</td>
+          <td class="memname">static int32_t bei32_dec </td>
           <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">val</td><td>)</td>
-          <td>&#160;&#160;&#160;beu40_enc_(val)</td>
+          <td class="paramtype">const char&#160;</td>
+          <td class="paramname"><em>ptr</em>[4]</td><td>)</td>
+          <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="big__endian_8h_source.html#l00075">75</a> of file <a class="el" href="big__endian_8h_source.html">big_endian.h</a>.</p>
 
 </div>
 </div>
-<a id="a5be984c73b593b853a91118bf5fa9c7a" name="a5be984c73b593b853a91118bf5fa9c7a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5be984c73b593b853a91118bf5fa9c7a">&#9670;&#160;</a></span>beu48</h2>
+<a id="aa58952a7738ebda6ef6f7db1b7c57fde" name="aa58952a7738ebda6ef6f7db1b7c57fde"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa58952a7738ebda6ef6f7db1b7c57fde">&#9670;&#160;</a></span>bei40_dec()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">#define beu48</td>
+          <td class="memname">static int64_t bei40_dec </td>
           <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">val</td><td>)</td>
-          <td>&#160;&#160;&#160;beu48_enc_(val)</td>
+          <td class="paramtype">const char&#160;</td>
+          <td class="paramname"><em>ptr</em>[5]</td><td>)</td>
+          <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="big__endian_8h_source.html#l00076">76</a> of file <a class="el" href="big__endian_8h_source.html">big_endian.h</a>.</p>
 
 </div>
 </div>
-<a id="a6889d08954e2d1835f1b18f3ba4bcaaf" name="a6889d08954e2d1835f1b18f3ba4bcaaf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6889d08954e2d1835f1b18f3ba4bcaaf">&#9670;&#160;</a></span>beu56</h2>
+<a id="a3f5e7df2d6be65a73cd53e52074ea49b" name="a3f5e7df2d6be65a73cd53e52074ea49b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f5e7df2d6be65a73cd53e52074ea49b">&#9670;&#160;</a></span>bei48_dec()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">#define beu56</td>
+          <td class="memname">static int64_t bei48_dec </td>
           <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">val</td><td>)</td>
-          <td>&#160;&#160;&#160;beu56_enc_(val)</td>
+          <td class="paramtype">const char&#160;</td>
+          <td class="paramname"><em>ptr</em>[6]</td><td>)</td>
+          <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="big__endian_8h_source.html#l00077">77</a> of file <a class="el" href="big__endian_8h_source.html">big_endian.h</a>.</p>
 
 </div>
 </div>
-<a id="a6d0e6f7fd9a5dfd5271869223be19e84" name="a6d0e6f7fd9a5dfd5271869223be19e84"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6d0e6f7fd9a5dfd5271869223be19e84">&#9670;&#160;</a></span>beu64</h2>
+<a id="ae623a9b3726923960b455cee97edf220" name="ae623a9b3726923960b455cee97edf220"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae623a9b3726923960b455cee97edf220">&#9670;&#160;</a></span>bei56_dec()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">#define beu64</td>
+          <td class="memname">static int64_t bei56_dec </td>
           <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">val</td><td>)</td>
-          <td>&#160;&#160;&#160;beu64_enc_(val)</td>
+          <td class="paramtype">const char&#160;</td>
+          <td class="paramname"><em>ptr</em>[7]</td><td>)</td>
+          <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="big__endian_8h_source.html#l00078">78</a> of file <a class="el" href="big__endian_8h_source.html">big_endian.h</a>.</p>
 
 </div>
 </div>
-<a id="a66f0f2f82b563b1a2af75c1596eb6633" name="a66f0f2f82b563b1a2af75c1596eb6633"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a66f0f2f82b563b1a2af75c1596eb6633">&#9670;&#160;</a></span>bef32</h2>
+<a id="af86be7ede39b3bb61f54ede3d71e9828" name="af86be7ede39b3bb61f54ede3d71e9828"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af86be7ede39b3bb61f54ede3d71e9828">&#9670;&#160;</a></span>bei64_dec()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">#define bef32</td>
+          <td class="memname">static int64_t bei64_dec </td>
           <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">val</td><td>)</td>
-          <td>&#160;&#160;&#160;bef32_enc_(val)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="big__endian_8h_source.html#l00101">101</a> of file <a class="el" href="big__endian_8h_source.html">big_endian.h</a>.</p>
-
-</div>
-</div>
-<a id="af4d015a0d4598120447c6c1ba9b3a78e" name="af4d015a0d4598120447c6c1ba9b3a78e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af4d015a0d4598120447c6c1ba9b3a78e">&#9670;&#160;</a></span>bef64</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define bef64</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">val</td><td>)</td>
-          <td>&#160;&#160;&#160;bef64_enc_(val)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="big__endian_8h_source.html#l00102">102</a> of file <a class="el" href="big__endian_8h_source.html">big_endian.h</a>.</p>
-
-</div>
-</div>
-<a id="a6b02c488471f8bfa6bdbd4ec46ec4830" name="a6b02c488471f8bfa6bdbd4ec46ec4830"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6b02c488471f8bfa6bdbd4ec46ec4830">&#9670;&#160;</a></span>be</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define be</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">be</td><td>)</td>
+          <td class="paramtype">const char&#160;</td>
+          <td class="paramname"><em>ptr</em>[8]</td><td>)</td>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">    _Generic((be),\</div>
-<div class="line">    bei8:  bei8_dec_ ,\</div>
-<div class="line">    bei16: bei16_dec_,\</div>
-<div class="line">    bei24: bei24_dec_,\</div>
-<div class="line">    bei32: bei32_dec_,\</div>
-<div class="line">    bei40: bei40_dec_,\</div>
-<div class="line">    bei48: bei48_dec_,\</div>
-<div class="line">    bei56: bei56_dec_,\</div>
-<div class="line">    bei64: bei64_dec_,\</div>
-<div class="line">\</div>
-<div class="line">    beu8:  beu8_dec_ ,\</div>
-<div class="line">    beu16: beu16_dec_,\</div>
-<div class="line">    beu24: beu24_dec_,\</div>
-<div class="line">    beu32: beu32_dec_,\</div>
-<div class="line">    beu40: beu40_dec_,\</div>
-<div class="line">    beu48: beu48_dec_,\</div>
-<div class="line">    beu56: beu56_dec_,\</div>
-<div class="line">    beu64: beu64_dec_,\</div>
-<div class="line">\</div>
-<div class="line">    bef32: bef32_dec_,\</div>
-<div class="line">    bef64: bef64_dec_ \</div>
-<div class="line">)(be)</div>
-</div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="big__endian_8h_source.html#l00110">110</a> of file <a class="el" href="big__endian_8h_source.html">big_endian.h</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="big__endian_8h_source.html#l00079">79</a> of file <a class="el" href="big__endian_8h_source.html">big_endian.h</a>.</p>
+
+</div>
+</div>
+<a id="ac6b620941336fa844c56fd1bec32a8fa" name="ac6b620941336fa844c56fd1bec32a8fa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac6b620941336fa844c56fd1bec32a8fa">&#9670;&#160;</a></span>bef32_enc()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void bef32_enc </td>
+          <td>(</td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>ptr</em>[4], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>f</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="big__endian_8h_source.html#l00081">81</a> of file <a class="el" href="big__endian_8h_source.html">big_endian.h</a>.</p>
+
+</div>
+</div>
+<a id="afa7b21a54add179c1a795e2bd52aed70" name="afa7b21a54add179c1a795e2bd52aed70"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afa7b21a54add179c1a795e2bd52aed70">&#9670;&#160;</a></span>bef64_enc()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void bef64_enc </td>
+          <td>(</td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>ptr</em>[8], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const double&#160;</td>
+          <td class="paramname"><em>f</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="big__endian_8h_source.html#l00082">82</a> of file <a class="el" href="big__endian_8h_source.html">big_endian.h</a>.</p>
+
+</div>
+</div>
+<a id="ad523583f995c86d58141a37b98adbb41" name="ad523583f995c86d58141a37b98adbb41"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad523583f995c86d58141a37b98adbb41">&#9670;&#160;</a></span>bef32_dec()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static float bef32_dec </td>
+          <td>(</td>
+          <td class="paramtype">const char&#160;</td>
+          <td class="paramname"><em>ptr</em>[4]</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="big__endian_8h_source.html#l00084">84</a> of file <a class="el" href="big__endian_8h_source.html">big_endian.h</a>.</p>
+
+</div>
+</div>
+<a id="a2032be3ccbe3137023333cffa3fb4730" name="a2032be3ccbe3137023333cffa3fb4730"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2032be3ccbe3137023333cffa3fb4730">&#9670;&#160;</a></span>bef64_dec()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static double bef64_dec </td>
+          <td>(</td>
+          <td class="paramtype">const char&#160;</td>
+          <td class="paramname"><em>ptr</em>[8]</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="big__endian_8h_source.html#l00085">85</a> of file <a class="el" href="big__endian_8h_source.html">big_endian.h</a>.</p>
 
 </div>
 </div>

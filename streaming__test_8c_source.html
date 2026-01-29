@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.6"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>clod: test/hash/streaming_test.c Source File</title>
+<title>libclod: test/hash/streaming_test.c Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -25,9 +25,9 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">clod
+   <div id="projectname">libclod
    </div>
-   <div id="projectbrief">C library and tools for working with minecraft and LOD data</div>
+   <div id="projectbrief">C library for interacting with NBT, region files, LOD data and other things.a</div>
   </td>
  </tr>
  </tbody>
@@ -96,40 +96,63 @@ $(document).ready(function(){initNavTree('streaming__test_8c_source.html',''); i
 <div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &quot;test.h&quot;</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &lt;<a class="code" href="hash_8h.html">clod/hash.h</a>&gt;</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="keywordtype">int</span> main() {</div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span>    uint64_t crc64 = CLOD_CRC64_INIT;</div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>    crc64 = <a class="code hl_function" href="group__crc.html#ga54b1ea9b3947481f166d318c466a039d">clod_crc64_add</a>(crc64, <span class="stringliteral">&quot;abcd&quot;</span>, 4);</div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>    crc64 = <a class="code hl_function" href="group__crc.html#ga54b1ea9b3947481f166d318c466a039d">clod_crc64_add</a>(crc64, <span class="stringliteral">&quot;efg&quot;</span>, 3);</div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>    check(clod_crc64_finalise(crc64) == clod_crc64(<span class="stringliteral">&quot;abcdefg&quot;</span>, 7));</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    uint32_t crc32 = CLOD_CRC32_INIT;</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    crc32 = <a class="code hl_function" href="group__crc.html#ga81307715e33c7cb5678f977baae58415">clod_crc32_add</a>(crc32, <span class="stringliteral">&quot;abcd&quot;</span>, 4);</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    crc32 = <a class="code hl_function" href="group__crc.html#ga81307715e33c7cb5678f977baae58415">clod_crc32_add</a>(crc32, <span class="stringliteral">&quot;efg&quot;</span>, 3);</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    check(clod_crc32_finalise(crc32) == clod_crc32(<span class="stringliteral">&quot;abcdefg&quot;</span>, 7));</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    uint32_t crc24 = CLOD_CRC24_INIT;</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    crc24 = <a class="code hl_function" href="group__crc.html#ga7252d02eb9df44dc25c2b20f0bd94baf">clod_crc24_add</a>(crc24, <span class="stringliteral">&quot;abcd&quot;</span>, 4);</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    crc24 = <a class="code hl_function" href="group__crc.html#ga7252d02eb9df44dc25c2b20f0bd94baf">clod_crc24_add</a>(crc24, <span class="stringliteral">&quot;efg&quot;</span>, 3);</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    check(clod_crc24_finalise(crc24) == clod_crc24(<span class="stringliteral">&quot;abcdefg&quot;</span>, 7));</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    uint16_t crc16 = CLOD_CRC16_INIT;</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    crc16 = <a class="code hl_function" href="group__crc.html#gadc7c1cf85eeaaf4ef997f44f103d72b6">clod_crc16_add</a>(crc16, <span class="stringliteral">&quot;abcd&quot;</span>, 4);</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    crc16 = <a class="code hl_function" href="group__crc.html#gadc7c1cf85eeaaf4ef997f44f103d72b6">clod_crc16_add</a>(crc16, <span class="stringliteral">&quot;efg&quot;</span>, 3);</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    check(clod_crc16_finalise(crc16) == clod_crc16(<span class="stringliteral">&quot;abcdefg&quot;</span>, 7));</div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;string.h&gt;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="keywordtype">int</span> main() {</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>    clod_sip64_state sip64 = <a class="code hl_define" href="group__hash.html#gae4491c7187bf0d4dac90113d8e5bb3bb">clod_sip64_init</a>(0);</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>    sip64 = <a class="code hl_function" href="group__hash.html#gaaefe591a503d0c93d185a0a69a197ef2">clod_sip64_add</a>(sip64, <span class="stringliteral">&quot;abcd&quot;</span>, 4);</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    sip64 = <a class="code hl_function" href="group__hash.html#gaaefe591a503d0c93d185a0a69a197ef2">clod_sip64_add</a>(sip64, <span class="stringliteral">&quot;efg&quot;</span>, 3);</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    sip64 = <a class="code hl_function" href="group__hash.html#gaaefe591a503d0c93d185a0a69a197ef2">clod_sip64_add</a>(sip64,</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>        <span class="stringliteral">&quot;p29585phsw-fg9hspfipipwqeiorhgposdfg-w[04565432&quot;</span>,</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>        strlen(<span class="stringliteral">&quot;p29585phsw-fg9hspfipipwqeiorhgposdfg-w[04565432&quot;</span>));</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    sip64 = <a class="code hl_function" href="group__hash.html#gaaefe591a503d0c93d185a0a69a197ef2">clod_sip64_add</a>(sip64, <span class="stringliteral">&quot;d&quot;</span>, 1);</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    sip64 = <a class="code hl_function" href="group__hash.html#gaaefe591a503d0c93d185a0a69a197ef2">clod_sip64_add</a>(sip64, <span class="stringliteral">&quot;b&quot;</span>, 1);</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    sip64 = <a class="code hl_function" href="group__hash.html#gaaefe591a503d0c93d185a0a69a197ef2">clod_sip64_add</a>(sip64, <span class="stringliteral">&quot;c&quot;</span>, 1);</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    sip64 = <a class="code hl_function" href="group__hash.html#gaaefe591a503d0c93d185a0a69a197ef2">clod_sip64_add</a>(sip64, <span class="stringliteral">&quot;a&quot;</span>, 1);</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    sip64 = <a class="code hl_function" href="group__hash.html#gaaefe591a503d0c93d185a0a69a197ef2">clod_sip64_add</a>(sip64, <span class="stringliteral">&quot;e&quot;</span>, 1);</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    sip64 = <a class="code hl_function" href="group__hash.html#gaaefe591a503d0c93d185a0a69a197ef2">clod_sip64_add</a>(sip64, <span class="stringliteral">&quot;f&quot;</span>, 1);</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    sip64 = <a class="code hl_function" href="group__hash.html#gaaefe591a503d0c93d185a0a69a197ef2">clod_sip64_add</a>(sip64, <span class="stringliteral">&quot;g&quot;</span>, 1);</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    sip64 = <a class="code hl_function" href="group__hash.html#gaaefe591a503d0c93d185a0a69a197ef2">clod_sip64_add</a>(sip64, <span class="stringliteral">&quot;h&quot;</span>, 1);</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    check(<a class="code hl_function" href="group__hash.html#ga614d5bf14c7d9712f5730270766f88e6">clod_sip64_finalise</a>(sip64) == clod_sip64(0,</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        <span class="stringliteral">&quot;abcdefgp29585phsw-fg9hspfipipwqeiorhgposdfg-w[04565432dbcaefgh&quot;</span>,</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        strlen(<span class="stringliteral">&quot;abcdefgp29585phsw-fg9hspfipipwqeiorhgposdfg-w[04565432dbcaefgh&quot;</span>)));</div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    uint8_t crc8 = CLOD_CRC8_INIT;</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    crc8 = <a class="code hl_function" href="group__crc.html#ga67801a1899e1ba817087bffe2cd682cc">clod_crc8_add</a>(crc8, <span class="stringliteral">&quot;abcd&quot;</span>, 4);</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    crc8 = <a class="code hl_function" href="group__crc.html#ga67801a1899e1ba817087bffe2cd682cc">clod_crc8_add</a>(crc8, <span class="stringliteral">&quot;efg&quot;</span>, 3);</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    check(clod_crc8_finalise(crc8) == clod_crc8(<span class="stringliteral">&quot;abcdefg&quot;</span>, 7));</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    uint64_t crc64 = clod_crc64_init();</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    crc64 = <a class="code hl_function" href="group__hash.html#ga54b1ea9b3947481f166d318c466a039d">clod_crc64_add</a>(crc64, <span class="stringliteral">&quot;abcd&quot;</span>, 4);</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    crc64 = <a class="code hl_function" href="group__hash.html#ga54b1ea9b3947481f166d318c466a039d">clod_crc64_add</a>(crc64, <span class="stringliteral">&quot;efg&quot;</span>, 3);</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    check(clod_crc64_finalise(crc64) == clod_crc64(<span class="stringliteral">&quot;abcdefg&quot;</span>, 7));</div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="keywordflow">return</span> EXIT_SUCCESS;</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>}</div>
-<div class="ttc" id="agroup__crc_html_ga54b1ea9b3947481f166d318c466a039d"><div class="ttname"><a href="group__crc.html#ga54b1ea9b3947481f166d318c466a039d">clod_crc64_add</a></div><div class="ttdeci">uint64_t clod_crc64_add(uint64_t crc, const void *data, size_t data_len)</div></div>
-<div class="ttc" id="agroup__crc_html_ga67801a1899e1ba817087bffe2cd682cc"><div class="ttname"><a href="group__crc.html#ga67801a1899e1ba817087bffe2cd682cc">clod_crc8_add</a></div><div class="ttdeci">uint8_t clod_crc8_add(uint8_t crc, const void *data, size_t data_len)</div></div>
-<div class="ttc" id="agroup__crc_html_ga7252d02eb9df44dc25c2b20f0bd94baf"><div class="ttname"><a href="group__crc.html#ga7252d02eb9df44dc25c2b20f0bd94baf">clod_crc24_add</a></div><div class="ttdeci">uint32_t clod_crc24_add(uint32_t crc, const void *data, size_t data_len)</div></div>
-<div class="ttc" id="agroup__crc_html_ga81307715e33c7cb5678f977baae58415"><div class="ttname"><a href="group__crc.html#ga81307715e33c7cb5678f977baae58415">clod_crc32_add</a></div><div class="ttdeci">uint32_t clod_crc32_add(uint32_t crc, const void *data, size_t data_len)</div></div>
-<div class="ttc" id="agroup__crc_html_gadc7c1cf85eeaaf4ef997f44f103d72b6"><div class="ttname"><a href="group__crc.html#gadc7c1cf85eeaaf4ef997f44f103d72b6">clod_crc16_add</a></div><div class="ttdeci">uint16_t clod_crc16_add(uint16_t crc, const void *data, size_t data_len)</div></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    uint32_t crc32 = clod_crc32_init();</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    crc32 = <a class="code hl_function" href="group__hash.html#ga81307715e33c7cb5678f977baae58415">clod_crc32_add</a>(crc32, <span class="stringliteral">&quot;abcd&quot;</span>, 4);</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    crc32 = <a class="code hl_function" href="group__hash.html#ga81307715e33c7cb5678f977baae58415">clod_crc32_add</a>(crc32, <span class="stringliteral">&quot;efg&quot;</span>, 3);</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    check(clod_crc32_finalise(crc32) == clod_crc32(<span class="stringliteral">&quot;abcdefg&quot;</span>, 7));</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    uint32_t crc24 = clod_crc24_init();</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    crc24 = <a class="code hl_function" href="group__hash.html#ga7252d02eb9df44dc25c2b20f0bd94baf">clod_crc24_add</a>(crc24, <span class="stringliteral">&quot;abcd&quot;</span>, 4);</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    crc24 = <a class="code hl_function" href="group__hash.html#ga7252d02eb9df44dc25c2b20f0bd94baf">clod_crc24_add</a>(crc24, <span class="stringliteral">&quot;efg&quot;</span>, 3);</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    check(clod_crc24_finalise(crc24) == clod_crc24(<span class="stringliteral">&quot;abcdefg&quot;</span>, 7));</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    uint16_t crc16 = clod_crc16_init();</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    crc16 = <a class="code hl_function" href="group__hash.html#gadc7c1cf85eeaaf4ef997f44f103d72b6">clod_crc16_add</a>(crc16, <span class="stringliteral">&quot;abcd&quot;</span>, 4);</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    crc16 = <a class="code hl_function" href="group__hash.html#gadc7c1cf85eeaaf4ef997f44f103d72b6">clod_crc16_add</a>(crc16, <span class="stringliteral">&quot;efg&quot;</span>, 3);</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    check(clod_crc16_finalise(crc16) == clod_crc16(<span class="stringliteral">&quot;abcdefg&quot;</span>, 7));</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    uint8_t crc8 = clod_crc8_init();</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    crc8 = <a class="code hl_function" href="group__hash.html#ga67801a1899e1ba817087bffe2cd682cc">clod_crc8_add</a>(crc8, <span class="stringliteral">&quot;abcd&quot;</span>, 4);</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    crc8 = <a class="code hl_function" href="group__hash.html#ga67801a1899e1ba817087bffe2cd682cc">clod_crc8_add</a>(crc8, <span class="stringliteral">&quot;efg&quot;</span>, 3);</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    check(clod_crc8_finalise(crc8) == clod_crc8(<span class="stringliteral">&quot;abcdefg&quot;</span>, 7));</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="keywordflow">return</span> EXIT_SUCCESS;</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>}</div>
+<div class="ttc" id="agroup__hash_html_ga54b1ea9b3947481f166d318c466a039d"><div class="ttname"><a href="group__hash.html#ga54b1ea9b3947481f166d318c466a039d">clod_crc64_add</a></div><div class="ttdeci">uint64_t clod_crc64_add(uint64_t crc, const void *data, size_t data_len)</div></div>
+<div class="ttc" id="agroup__hash_html_ga614d5bf14c7d9712f5730270766f88e6"><div class="ttname"><a href="group__hash.html#ga614d5bf14c7d9712f5730270766f88e6">clod_sip64_finalise</a></div><div class="ttdeci">uint64_t clod_sip64_finalise(clod_sip64_state state)</div><div class="ttdef"><b>Definition:</b> <a href="siphash_8c_source.html#l00096">siphash.c:96</a></div></div>
+<div class="ttc" id="agroup__hash_html_ga67801a1899e1ba817087bffe2cd682cc"><div class="ttname"><a href="group__hash.html#ga67801a1899e1ba817087bffe2cd682cc">clod_crc8_add</a></div><div class="ttdeci">uint8_t clod_crc8_add(uint8_t crc, const void *data, size_t data_len)</div></div>
+<div class="ttc" id="agroup__hash_html_ga7252d02eb9df44dc25c2b20f0bd94baf"><div class="ttname"><a href="group__hash.html#ga7252d02eb9df44dc25c2b20f0bd94baf">clod_crc24_add</a></div><div class="ttdeci">uint32_t clod_crc24_add(uint32_t crc, const void *data, size_t data_len)</div></div>
+<div class="ttc" id="agroup__hash_html_ga81307715e33c7cb5678f977baae58415"><div class="ttname"><a href="group__hash.html#ga81307715e33c7cb5678f977baae58415">clod_crc32_add</a></div><div class="ttdeci">uint32_t clod_crc32_add(uint32_t crc, const void *data, size_t data_len)</div></div>
+<div class="ttc" id="agroup__hash_html_gaaefe591a503d0c93d185a0a69a197ef2"><div class="ttname"><a href="group__hash.html#gaaefe591a503d0c93d185a0a69a197ef2">clod_sip64_add</a></div><div class="ttdeci">clod_sip64_state clod_sip64_add(clod_sip64_state state, const void *data, size_t size)</div><div class="ttdef"><b>Definition:</b> <a href="siphash_8c_source.html#l00052">siphash.c:52</a></div></div>
+<div class="ttc" id="agroup__hash_html_gadc7c1cf85eeaaf4ef997f44f103d72b6"><div class="ttname"><a href="group__hash.html#gadc7c1cf85eeaaf4ef997f44f103d72b6">clod_crc16_add</a></div><div class="ttdeci">uint16_t clod_crc16_add(uint16_t crc, const void *data, size_t data_len)</div></div>
+<div class="ttc" id="agroup__hash_html_gae4491c7187bf0d4dac90113d8e5bb3bb"><div class="ttname"><a href="group__hash.html#gae4491c7187bf0d4dac90113d8e5bb3bb">clod_sip64_init</a></div><div class="ttdeci">#define clod_sip64_init(seed)</div><div class="ttdef"><b>Definition:</b> <a href="hash_8h_source.html#l00052">hash.h:52</a></div></div>
 <div class="ttc" id="ahash_8h_html"><div class="ttname"><a href="hash_8h.html">hash.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

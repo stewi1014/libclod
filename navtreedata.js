@@ -24,15 +24,7 @@
 */
 var NAVTREE =
 [
-  [ "clod", "index.html", [
-    [ "libclod", "md_README.html", [
-      [ "Public headers", "md_README.html#autotoc_md1", [
-        [ "Dependencies", "md_README.html#autotoc_md2", null ],
-        [ "Development", "md_README.html#autotoc_md3", null ],
-        [ "Building", "md_README.html#autotoc_md4", null ],
-        [ "Platforms", "md_README.html#autotoc_md5", null ]
-      ] ]
-    ] ],
+  [ "libclod", "index.html", [
     [ "Modules", "modules.html", "modules" ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],

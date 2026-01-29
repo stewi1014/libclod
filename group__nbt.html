@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.6"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>clod: NBT</title>
+<title>libclod: NBT</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -25,9 +25,9 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">clod
+   <div id="projectname">libclod
    </div>
-   <div id="projectbrief">C library and tools for working with minecraft and LOD data</div>
+   <div id="projectbrief">C library for interacting with NBT, region files, LOD data and other things.a</div>
   </td>
  </tr>
  </tbody>
@@ -93,7 +93,6 @@ $(document).ready(function(){initNavTree('group__nbt.html',''); initResizable();
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#define-members">Macros</a> &#124;
-<a href="#typedef-members">Typedefs</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">NBT</div></div>
 </div><!--header-->
@@ -101,66 +100,68 @@ $(document).ready(function(){initNavTree('group__nbt.html',''); initResizable();
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">union &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="unionclod__nbt__tag.html">clod_nbt_tag</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">union &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="unionclod__nbt__payload.html">clod_nbt_payload</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclod__nbt__iter.html">clod_nbt_iter</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:ga60c425a2dfbdf6038fcc23df8a4cf4b4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__nbt.html#ga60c425a2dfbdf6038fcc23df8a4cf4b4">CLOD_NBT_ZERO</a>&#160;&#160;&#160;0</td></tr>
+<tr class="memitem:ga60c425a2dfbdf6038fcc23df8a4cf4b4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__nbt.html#ga60c425a2dfbdf6038fcc23df8a4cf4b4">CLOD_NBT_ZERO</a>&#160;&#160;&#160;(char)(0)</td></tr>
 <tr class="separator:ga60c425a2dfbdf6038fcc23df8a4cf4b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa6e4f73677405263b8095efd8c082924"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__nbt.html#gaa6e4f73677405263b8095efd8c082924">CLOD_NBT_INT8</a>&#160;&#160;&#160;1</td></tr>
+<tr class="memitem:gaa6e4f73677405263b8095efd8c082924"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__nbt.html#gaa6e4f73677405263b8095efd8c082924">CLOD_NBT_INT8</a>&#160;&#160;&#160;(char)(1)</td></tr>
 <tr class="separator:gaa6e4f73677405263b8095efd8c082924"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga74825fec4856cba8ee1d52c40fc5ef64"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__nbt.html#ga74825fec4856cba8ee1d52c40fc5ef64">CLOD_NBT_INT16</a>&#160;&#160;&#160;2</td></tr>
+<tr class="memitem:ga74825fec4856cba8ee1d52c40fc5ef64"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__nbt.html#ga74825fec4856cba8ee1d52c40fc5ef64">CLOD_NBT_INT16</a>&#160;&#160;&#160;(char)(2)</td></tr>
 <tr class="separator:ga74825fec4856cba8ee1d52c40fc5ef64"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga210cc05cbc86583de271a852550f7e5e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__nbt.html#ga210cc05cbc86583de271a852550f7e5e">CLOD_NBT_INT32</a>&#160;&#160;&#160;3</td></tr>
+<tr class="memitem:ga210cc05cbc86583de271a852550f7e5e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__nbt.html#ga210cc05cbc86583de271a852550f7e5e">CLOD_NBT_INT32</a>&#160;&#160;&#160;(char)(3)</td></tr>
 <tr class="separator:ga210cc05cbc86583de271a852550f7e5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaf7179b049633801eca78a33bd3595058"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__nbt.html#gaf7179b049633801eca78a33bd3595058">CLOD_NBT_INT64</a>&#160;&#160;&#160;4</td></tr>
+<tr class="memitem:gaf7179b049633801eca78a33bd3595058"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__nbt.html#gaf7179b049633801eca78a33bd3595058">CLOD_NBT_INT64</a>&#160;&#160;&#160;(char)(4)</td></tr>
 <tr class="separator:gaf7179b049633801eca78a33bd3595058"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga8ea71da3105e3093885c5305ce519989"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__nbt.html#ga8ea71da3105e3093885c5305ce519989">CLOD_NBT_FLOAT32</a>&#160;&#160;&#160;5</td></tr>
+<tr class="memitem:ga8ea71da3105e3093885c5305ce519989"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__nbt.html#ga8ea71da3105e3093885c5305ce519989">CLOD_NBT_FLOAT32</a>&#160;&#160;&#160;(char)(5)</td></tr>
 <tr class="separator:ga8ea71da3105e3093885c5305ce519989"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaf2ee9379a3f6c879b5f496187182f1f6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__nbt.html#gaf2ee9379a3f6c879b5f496187182f1f6">CLOD_NBT_FLOAT64</a>&#160;&#160;&#160;6</td></tr>
+<tr class="memitem:gaf2ee9379a3f6c879b5f496187182f1f6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__nbt.html#gaf2ee9379a3f6c879b5f496187182f1f6">CLOD_NBT_FLOAT64</a>&#160;&#160;&#160;(char)(6)</td></tr>
 <tr class="separator:gaf2ee9379a3f6c879b5f496187182f1f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gad61c0a448f0e52e80a2de7e7c055778b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__nbt.html#gad61c0a448f0e52e80a2de7e7c055778b">CLOD_NBT_INT8_ARRAY</a>&#160;&#160;&#160;7</td></tr>
+<tr class="memitem:gad61c0a448f0e52e80a2de7e7c055778b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__nbt.html#gad61c0a448f0e52e80a2de7e7c055778b">CLOD_NBT_INT8_ARRAY</a>&#160;&#160;&#160;(char)(7)</td></tr>
 <tr class="separator:gad61c0a448f0e52e80a2de7e7c055778b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gacd9fb19e659e75fb40a1f2b6e0175d33"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__nbt.html#gacd9fb19e659e75fb40a1f2b6e0175d33">CLOD_NBT_INT32_ARRAY</a>&#160;&#160;&#160;11</td></tr>
+<tr class="memitem:gacd9fb19e659e75fb40a1f2b6e0175d33"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__nbt.html#gacd9fb19e659e75fb40a1f2b6e0175d33">CLOD_NBT_INT32_ARRAY</a>&#160;&#160;&#160;(char)(11)</td></tr>
 <tr class="separator:gacd9fb19e659e75fb40a1f2b6e0175d33"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga90118438f3c9985cb3268804ca163f81"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__nbt.html#ga90118438f3c9985cb3268804ca163f81">CLOD_NBT_INT64_ARRAY</a>&#160;&#160;&#160;12</td></tr>
+<tr class="memitem:ga90118438f3c9985cb3268804ca163f81"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__nbt.html#ga90118438f3c9985cb3268804ca163f81">CLOD_NBT_INT64_ARRAY</a>&#160;&#160;&#160;(char)(12)</td></tr>
 <tr class="separator:ga90118438f3c9985cb3268804ca163f81"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gafada044b3c93a4fd2afe47621084ff10"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__nbt.html#gafada044b3c93a4fd2afe47621084ff10">CLOD_NBT_STRING</a>&#160;&#160;&#160;8</td></tr>
+<tr class="memitem:gafada044b3c93a4fd2afe47621084ff10"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__nbt.html#gafada044b3c93a4fd2afe47621084ff10">CLOD_NBT_STRING</a>&#160;&#160;&#160;(char)(8)</td></tr>
 <tr class="separator:gafada044b3c93a4fd2afe47621084ff10"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa413f4ec043e76e1f85b87311cf4ccf5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__nbt.html#gaa413f4ec043e76e1f85b87311cf4ccf5">CLOD_NBT_LIST</a>&#160;&#160;&#160;9</td></tr>
+<tr class="memitem:gaa413f4ec043e76e1f85b87311cf4ccf5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__nbt.html#gaa413f4ec043e76e1f85b87311cf4ccf5">CLOD_NBT_LIST</a>&#160;&#160;&#160;(char)(9)</td></tr>
 <tr class="separator:gaa413f4ec043e76e1f85b87311cf4ccf5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga94ce04a4e0171ab03e78fd9ec9ba2fe6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__nbt.html#ga94ce04a4e0171ab03e78fd9ec9ba2fe6">CLOD_NBT_COMPOUND</a>&#160;&#160;&#160;10</td></tr>
+<tr class="memitem:ga94ce04a4e0171ab03e78fd9ec9ba2fe6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__nbt.html#ga94ce04a4e0171ab03e78fd9ec9ba2fe6">CLOD_NBT_COMPOUND</a>&#160;&#160;&#160;(char)(10)</td></tr>
 <tr class="separator:ga94ce04a4e0171ab03e78fd9ec9ba2fe6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
-Typedefs</h2></td></tr>
-<tr class="memitem:gab0131284f383c6a5b5ddbc527bcb0904"><td class="memItemLeft" align="right" valign="top">typedef signed char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__nbt.html#gab0131284f383c6a5b5ddbc527bcb0904">clod_nbt_type</a></td></tr>
-<tr class="separator:gab0131284f383c6a5b5ddbc527bcb0904"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaaa53b26bf20a60d75cbf8964720a5412"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__nbt.html#gaaa53b26bf20a60d75cbf8964720a5412">CLOD_NBT_ROOT_COMPOUND_INIT</a>&#160;&#160;&#160;((char[]){CLOD_NBT_COMPOUND, 0, 0, 0})</td></tr>
+<tr class="separator:gaaa53b26bf20a60d75cbf8964720a5412"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga73fa3ee5c0447b1c3fd27d30f7338607"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__nbt.html#ga73fa3ee5c0447b1c3fd27d30f7338607">CLOD_NBT_ROOT_LIST_INIT</a>(type)&#160;&#160;&#160;((char[]){CLOD_NBT_LIST, type, 0, 0, 0, 0})</td></tr>
+<tr class="separator:ga73fa3ee5c0447b1c3fd27d30f7338607"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9a14899bedf73f9c5fae1f944a32fae4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__nbt.html#ga9a14899bedf73f9c5fae1f944a32fae4">CLOD_NBT_ITER_ZERO</a>&#160;&#160;&#160;{ .type = CLOD_NBT_ZERO }</td></tr>
+<tr class="separator:ga9a14899bedf73f9c5fae1f944a32fae4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:gab50a78a1325e510bd54f93913c758283"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__nbt.html#gab50a78a1325e510bd54f93913c758283">clod_nbt_payload_size</a> (const union <a class="el" href="unionclod__nbt__payload.html">clod_nbt_payload</a> *payload, clod_nbt_type payload_type, const char *end)</td></tr>
-<tr class="separator:gab50a78a1325e510bd54f93913c758283"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gad11be51d4f14601e1d3c39db0847ead6"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__nbt.html#gad11be51d4f14601e1d3c39db0847ead6">clod_nbt_tag_size</a> (const union <a class="el" href="unionclod__nbt__tag.html">clod_nbt_tag</a> *tag, const char *end)</td></tr>
-<tr class="separator:gad11be51d4f14601e1d3c39db0847ead6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga8a389675940eb98f07b7143d2a159710"><td class="memItemLeft" align="right" valign="top">union <a class="el" href="unionclod__nbt__payload.html">clod_nbt_payload</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__nbt.html#ga8a389675940eb98f07b7143d2a159710">clod_nbt_tag_payload</a> (const union <a class="el" href="unionclod__nbt__tag.html">clod_nbt_tag</a> *tag, const char *end, clod_nbt_type payload_type)</td></tr>
-<tr class="separator:ga8a389675940eb98f07b7143d2a159710"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga97b6865c1d4b0db174a57ea8c2437caf"><td class="memItemLeft" align="right" valign="top">union <a class="el" href="unionclod__nbt__tag.html">clod_nbt_tag</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__nbt.html#ga97b6865c1d4b0db174a57ea8c2437caf">clod_nbt_compound</a> (union <a class="el" href="unionclod__nbt__payload.html">clod_nbt_payload</a> *compound, const char **end, ptrdiff_t *free, clod_nbt_type type, <a class="el" href="structsstr.html">sstr</a> name)</td></tr>
-<tr class="separator:ga97b6865c1d4b0db174a57ea8c2437caf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gabc76cee609c4aa30560b4a6d22aedeb1"><td class="memItemLeft" align="right" valign="top">union <a class="el" href="unionclod__nbt__tag.html">clod_nbt_tag</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__nbt.html#gabc76cee609c4aa30560b4a6d22aedeb1">clod_nbt_compound_get</a> (const union <a class="el" href="unionclod__nbt__payload.html">clod_nbt_payload</a> *compound, const char *end, <a class="el" href="structsstr.html">sstr</a> name)</td></tr>
-<tr class="separator:gabc76cee609c4aa30560b4a6d22aedeb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa0c908240a13d87d7131704b90625b34"><td class="memItemLeft" align="right" valign="top">union <a class="el" href="unionclod__nbt__payload.html">clod_nbt_payload</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__nbt.html#gaa0c908240a13d87d7131704b90625b34">clod_nbt_list_get</a> (const union <a class="el" href="unionclod__nbt__payload.html">clod_nbt_payload</a> *list, const char *end, size_t index)</td></tr>
-<tr class="separator:gaa0c908240a13d87d7131704b90625b34"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaafce0662b4e8563d4904e1f502f20ff2"><td class="memItemLeft" align="right" valign="top">union <a class="el" href="unionclod__nbt__payload.html">clod_nbt_payload</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__nbt.html#gaafce0662b4e8563d4904e1f502f20ff2">clod_nbt_list_set</a> (union <a class="el" href="unionclod__nbt__payload.html">clod_nbt_payload</a> *list, const char **end, ptrdiff_t *end_offset, clod_nbt_type type, size_t index)</td></tr>
-<tr class="separator:gaafce0662b4e8563d4904e1f502f20ff2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaac3e1213f7bf610040b14223faafa4ef"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__nbt.html#gaac3e1213f7bf610040b14223faafa4ef">clod_nbt_payload_size</a> (const char *restrict payload, const void *end, char payload_type)</td></tr>
+<tr class="separator:gaac3e1213f7bf610040b14223faafa4ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae4d9a53d493a1436d27c2a6003da5b24"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__nbt.html#gae4d9a53d493a1436d27c2a6003da5b24">clod_nbt_tag_size</a> (const char *restrict tag, const void *end)</td></tr>
+<tr class="separator:gae4d9a53d493a1436d27c2a6003da5b24"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gabe26362ef6d69ff8c73e9d7ec5d65340"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__nbt.html#gabe26362ef6d69ff8c73e9d7ec5d65340">clod_nbt_tag_payload</a> (const char *restrict tag, const void *end)</td></tr>
+<tr class="separator:gabe26362ef6d69ff8c73e9d7ec5d65340"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa01cbbcf1268d5c60ceff583c8c54eb0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structclod__sstr.html">clod_sstr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__nbt.html#gaa01cbbcf1268d5c60ceff583c8c54eb0">clod_nbt_tag_name</a> (const char *tag, const void *end)</td></tr>
+<tr class="separator:gaa01cbbcf1268d5c60ceff583c8c54eb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4f997214997da93a2a650a67c77085c7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__nbt.html#ga4f997214997da93a2a650a67c77085c7">clod_nbt_iter_next</a> (const char *restrict payload, const void *end, char payload_type, struct <a class="el" href="structclod__nbt__iter.html">clod_nbt_iter</a> *iter)</td></tr>
+<tr class="separator:ga4f997214997da93a2a650a67c77085c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3378fb9d1e2f15b80b2f8c182286df90"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__nbt.html#ga3378fb9d1e2f15b80b2f8c182286df90">clod_nbt_compound_get</a> (const char *restrict compound, const void *end, <a class="el" href="structclod__sstr.html">clod_sstr</a> name)</td></tr>
+<tr class="separator:ga3378fb9d1e2f15b80b2f8c182286df90"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9fca765c573fbf9e149d2164825d0c14"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__nbt.html#ga9fca765c573fbf9e149d2164825d0c14">clod_nbt_compound_add</a> (char *restrict compound, const void **end, ptrdiff_t *free, <a class="el" href="structclod__sstr.html">clod_sstr</a> name, char type)</td></tr>
+<tr class="separator:ga9fca765c573fbf9e149d2164825d0c14"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga92d6b3742af8f64bdfbd32b8b58dff36"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__nbt.html#ga92d6b3742af8f64bdfbd32b8b58dff36">clod_nbt_compound_del</a> (char *restrict compound, const void **end, ptrdiff_t *free, <a class="el" href="structclod__sstr.html">clod_sstr</a> name)</td></tr>
+<tr class="separator:ga92d6b3742af8f64bdfbd32b8b58dff36"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7cb5a2816ab7af52697bd8b93edf2f7d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__nbt.html#ga7cb5a2816ab7af52697bd8b93edf2f7d">clod_nbt_list_resize</a> (char *restrict list, const char **end, ptrdiff_t *free, char type, uint32_t length)</td></tr>
+<tr class="separator:ga7cb5a2816ab7af52697bd8b93edf2f7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<p>I've struggled to come up with a good public FFI-respecting API for this, and alas, I failed. As such, this library is C-orientated and is unlikely to receive useful language bindings. It does suck, because C is really good at this. An optimising C compiler produces around ~100 instructions that parse NBTs at tens of GB/s - perhaps the best non-hardware-specific NBT parsing method possible with modern technology. Oh well.</p>
 <p>The NBT format is a serialised depth-first tree with no indexing. The primary limitation of interacting with such a structure is simply figuring out where the nodes actually are. To find a given NBT, every single tag before it must be recursively parsed to find the wanted NBT's offset. The majority of the entire tree must be parsed for most operations. As such, traversing the tree becomes the core limitation of any NBT operation and the primary focus for optimisation. This traversal method is clod_nbt_payload_size.</p>
-<p>The library does not perform any kind of data validation. Implementing complex data analysis to discern the likelihood that a given set of NBT data has been modified from its original state is an insane alternative to using a checksum and out of scope for this library. Please, for the love of good code, rely on dedicated verification methods instead of incidental parsing errors. Notably, this non-feature is unrelated to memory safety, which this library does aim to provide. </p>
+<p>The library only performs some basic sanity checks on top of ensuring memory safety. Implementing complex data analysis to discern the likelihood that a given set of NBT data has been modified from its original state is an insane alternative to using a checksum and out of scope for this library. Please, for the love of good code, rely on dedicated verification methods instead of incidental parsing errors. </p>
 <h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="ga60c425a2dfbdf6038fcc23df8a4cf4b4" name="ga60c425a2dfbdf6038fcc23df8a4cf4b4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga60c425a2dfbdf6038fcc23df8a4cf4b4">&#9670;&#160;</a></span>CLOD_NBT_ZERO</h2>
@@ -169,12 +170,12 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define CLOD_NBT_ZERO&#160;&#160;&#160;0</td>
+          <td class="memname">#define CLOD_NBT_ZERO&#160;&#160;&#160;(char)(0)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="nbt_8h_source.html#l00037">37</a> of file <a class="el" href="nbt_8h_source.html">nbt.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nbt_8h_source.html#l00028">28</a> of file <a class="el" href="nbt_8h_source.html">nbt.h</a>.</p>
 
 </div>
 </div>
@@ -185,12 +186,12 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define CLOD_NBT_INT8&#160;&#160;&#160;1</td>
+          <td class="memname">#define CLOD_NBT_INT8&#160;&#160;&#160;(char)(1)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="nbt_8h_source.html#l00038">38</a> of file <a class="el" href="nbt_8h_source.html">nbt.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nbt_8h_source.html#l00029">29</a> of file <a class="el" href="nbt_8h_source.html">nbt.h</a>.</p>
 
 </div>
 </div>
@@ -201,12 +202,12 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define CLOD_NBT_INT16&#160;&#160;&#160;2</td>
+          <td class="memname">#define CLOD_NBT_INT16&#160;&#160;&#160;(char)(2)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="nbt_8h_source.html#l00039">39</a> of file <a class="el" href="nbt_8h_source.html">nbt.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nbt_8h_source.html#l00030">30</a> of file <a class="el" href="nbt_8h_source.html">nbt.h</a>.</p>
 
 </div>
 </div>
@@ -217,12 +218,12 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define CLOD_NBT_INT32&#160;&#160;&#160;3</td>
+          <td class="memname">#define CLOD_NBT_INT32&#160;&#160;&#160;(char)(3)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="nbt_8h_source.html#l00040">40</a> of file <a class="el" href="nbt_8h_source.html">nbt.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nbt_8h_source.html#l00031">31</a> of file <a class="el" href="nbt_8h_source.html">nbt.h</a>.</p>
 
 </div>
 </div>
@@ -233,12 +234,12 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define CLOD_NBT_INT64&#160;&#160;&#160;4</td>
+          <td class="memname">#define CLOD_NBT_INT64&#160;&#160;&#160;(char)(4)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="nbt_8h_source.html#l00041">41</a> of file <a class="el" href="nbt_8h_source.html">nbt.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nbt_8h_source.html#l00032">32</a> of file <a class="el" href="nbt_8h_source.html">nbt.h</a>.</p>
 
 </div>
 </div>
@@ -249,12 +250,12 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define CLOD_NBT_FLOAT32&#160;&#160;&#160;5</td>
+          <td class="memname">#define CLOD_NBT_FLOAT32&#160;&#160;&#160;(char)(5)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="nbt_8h_source.html#l00042">42</a> of file <a class="el" href="nbt_8h_source.html">nbt.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nbt_8h_source.html#l00033">33</a> of file <a class="el" href="nbt_8h_source.html">nbt.h</a>.</p>
 
 </div>
 </div>
@@ -265,12 +266,12 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define CLOD_NBT_FLOAT64&#160;&#160;&#160;6</td>
+          <td class="memname">#define CLOD_NBT_FLOAT64&#160;&#160;&#160;(char)(6)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="nbt_8h_source.html#l00043">43</a> of file <a class="el" href="nbt_8h_source.html">nbt.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nbt_8h_source.html#l00034">34</a> of file <a class="el" href="nbt_8h_source.html">nbt.h</a>.</p>
 
 </div>
 </div>
@@ -281,12 +282,12 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define CLOD_NBT_INT8_ARRAY&#160;&#160;&#160;7</td>
+          <td class="memname">#define CLOD_NBT_INT8_ARRAY&#160;&#160;&#160;(char)(7)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="nbt_8h_source.html#l00044">44</a> of file <a class="el" href="nbt_8h_source.html">nbt.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nbt_8h_source.html#l00035">35</a> of file <a class="el" href="nbt_8h_source.html">nbt.h</a>.</p>
 
 </div>
 </div>
@@ -297,12 +298,12 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define CLOD_NBT_INT32_ARRAY&#160;&#160;&#160;11</td>
+          <td class="memname">#define CLOD_NBT_INT32_ARRAY&#160;&#160;&#160;(char)(11)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="nbt_8h_source.html#l00045">45</a> of file <a class="el" href="nbt_8h_source.html">nbt.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nbt_8h_source.html#l00036">36</a> of file <a class="el" href="nbt_8h_source.html">nbt.h</a>.</p>
 
 </div>
 </div>
@@ -313,12 +314,12 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define CLOD_NBT_INT64_ARRAY&#160;&#160;&#160;12</td>
+          <td class="memname">#define CLOD_NBT_INT64_ARRAY&#160;&#160;&#160;(char)(12)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="nbt_8h_source.html#l00046">46</a> of file <a class="el" href="nbt_8h_source.html">nbt.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nbt_8h_source.html#l00037">37</a> of file <a class="el" href="nbt_8h_source.html">nbt.h</a>.</p>
 
 </div>
 </div>
@@ -329,12 +330,12 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define CLOD_NBT_STRING&#160;&#160;&#160;8</td>
+          <td class="memname">#define CLOD_NBT_STRING&#160;&#160;&#160;(char)(8)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="nbt_8h_source.html#l00047">47</a> of file <a class="el" href="nbt_8h_source.html">nbt.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nbt_8h_source.html#l00038">38</a> of file <a class="el" href="nbt_8h_source.html">nbt.h</a>.</p>
 
 </div>
 </div>
@@ -345,12 +346,12 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define CLOD_NBT_LIST&#160;&#160;&#160;9</td>
+          <td class="memname">#define CLOD_NBT_LIST&#160;&#160;&#160;(char)(9)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="nbt_8h_source.html#l00048">48</a> of file <a class="el" href="nbt_8h_source.html">nbt.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nbt_8h_source.html#l00039">39</a> of file <a class="el" href="nbt_8h_source.html">nbt.h</a>.</p>
 
 </div>
 </div>
@@ -361,35 +362,70 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define CLOD_NBT_COMPOUND&#160;&#160;&#160;10</td>
+          <td class="memname">#define CLOD_NBT_COMPOUND&#160;&#160;&#160;(char)(10)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="nbt_8h_source.html#l00049">49</a> of file <a class="el" href="nbt_8h_source.html">nbt.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nbt_8h_source.html#l00040">40</a> of file <a class="el" href="nbt_8h_source.html">nbt.h</a>.</p>
 
 </div>
 </div>
-<h2 class="groupheader">Typedef Documentation</h2>
-<a id="gab0131284f383c6a5b5ddbc527bcb0904" name="gab0131284f383c6a5b5ddbc527bcb0904"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gab0131284f383c6a5b5ddbc527bcb0904">&#9670;&#160;</a></span>clod_nbt_type</h2>
+<a id="gaaa53b26bf20a60d75cbf8964720a5412" name="gaaa53b26bf20a60d75cbf8964720a5412"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaaa53b26bf20a60d75cbf8964720a5412">&#9670;&#160;</a></span>CLOD_NBT_ROOT_COMPOUND_INIT</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef signed char clod_nbt_type</td>
+          <td class="memname">#define CLOD_NBT_ROOT_COMPOUND_INIT&#160;&#160;&#160;((char[]){CLOD_NBT_COMPOUND, 0, 0, 0})</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="nbt_8h_source.html#l00036">36</a> of file <a class="el" href="nbt_8h_source.html">nbt.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nbt_8h_source.html#l00042">42</a> of file <a class="el" href="nbt_8h_source.html">nbt.h</a>.</p>
+
+</div>
+</div>
+<a id="ga73fa3ee5c0447b1c3fd27d30f7338607" name="ga73fa3ee5c0447b1c3fd27d30f7338607"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga73fa3ee5c0447b1c3fd27d30f7338607">&#9670;&#160;</a></span>CLOD_NBT_ROOT_LIST_INIT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define CLOD_NBT_ROOT_LIST_INIT</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">type</td><td>)</td>
+          <td>&#160;&#160;&#160;((char[]){CLOD_NBT_LIST, type, 0, 0, 0, 0})</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="nbt_8h_source.html#l00043">43</a> of file <a class="el" href="nbt_8h_source.html">nbt.h</a>.</p>
+
+</div>
+</div>
+<a id="ga9a14899bedf73f9c5fae1f944a32fae4" name="ga9a14899bedf73f9c5fae1f944a32fae4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga9a14899bedf73f9c5fae1f944a32fae4">&#9670;&#160;</a></span>CLOD_NBT_ITER_ZERO</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define CLOD_NBT_ITER_ZERO&#160;&#160;&#160;{ .type = CLOD_NBT_ZERO }</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="nbt_8h_source.html#l00109">109</a> of file <a class="el" href="nbt_8h_source.html">nbt.h</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="gab50a78a1325e510bd54f93913c758283" name="gab50a78a1325e510bd54f93913c758283"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gab50a78a1325e510bd54f93913c758283">&#9670;&#160;</a></span>clod_nbt_payload_size()</h2>
+<a id="gaac3e1213f7bf610040b14223faafa4ef" name="gaac3e1213f7bf610040b14223faafa4ef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaac3e1213f7bf610040b14223faafa4ef">&#9670;&#160;</a></span>clod_nbt_payload_size()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -397,20 +433,20 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">size_t clod_nbt_payload_size </td>
           <td>(</td>
-          <td class="paramtype">const union <a class="el" href="unionclod__nbt__payload.html">clod_nbt_payload</a> *&#160;</td>
+          <td class="paramtype">const char *restrict&#160;</td>
           <td class="paramname"><em>payload</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">clod_nbt_type&#160;</td>
-          <td class="paramname"><em>payload_type</em>, </td>
+          <td class="paramtype">const void *&#160;</td>
+          <td class="paramname"><em>end</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>end</em>&#160;</td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>payload_type</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -419,21 +455,27 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Get the size of an NBT payload. This is the primary NBT traversing function; everything else is built on top of this.</p>
+<p>Get the size of a payload. This is the primary NBT traversing function; everything else is built on top of this.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">payload</td><td>The payload to get the size of. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">payload_type</td><td>The type of the payload. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">end</td><td>Point past which the method will never read. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">end</td><td>End of the NBT data. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The size of the payload, or 0 on invalid arguments. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The size of the payload, or 0 on failure. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="nbt_8c_source.html#l00026">26</a> of file <a class="el" href="nbt_8c_source.html">nbt.c</a>.</p>
+
+<p class="reference">References <a class="el" href="nbt_8c_source.html#l00026">clod_nbt_payload_size()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="nbt_8c_source.html#l00114">clod_nbt_iter_next()</a>, <a class="el" href="nbt_8c_source.html#l00328">clod_nbt_list_resize()</a>, <a class="el" href="nbt_8c_source.html#l00026">clod_nbt_payload_size()</a>, and <a class="el" href="nbt_8c_source.html#l00093">clod_nbt_tag_size()</a>.</p>
 
 </div>
 </div>
-<a id="gad11be51d4f14601e1d3c39db0847ead6" name="gad11be51d4f14601e1d3c39db0847ead6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gad11be51d4f14601e1d3c39db0847ead6">&#9670;&#160;</a></span>clod_nbt_tag_size()</h2>
+<a id="gae4d9a53d493a1436d27c2a6003da5b24" name="gae4d9a53d493a1436d27c2a6003da5b24"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gae4d9a53d493a1436d27c2a6003da5b24">&#9670;&#160;</a></span>clod_nbt_tag_size()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -441,13 +483,13 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">size_t clod_nbt_tag_size </td>
           <td>(</td>
-          <td class="paramtype">const union <a class="el" href="unionclod__nbt__tag.html">clod_nbt_tag</a> *&#160;</td>
+          <td class="paramtype">const char *restrict&#160;</td>
           <td class="paramname"><em>tag</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const char *&#160;</td>
+          <td class="paramtype">const void *&#160;</td>
           <td class="paramname"><em>end</em>&#160;</td>
         </tr>
         <tr>
@@ -457,43 +499,39 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Get the size of an NBT tag. It's mostly a wrapper around clod_nbt_payload_size.</p>
+<p>Get the size of a tag including its payload.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">tag</td><td>The tag to get the size of. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">end</td><td>Point past which the method will never read. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">end</td><td>End of the NBT data. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Size of the tag, or 0 on invalid arguments. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Size of the tag, or 0 on failure. </dd></dl>
 
-<p class="reference">Referenced by <a class="el" href="nbt_8c_source.html#l00111">clod_nbt_compound()</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nbt_8c_source.html#l00093">93</a> of file <a class="el" href="nbt_8c_source.html">nbt.c</a>.</p>
+
+<p class="reference">References <a class="el" href="nbt_8c_source.html#l00026">clod_nbt_payload_size()</a>.</p>
 
 </div>
 </div>
-<a id="ga8a389675940eb98f07b7143d2a159710" name="ga8a389675940eb98f07b7143d2a159710"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga8a389675940eb98f07b7143d2a159710">&#9670;&#160;</a></span>clod_nbt_tag_payload()</h2>
+<a id="gabe26362ef6d69ff8c73e9d7ec5d65340" name="gabe26362ef6d69ff8c73e9d7ec5d65340"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gabe26362ef6d69ff8c73e9d7ec5d65340">&#9670;&#160;</a></span>clod_nbt_tag_payload()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">union <a class="el" href="unionclod__nbt__payload.html">clod_nbt_payload</a> * clod_nbt_tag_payload </td>
+          <td class="memname">char * clod_nbt_tag_payload </td>
           <td>(</td>
-          <td class="paramtype">const union <a class="el" href="unionclod__nbt__tag.html">clod_nbt_tag</a> *&#160;</td>
+          <td class="paramtype">const char *restrict&#160;</td>
           <td class="paramname"><em>tag</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>end</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">clod_nbt_type&#160;</td>
-          <td class="paramname"><em>payload_type</em>&#160;</td>
+          <td class="paramtype">const void *&#160;</td>
+          <td class="paramname"><em>end</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -505,31 +543,281 @@ Functions</h2></td></tr>
 <p>Get a tag's payload.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">tag</td><td>The tag to get the payload for. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">tag</td><td>The tag to get the payload of. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">end</td><td>Point past which the method will never read. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">payload_type</td><td>The type the payload is expected to be. This is functionally unnecessary but avoids easy accidental misuse that can cause unsafe memory access. If the payload doesn't match, then null is returned and the error (more) safely propagates. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The tag's payload, or nullptr on buffer overrun. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The tag's payload. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="nbt_8c_source.html#l00097">97</a> of file <a class="el" href="nbt_8c_source.html">nbt.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nbt_8c_source.html#l00100">100</a> of file <a class="el" href="nbt_8c_source.html">nbt.c</a>.</p>
 
-<p class="reference">References <a class="el" href="nbt_8h_source.html#l00058">clod_nbt_tag::name_size</a>, and <a class="el" href="nbt_8h_source.html#l00055">clod_nbt_tag::type</a>.</p>
+<p class="reference">Referenced by <a class="el" href="nbt_8c_source.html#l00114">clod_nbt_iter_next()</a>.</p>
 
 </div>
 </div>
-<a id="ga97b6865c1d4b0db174a57ea8c2437caf" name="ga97b6865c1d4b0db174a57ea8c2437caf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga97b6865c1d4b0db174a57ea8c2437caf">&#9670;&#160;</a></span>clod_nbt_compound()</h2>
+<a id="gaa01cbbcf1268d5c60ceff583c8c54eb0" name="gaa01cbbcf1268d5c60ceff583c8c54eb0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaa01cbbcf1268d5c60ceff583c8c54eb0">&#9670;&#160;</a></span>clod_nbt_tag_name()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">union <a class="el" href="unionclod__nbt__tag.html">clod_nbt_tag</a> * clod_nbt_compound </td>
+          <td class="memname"><a class="el" href="structclod__sstr.html">clod_sstr</a> clod_nbt_tag_name </td>
           <td>(</td>
-          <td class="paramtype">union <a class="el" href="unionclod__nbt__payload.html">clod_nbt_payload</a> *&#160;</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>tag</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const void *&#160;</td>
+          <td class="paramname"><em>end</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Get the name of a tag.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">tag</td><td>The tag to get the name of. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">end</td><td>Point past which the method will never read. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The tag's name. </dd></dl>
+
+<p class="reference">Referenced by <a class="el" href="nbt_8c_source.html#l00275">clod_nbt_compound_add()</a>, <a class="el" href="nbt_8c_source.html#l00311">clod_nbt_compound_del()</a>, and <a class="el" href="nbt_8c_source.html#l00264">clod_nbt_compound_get()</a>.</p>
+
+</div>
+</div>
+<a id="ga4f997214997da93a2a650a67c77085c7" name="ga4f997214997da93a2a650a67c77085c7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga4f997214997da93a2a650a67c77085c7">&#9670;&#160;</a></span>clod_nbt_iter_next()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool clod_nbt_iter_next </td>
+          <td>(</td>
+          <td class="paramtype">const char *restrict&#160;</td>
+          <td class="paramname"><em>payload</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const void *&#160;</td>
+          <td class="paramname"><em>end</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>payload_type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct <a class="el" href="structclod__nbt__iter.html">clod_nbt_iter</a> *&#160;</td>
+          <td class="paramname"><em>iter</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Iterate over elements in a payload. <a class="el" href="structclod__nbt__iter.html">payload The payload whose elements are to be iterated over.  end End of NBT data.  payload_type Type of the payload. An invalid payload_type makes the function a false-returning no-op.  iter Iterator. Upon completion (false return), <code>iter.tag</code> is always set to  True if the last element was found, false if it was not. A false return and null <code>iter.payload</code> field indicates error. </a></p>
+
+<p class="definition">Definition at line <a class="el" href="nbt_8c_source.html#l00114">114</a> of file <a class="el" href="nbt_8c_source.html">nbt.c</a>.</p>
+
+<p class="reference">References <a class="el" href="nbt_8c_source.html#l00026">clod_nbt_payload_size()</a>, <a class="el" href="nbt_8c_source.html#l00100">clod_nbt_tag_payload()</a>, <a class="el" href="nbt_8h_source.html#l00107">clod_nbt_iter::index</a>, <a class="el" href="nbt_8h_source.html#l00101">clod_nbt_iter::payload</a>, <a class="el" href="nbt_8h_source.html#l00103">clod_nbt_iter::size</a>, <a class="el" href="nbt_8h_source.html#l00099">clod_nbt_iter::tag</a>, and <a class="el" href="nbt_8h_source.html#l00105">clod_nbt_iter::type</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="nbt_8c_source.html#l00275">clod_nbt_compound_add()</a>, <a class="el" href="nbt_8c_source.html#l00311">clod_nbt_compound_del()</a>, <a class="el" href="nbt_8c_source.html#l00264">clod_nbt_compound_get()</a>, and <a class="el" href="nbt_8c_source.html#l00328">clod_nbt_list_resize()</a>.</p>
+
+</div>
+</div>
+<a id="ga3378fb9d1e2f15b80b2f8c182286df90" name="ga3378fb9d1e2f15b80b2f8c182286df90"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga3378fb9d1e2f15b80b2f8c182286df90">&#9670;&#160;</a></span>clod_nbt_compound_get()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char * clod_nbt_compound_get </td>
+          <td>(</td>
+          <td class="paramtype">const char *restrict&#160;</td>
           <td class="paramname"><em>compound</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const void *&#160;</td>
+          <td class="paramname"><em>end</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structclod__sstr.html">clod_sstr</a>&#160;</td>
+          <td class="paramname"><em>name</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Get an element in a compound payload.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">compound</td><td>Payload to find element in. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">end</td><td>End of the NBT data. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">name</td><td>Name of the element. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Element tag, or null if none was found. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="nbt_8c_source.html#l00264">264</a> of file <a class="el" href="nbt_8c_source.html">nbt.c</a>.</p>
+
+<p class="reference">References <a class="el" href="nbt_8c_source.html#l00114">clod_nbt_iter_next()</a>, <a class="el" href="group__nbt.html#gaa01cbbcf1268d5c60ceff583c8c54eb0">clod_nbt_tag_name()</a>, <a class="el" href="sstr_8h_source.html#l00044">clod_sstr_eq()</a>, and <a class="el" href="nbt_8h_source.html#l00099">clod_nbt_iter::tag</a>.</p>
+
+</div>
+</div>
+<a id="ga9fca765c573fbf9e149d2164825d0c14" name="ga9fca765c573fbf9e149d2164825d0c14"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga9fca765c573fbf9e149d2164825d0c14">&#9670;&#160;</a></span>clod_nbt_compound_add()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char * clod_nbt_compound_add </td>
+          <td>(</td>
+          <td class="paramtype">char *restrict&#160;</td>
+          <td class="paramname"><em>compound</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const void **&#160;</td>
+          <td class="paramname"><em>end</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ptrdiff_t *&#160;</td>
+          <td class="paramname"><em>free</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structclod__sstr.html">clod_sstr</a>&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>type</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Get or create an element in a compound payload.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">compound</td><td>Payload to find or create element in. If <code>compound</code> is null, then the size that would be written on creation is subtracted from free. </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">end</td><td>End of the NBT data. </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">free</td><td>Free space in the buffer. It is modified to reflect the change in NBT data size. A negative value after return indicates the writing failed due to lack of space. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">name</td><td>Name of the element to search for. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">type</td><td>Type of the new element if creation occurs. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Element tag if one was found, the created element if it was created, or null if there isn't enough free space. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="nbt_8c_source.html#l00275">275</a> of file <a class="el" href="nbt_8c_source.html">nbt.c</a>.</p>
+
+<p class="reference">References <a class="el" href="nbt_8c_source.html#l00114">clod_nbt_iter_next()</a>, <a class="el" href="group__nbt.html#gaa01cbbcf1268d5c60ceff583c8c54eb0">clod_nbt_tag_name()</a>, <a class="el" href="sstr_8h_source.html#l00044">clod_sstr_eq()</a>, <a class="el" href="sstr_8h_source.html#l00022">clod_sstr::ptr</a>, <a class="el" href="sstr_8h_source.html#l00024">clod_sstr::size</a>, <a class="el" href="nbt_8h_source.html#l00099">clod_nbt_iter::tag</a>, and <a class="el" href="nbt_8h_source.html#l00105">clod_nbt_iter::type</a>.</p>
+
+</div>
+</div>
+<a id="ga92d6b3742af8f64bdfbd32b8b58dff36" name="ga92d6b3742af8f64bdfbd32b8b58dff36"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga92d6b3742af8f64bdfbd32b8b58dff36">&#9670;&#160;</a></span>clod_nbt_compound_del()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool clod_nbt_compound_del </td>
+          <td>(</td>
+          <td class="paramtype">char *restrict&#160;</td>
+          <td class="paramname"><em>compound</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const void **&#160;</td>
+          <td class="paramname"><em>end</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ptrdiff_t *&#160;</td>
+          <td class="paramname"><em>free</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structclod__sstr.html">clod_sstr</a>&#160;</td>
+          <td class="paramname"><em>name</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Delete an element in a compound payload.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">compound</td><td>Payload to delete element in. </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">end</td><td>End of the NBT data. </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">free</td><td>Free space in the buffer. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">name</td><td>Name of the element to delete. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True on success, false on failure. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="nbt_8c_source.html#l00311">311</a> of file <a class="el" href="nbt_8c_source.html">nbt.c</a>.</p>
+
+<p class="reference">References <a class="el" href="nbt_8c_source.html#l00114">clod_nbt_iter_next()</a>, <a class="el" href="group__nbt.html#gaa01cbbcf1268d5c60ceff583c8c54eb0">clod_nbt_tag_name()</a>, <a class="el" href="sstr_8h_source.html#l00044">clod_sstr_eq()</a>, <a class="el" href="nbt_8h_source.html#l00103">clod_nbt_iter::size</a>, and <a class="el" href="nbt_8h_source.html#l00099">clod_nbt_iter::tag</a>.</p>
+
+</div>
+</div>
+<a id="ga7cb5a2816ab7af52697bd8b93edf2f7d" name="ga7cb5a2816ab7af52697bd8b93edf2f7d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga7cb5a2816ab7af52697bd8b93edf2f7d">&#9670;&#160;</a></span>clod_nbt_list_resize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool clod_nbt_list_resize </td>
+          <td>(</td>
+          <td class="paramtype">char *restrict&#160;</td>
+          <td class="paramname"><em>list</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -546,14 +834,14 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">clod_nbt_type&#160;</td>
+          <td class="paramtype">char&#160;</td>
           <td class="paramname"><em>type</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structsstr.html">sstr</a>&#160;</td>
-          <td class="paramname"><em>name</em>&#160;</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>length</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -562,177 +850,22 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Get, create, or delete an element in a compound payload.</p>
-<p>If <code>compound</code> is null, <code>end_offset</code> is incremented by the worst case (largest) increase in NBT data size the operation could produce, and the method returns null.</p>
+<p>Resize a list payload.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">compound</td><td>(nullable) The compound payload. </td></tr>
-    <tr><td class="paramdir">[in,out]</td><td class="paramname">end</td><td>The end of NBT data. Updated to reflect any changes made. </td></tr>
-    <tr><td class="paramdir">[in,out]</td><td class="paramname">free</td><td>(nullable) The amount of free space. Updated to reflect any changes made. A positive value indicates how much free space exists that <code>end</code> can be incremented into, and a negative value indicates that changes would have overrun the buffer and no changes were made. If null, the operation never modifies the NBT data. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">type</td><td>If element creation occurs, the type it should be created with, or CLOD_NBT_ZERO to delete the tag. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">name</td><td>Name of the element. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">list</td><td>The list payload to resize. </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">end</td><td>End of NBT data. </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">free</td><td>Free space in the buffer. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">type</td><td>If non-zero, the type of list elements will be set to this. Changing types forces wiping all existing elements in the list. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">length</td><td>New length. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The element tag. Null if changes would overrun the buffer, on deletion, or if <code>free</code> is null and the element doesn't exist. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>True on success, false on failure. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="nbt_8c_source.html#l00111">111</a> of file <a class="el" href="nbt_8c_source.html">nbt.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nbt_8c_source.html#l00328">328</a> of file <a class="el" href="nbt_8c_source.html">nbt.c</a>.</p>
 
-<p class="reference">References <a class="el" href="group__nbt.html#gad11be51d4f14601e1d3c39db0847ead6">clod_nbt_tag_size()</a>, <a class="el" href="nbt_8h_source.html#l00061">clod_nbt_tag::name</a>, <a class="el" href="nbt_8h_source.html#l00058">clod_nbt_tag::name_size</a>, and <a class="el" href="nbt_8h_source.html#l00055">clod_nbt_tag::type</a>.</p>
-
-</div>
-</div>
-<a id="gabc76cee609c4aa30560b4a6d22aedeb1" name="gabc76cee609c4aa30560b4a6d22aedeb1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gabc76cee609c4aa30560b4a6d22aedeb1">&#9670;&#160;</a></span>clod_nbt_compound_get()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">union <a class="el" href="unionclod__nbt__tag.html">clod_nbt_tag</a> * clod_nbt_compound_get </td>
-          <td>(</td>
-          <td class="paramtype">const union <a class="el" href="unionclod__nbt__payload.html">clod_nbt_payload</a> *&#160;</td>
-          <td class="paramname"><em>compound</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>end</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="structsstr.html">sstr</a>&#160;</td>
-          <td class="paramname"><em>name</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Get an element in a compound payload.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">compound</td><td>The compound payload. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">end</td><td>Point past which the method will never read. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">name</td><td>Name of the child tag. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>The child tag, or null on buffer overrun or nonexistent child. </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="nbt_8c_source.html#l00177">177</a> of file <a class="el" href="nbt_8c_source.html">nbt.c</a>.</p>
-
-<p class="reference">References <a class="el" href="nbt_8h_source.html#l00061">clod_nbt_tag::name</a>, <a class="el" href="nbt_8h_source.html#l00058">clod_nbt_tag::name_size</a>, and <a class="el" href="nbt_8h_source.html#l00055">clod_nbt_tag::type</a>.</p>
-
-</div>
-</div>
-<a id="gaa0c908240a13d87d7131704b90625b34" name="gaa0c908240a13d87d7131704b90625b34"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gaa0c908240a13d87d7131704b90625b34">&#9670;&#160;</a></span>clod_nbt_list_get()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">union <a class="el" href="unionclod__nbt__payload.html">clod_nbt_payload</a> * clod_nbt_list_get </td>
-          <td>(</td>
-          <td class="paramtype">const union <a class="el" href="unionclod__nbt__payload.html">clod_nbt_payload</a> *&#160;</td>
-          <td class="paramname"><em>list</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>end</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>index</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Get an element in a list payload.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">list</td><td>The list payload. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">end</td><td>Point past which the method will never read. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">index</td><td>List index to get. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>The payload at the provided index, or null on buffer overrun or index out of bounds. </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="nbt_8c_source.html#l00191">191</a> of file <a class="el" href="nbt_8c_source.html">nbt.c</a>.</p>
-
-<p class="reference">References <a class="el" href="unionclod__nbt__payload.html#a5d2b4d66281f5ed95c2b5bb69d43564b">clod_nbt_payload::list</a>.</p>
-
-</div>
-</div>
-<a id="gaafce0662b4e8563d4904e1f502f20ff2" name="gaafce0662b4e8563d4904e1f502f20ff2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gaafce0662b4e8563d4904e1f502f20ff2">&#9670;&#160;</a></span>clod_nbt_list_set()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">union <a class="el" href="unionclod__nbt__payload.html">clod_nbt_payload</a> * clod_nbt_list_set </td>
-          <td>(</td>
-          <td class="paramtype">union <a class="el" href="unionclod__nbt__payload.html">clod_nbt_payload</a> *&#160;</td>
-          <td class="paramname"><em>list</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const char **&#160;</td>
-          <td class="paramname"><em>end</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">ptrdiff_t *&#160;</td>
-          <td class="paramname"><em>end_offset</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">clod_nbt_type&#160;</td>
-          <td class="paramname"><em>type</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>index</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Modify a list payload's length.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">list</td><td>(nullable) The list payload. </td></tr>
-    <tr><td class="paramdir">[in,out]</td><td class="paramname">end</td><td>The end of NBT data. If NBT data is mutated, it is updated to reflect the new size. </td></tr>
-    <tr><td class="paramdir">[in,out]</td><td class="paramname">end_offset</td><td>The offset of <code>end</code> relative to the end of the buffer. A negative value indicates there is free space that end can be grown into, and a positive value indicates a buffer overrun. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">type</td><td>The type of list elements. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">index</td><td>The number of list elements. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>The first list element. </dd></dl>
+<p class="reference">References <a class="el" href="nbt_8c_source.html#l00114">clod_nbt_iter_next()</a>, <a class="el" href="nbt_8c_source.html#l00026">clod_nbt_payload_size()</a>, <a class="el" href="nbt_8h_source.html#l00107">clod_nbt_iter::index</a>, <a class="el" href="nbt_8h_source.html#l00101">clod_nbt_iter::payload</a>, <a class="el" href="nbt_8h_source.html#l00099">clod_nbt_iter::tag</a>, and <a class="el" href="nbt_8h_source.html#l00105">clod_nbt_iter::type</a>.</p>
 
 </div>
 </div>

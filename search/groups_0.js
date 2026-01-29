@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['crc_20checksums_2e_0',['CRC checksums.',['../group__crc.html',1,'']]]
+  ['hash_20methods_0',['Hash methods',['../group__hash.html',1,'']]],
+  ['hash_20table_1',['Hash table',['../group__table.html',1,'']]]
 ];

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.6"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>clod: src/region/platform/unix/dir.c Source File</title>
+<title>libclod: src/region/platform/unix/dir.c Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -25,9 +25,9 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">clod
+   <div id="projectname">libclod
    </div>
-   <div id="projectbrief">C library and tools for working with minecraft and LOD data</div>
+   <div id="projectbrief">C library for interacting with NBT, region files, LOD data and other things.a</div>
   </td>
  </tr>
  </tbody>
@@ -101,10 +101,10 @@ $(document).ready(function(){initNavTree('dir_8c_source.html',''); initResizable
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;errno.h&gt;</span></div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="keyword">enum</span> <a class="code hl_enumeration" href="group__region.html#ga9e5053f4d6bd4efc2f4ba2352276e4d5">clod_region_result</a> dir_open(dir *d, <span class="keyword">const</span> <span class="keywordtype">char</span> *path, <span class="keyword">const</span> <span class="keyword">struct</span> clod_region_opts *opts) {</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="keyword">enum</span> <a class="code hl_enumeration" href="group__region.html#ga9e5053f4d6bd4efc2f4ba2352276e4d5">clod_region_result</a> dir_open(dir *d, <span class="keyword">const</span> <span class="keywordtype">char</span> *path, <span class="keyword">const</span> <span class="keyword">struct</span> <a class="code hl_struct" href="structclod__region__opts.html">clod_region_opts</a> *opts) {</div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    <span class="keywordtype">int</span> fd;</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    <span class="keywordflow">if</span> (opts-&gt;unix_fd)</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>        fd = openat(opts-&gt;unix_fd, path &amp;&amp; path[0] ? path : <span class="stringliteral">&quot;.&quot;</span>, O_DIRECTORY | O_RDONLY);</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    <span class="keywordflow">if</span> (opts-&gt;<a class="code hl_variable" href="structclod__region__opts.html#a50fa8c75fe1eb9526b1e9f367160842c">unix_fd</a>)</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>        fd = openat(opts-&gt;<a class="code hl_variable" href="structclod__region__opts.html#a50fa8c75fe1eb9526b1e9f367160842c">unix_fd</a>, path &amp;&amp; path[0] ? path : <span class="stringliteral">&quot;.&quot;</span>, O_DIRECTORY | O_RDONLY);</div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    <span class="keywordflow">else</span></div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>        fd = open(path &amp;&amp; path[0] ? path : <span class="stringliteral">&quot;.&quot;</span>, O_DIRECTORY | O_RDONLY);</div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
@@ -128,9 +128,11 @@ $(document).ready(function(){initNavTree('dir_8c_source.html',''); initResizable
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    }</div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="group__region.html#gga9e5053f4d6bd4efc2f4ba2352276e4d5ae12bb61e00ea4eb8ffe1856fe1065a45">CLOD_REGION_OK</a>;</div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>}</div>
-<div class="ttc" id="agroup__region_html_ga9e5053f4d6bd4efc2f4ba2352276e4d5"><div class="ttname"><a href="group__region.html#ga9e5053f4d6bd4efc2f4ba2352276e4d5">clod_region_result</a></div><div class="ttdeci">clod_region_result</div><div class="ttdef"><b>Definition:</b> <a href="region_8h_source.html#l00042">region.h:42</a></div></div>
-<div class="ttc" id="agroup__region_html_gga9e5053f4d6bd4efc2f4ba2352276e4d5ac37f4ae63905afb5ef5099a1825fe271"><div class="ttname"><a href="group__region.html#gga9e5053f4d6bd4efc2f4ba2352276e4d5ac37f4ae63905afb5ef5099a1825fe271">CLOD_REGION_INVALID_USAGE</a></div><div class="ttdeci">@ CLOD_REGION_INVALID_USAGE</div><div class="ttdef"><b>Definition:</b> <a href="region_8h_source.html#l00048">region.h:48</a></div></div>
-<div class="ttc" id="agroup__region_html_gga9e5053f4d6bd4efc2f4ba2352276e4d5ae12bb61e00ea4eb8ffe1856fe1065a45"><div class="ttname"><a href="group__region.html#gga9e5053f4d6bd4efc2f4ba2352276e4d5ae12bb61e00ea4eb8ffe1856fe1065a45">CLOD_REGION_OK</a></div><div class="ttdeci">@ CLOD_REGION_OK</div><div class="ttdef"><b>Definition:</b> <a href="region_8h_source.html#l00044">region.h:44</a></div></div>
+<div class="ttc" id="agroup__region_html_ga9e5053f4d6bd4efc2f4ba2352276e4d5"><div class="ttname"><a href="group__region.html#ga9e5053f4d6bd4efc2f4ba2352276e4d5">clod_region_result</a></div><div class="ttdeci">clod_region_result</div><div class="ttdef"><b>Definition:</b> <a href="region_8h_source.html#l00051">region.h:51</a></div></div>
+<div class="ttc" id="agroup__region_html_gga9e5053f4d6bd4efc2f4ba2352276e4d5ac37f4ae63905afb5ef5099a1825fe271"><div class="ttname"><a href="group__region.html#gga9e5053f4d6bd4efc2f4ba2352276e4d5ac37f4ae63905afb5ef5099a1825fe271">CLOD_REGION_INVALID_USAGE</a></div><div class="ttdeci">@ CLOD_REGION_INVALID_USAGE</div><div class="ttdef"><b>Definition:</b> <a href="region_8h_source.html#l00057">region.h:57</a></div></div>
+<div class="ttc" id="agroup__region_html_gga9e5053f4d6bd4efc2f4ba2352276e4d5ae12bb61e00ea4eb8ffe1856fe1065a45"><div class="ttname"><a href="group__region.html#gga9e5053f4d6bd4efc2f4ba2352276e4d5ae12bb61e00ea4eb8ffe1856fe1065a45">CLOD_REGION_OK</a></div><div class="ttdeci">@ CLOD_REGION_OK</div><div class="ttdef"><b>Definition:</b> <a href="region_8h_source.html#l00053">region.h:53</a></div></div>
+<div class="ttc" id="astructclod__region__opts_html"><div class="ttname"><a href="structclod__region__opts.html">clod_region_opts</a></div><div class="ttdef"><b>Definition:</b> <a href="region_8h_source.html#l00195">region.h:195</a></div></div>
+<div class="ttc" id="astructclod__region__opts_html_a50fa8c75fe1eb9526b1e9f367160842c"><div class="ttname"><a href="structclod__region__opts.html#a50fa8c75fe1eb9526b1e9f367160842c">clod_region_opts::unix_fd</a></div><div class="ttdeci">int unix_fd</div><div class="ttdef"><b>Definition:</b> <a href="region_8h_source.html#l00211">region.h:211</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
