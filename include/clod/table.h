@@ -1,6 +1,17 @@
 /**
  * @file clod/table.h
  * @defgroup table Hash table
+ *
+ * A hash table implementation.
+ * It's a pure set at heart, but since methods never return a pointer not supplied by the user,
+ * it can be trivially extended to a key->value map by storing the value after the key.
+ * The difference in wording between 'element' and 'key' reflects this.
+ * If implementing a map, 'element' implies the key and trailing value data associated with it,
+ * while 'key' simply implies the key value.
+ * If instead a pure set is required - 'element' and 'key' become interchangeable.
+ * I would recommend using a struct with the first field being the key and subsequent fields being the value,
+ * although for maps with variable-length keys more manual intervention may be required.
+ *
  * @{
  */
 #ifndef CLOD_TABLE_H
@@ -11,17 +22,6 @@
 #include <stddef.h>
 #include <stdint.h>
 
-/**
- * A hash table implementation.
- * It's a pure set at heart, but since methods never return a pointer not supplied by the user,
- * it can be trivially extended to a key->value map by storing the value after the key.
- * The difference in wording between 'element' and 'key' reflects this.
- * If implementing a map, 'element' implies the key and trailing value data associated with it,
- * while 'key' simply implies the key value.
- * If instead a pure set is required - 'element' and 'key' become interchangeable.
- * I would recommend using a struct with the first field being the key and subsequent fields being the value,
- * although for maps with variable-length keys more manual intervention may be required.
- */
 struct clod_table;
 
 struct clod_table_opts {

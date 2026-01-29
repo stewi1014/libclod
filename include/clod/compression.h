@@ -37,16 +37,7 @@ enum clod_compression_result {
 	CLOD_COMPRESSION_ALLOC_FAILED = 5
 };
 
-/**
- * @struct clod_compressor
- * Allocated resources to be reused between compressions.
- */
 struct clod_compressor;
-
-/**
- * @struct clod_decompressor
- * Allocated resources to be reused between decompressions.
- */
 struct clod_decompressor;
 
 /**
@@ -68,7 +59,7 @@ clod_compressor_free(struct clod_compressor *ctx);
 /**
  * Compress data with a given compression algorithm.
  * @param[in] ctx Compressor.
- * @param[in] dst Where compressed data is written.
+ * @param[out] dst Where compressed data is written.
  * @param[in] dst_size Size of dst.
  * @param[in] src Where data to be compressed is read from.
  * @param[in] src_size Size of src.
@@ -77,10 +68,10 @@ clod_compressor_free(struct clod_compressor *ctx);
  * @param[in] algo The compression algorith to use.
  * @param[in] level Compression level to use. CLOD_COMPRESSION_DEFAULT_LEVEL will use the algos default.
  * @return Result of compression.
- * @throws CLOD_COMPRESSION_SUCCESS on successful compression.
- * @throws CLOD_COMPRESSION_UNSUPPORTED if the algo is unsupported.
- * @throws CLOD_COMPRESSION_SHORT_BUFFER if the destination buffer is too small to hold the compressed output.
- * @throws CLOD_COMPRESSION_ALLOC_FAILED if memory allocation failed.
+ * @throws CLOD_COMPRESSION_SUCCESS On successful compression.
+ * @throws CLOD_COMPRESSION_UNSUPPORTED If the algo is unsupported.
+ * @throws CLOD_COMPRESSION_SHORT_BUFFER If \p dst is too small to hold the compressed output.
+ * @throws CLOD_COMPRESSION_ALLOC_FAILED If memory allocation failed.
  */
 CLOD_API CLOD_USE_RETURN CLOD_NONNULL(1, 2, 4)
 enum clod_compression_result
@@ -110,21 +101,21 @@ clod_decompressor_free(struct clod_decompressor *ctx);
 
 /**
  * Decompress some data with the given algorithm.
- * @param ctx Decompressor.
- * @param dst Where uncompressed data is written.
- * @param dst_size Size of dst.
- * @param src Where compressed data is read from.
- * @param src_size Size of src.
- * @param decompressed_size The actual size of the uncompressed output,
+ * @param[in] ctx Decompressor.
+ * @param[out] dst Where uncompressed data is written.
+ * @param[in] dst_size Size of dst.
+ * @param[in] src Where compressed data is read from.
+ * @param[in] src_size Size of src.
+ * @param[out] decompressed_size The actual size of the uncompressed output,
  * or 0 if decompression failed and the decompressed size isn't known.
  * @param algo The compression algorithm to use.
  * @return The result of the decompression.
- * @throws CLOD_COMPRESSION_SUCCESS on successful decompression.
- * @throws CLOD_COMPRESSION_UNSUPPORTED if the algo is unsupported.
- * @throws CLOD_COMPRESSION_MALFORMED if the compressed data is malformed. THIS IS NOT AN INTEGRITY CHECK.
- * @throws CLOD_COMPRESSION_SHORT_BUFFER if the destination buffer is too small to hold the decompressed output.
- * @throws CLOD_COMPRESSION_SHORT_OUTPUT if dst is larger than the decompressed output and bytes_written is null.
- * @throws CLOD_COMPRESSION_ALLOC_FAILED if memory allocation failed.
+ * @throws CLOD_COMPRESSION_SUCCESS On successful decompression.
+ * @throws CLOD_COMPRESSION_UNSUPPORTED If the algo is unsupported.
+ * @throws CLOD_COMPRESSION_MALFORMED If the compressed data is malformed. *THIS IS NOT AN INTEGRITY CHECK.*
+ * @throws CLOD_COMPRESSION_SHORT_BUFFER If \p dst is too small to hold the decompressed output.
+ * @throws CLOD_COMPRESSION_SHORT_OUTPUT If \p dst is larger than the decompressed output and bytes_written is null.
+ * @throws CLOD_COMPRESSION_ALLOC_FAILED If memory allocation failed.
  */
 CLOD_API CLOD_USE_RETURN CLOD_NONNULL(1, 2, 4)
 enum clod_compression_result

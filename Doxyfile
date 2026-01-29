@@ -1,5 +1,5 @@
 PROJECT_NAME            = "libclod"
-PROJECT_BRIEF           = "C library for interacting with NBT, region files, LOD data and other things.a"
+PROJECT_BRIEF           = "C library for interacting with NBTs, region files, LOD data and other things."
 OUTPUT_DIRECTORY        = docs
 RECURSIVE               = YES
 SOURCE_BROWSER          = YES

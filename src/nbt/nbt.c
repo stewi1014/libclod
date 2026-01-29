@@ -3,7 +3,7 @@
 #include <string.h>
 #include <clod/nbt.h>
 
-constexpr size_t payload_zero_size_[] = {
+constexpr size_t payload_zero_sizes[] = {
 	[CLOD_NBT_INT8] = 1,
 	[CLOD_NBT_INT16] = 2,
 	[CLOD_NBT_INT32] = 4,
@@ -17,17 +17,17 @@ constexpr size_t payload_zero_size_[] = {
 	[CLOD_NBT_LIST] = 5,
 	[CLOD_NBT_COMPOUND] = 1
 };
+constexpr char payload_zero_sizes_len = sizeof(payload_zero_sizes) / sizeof(payload_zero_sizes[0]);
 
-#define type_valid(type) (0 <= (type) && (type) < (clod_nbt_type)(sizeof(payload_zero_size_) / sizeof(payload_zero_size_[0])) && payload_zero_size_[type] > 0)
-#define payload_zero_size(type) (assert(type_valid(type)), payload_zero_size_[type])
-#define available(ptr, end) (assert((char*)ptr <= (char*)(end)), (size_t)((char*)(end) - (char*)ptr))
-#define ptr_add(ptr, end, offset) (assert(available(ptr, end) >= offset), (void*)((char*)(ptr) + (offset)))
+#define type_zero_size(type) (0 <= (type) && (type) < payload_zero_sizes_len ? payload_zero_sizes[(unsigned)type] : 0)
+#define type_valid(type) (type_zero_size(type))
+#define available(ptr, end) ((ptr) != nullptr && (ptr) <= (char*)(end) ? (size_t)((char*)(end) - (ptr)) : 0)
 
-// caller has responsibility to ensure valid inputs.
-// the return value is not checked for validity.
-CLOD_PURE CLOD_INLINE
-static size_t
-payload_size(const union clod_nbt_payload *restrict payload, const clod_nbt_type payload_type, const char *const end) {
+size_t clod_nbt_payload_size(
+	const char *restrict const payload,
+	const void *const end,
+	const char payload_type
+) {
 	switch (payload_type) {
 		default: return 0;
 		case CLOD_NBT_INT8: return 1;
@@ -37,26 +37,37 @@ payload_size(const union clod_nbt_payload *restrict payload, const clod_nbt_type
 		case CLOD_NBT_FLOAT32: return 4;
 		case CLOD_NBT_FLOAT64: return 8;
 		case CLOD_NBT_INT8_ARRAY: {
-			if (sizeof(payload->byte_array) > available(payload, end)) return 0;
-			return sizeof(payload->byte_array) + (size_t)be(payload->byte_array.length);
+			if (available(payload, end) < 4) return 0;
+			const size_t size = (size_t)bei32_dec(payload);
+			if (available(payload, end) < 4 + size) return 0;
+			return 4 + size;
 		}
 		case CLOD_NBT_INT32_ARRAY: {
-			if (sizeof(payload->int32_array) > available(payload, end)) return 0;
-			return sizeof(payload->int32_array) + (size_t)be(payload->int32_array.length) * 4;
+			if (available(payload, end) < 4) return 0;
+			const size_t size = (size_t)bei32_dec(payload) * 4;
+			if (available(payload, end) < 4 + size) return 0;
+			return 4 + size;
 		}
 		case CLOD_NBT_INT64_ARRAY: {
-			if (sizeof(payload->int64_array) > available(payload, end)) return 0;
-			return sizeof(payload->int64_array) + (size_t)be(payload->int64_array.length) * 8;
+			if (available(payload, end) < 4) return 0;
+			const size_t size = (size_t)bei32_dec(payload) * 8;
+			if (available(payload, end) < 4 + size) return 0;
+			return 4 + size;
 		}
 		case CLOD_NBT_STRING: {
-			if (sizeof(payload->string) > available(payload, end)) return 0;
-			return sizeof(payload->string) + be(payload->string.length);
+			if (available(payload, end) < 2) return 0;
+			const size_t size = (size_t)beu16_dec(payload);
+			if (available(payload, end) < 2 + size) return 0;
+			return 2 + size;
 		}
 		case CLOD_NBT_LIST: {
-			if (sizeof(payload->list) > available(payload, end)) return 0;
-			size_t size = sizeof(payload->list);
-			for (int32_t i = 0; i < be(payload->list.length) && size < available(payload, end); i++) {
-				const size_t elem_size = payload_size(ptr_add(payload, end, size), payload->list.payload_type, end);
+			if (available(payload, end) < 5) return 0;
+			if (payload[0] == CLOD_NBT_ZERO) return 5;
+			if (!type_valid(payload[0])) return 0;
+			const size_t length = (size_t)bei32_dec(payload + 1);
+			size_t size = 5;
+			for (size_t i = 0; i < length; i++) {
+				const size_t elem_size = clod_nbt_payload_size(payload + size, end, payload[0]);
 				if (elem_size == 0) return 0;
 				size += elem_size;
 			}
@@ -64,195 +75,325 @@ payload_size(const union clod_nbt_payload *restrict payload, const clod_nbt_type
 		}
 		case CLOD_NBT_COMPOUND: {
 			size_t size = 0;
-			while (
-				size + sizeof(union clod_nbt_tag) < available(payload, end) &&
-				*(clod_nbt_type*)ptr_add(payload, end, size) != CLOD_NBT_ZERO
-			) {
-				auto const elem = (union clod_nbt_tag*)ptr_add(payload, end, size);
-				size += sizeof(union clod_nbt_tag) + be(elem->name_size);
-				if (size > available(payload, end)) return 0;
-				size += payload_size(ptr_add(payload, end, size), elem->type, end);
+			for (;;) {
+				while (available(payload, end) >= size + 3) {
+					if (!type_valid(payload[size])) break;
+					const size_t name_size = beu16_dec(payload + size + 1);
+					if (available(payload, end) < size + 3 + name_size) return 0;
+					size += 3 + name_size + clod_nbt_payload_size(payload + size + 3 + name_size, end, payload[size]);
+				}
+
+				if (available(payload, end) < size + 1) return 0;
+				if (payload[size] == CLOD_NBT_ZERO) return size + 1;
+				return 0;
 			}
-			return size + 1;
 		}
 	}
 }
-size_t clod_nbt_payload_size(const union clod_nbt_payload *restrict payload, const clod_nbt_type payload_type, const char *const end) {
-	const size_t size = payload_size(payload, payload_type, end);
-	if (size > available(payload, end)) return 0;
-	return size;
-}
-size_t clod_nbt_tag_size(const union clod_nbt_tag *restrict tag, const char *const end) {
-	if (
-		sizeof(*tag) > available(tag, end) ||
-		!type_valid(tag->type)
-	) return 0;
 
-	const size_t tag_size = sizeof(*tag) + be(tag->name_size);
-	if (tag_size > available(tag, end)) return 0;
-	const size_t payload_size = clod_nbt_payload_size(ptr_add(tag, end, tag_size), tag->type, end);
-	if (payload_size == 0) return 0;
-	return tag_size + payload_size;
-}
-union clod_nbt_payload *clod_nbt_tag_payload(const union clod_nbt_tag *tag, const char *end, const clod_nbt_type payload_type) {
-	if (
-		payload_type == CLOD_NBT_ZERO ||
-		sizeof(*tag) > available(tag, end) ||
-		!type_valid(tag->type) ||
-		tag->type != payload_type
-	) return nullptr;
-
-	const size_t tag_size = sizeof(*tag) + be(tag->name_size);
-	if (tag_size > available(tag, end)) return nullptr;
-	return ptr_add(tag, end, tag_size);
+size_t clod_nbt_tag_size(const char *restrict tag, const void *end) {
+	if (available(tag, end) < 3) return 0;
+	if (!type_valid(tag[0])) return 0;
+	const size_t name_size = beu16_dec(tag + 1);
+	if (available(tag, end) < 3 + name_size) return 0;
+	return 3 + name_size + clod_nbt_payload_size(tag + 3 + name_size, end, tag[0]);
 }
 
-union clod_nbt_tag *
-clod_nbt_compound(
-	union clod_nbt_payload *compound,
-	const char **end,
-	ptrdiff_t *free,
-	const clod_nbt_type type,
-	clod_sstr name
+char *clod_nbt_tag_payload(const char *restrict tag, const void *end) {
+	if (available(tag, end) < 3) return nullptr;
+	if (!type_valid(tag[0])) return nullptr;
+	const size_t name_size = beu16_dec(tag + 1);
+	if (available(tag, end) < 3 + name_size) return nullptr;
+	return (char*)tag + 3 + name_size;
+}
+
+clod_sstr clod_nbt_tag_name(const char *restrict tag, const void *end) {
+	if (available(tag, end) < 3) return CLOD_SSTR_NULL;
+	if (!type_valid(tag[0])) return CLOD_SSTR_NULL;
+	const size_t name_size = beu16_dec(tag + 1);
+	if (available(tag, end) < 3 + name_size) return CLOD_SSTR_NULL;
+	return clod_sstr(tag + 3, name_size);
+}
+
+bool clod_nbt_iter_next(
+	const char *const restrict payload,
+	const void *const end,
+	const char payload_type,
+	struct clod_nbt_iter *iter
 ) {
-	size_t off = 0;
-	while (
-		off + sizeof(union clod_nbt_tag) < available(compound, *end) &&
-		*(clod_nbt_type*)ptr_add(compound, *end, off) != CLOD_NBT_ZERO
-	) {
-		union clod_nbt_tag *elem = ptr_add(compound, *end, off);
-		const size_t elem_size = clod_nbt_tag_size(elem, *end);
-		if (elem_size == 0) return nullptr;
-		if (clod_sstr_cmp(clod_sstr_wrap(elem->name, be(elem->name_size)), name)) {
-			if (type == CLOD_NBT_ZERO) {
-				// delete
-				memmove(elem, ptr_add(elem, *end, elem_size), available(elem, *end) - elem_size);
-				memset(available())
-			}
+	switch (payload_type) {
+	case CLOD_NBT_COMPOUND: {
+		if (iter->payload == nullptr) {
+			memset(iter, 0, sizeof(*iter));
+			iter->tag = (char*)payload;
+		} else {
+			iter->tag += iter->size;
+			iter->index++;
 		}
 
-		off += sizeof(union clod_nbt_tag) + be(elem->name_size);
-		if (off > available(compound, *end)) return nullptr;
-		const size_t elem_size = clod_nbt_tag_size(elem, *end);
-
-		if (sstr_cmp(sstr(elem->name, be(elem->name_size)), name)) {
-			if (type == CLOD_NBT_ZERO) {
-				// Delete
-				memmove(elem, (char*)elem + elem_size, available(elem, *end) - elem_size);
-				memset(ptr_add(elem, *end, available(elem, *end) - elem_size), 0, elem_size);
-				*end -= elem_size;
-				*free += (ptrdiff_t)elem_size;
-				return nullptr;
-			}
-
-			// Get
-			return elem;
+		if (available(iter->tag, end) < 1) goto iter_fail;
+		if (iter->tag[0] == CLOD_NBT_ZERO) {
+			iter->tag++;
+			iter->payload = nullptr;
+			iter->size = 0;
+			iter->type = CLOD_NBT_ZERO;
+			return false;
 		}
 
-		off += elem_size;
+		char *tag_payload = clod_nbt_tag_payload(iter->tag, end);
+		if (!tag_payload) goto iter_fail;
+		const size_t payload_size = clod_nbt_payload_size(tag_payload, end, iter->tag[0]);
+		if (payload_size == 0) goto iter_fail;
+
+		iter->payload = tag_payload;
+		iter->size = (size_t)(tag_payload - iter->tag) + payload_size;
+		iter->type = iter->tag[0];
+		return true;
+	}
+	case CLOD_NBT_LIST: {
+		if (iter->payload == nullptr) {
+			if (available(payload, end) < 5) goto iter_fail;
+			memset(iter, 0, sizeof(*iter));
+			iter->payload = (char*)payload;
+			iter->type = payload[0];
+		} else {
+			iter->payload += iter->size;
+			iter->index++;
+		}
+
+		if (iter->index >= (uint32_t)bei32_dec(payload + 1)) {
+			iter->tag = iter->payload;
+			iter->payload = nullptr;
+			iter->size = 0;
+			iter->type = CLOD_NBT_ZERO;
+			return false;
+		}
+
+		const size_t payload_size = clod_nbt_payload_size(iter->payload, end, payload[0]);
+		if (payload_size == 0) goto iter_fail;
+		iter->size = payload_size;
+		return true;
+	}
+	case CLOD_NBT_STRING: {
+		if (iter->payload == nullptr) {
+			if (available(payload, end) < 2) goto iter_fail;
+			memset(iter, 0, sizeof(*iter));
+			iter->payload = (char*)payload;
+			iter->size = 1;
+			iter->type = CLOD_NBT_INT8;
+		} else {
+			iter->payload++;
+			iter->index++;
+		}
+
+		if (iter->index >= beu16_dec(payload)) {
+			iter->tag = iter->payload;
+			iter->payload = nullptr;
+			iter->size = 0;
+			iter->type = CLOD_NBT_ZERO;
+			return false;
+		}
+		return true;
+	}
+	case CLOD_NBT_INT8_ARRAY: {
+		if (iter->payload == nullptr) {
+			if (available(payload, end) < 4) goto iter_fail;
+			memset(iter, 0, sizeof(*iter));
+			iter->payload = (char*)payload;
+			iter->size = 1;
+			iter->type = CLOD_NBT_INT8;
+		} else {
+			iter->payload++;
+			iter->index++;
+		}
+
+		if (iter->index >= (uint32_t)bei32_dec(payload)) {
+			iter->tag = iter->payload;
+			iter->payload = nullptr;
+			iter->size = 0;
+			iter->type = CLOD_NBT_ZERO;
+			return false;
+		}
+		return true;
+	}
+	case CLOD_NBT_INT32_ARRAY: {
+		if (iter->payload == nullptr) {
+			if (available(payload, end) < 4) goto iter_fail;
+			memset(iter, 0, sizeof(*iter));
+			iter->payload = (char*)payload;
+			iter->size = 4;
+			iter->type = CLOD_NBT_INT32;
+		} else {
+			iter->payload += 4;
+			iter->index++;
+		}
+
+		if (iter->index >= (uint32_t)bei32_dec(payload)) {
+			iter->tag = iter->payload;
+			iter->payload = nullptr;
+			iter->size = 0;
+			iter->type = CLOD_NBT_ZERO;
+			return false;
+		}
+		return true;
+	}
+	case CLOD_NBT_INT64_ARRAY: {
+		if (iter->payload == nullptr) {
+			if (available(payload, end) < 4) goto iter_fail;
+			memset(iter, 0, sizeof(*iter));
+			iter->payload = (char*)payload;
+			iter->size = 8;
+			iter->type = CLOD_NBT_INT64;
+		} else {
+			iter->payload += 8;
+			iter->index++;
+		}
+
+		if (iter->index >= (uint32_t)bei32_dec(payload)) {
+			iter->tag = iter->payload;
+			iter->payload = nullptr;
+			iter->size = 0;
+			iter->type = CLOD_NBT_ZERO;
+			return false;
+		}
+		return true;
+	}
+	default: return false;
 	}
 
-	if (
-		off + 1 <= available(compound, *end) &&
-		*(clod_nbt_type*)ptr_add(compound, *end, off) == CLOD_NBT_ZERO
-	) {
-		// Create
-		const size_t elem_size = sizeof(union clod_nbt_tag) + name.size + payload_zero_size(type);
-		if ((size_t)*free < elem_size) return nullptr;
-		union clod_nbt_tag *elem = ptr_add(compound, *end, off);
-		memmove(ptr_add(elem, *end, elem_size), ptr_add(compound, *end, off), available(compound, *end) - off);
-
-		off += (ptrdiff_t)( sizeof(union clod_nbt_tag) + name.size)
-	}
-
-	union clod_nbt_tag *elem = ptr_add(compound, *end, off);
-	elem->type = type;
-	elem->name_size = sstr_size(name);
-	memcpy(elem->name, name.ptr, elem->name_size);
-	*end += sizeof(union clod_nbt_tag) + elem->name_size;
-	*end_offset += (ptrdiff_t)sizeof(union clod_nbt_tag) + elem->name_size;
+iter_fail:
+	memset(iter, 0, sizeof(*iter));
+	return false;
 }
 
-union clod_nbt_tag *clod_nbt_compound_get(const union clod_nbt_payload *compound, const char *end, sstr name) {
-	size_t off = 0;
-	while (
-		off + sizeof(union clod_nbt_tag) < available(compound, end) &&
-		*(clod_nbt_type*)ptr_add(compound, end, off) != CLOD_NBT_ZERO
-	) {
-		union clod_nbt_tag *elem = (union clod_nbt_tag*)ptr_add(compound, end, off);
-		off += sizeof(union clod_nbt_tag) + be(elem->name_size);
-		if (off > available(compound, end)) return nullptr;
-		if (sstr_cmp(sstr(elem->name, be(elem->name_size)), name)) return elem;
-		off += payload_size(ptr_add(compound, end, off), elem->type, end);
+char *clod_nbt_compound_get(
+	const char *restrict compound,
+	const void *end,
+	const clod_sstr name
+) {
+	struct clod_nbt_iter iter = CLOD_NBT_ITER_ZERO;
+	while (clod_nbt_iter_next(compound, end, CLOD_NBT_COMPOUND, &iter)) {
+		if (clod_sstr_eq(clod_nbt_tag_name(iter.tag, end), name)) return iter.tag;
 	}
 	return nullptr;
 }
-union clod_nbt_payload *clod_nbt_list_get(const union clod_nbt_payload *list, const char *end, const size_t index) {
-	if (index >= (size_t)be(list->list.length)) return nullptr;
-	size_t off = sizeof(list->list);
-	for (size_t i = 0; i < index && off < available(list, end); i++) {
-		const size_t elem_size = payload_size(ptr_add(list, end, off), list->list.payload_type, end);
-		if (elem_size == 0) return nullptr;
-		off += elem_size;
+
+char *clod_nbt_compound_add(
+	char *restrict compound,
+	const void **end,
+	ptrdiff_t *free,
+	const clod_sstr name,
+	const char type
+) {
+	if (!type_valid(type)) return nullptr;
+	const size_t elem_size = 3 + name.size + type_zero_size(type);
+	if (!compound) {
+		*free -= (ptrdiff_t)elem_size;
+		return nullptr;
 	}
-	if (off > available(list, end)) return nullptr;
-	return ptr_add(list, end, off);
-}
-union clod_nbt_tag *clod_nbt_compound_get(union clod_nbt_payload *compound, const char **end, ptrdiff_t *end_offset,
-	clod_nbt_type type, sstr name) {
 
-
-
-
-	size_t off = 0;
-	while (
-		off + sizeof(union clod_nbt_tag) < available(compound, *end) &&
-		*(clod_nbt_type*)ptr_add(compound, *end, off) != CLOD_NBT_ZERO
-	) {
-		auto const elem = (union clod_nbt_tag*)ptr_add(compound, *end, off);
-		off += sizeof(union clod_nbt_tag) + be(elem->name_size);
-		if (off > available(compound, *end)) return nullptr;
-		if (sstr_cmp(sstr(elem->name, be(elem->name_size)), name)) return elem;
-		off += payload_size(ptr_add(compound, *end, off), elem->type, *end);
+	struct clod_nbt_iter iter = CLOD_NBT_ITER_ZERO;
+	while (clod_nbt_iter_next(compound, *end, CLOD_NBT_COMPOUND, &iter)) {
+		if (clod_sstr_eq(clod_nbt_tag_name(iter.tag, *end), name)) return iter.tag;
 	}
+
+	if (!iter.tag) return nullptr;
+	*free -= (ptrdiff_t)elem_size;
+	if (*free < 0) {
+		// Out of space.
+		return nullptr;
+	}
+
+	memmove(iter.tag + elem_size, iter.tag, available(iter.tag, *end) - elem_size);
+
+	iter.tag[0] = type;
+	beu16_enc(iter.tag + 1, (uint16_t)name.size);
+	memcpy(iter.tag + 3, name.ptr, name.size);
+	memset(iter.tag + 3 + name.size, 0, type_zero_size(type));
+
+	*end = *(char**)end + elem_size;
+	return iter.tag;
 }
 
-/*
-void clod_nbt_get(const union clod_nbt_tag *tag, const char *end, const union clod_nbt_tag **children, const size_t children_count) {
-	if (children_count == 0) return;
-	const union clod_nbt_tag **children_in = alloca(sizeof(*children) * children_count);
-	memcpy(children_in, children, sizeof(*children) * children_count);
-	memset(children, 0, sizeof(*children) * children_count);
-
-	if (
-		tag->ptr > end ||
-		end - tag->ptr < sizeof(*tag) ||
-		tag->type != CLOD_NBT_COMPOUND ||
-		end - tag->name < be(tag->name_size)
-	) return;
-
-
-
-	auto elem = (union clod_nbt_tag*)(tag->ptr + sizeof(*tag) + be(tag->name_size));
-	size_t found = 0;
-	while (found < children_count && end - elem->ptr >= sizeof(*elem) && elem->type != CLOD_NBT_ZERO) {
-		const size_t elem_name_size = be(elem->name_size);
-		if (end - elem->name < elem_name_size) return;
-
-		for (size_t i = 0; i < children_count; i++) {
-			if (
-				!children[i] &&
-				children_in[i]->type == elem->type &&
-				string_eq(string(children_in[i]->name, be(children_in[i]->name_size)), string(elem->name, be(elem->name_size)))
-			) {
-				children[i] = elem;
-				found++;
-			}
+bool clod_nbt_compound_del(
+	char *restrict compound,
+	const void **end,
+	ptrdiff_t *free,
+	const clod_sstr name
+) {
+	struct clod_nbt_iter iter = CLOD_NBT_ITER_ZERO;
+	while (clod_nbt_iter_next(compound, *end, CLOD_NBT_COMPOUND, &iter)) {
+		if (clod_sstr_eq(clod_nbt_tag_name(iter.tag, *end), name)) {
+			memmove(iter.tag, iter.tag + iter.size, available(iter.tag, *end) - iter.size);
+			*end = *(char**)end - iter.size;
+			*free += (ptrdiff_t)iter.size;
+			return true;
 		}
-
-		const size_t elem_size = clod_nbt_tag_size(elem, end);
-		if (end - elem->ptr < elem_size || elem_size == 0) return;
-		elem = (union clod_nbt_tag*)(elem->ptr + elem_size);
 	}
+	return false;
 }
-*/
+
+bool clod_nbt_list_resize(
+	char *restrict list,
+	const char **end,
+	ptrdiff_t *free,
+	char type,
+	const uint32_t length
+) {
+	if (!list) {
+		*free -= (ptrdiff_t)(length * type_zero_size(type));
+		return false;
+	}
+	if (available(list, *end) < 5) return false;
+
+	if (list[0] != type) {
+		const size_t old_size = clod_nbt_payload_size(list, *end, CLOD_NBT_LIST);
+		const size_t new_size = 5 + length * type_zero_size(type);
+		if (old_size == 0) return false;
+
+		const ptrdiff_t delta = (ptrdiff_t)new_size - (ptrdiff_t)old_size;
+		*free -= delta;
+		if (*free < 0) return false;
+
+		memmove(list + new_size, list + old_size, available(list, *end) - old_size);
+		memset(list, 0, new_size);
+		list[0] = type;
+		bei32_enc(list + 1, (int32_t)length);
+		*end = *(char**)end + delta;
+		return true;
+	}
+
+	const uint32_t old_length = (uint32_t)bei32_dec(list + 1);
+
+	if (old_length < length) {
+		const size_t old_size = clod_nbt_payload_size(list, *end, CLOD_NBT_LIST);
+		const size_t append_size = type_zero_size(list[0]) * (length - old_length);
+
+		*free -= (ptrdiff_t)append_size;
+		if (*free < 0) return false;
+
+		memmove(list + old_size + append_size, list + old_size, available(list, *end) - old_size - append_size);
+		memset(list + old_size, 0, append_size);
+		bei32_enc(list + 1, (int32_t)length);
+
+		*end = *(char**)end + append_size;
+		return true;
+	}
+
+	if (old_length > length) {
+		struct clod_nbt_iter iter = CLOD_NBT_ITER_ZERO;
+		char *truncate = nullptr;
+		while (clod_nbt_iter_next(list, *end, CLOD_NBT_LIST, &iter))
+			if (iter.index == length) truncate = iter.payload;
+
+		if (!iter.tag || !truncate) return false;
+
+		memmove(truncate, iter.tag, available(iter.tag, *end));
+		bei32_enc(list + 1, (int32_t)length);
+		*free += iter.tag - truncate;
+		*end = *(char**)end - (iter.tag - truncate);
+		return true;
+	}
+
+	return true;
+}

@@ -1,5 +1,6 @@
 target_sources(clod PRIVATE
-    #nbt.c
+    nbt.c
 )
 
-#libclod_test(parse_level)
+libclod_test(parse_level)
+libclod_test(print_level)

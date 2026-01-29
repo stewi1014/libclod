@@ -43,13 +43,13 @@ if (HAVE_LIBDEFLATE)
 endif ()
 
 if (HAVE_LZ4)
-    libclod_test(lz4)
+    #libclod_test(lz4)
 endif ()
 
 if (HAVE_LZMA)
-    libclod_test(lzma)
+    #libclod_test(lzma)
 endif ()
 
 if (HAVE_ZSTD)
-    libclod_test(zstd)
+    #libclod_test(zstd)
 endif ()

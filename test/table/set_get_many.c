@@ -18,7 +18,7 @@ int main() {
 		check(clod_table_add(t, &elems[i], 4) == nullptr);
 	}
 	for (int i = 0; i < NUM_ELEMS; i++) {
-		check(clod_table_add(t, &elems[i], 4) == &elems[i + 1]);
+		check(clod_table_add(t, &elems[i], 4) == &elems[i]);
 	}
 	for (int i = 0; i < NUM_ELEMS; i++) {
 		const int *p = &i;
