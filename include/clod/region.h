@@ -17,11 +17,16 @@
 #ifndef CLOD_REGION_H
 #define CLOD_REGION_H
 
+#include <clod/compression.h>
 #include <clod/lib.h>
 #include <stdint.h>
 #include <time.h>
 
-/** Library ABI version. */
+/**
+ * Library ABI version.
+ * Backwards compatability with old ABI versions/behaviours will be ensured, at least until a major SO version bump,
+ * this identifies which ABI version the program is expecting.
+ */
 #define CLOD_REGION_VERSION 1
 
 struct clod_region;
@@ -137,33 +142,11 @@ clod_region_iter_end(struct clod_region_iter *iter);
 
 /**
  * Release resources associated with the region handle.
- * @param r The handle to free.
+ * @param[in] region The handle to free.
  */
 CLOD_API CLOD_NONNULL(1)
 enum clod_region_result
-clod_region_close(struct clod_region *r);
-
-/**
- * @name Compression types
- * @{
- * Each algorithm has a unique multiple of ten to represent it,
- * with intermediate values representing the compression level.
- * i.e. compression algorithm 2 at compression level 8 is 28, algorithm 3 at compression level 2 is 32.
- *
- * The provided macros use sane default compression levels for each algorithm,
- * and can be changed using the REGION_COMPRESSION macro.
- * i.e. LZMA at level 9 is REGION_COMPRESSION(REGION_COMPRESS_LZMA, 9).
- */
-#define CLOD_REGION_COMPRESSION(algo, level) (((algo)/10 * 10) + ((level) < 0 ? 0 : (level) > 9 ? 9 : (level)))
-/** Uncompressed */
-#define CLOD_REGION_UNCOMPRESSED 10
-#define CLOD_REGION_COMPRESS_GZIP 26
-#define CLOD_REGION_COMPRESS_ZLIB 36
-#define CLOD_REGION_COMPRESS_LZ4 49
-#define CLOD_REGION_COMPRESS_LZ4HC 59
-#define CLOD_REGION_COMPRESS_ZSTD 63
-#define CLOD_REGION_COMPRESS_LZMA 76
-/** @} */
+clod_region_close(struct clod_region *region);
 
 /** @name Open modes
  * @{ */
@@ -176,7 +159,6 @@ clod_region_close(struct clod_region *r);
 #define CLOD_REGION_PREFIX_MAX 30
 #define CLOD_REGION_EXTENSION_MAX 10
 #define CLOD_REGION_DIMENSIONS_MAX 10
-#define CLOD_REGION_CHUNK_SIZE_MAX ((size_t)(1 << 40) - 1)
 /** @} */
 
 struct clod_region_opts {
@@ -184,10 +166,10 @@ struct clod_region_opts {
 	uint8_t version;
 	/** Number of dimensions. Min 1, Max 10. Defaults to 2. */
 	uint8_t dims;
-	/** Compression used for new chunks. Defaults to CLOD_REGION_COMPRESS_ZLIB. */
-	uint8_t compression;
 	/** Open mode. Defaults to CLOD_REGION_MODE_RDWR. */
 	uint8_t mode;
+	/** Compression used for new chunks. Defaults to CLOD_ZLIB. */
+	enum clod_compression_algo compression;
 	/** Size of region file sectors. This should be sized so that 255 * sector_size
 	 * is large enough to hold almost all chunks. Chunks greater than this size are supported,
 	 * but do so using dedicated files for each chunk, which is significantly slower. */

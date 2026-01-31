@@ -1,24 +1,22 @@
-#include <clod/compression.h>
 #include "compression_config.h"
+#include <clod/compression.h>
 
-uint64_t clod_compression_support() {
-	uint64_t ret = 0;
-
+bool clod_compression_support(enum clod_compression_algo algo) {
 #if HAVE_LIBDEFLATE
-	ret |= CLOD_DEFLATE | CLOD_GZIP | CLOD_ZLIB;
+	if (algo == CLOD_DEFLATE || algo == CLOD_GZIP || algo == CLOD_ZLIB) return true;
 #endif
 
 #if HAVE_LZ4
-	ret |= CLOD_LZ4 | CLOD_LZ4HC;
+	if (algo == CLOD_LZ4 || algo == CLOD_LZ4HC) return true;
 #endif
 
 #if HAVE_LZMA
-	ret |= CLOD_LZMA;
+	if (algo == CLOD_LZMA) return true;
 #endif
 
 #if HAVE_ZSTD
-	ret |= CLOD_ZSTD;
+	if (algo == CLOD_ZSTD) return true;
 #endif
 
-	return ret;
+	return false;
 }

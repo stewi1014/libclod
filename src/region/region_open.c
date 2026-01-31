@@ -31,7 +31,7 @@ enum clod_region_result read_opts(struct clod_region_opts *dst, const struct clo
 		}
 		dst->compression = src->compression;
 	} else {
-		dst->compression = CLOD_REGION_COMPRESS_ZLIB;
+		dst->compression = CLOD_ZLIB;
 	}
 
 	if (src->mode) {

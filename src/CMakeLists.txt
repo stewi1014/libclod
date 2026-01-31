@@ -16,6 +16,8 @@ execute_process(COMMAND git rev-parse --short HEAD
 configure_file(clod_config.h.in clod_config.h)
 target_include_directories(clod PRIVATE "${CMAKE_CURRENT_BINARY_DIR}")
 
+libclod_test(vec_group)
+
 add_subdirectory(compression)
 add_subdirectory(hash)
 add_subdirectory(nbt)

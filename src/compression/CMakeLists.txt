@@ -4,7 +4,6 @@ target_sources(clod PRIVATE
         compress.c
         compression.c
         decompress.c
-        compression_libraries.h
 )
 
 option(USE_LIBDEFLATE "Use libdeflate for gzip, zlib and deflate support" ON)
@@ -38,18 +37,5 @@ endif ()
 configure_file(compression_config.h.in compression_config.h)
 target_include_directories(clod PRIVATE "${CMAKE_CURRENT_BINARY_DIR}")
 
-if (HAVE_LIBDEFLATE)
-    libclod_test(libdeflate)
-endif ()
 
-if (HAVE_LZ4)
-    #libclod_test(lz4)
-endif ()
-
-if (HAVE_LZMA)
-    #libclod_test(lzma)
-endif ()
-
-if (HAVE_ZSTD)
-    #libclod_test(zstd)
-endif ()
+libclod_test(uniform_behavior)
