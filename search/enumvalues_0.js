@@ -14,12 +14,13 @@ var searchData=
   ['clod_5fdeflate_11',['CLOD_DEFLATE',['../group__compression.html#ggae74641a34313623f69d63a408439c56eab671c7130bdcb08b9410811fb05a8bf3',1,'compression.h']]],
   ['clod_5fgzip_12',['CLOD_GZIP',['../group__compression.html#ggae74641a34313623f69d63a408439c56ea0b82c00ba3a2eee3524629db3428615b',1,'compression.h']]],
   ['clod_5flz4_13',['CLOD_LZ4',['../group__compression.html#ggae74641a34313623f69d63a408439c56ea2d16e2a06d5c48e4d2d464d3dd9b064e',1,'compression.h']]],
-  ['clod_5flz4hc_14',['CLOD_LZ4HC',['../group__compression.html#ggae74641a34313623f69d63a408439c56ea1844a6f5dcc5a986d9875983e6d9e673',1,'compression.h']]],
-  ['clod_5flzma_15',['CLOD_LZMA',['../group__compression.html#ggae74641a34313623f69d63a408439c56eac7f022ca58dc4ee88d6501bd80a034e5',1,'compression.h']]],
+  ['clod_5flzma_14',['CLOD_LZMA',['../group__compression.html#ggae74641a34313623f69d63a408439c56eac7f022ca58dc4ee88d6501bd80a034e5',1,'compression.h']]],
+  ['clod_5fminecraft_5flz4_15',['CLOD_MINECRAFT_LZ4',['../group__compression.html#ggae74641a34313623f69d63a408439c56eabcb942319113c9c9b0efe6d850c0dabd',1,'compression.h']]],
   ['clod_5fregion_5finvalid_5fusage_16',['CLOD_REGION_INVALID_USAGE',['../group__region.html#gga9e5053f4d6bd4efc2f4ba2352276e4d5ac37f4ae63905afb5ef5099a1825fe271',1,'region.h']]],
   ['clod_5fregion_5fmalformed_17',['CLOD_REGION_MALFORMED',['../group__region.html#gga9e5053f4d6bd4efc2f4ba2352276e4d5ab6bacff270120e3e5e6ff5a7785fb7ec',1,'region.h']]],
   ['clod_5fregion_5fnot_5ffound_18',['CLOD_REGION_NOT_FOUND',['../group__region.html#gga9e5053f4d6bd4efc2f4ba2352276e4d5a9d47a2ca353c9ca27d2a5ca7abe925db',1,'region.h']]],
   ['clod_5fregion_5fok_19',['CLOD_REGION_OK',['../group__region.html#gga9e5053f4d6bd4efc2f4ba2352276e4d5ae12bb61e00ea4eb8ffe1856fe1065a45',1,'region.h']]],
-  ['clod_5fzlib_20',['CLOD_ZLIB',['../group__compression.html#ggae74641a34313623f69d63a408439c56eadf57dc08acd127070ecf92c7d2ff7995',1,'compression.h']]],
-  ['clod_5fzstd_21',['CLOD_ZSTD',['../group__compression.html#ggae74641a34313623f69d63a408439c56ea6ff17f5ddb5ba14e40a71ac662bb233c',1,'compression.h']]]
+  ['clod_5funcompressed_20',['CLOD_UNCOMPRESSED',['../group__compression.html#ggae74641a34313623f69d63a408439c56ea1135552fe1e023ab5a194452a0e60bc4',1,'compression.h']]],
+  ['clod_5fzlib_21',['CLOD_ZLIB',['../group__compression.html#ggae74641a34313623f69d63a408439c56eadf57dc08acd127070ecf92c7d2ff7995',1,'compression.h']]],
+  ['clod_5fzstd_22',['CLOD_ZSTD',['../group__compression.html#ggae74641a34313623f69d63a408439c56ea6ff17f5ddb5ba14e40a71ac662bb233c',1,'compression.h']]]
 ];

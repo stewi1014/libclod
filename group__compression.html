@@ -86,15 +86,15 @@ Macros</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
 <tr class="memitem:gae74641a34313623f69d63a408439c56e"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__compression.html#gae74641a34313623f69d63a408439c56e">clod_compression_algo</a> { <br />
-&#160;&#160;<b>CLOD_UNCOMPRESSED</b> = 1
+&#160;&#160;<a class="el" href="group__compression.html#ggae74641a34313623f69d63a408439c56ea1135552fe1e023ab5a194452a0e60bc4">CLOD_UNCOMPRESSED</a> = 1
 , <a class="el" href="group__compression.html#ggae74641a34313623f69d63a408439c56ea0b82c00ba3a2eee3524629db3428615b">CLOD_GZIP</a> = 2
 , <a class="el" href="group__compression.html#ggae74641a34313623f69d63a408439c56eadf57dc08acd127070ecf92c7d2ff7995">CLOD_ZLIB</a> = 3
 , <a class="el" href="group__compression.html#ggae74641a34313623f69d63a408439c56eab671c7130bdcb08b9410811fb05a8bf3">CLOD_DEFLATE</a> = 4
 , <br />
 &#160;&#160;<a class="el" href="group__compression.html#ggae74641a34313623f69d63a408439c56ea2d16e2a06d5c48e4d2d464d3dd9b064e">CLOD_LZ4</a> = 5
-, <a class="el" href="group__compression.html#ggae74641a34313623f69d63a408439c56ea1844a6f5dcc5a986d9875983e6d9e673">CLOD_LZ4HC</a> = 6
-, <a class="el" href="group__compression.html#ggae74641a34313623f69d63a408439c56eac7f022ca58dc4ee88d6501bd80a034e5">CLOD_LZMA</a> = 7
-, <a class="el" href="group__compression.html#ggae74641a34313623f69d63a408439c56ea6ff17f5ddb5ba14e40a71ac662bb233c">CLOD_ZSTD</a> = 8
+, <a class="el" href="group__compression.html#ggae74641a34313623f69d63a408439c56eac7f022ca58dc4ee88d6501bd80a034e5">CLOD_LZMA</a> = 6
+, <a class="el" href="group__compression.html#ggae74641a34313623f69d63a408439c56ea6ff17f5ddb5ba14e40a71ac662bb233c">CLOD_ZSTD</a> = 7
+, <a class="el" href="group__compression.html#ggae74641a34313623f69d63a408439c56eabcb942319113c9c9b0efe6d850c0dabd">CLOD_MINECRAFT_LZ4</a> = 8
 <br />
  }</td></tr>
 <tr class="separator:gae74641a34313623f69d63a408439c56e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -170,19 +170,21 @@ Functions</h2></td></tr>
 <p>Compression algorithms. Support for compression libraries and hence algorithms can be configured at compile time and can be checked with clod_compression_support.</p>
 <p>Currently, the library compiles with support for all compression algorithms by default. </p>
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ggae74641a34313623f69d63a408439c56ea0b82c00ba3a2eee3524629db3428615b" name="ggae74641a34313623f69d63a408439c56ea0b82c00ba3a2eee3524629db3428615b"></a>CLOD_GZIP&#160;</td><td class="fielddoc"><p>GZip compression, provided by libdeflate. </p>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ggae74641a34313623f69d63a408439c56ea1135552fe1e023ab5a194452a0e60bc4" name="ggae74641a34313623f69d63a408439c56ea1135552fe1e023ab5a194452a0e60bc4"></a>CLOD_UNCOMPRESSED&#160;</td><td class="fielddoc"><p>No compression. Provided by memcpy lol. Uncompressed size is always known. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ggae74641a34313623f69d63a408439c56eadf57dc08acd127070ecf92c7d2ff7995" name="ggae74641a34313623f69d63a408439c56eadf57dc08acd127070ecf92c7d2ff7995"></a>CLOD_ZLIB&#160;</td><td class="fielddoc"><p>ZLib compression, provided by libdeflate. </p>
+<tr><td class="fieldname"><a id="ggae74641a34313623f69d63a408439c56ea0b82c00ba3a2eee3524629db3428615b" name="ggae74641a34313623f69d63a408439c56ea0b82c00ba3a2eee3524629db3428615b"></a>CLOD_GZIP&#160;</td><td class="fielddoc"><p>GZip compression, provided by libdeflate. Uncompressed size is not known on failure. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ggae74641a34313623f69d63a408439c56eab671c7130bdcb08b9410811fb05a8bf3" name="ggae74641a34313623f69d63a408439c56eab671c7130bdcb08b9410811fb05a8bf3"></a>CLOD_DEFLATE&#160;</td><td class="fielddoc"><p>Deflate compression, provided by libdeflate. </p>
+<tr><td class="fieldname"><a id="ggae74641a34313623f69d63a408439c56eadf57dc08acd127070ecf92c7d2ff7995" name="ggae74641a34313623f69d63a408439c56eadf57dc08acd127070ecf92c7d2ff7995"></a>CLOD_ZLIB&#160;</td><td class="fielddoc"><p>ZLib compression, provided by libdeflate. Uncompressed size is not known on failure. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ggae74641a34313623f69d63a408439c56ea2d16e2a06d5c48e4d2d464d3dd9b064e" name="ggae74641a34313623f69d63a408439c56ea2d16e2a06d5c48e4d2d464d3dd9b064e"></a>CLOD_LZ4&#160;</td><td class="fielddoc"><p>LZ4 compression, provided by liblz4. </p>
+<tr><td class="fieldname"><a id="ggae74641a34313623f69d63a408439c56eab671c7130bdcb08b9410811fb05a8bf3" name="ggae74641a34313623f69d63a408439c56eab671c7130bdcb08b9410811fb05a8bf3"></a>CLOD_DEFLATE&#160;</td><td class="fielddoc"><p>Deflate compression, provided by libdeflate. Uncompressed size is not known on failure. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ggae74641a34313623f69d63a408439c56ea1844a6f5dcc5a986d9875983e6d9e673" name="ggae74641a34313623f69d63a408439c56ea1844a6f5dcc5a986d9875983e6d9e673"></a>CLOD_LZ4HC&#160;</td><td class="fielddoc"><p>LZ4HC compression, provided by liblz4. </p>
+<tr><td class="fieldname"><a id="ggae74641a34313623f69d63a408439c56ea2d16e2a06d5c48e4d2d464d3dd9b064e" name="ggae74641a34313623f69d63a408439c56ea2d16e2a06d5c48e4d2d464d3dd9b064e"></a>CLOD_LZ4&#160;</td><td class="fielddoc"><p>LZ4 compression, provided by liblz4. Uncompressed size might be known on failure if not malformed. </p>
 </td></tr>
 <tr><td class="fieldname"><a id="ggae74641a34313623f69d63a408439c56eac7f022ca58dc4ee88d6501bd80a034e5" name="ggae74641a34313623f69d63a408439c56eac7f022ca58dc4ee88d6501bd80a034e5"></a>CLOD_LZMA&#160;</td><td class="fielddoc"><p>LZMA compression, provided by liblzma. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ggae74641a34313623f69d63a408439c56ea6ff17f5ddb5ba14e40a71ac662bb233c" name="ggae74641a34313623f69d63a408439c56ea6ff17f5ddb5ba14e40a71ac662bb233c"></a>CLOD_ZSTD&#160;</td><td class="fielddoc"><p>ZSTD compression, provided by libzstd. </p>
+<tr><td class="fieldname"><a id="ggae74641a34313623f69d63a408439c56ea6ff17f5ddb5ba14e40a71ac662bb233c" name="ggae74641a34313623f69d63a408439c56ea6ff17f5ddb5ba14e40a71ac662bb233c"></a>CLOD_ZSTD&#160;</td><td class="fielddoc"><p>ZSTD compression, provided by libzstd. Uncompressed size is known on failure if not malformed. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ggae74641a34313623f69d63a408439c56eabcb942319113c9c9b0efe6d850c0dabd" name="ggae74641a34313623f69d63a408439c56eabcb942319113c9c9b0efe6d850c0dabd"></a>CLOD_MINECRAFT_LZ4&#160;</td><td class="fielddoc"><p>Custom minecraft LZ4 variant. Some very unfortunate design decisions must have happened to land us with this. Uncompressed size is known on failure if not malformed. </p>
 </td></tr>
 </table>
 
@@ -215,7 +217,7 @@ Functions</h2></td></tr>
 </td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="compression_8h_source.html#l00043">43</a> of file <a class="el" href="compression_8h_source.html">compression.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="compression_8h_source.html#l00052">52</a> of file <a class="el" href="compression_8h_source.html">compression.h</a>.</p>
 
 </div>
 </div>
@@ -245,7 +247,7 @@ Functions</h2></td></tr>
 </td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="compression_8h_source.html#l00064">64</a> of file <a class="el" href="compression_8h_source.html">compression.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="compression_8h_source.html#l00073">73</a> of file <a class="el" href="compression_8h_source.html">compression.h</a>.</p>
 
 </div>
 </div>
@@ -294,7 +296,7 @@ Functions</h2></td></tr>
 <p>Create a new compressor. The compressor holds memory and tables that are reused between invocations of clod_compress. It is not a streaming interface, but an optimisation.</p>
 <dl class="section return"><dt>Returns</dt><dd>Newly allocated compressor, or nullptr on allocation failure. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="compress_8c_source.html#l00043">43</a> of file <a class="el" href="compress_8c_source.html">compress.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="compress_8c_source.html#l00044">44</a> of file <a class="el" href="compress_8c_source.html">compress.c</a>.</p>
 
 </div>
 </div>
@@ -321,7 +323,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="compress_8c_source.html#l00049">49</a> of file <a class="el" href="compress_8c_source.html">compress.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="compress_8c_source.html#l00050">50</a> of file <a class="el" href="compress_8c_source.html">compress.c</a>.</p>
 
 </div>
 </div>
@@ -411,7 +413,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="compress_8c_source.html#l00078">78</a> of file <a class="el" href="compress_8c_source.html">compress.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="compress_8c_source.html#l00079">79</a> of file <a class="el" href="compress_8c_source.html">compress.c</a>.</p>
 
 </div>
 </div>
@@ -519,7 +521,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Decompress some data with the given algorithm.</p>
-<p>It is recommended to always know the decompressed size ahead of time, and as such, use a null <code>actual_size</code> value. If <code>actual_size</code> is null and the decompressed output is smaller than <code>dst_size</code>, the method will fail and return CLOD_COMPRESSION_SHORT_OUTPUT. If <code>dst_size</code> is smaller than the decompressed output, the method fails with CLOD_COMPRESSION_SHORT_BUFFER.</p>
+<p>It is recommended to always know the decompressed size ahead of time, and as such, use a null <code>actual_size</code> value. If <code>actual_size</code> is null and the decompressed output is smaller than <code>dst_size</code>, the method will fail and return CLOD_COMPRESSION_SHORT_OUTPUT. If <code>dst_size</code> is smaller than the decompressed output, the method fails with CLOD_COMPRESSION_SHORT_BUFFER. Sometimes compressed data formats store an uncompressed size in a header, which allows the uncompressed size to be known without decompressing successfully. In that case, <code>actual_size</code> is set to the uncompressed size even on failure.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">ctx</td><td>Decompressor. </td></tr>
