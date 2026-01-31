@@ -1,24 +1,28 @@
-#include <clod/compression.h>
 #include "compression_config.h"
+#include <clod/compression.h>
 
-uint64_t clod_compression_support() {
-	uint64_t ret = 0;
+bool clod_compression_support(enum clod_compression_method method) {
+	if (method == CLOD_UNCOMPRESSED) return true;
 
-#if HAVE_LIBDEFLATE
-	ret |= CLOD_DEFLATE | CLOD_GZIP | CLOD_ZLIB;
-#endif
+	#if HAVE_LIBDEFLATE
+		if (method == CLOD_DEFLATE || method == CLOD_GZIP || method == CLOD_ZLIB) return true;
+	#endif
 
-#if HAVE_LZ4
-	ret |= CLOD_LZ4 | CLOD_LZ4HC;
-#endif
+	#if HAVE_LIBLZ4
+		if (method == CLOD_LZ4F || method == CLOD_MINECRAFT_LZ4) return true;
+	#endif
 
-#if HAVE_LZMA
-	ret |= CLOD_LZMA;
-#endif
+	#if HAVE_LIBLZMA
+		if (method == CLOD_XZ) return true;
+	#endif
 
-#if HAVE_ZSTD
-	ret |= CLOD_ZSTD;
-#endif
+	#if HAVE_LIBZSTD
+		if (method == CLOD_ZSTD) return true;
+	#endif
 
-	return ret;
+	#if HAVE_LIBBZ2
+		if (method == CLOD_BZIP2) return true;
+	#endif
+
+	return false;
 }

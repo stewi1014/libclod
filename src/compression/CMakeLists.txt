@@ -1,55 +1,46 @@
-find_package(PkgConfig REQUIRED)
-
 target_sources(clod PRIVATE
         compress.c
         compression.c
         decompress.c
-        compression_libraries.h
 )
 
-option(USE_LIBDEFLATE "Use libdeflate for gzip, zlib and deflate support" ON)
+option(USE_LIBDEFLATE "Use libdeflate to enable CLOD_GZIP, CLOD_ZLIB and CLOD_DEFLATE support" ON)
 if (USE_LIBDEFLATE)
+    find_package(libdeflate REQUIRED)
+    target_link_libraries(clod PRIVATE libdeflate::libdeflate_shared)
     set(HAVE_LIBDEFLATE 1)
-    pkg_check_modules(libdeflate REQUIRED IMPORTED_TARGET libdeflate)
-    target_link_libraries(clod PRIVATE PkgConfig::libdeflate)
 endif ()
 
-option(USE_LZ4 "Use lz4 to enable lz4/lz4hc compression support" ON)
-if (USE_LZ4)
-    set(HAVE_LZ4 1)
-    pkg_check_modules(LZ4 REQUIRED IMPORTED_TARGET liblz4)
-    target_link_libraries(clod PRIVATE PkgConfig::LZ4)
+option(USE_LIBLZ4 "Use liblz4 to enable CLOD_LZ4F support" ON)
+if (USE_LIBLZ4)
+    find_package(lz4 REQUIRED)
+    target_link_libraries(clod PRIVATE LZ4::lz4)
+    set(HAVE_LIBLZ4 1)
 endif ()
 
-option(USE_LZMA "Use liblzma to enable lzma compression support" ON)
-if (USE_LZMA)
-    set(HAVE_LZMA 1)
-    pkg_check_modules(LZMA REQUIRED IMPORTED_TARGET liblzma)
-    target_link_libraries(clod PRIVATE PkgConfig::LZMA)
+option(USE_LIBLZMA "Use liblzma to enable CLOD_XZ support" ON)
+if (USE_LIBLZMA)
+    find_package(LibLZMA REQUIRED)
+    target_link_libraries(clod PRIVATE LibLZMA::LibLZMA)
+    set(HAVE_LIBLZMA 1)
 endif ()
 
-option(USE_ZSTD "Use libzstd to enable Zstd compression support" ON)
-if (USE_ZSTD)
-    set(HAVE_ZSTD 1)
-    pkg_check_modules(ZSTD REQUIRED IMPORTED_TARGET libzstd)
-    target_link_libraries(clod PRIVATE PkgConfig::ZSTD)
+option(USE_LIBZSTD "Use libzstd to enable CLOD_ZSTD support" ON)
+if (USE_LIBZSTD)
+    find_package(zstd REQUIRED)
+    target_link_libraries(clod PRIVATE zstd::libzstd_shared)
+    set(HAVE_LIBZSTD 1)
+endif ()
+
+option(USE_LIBBZ2 "Use libbz2 to enable CLOD_BZIP2 support" ON)
+if (USE_LIBBZ2)
+    find_package(BZip2 REQUIRED)
+    target_link_libraries(clod PRIVATE BZip2::BZip2)
+    set(HAVE_LIBBZ2 1)
 endif ()
 
 configure_file(compression_config.h.in compression_config.h)
 target_include_directories(clod PRIVATE "${CMAKE_CURRENT_BINARY_DIR}")
 
-if (HAVE_LIBDEFLATE)
-    libclod_test(libdeflate)
-endif ()
 
-if (HAVE_LZ4)
-    #libclod_test(lz4)
-endif ()
-
-if (HAVE_LZMA)
-    #libclod_test(lzma)
-endif ()
-
-if (HAVE_ZSTD)
-    #libclod_test(zstd)
-endif ()
+libclod_test(uniform_behavior)

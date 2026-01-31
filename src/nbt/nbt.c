@@ -21,7 +21,7 @@ constexpr char payload_zero_sizes_len = sizeof(payload_zero_sizes) / sizeof(payl
 
 #define type_zero_size(type) (0 <= (type) && (type) < payload_zero_sizes_len ? payload_zero_sizes[(unsigned)type] : 0)
 #define type_valid(type) (type_zero_size(type))
-#define available(ptr, end) ((ptr) != nullptr && (ptr) <= (char*)(end) ? (size_t)((char*)(end) - (ptr)) : 0)
+#define available(ptr, end) ((ptr) <= (char*)(end) ? (size_t)((char*)(end) - (ptr)) : 0)
 
 size_t clod_nbt_payload_size(
 	const char *restrict const payload,

@@ -2,8 +2,10 @@
 #define COMPRESSION_CONFIG_H
 
 #cmakedefine01 HAVE_LIBDEFLATE
-#cmakedefine01 HAVE_LZ4
-#cmakedefine01 HAVE_LZMA
-#cmakedefine01 HAVE_ZSTD
+#cmakedefine01 HAVE_LIBLZ4
+#cmakedefine01 HAVE_LIBLZMA
+#cmakedefine01 HAVE_LIBZSTD
+#cmakedefine01 HAVE_LIBBZ2
+#cmakedefine01 HAVE_LIBLZO2
 
 #endif

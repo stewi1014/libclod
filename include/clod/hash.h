@@ -36,6 +36,10 @@
 #include <stddef.h>
 #include <stdint.h>
 
+/**
+ * SipHash state.
+ * Used to hold buffers during streamed hashing.
+ */
 typedef struct {
 	uint64_t _v0;
 	uint64_t _v1;
@@ -46,7 +50,7 @@ typedef struct {
 } clod_sip64_state;
 
 /**
- * Initialise a sip64 hash state.
+ * Initialise the hash state.
  * @param[in] seed Seed value for the hash.
  */
 #define clod_sip64_init(seed) ((clod_sip64_state){\
@@ -58,7 +62,7 @@ typedef struct {
 })
 
 /**
- * Add data to a sip64 hash.
+ * Add data to the hash state.
  * SipHash is aimed at maximising speed and uniformity of entropy across the 64-bit range.
  *
  * @param[in] state Hash state.
@@ -71,64 +75,196 @@ clod_sip64_state clod_sip64_add(clod_sip64_state state, const void *data, size_t
 
 /**
  * Finalise a sip64 hash.
+ *
  * @param[in] state Hash state.
  * @return 64-bit hash value.
  */
 CLOD_API CLOD_USE_RETURN CLOD_PURE
 uint64_t clod_sip64_finalise(clod_sip64_state state);
 
+/**
+ * One-shot a sip64 hash.
+ *
+ * @param[in] seed Seed value for the hash.
+ * @param[in] data Value to be hashed.
+ * @param[in] size Size of \p data.
+ * @return 64-bit hash value.
+ */
 #define clod_sip64(seed, data, size) clod_sip64_finalise(clod_sip64_add(clod_sip64_init(seed), data, size))
 
+/**
+ * Initialise a crc64 hash state.
+ */
+#define clod_crc64_init() UINT64_C(0xFFFFFFFFFFFFFFFF)
 
 /**
+ * Add data to the hash state.
  * Polynomial: 0x42F0E1EBA9EA3693
  * Reflected: false
+ *
+ * @param[in] crc Hash state.
+ * @param[in] data Data to add to hash.
+ * @param[in] data_len Size of \p data.
+ * @return Updated hash state.
  */
 CLOD_API CLOD_USE_RETURN CLOD_PURE CLOD_NONNULL(2)
-uint64_t
-clod_crc64_add(uint64_t crc, const void *data, size_t data_len);
-#define clod_crc64_init() UINT64_C(0x0)
-#define clod_crc64_finalise(crc) ((uint64_t)((uint64_t)crc ^ UINT64_C(0x0)))
+uint64_t clod_crc64_add(uint64_t crc, const void *data, size_t data_len);
+
+/**
+ * Finalise a crc64 hash.
+ *
+ * @param[in] crc Hash state.
+ * @return 64-bit hash value.
+ */
+#define clod_crc64_finalise(crc) ((uint64_t)((uint64_t)crc ^ UINT64_C(0xFFFFFFFFFFFFFFFF)))
+
+/**
+ * One-shot a crc64 hash.
+ *
+ * @param[in] data Data to hash.
+ * @param[in] size Size of \p data.
+ * @return 64-bit hash value.
+ */
 #define clod_crc64(data, size) clod_crc64_finalise(clod_crc64_add(clod_crc64_init(), data, size))
 
 /**
+ * Initialise a crc32 hash state.
+ */
+#define clod_crc32_init() UINT32_C(0xFFFFFFFF)
+
+/**
+ * Add data to the hash state.
  * Polynomial: 0x4C11DB7
  * Reflected: true
+ *
+ * @param[in] crc Hash state.
+ * @param[in] data Data to add to hash.
+ * @param[in] data_len Size of \p data.
+ * @return Updated hash state.
  */
 CLOD_API CLOD_USE_RETURN CLOD_PURE CLOD_NONNULL(2)
 uint32_t clod_crc32_add(uint32_t crc, const void *data, size_t data_len);
-#define clod_crc32_init() UINT32_C(0xFFFFFFFF)
+
+/**
+ * Finalise a crc32 hash state.
+ *
+ * @param[in] crc Hash state.
+ * @return 32-bit hash value.
+ */
 #define clod_crc32_finalise(crc) ((uint32_t)((uint32_t)crc ^ UINT32_C(0xFFFFFFFF)))
+
+/**
+ * One-shot a crc32 hash.
+ *
+ * @param[in] data Data to hash.
+ * @param[in] size Size of \p data.
+ * @return 32-bit hash value.
+ */
 #define clod_crc32(data, size) clod_crc32_finalise(clod_crc32_add(clod_crc32_init(), data, size))
 
 /**
+ * Initialise a crc24 hash state.
+ */
+#define clod_crc24_init() UINT32_C(0xFFFFFF)
+
+/**
+ * Add data to the hash state.
  * Polynomial: 0x864CFB
  * Reflected: false
+ *
+ * @param[in] crc Hash state.
+ * @param[in] data Data to add to hash.
+ * @param[in] data_len Size of \p data.
+ * @return Updated hash state.
  */
 CLOD_API CLOD_USE_RETURN CLOD_PURE CLOD_NONNULL(2)
 uint32_t clod_crc24_add(uint32_t crc, const void *data, size_t data_len);
-#define clod_crc24_init() UINT32_C(0xB704CE)
-#define clod_crc24_finalise(crc) ((uint32_t)((uint32_t)crc ^ UINT32_C(0x0)))
+
+/**
+ * Finalise a crc24 hash state.
+ *
+ * @param[in] crc Hash state
+ * @return 24-bit hash value.
+ */
+#define clod_crc24_finalise(crc) ((uint32_t)((uint32_t)crc ^ UINT32_C(0xFFFFFF)))
+
+/**
+ * One-shot a crc24 hash.
+ *
+ * @param[in] data Data to hash.
+ * @param[in] size Size of \p data.
+ * @return 24-bit hash value.
+ */
 #define clod_crc24(data, size) clod_crc24_finalise(clod_crc24_add(clod_crc24_init(), data, size))
 
 /**
+ * Initialise a crc16 hash state.
+ */
+#define clod_crc16_init() UINT16_C(0xFFFF)
+
+/**
+ * Add data to the hash state.
  * Polynomial: 0x1021
  * Reflected: true
+ *
+ * @param[in] crc Hash state.
+ * @param[in] data Data to add to hash.
+ * @param[in] data_len Size of \p data.
+ * @return Updated hash state.
  */
 CLOD_API CLOD_USE_RETURN CLOD_PURE CLOD_NONNULL(2)
 uint16_t clod_crc16_add(uint16_t crc, const void *data, size_t data_len);
-#define clod_crc16_init() UINT16_C(0x0)
-#define clod_crc16_finalise(crc) ((uint16_t)((uint16_t)crc ^ UINT16_C(0x0)))
+
+/**
+ * Finalise a crc16 hash state.
+ *
+ * @param[in] crc Hash state
+ * @return 16-bit hash value.
+ */
+#define clod_crc16_finalise(crc) ((uint16_t)((uint16_t)crc ^ UINT16_C(0xFFFF)))
+
+/**
+ * One-shot a crc16 hash.
+ *
+ * @param[in] data Data to hash.
+ * @param[in] size Size of \p data.
+ * @return 16-bit hash value.
+ */
 #define clod_crc16(data, size) clod_crc16_finalise(clod_crc16_add(clod_crc16_init(), data, size))
 
 /**
+ * Initialise a crc8 hash state.
+ */
+#define clod_crc8_init() UINT8_C(0xFF)
+
+/**
+ * Add data to the hash state.
  * Polynomial: 0x7
  * Reflected: false
+ *
+ * @param[in] crc Hash state.
+ * @param[in] data Data to add to hash.
+ * @param[in] data_len Size of \p data.
+ * @return Updated hash state.
  */
 CLOD_API CLOD_USE_RETURN CLOD_PURE CLOD_NONNULL(2)
 uint8_t clod_crc8_add(uint8_t crc, const void *data, size_t data_len);
-#define clod_crc8_init() UINT8_C(0x0)
-#define clod_crc8_finalise(crc) ((uint8_t)((uint8_t)crc ^ UINT8_C(0x0)))
+
+/**
+ * Finalise a crc8 hash state.
+ *
+ * @param[in] crc Hash state
+ * @return 8-bit hash value.
+ */
+#define clod_crc8_finalise(crc) ((uint8_t)((uint8_t)crc ^ UINT8_C(0xFF)))
+
+/**
+ * One-shot a crc8 hash.
+ *
+ * @param[in] data Data to hash.
+ * @param[in] size Size of \p data.
+ * @return 8-bit hash value.
+ */
 #define clod_crc8(data, size) clod_crc8_finalise(clod_crc8_add(clod_crc8_init(), data, size))
 
 /** @} */

@@ -19,34 +19,34 @@ int main() {
 	sip64 = clod_sip64_add(sip64, "f", 1);
 	sip64 = clod_sip64_add(sip64, "g", 1);
 	sip64 = clod_sip64_add(sip64, "h", 1);
-	check(clod_sip64_finalise(sip64) == clod_sip64(0,
+	check("streamed and one-shot sip64 calculation agrees", clod_sip64_finalise(sip64) == clod_sip64(0,
 		"abcdefgp29585phsw-fg9hspfipipwqeiorhgposdfg-w[04565432dbcaefgh",
 		strlen("abcdefgp29585phsw-fg9hspfipipwqeiorhgposdfg-w[04565432dbcaefgh")));
 
 	uint64_t crc64 = clod_crc64_init();
 	crc64 = clod_crc64_add(crc64, "abcd", 4);
 	crc64 = clod_crc64_add(crc64, "efg", 3);
-	check(clod_crc64_finalise(crc64) == clod_crc64("abcdefg", 7));
+	check("streamed and one-shot crc64 agrees", clod_crc64_finalise(crc64) == clod_crc64("abcdefg", 7));
 
 	uint32_t crc32 = clod_crc32_init();
 	crc32 = clod_crc32_add(crc32, "abcd", 4);
 	crc32 = clod_crc32_add(crc32, "efg", 3);
-	check(clod_crc32_finalise(crc32) == clod_crc32("abcdefg", 7));
+	check("streamed and one-shot crc32 agrees", clod_crc32_finalise(crc32) == clod_crc32("abcdefg", 7));
 
 	uint32_t crc24 = clod_crc24_init();
 	crc24 = clod_crc24_add(crc24, "abcd", 4);
 	crc24 = clod_crc24_add(crc24, "efg", 3);
-	check(clod_crc24_finalise(crc24) == clod_crc24("abcdefg", 7));
+	check("streamed and one-shot crc24 agrees", clod_crc24_finalise(crc24) == clod_crc24("abcdefg", 7));
 
 	uint16_t crc16 = clod_crc16_init();
 	crc16 = clod_crc16_add(crc16, "abcd", 4);
 	crc16 = clod_crc16_add(crc16, "efg", 3);
-	check(clod_crc16_finalise(crc16) == clod_crc16("abcdefg", 7));
+	check("streamed and one-shot crc16 agrees", clod_crc16_finalise(crc16) == clod_crc16("abcdefg", 7));
 
 	uint8_t crc8 = clod_crc8_init();
 	crc8 = clod_crc8_add(crc8, "abcd", 4);
 	crc8 = clod_crc8_add(crc8, "efg", 3);
-	check(clod_crc8_finalise(crc8) == clod_crc8("abcdefg", 7));
+	check("streamed and one-shot crc8 agrees", clod_crc8_finalise(crc8) == clod_crc8("abcdefg", 7));
 
 	return EXIT_SUCCESS;
 }

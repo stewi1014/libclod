@@ -6,6 +6,7 @@
 
 #include <assert.h>
 #include <stdint.h>
+#include <string.h>
 #include <time.h>
 
 struct clod_region {
@@ -31,5 +32,15 @@ enum clod_region_result file_cache_destroy(struct clod_region *r);
 	const int32_t inside = (region)->inside--;\
 	assert(inside > 0);\
 } while(0)
+
+static bool is_vanilla_compatible(struct clod_region_opts *opts) {
+	return
+		opts->dims == 2 &&
+		memcmp(opts->prefix, "region", strlen("region")) == 0 &&
+		(
+			memcmp(opts->region_ext, "mca", strlen("mca")) == 0 ||
+			memcmp(opts->region_ext, "mcr", strlen("mcr")) == 0
+		);
+}
 
 #endif

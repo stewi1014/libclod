@@ -22,8 +22,16 @@
 #include <stddef.h>
 #include <stdint.h>
 
+/**
+ * @struct clod_table
+ * Open-addressed hash table.
+ */
 struct clod_table;
 
+/**
+ * Configuration options passed to clod_table_create.
+ * Zero values imply defaults.
+ */
 struct clod_table_opts {
 	/** Minimum number of elements to support without further allocation.
 	 * The table will never shrink to a capacity below this. */
@@ -67,7 +75,7 @@ clod_table_len(const struct clod_table *t);
 
 /**
  * Add an element.
- * If the key already exists, the operation will fail.
+ * If the key already exists, the operation will fail and return the existing key.
  *
  * @param[in] t Handle to the table.
  * @param[in] element Element to add. The table takes ownership on success.

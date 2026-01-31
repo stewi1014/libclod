@@ -9,5 +9,5 @@ const char level_data[] = {
 
 int main() {
 	const size_t res = clod_nbt_tag_size((void*)level_data, level_data + sizeof(level_data));
-	check(res == sizeof(level_data));
+	check("correct NBT size", res == sizeof(level_data));
 }

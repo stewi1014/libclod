@@ -23,17 +23,6 @@ enum clod_region_result read_opts(struct clod_region_opts *dst, const struct clo
 		dst->dims = 2;
 	}
 
-	if (src->compression) {
-		if (10 > src->compression || src->compression >= 80) {
-			return region_error(CLOD_REGION_INVALID_USAGE,
-				"Invalid opts.compression %d. Valid range is 10 <= opts.compression < 80.",
-				src->compression);
-		}
-		dst->compression = src->compression;
-	} else {
-		dst->compression = CLOD_REGION_COMPRESS_ZLIB;
-	}
-
 	if (src->mode) {
 		if (src->mode != CLOD_REGION_MODE_RDWR && src->mode != CLOD_REGION_MODE_RDONLY) {
 			return region_error(CLOD_REGION_INVALID_USAGE,
@@ -82,6 +71,26 @@ enum clod_region_result read_opts(struct clod_region_opts *dst, const struct clo
 		dst->chunk_ext[CLOD_REGION_EXTENSION_MAX] = '\0';
 	} else {
 		strncpy(dst->chunk_ext, "mcc", CLOD_REGION_EXTENSION_MAX + 1);
+	}
+
+	if (src->compression) {
+		if (!clod_compression_support(src->compression)) {
+			return region_error(CLOD_REGION_INVALID_USAGE,
+				"Invalid opts.compression %d. Either the required compression library has been intentionally disabled, or the compression mode is invalid.",
+				src->compression);
+		}
+		dst->compression = src->compression;
+	} else if (is_vanilla_compatible(dst)) {
+		if (!clod_compression_support(CLOD_ZLIB)) {
+			return region_error(CLOD_REGION_INVALID_USAGE,
+				"libdeflate has been disabled, but it is required to compress/decompress minecraft-compatible region files.");
+		}
+	} else {
+		if (clod_compression_support(CLOD_LZ4F)) {
+			dst->compression = CLOD_LZ4F;
+		} else {
+			dst->compression = CLOD_UNCOMPRESSED;
+		}
 	}
 
 	return true;
