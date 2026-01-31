@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['nbt_0',['NBT',['../group__nbt.html',1,'']]]
+  ['methods_0',['Hash methods',['../group__hash.html',1,'']]]
 ];

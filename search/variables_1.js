@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['dims_0',['dims',['../structclod__region__opts.html#a24ca3ee90d0982a7858b429c2ba448e7',1,'clod_region_opts']]]
+  ['payload_0',['payload',['../structclod__nbt__iter.html#a66031560942b12d2f97e6a957ff60bba',1,'clod_nbt_iter']]],
+  ['ptr_1',['ptr',['../structclod__sstr.html#a1ff3487aa9f48135d356c1ac16dc94d4',1,'clod_sstr']]]
 ];

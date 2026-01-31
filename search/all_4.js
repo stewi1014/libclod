@@ -1,7 +1,8 @@
 var searchData=
 [
-  ['file_0',['file',['../structfile.html',1,'']]],
-  ['file_5fcache_1',['file_cache',['../structfile__cache.html',1,'']]],
-  ['format_2',['format',['../structformat.html',1,'']]],
-  ['format_5fchunk_5fget_3',['format_chunk_get',['../structformat__chunk__get.html',1,'']]]
+  ['hash_20methods_0',['Hash methods',['../group__hash.html',1,'']]],
+  ['hash_20table_1',['Hash table',['../group__table.html',1,'']]],
+  ['hash_2eh_2',['hash.h',['../hash_8h.html',1,'']]],
+  ['header_3',['Header',['../group__region.html#autotoc_md2',1,'Header'],['../group__region.html#autotoc_md6',1,'Header']]],
+  ['headers_4',['Public headers',['../index.html#autotoc_md18',1,'']]]
 ];
