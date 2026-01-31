@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['version_0',['version',['../structclod__region__opts.html#a8e3848add68049336def75a0eda6716d',1,'clod_region_opts']]]
+  ['table_2eh_0',['table.h',['../table_8h.html',1,'']]],
+  ['tag_1',['tag',['../structclod__nbt__iter.html#a1db68f5bbbc624982f01dc57bfdf5f7a',1,'clod_nbt_iter']]],
+  ['type_2',['type',['../structclod__nbt__iter.html#a64b684e3815a81f58ae5d4a718f6d115',1,'clod_nbt_iter']]]
 ];

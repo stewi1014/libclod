@@ -9,10 +9,6 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
-<link href="navtree.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="resize.js"></script>
-<script type="text/javascript" src="navtreedata.js"></script>
-<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -27,7 +23,7 @@
   <td id="projectalign">
    <div id="projectname">libclod
    </div>
-   <div id="projectbrief">C library for interacting with NBT, region files, LOD data and other things.a</div>
+   <div id="projectbrief">C library for interacting with NBTs, region files, LOD data and other things.</div>
   </td>
  </tr>
  </tbody>
@@ -51,23 +47,6 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
-</div><!-- top -->
-<div id="side-nav" class="ui-resizable side-nav-resizable">
-  <div id="nav-tree">
-    <div id="nav-tree-contents">
-      <div id="nav-sync" class="sync"></div>
-    </div>
-  </div>
-  <div id="splitbar" style="-moz-user-select:none;" 
-       class="ui-resizable-handle">
-  </div>
-</div>
-<script type="text/javascript">
-/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('compression_8h.html',''); initResizable(); });
-/* @license-end */
-</script>
-<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -89,6 +68,11 @@ $(document).ready(function(){initNavTree('compression_8h.html',''); initResizabl
 </div>
 </div>
 
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_565cdd2637a496adff24344f738a7244.html">clod</a></li>  </ul>
+</div>
+</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#define-members">Macros</a> &#124;
@@ -105,531 +89,67 @@ $(document).ready(function(){initNavTree('compression_8h.html',''); initResizabl
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:a7e1d56fd2005053eeb68c4535aab7097"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="compression_8h.html#a7e1d56fd2005053eeb68c4535aab7097">CLOD_COMPRESSION_DEFAULT_LEVEL</a>&#160;&#160;&#160;INT8_MAX</td></tr>
-<tr class="separator:a7e1d56fd2005053eeb68c4535aab7097"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a59492b3b6d97849740805a98ff543a44"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="compression_8h.html#a59492b3b6d97849740805a98ff543a44">CLOD_GZIP</a>&#160;&#160;&#160;(1ull&lt;&lt;0)</td></tr>
-<tr class="separator:a59492b3b6d97849740805a98ff543a44"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad0a8ce45bbdba4a5066761fe2103a73d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="compression_8h.html#ad0a8ce45bbdba4a5066761fe2103a73d">CLOD_ZLIB</a>&#160;&#160;&#160;(1ull&lt;&lt;1)</td></tr>
-<tr class="separator:ad0a8ce45bbdba4a5066761fe2103a73d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a95d508d92f770e186037e13e23227ecb"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="compression_8h.html#a95d508d92f770e186037e13e23227ecb">CLOD_DEFLATE</a>&#160;&#160;&#160;(1ull&lt;&lt;2)</td></tr>
-<tr class="separator:a95d508d92f770e186037e13e23227ecb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acca991313572cbccac78c1d0a2e5e583"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="compression_8h.html#acca991313572cbccac78c1d0a2e5e583">CLOD_LZ4</a>&#160;&#160;&#160;(1ull&lt;&lt;3)</td></tr>
-<tr class="separator:acca991313572cbccac78c1d0a2e5e583"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac87a93c2b959de2f74da13597220cb81"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="compression_8h.html#ac87a93c2b959de2f74da13597220cb81">CLOD_LZ4HC</a>&#160;&#160;&#160;(1ull&lt;&lt;4)</td></tr>
-<tr class="separator:ac87a93c2b959de2f74da13597220cb81"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad3007cc801cc5bf61fcd3dfebb71cefe"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="compression_8h.html#ad3007cc801cc5bf61fcd3dfebb71cefe">CLOD_LZMA</a>&#160;&#160;&#160;(1ull&lt;&lt;5)</td></tr>
-<tr class="separator:ad3007cc801cc5bf61fcd3dfebb71cefe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a97ee80de6d4417f30493658a924aed45"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="compression_8h.html#a97ee80de6d4417f30493658a924aed45">CLOD_ZSTD</a>&#160;&#160;&#160;(1ull&lt;&lt;6)</td></tr>
-<tr class="separator:a97ee80de6d4417f30493658a924aed45"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7e1d56fd2005053eeb68c4535aab7097"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__compression.html#ga7e1d56fd2005053eeb68c4535aab7097">CLOD_COMPRESSION_DEFAULT_LEVEL</a>&#160;&#160;&#160;INT8_MAX</td></tr>
+<tr class="separator:ga7e1d56fd2005053eeb68c4535aab7097"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:a4fa96aedc14866e8e9fc0a2d47cb8d64"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="compression_8h.html#a4fa96aedc14866e8e9fc0a2d47cb8d64">clod_compression_result</a> { <br />
-&#160;&#160;<a class="el" href="compression_8h.html#a4fa96aedc14866e8e9fc0a2d47cb8d64ac31463ec25374dc12f3889b87f5d46d6">CLOD_COMPRESSION_SUCCESS</a> = 0
-, <a class="el" href="compression_8h.html#a4fa96aedc14866e8e9fc0a2d47cb8d64a4ff538b7aabebc1fb9f0a3696e801364">CLOD_COMPRESSION_UNSUPPORTED</a> = 1
-, <a class="el" href="compression_8h.html#a4fa96aedc14866e8e9fc0a2d47cb8d64a41277a6596265216e9f2a069bd0f6e57">CLOD_COMPRESSION_MALFORMED</a> = 2
-, <a class="el" href="compression_8h.html#a4fa96aedc14866e8e9fc0a2d47cb8d64aefe2e52721dbb74ee806ff6ae1958f56">CLOD_COMPRESSION_SHORT_BUFFER</a> = 3
+<tr class="memitem:gae74641a34313623f69d63a408439c56e"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__compression.html#gae74641a34313623f69d63a408439c56e">clod_compression_algo</a> { <br />
+&#160;&#160;<b>CLOD_UNCOMPRESSED</b> = 1
+, <a class="el" href="group__compression.html#ggae74641a34313623f69d63a408439c56ea0b82c00ba3a2eee3524629db3428615b">CLOD_GZIP</a> = 2
+, <a class="el" href="group__compression.html#ggae74641a34313623f69d63a408439c56eadf57dc08acd127070ecf92c7d2ff7995">CLOD_ZLIB</a> = 3
+, <a class="el" href="group__compression.html#ggae74641a34313623f69d63a408439c56eab671c7130bdcb08b9410811fb05a8bf3">CLOD_DEFLATE</a> = 4
 , <br />
-&#160;&#160;<a class="el" href="compression_8h.html#a4fa96aedc14866e8e9fc0a2d47cb8d64a12ad9fad94333808c7718dcb07d0edb8">CLOD_COMPRESSION_SHORT_OUTPUT</a> = 4
-, <a class="el" href="compression_8h.html#a4fa96aedc14866e8e9fc0a2d47cb8d64a0bd406dac80042aa423c1e4eb1eebd09">CLOD_COMPRESSION_ALLOC_FAILED</a> = 5
+&#160;&#160;<a class="el" href="group__compression.html#ggae74641a34313623f69d63a408439c56ea2d16e2a06d5c48e4d2d464d3dd9b064e">CLOD_LZ4</a> = 5
+, <a class="el" href="group__compression.html#ggae74641a34313623f69d63a408439c56ea1844a6f5dcc5a986d9875983e6d9e673">CLOD_LZ4HC</a> = 6
+, <a class="el" href="group__compression.html#ggae74641a34313623f69d63a408439c56eac7f022ca58dc4ee88d6501bd80a034e5">CLOD_LZMA</a> = 7
+, <a class="el" href="group__compression.html#ggae74641a34313623f69d63a408439c56ea6ff17f5ddb5ba14e40a71ac662bb233c">CLOD_ZSTD</a> = 8
 <br />
  }</td></tr>
-<tr class="separator:a4fa96aedc14866e8e9fc0a2d47cb8d64"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:gae74641a34313623f69d63a408439c56e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3e5b6fd1deb15716507d0846b47d05be"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__compression.html#ga3e5b6fd1deb15716507d0846b47d05be">clod_compression_level</a> { <br />
+&#160;&#160;<a class="el" href="group__compression.html#gga3e5b6fd1deb15716507d0846b47d05bea7a2aac32b477f63aac4f832f61968108">CLOD_COMPRESSION_LOWEST</a> = -2
+, <a class="el" href="group__compression.html#gga3e5b6fd1deb15716507d0846b47d05bea4a7cf2471c8cf54c489a194e3c84b95e">CLOD_COMPRESSION_LOW</a> = -1
+, <a class="el" href="group__compression.html#gga3e5b6fd1deb15716507d0846b47d05bea416b0577678431ec2157b3bcb0ec5bbe">CLOD_COMPRESSION_NORMAL</a> = 0
+, <a class="el" href="group__compression.html#gga3e5b6fd1deb15716507d0846b47d05bea1114d3173e287b38d34ef7bc976180be">CLOD_COMPRESSION_HIGH</a> = 1
+, <br />
+&#160;&#160;<a class="el" href="group__compression.html#gga3e5b6fd1deb15716507d0846b47d05beac005e3c8397bff3b544faa7fee891aa0">CLOD_COMPRESSION_HIGHEST</a> = 2
+<br />
+ }</td></tr>
+<tr class="separator:ga3e5b6fd1deb15716507d0846b47d05be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4fa96aedc14866e8e9fc0a2d47cb8d64"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__compression.html#ga4fa96aedc14866e8e9fc0a2d47cb8d64">clod_compression_result</a> { <br />
+&#160;&#160;<a class="el" href="group__compression.html#gga4fa96aedc14866e8e9fc0a2d47cb8d64ac31463ec25374dc12f3889b87f5d46d6">CLOD_COMPRESSION_SUCCESS</a> = 0
+, <a class="el" href="group__compression.html#gga4fa96aedc14866e8e9fc0a2d47cb8d64a4ff538b7aabebc1fb9f0a3696e801364">CLOD_COMPRESSION_UNSUPPORTED</a> = 1
+, <a class="el" href="group__compression.html#gga4fa96aedc14866e8e9fc0a2d47cb8d64a41277a6596265216e9f2a069bd0f6e57">CLOD_COMPRESSION_MALFORMED</a> = 2
+, <a class="el" href="group__compression.html#gga4fa96aedc14866e8e9fc0a2d47cb8d64aefe2e52721dbb74ee806ff6ae1958f56">CLOD_COMPRESSION_SHORT_BUFFER</a> = 3
+, <br />
+&#160;&#160;<a class="el" href="group__compression.html#gga4fa96aedc14866e8e9fc0a2d47cb8d64a12ad9fad94333808c7718dcb07d0edb8">CLOD_COMPRESSION_SHORT_OUTPUT</a> = 4
+, <a class="el" href="group__compression.html#gga4fa96aedc14866e8e9fc0a2d47cb8d64a0bd406dac80042aa423c1e4eb1eebd09">CLOD_COMPRESSION_ALLOC_FAILED</a> = 5
+<br />
+ }</td></tr>
+<tr class="separator:ga4fa96aedc14866e8e9fc0a2d47cb8d64"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a31f2ff7de76cbe9b630f2a226937c699"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="compression_8h.html#a31f2ff7de76cbe9b630f2a226937c699">clod_compression_support</a> ()</td></tr>
-<tr class="separator:a31f2ff7de76cbe9b630f2a226937c699"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a33b63475f9b56be574909e3d1d83e8ff"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structclod__compressor.html">clod_compressor</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="compression_8h.html#a33b63475f9b56be574909e3d1d83e8ff">clod_compressor_init</a> ()</td></tr>
-<tr class="separator:a33b63475f9b56be574909e3d1d83e8ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1ebfdc46cf5296c8639ddcf519ec70c1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="compression_8h.html#a1ebfdc46cf5296c8639ddcf519ec70c1">clod_compressor_free</a> (struct <a class="el" href="structclod__compressor.html">clod_compressor</a> *ctx)</td></tr>
-<tr class="separator:a1ebfdc46cf5296c8639ddcf519ec70c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a352d9dbbd6ef61e97b01714737c1a454"><td class="memItemLeft" align="right" valign="top">enum <a class="el" href="compression_8h.html#a4fa96aedc14866e8e9fc0a2d47cb8d64">clod_compression_result</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="compression_8h.html#a352d9dbbd6ef61e97b01714737c1a454">clod_compress</a> (struct <a class="el" href="structclod__compressor.html">clod_compressor</a> *ctx, void *dst, size_t dst_size, const void *src, size_t src_size, size_t *compressed_size, uint64_t algo, int8_t level)</td></tr>
-<tr class="separator:a352d9dbbd6ef61e97b01714737c1a454"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a69d69ad30053ad90066c3c7b84c154bd"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structclod__decompressor.html">clod_decompressor</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="compression_8h.html#a69d69ad30053ad90066c3c7b84c154bd">clod_decompressor_init</a> ()</td></tr>
-<tr class="separator:a69d69ad30053ad90066c3c7b84c154bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5f69a6eefae31a4fec58fd56cf156abd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="compression_8h.html#a5f69a6eefae31a4fec58fd56cf156abd">clod_decompressor_free</a> (struct <a class="el" href="structclod__decompressor.html">clod_decompressor</a> *ctx)</td></tr>
-<tr class="separator:a5f69a6eefae31a4fec58fd56cf156abd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad3a65545898b7195a49627412ed828b0"><td class="memItemLeft" align="right" valign="top">enum <a class="el" href="compression_8h.html#a4fa96aedc14866e8e9fc0a2d47cb8d64">clod_compression_result</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="compression_8h.html#ad3a65545898b7195a49627412ed828b0">clod_decompress</a> (struct <a class="el" href="structclod__decompressor.html">clod_decompressor</a> *ctx, void *dst, size_t dst_size, const void *src, size_t src_size, size_t *decompressed_size, uint64_t algo)</td></tr>
-<tr class="separator:ad3a65545898b7195a49627412ed828b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga308ef7cc4123c582e9458b423889d317"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__compression.html#ga308ef7cc4123c582e9458b423889d317">clod_compression_support</a> (enum <a class="el" href="group__compression.html#gae74641a34313623f69d63a408439c56e">clod_compression_algo</a> algo)</td></tr>
+<tr class="separator:ga308ef7cc4123c582e9458b423889d317"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga33b63475f9b56be574909e3d1d83e8ff"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structclod__compressor.html">clod_compressor</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__compression.html#ga33b63475f9b56be574909e3d1d83e8ff">clod_compressor_init</a> ()</td></tr>
+<tr class="separator:ga33b63475f9b56be574909e3d1d83e8ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1ebfdc46cf5296c8639ddcf519ec70c1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__compression.html#ga1ebfdc46cf5296c8639ddcf519ec70c1">clod_compressor_free</a> (struct <a class="el" href="structclod__compressor.html">clod_compressor</a> *ctx)</td></tr>
+<tr class="separator:ga1ebfdc46cf5296c8639ddcf519ec70c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1a6bcffd74696e27a294998c7695e0c7"><td class="memItemLeft" align="right" valign="top">enum <a class="el" href="group__compression.html#ga4fa96aedc14866e8e9fc0a2d47cb8d64">clod_compression_result</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__compression.html#ga1a6bcffd74696e27a294998c7695e0c7">clod_compress</a> (struct <a class="el" href="structclod__compressor.html">clod_compressor</a> *ctx, void *dst, size_t dst_max_size, const void *src, size_t src_size, size_t *actual_size, enum <a class="el" href="group__compression.html#gae74641a34313623f69d63a408439c56e">clod_compression_algo</a> algo, enum <a class="el" href="group__compression.html#ga3e5b6fd1deb15716507d0846b47d05be">clod_compression_level</a> level)</td></tr>
+<tr class="separator:ga1a6bcffd74696e27a294998c7695e0c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga69d69ad30053ad90066c3c7b84c154bd"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structclod__decompressor.html">clod_decompressor</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__compression.html#ga69d69ad30053ad90066c3c7b84c154bd">clod_decompressor_init</a> ()</td></tr>
+<tr class="separator:ga69d69ad30053ad90066c3c7b84c154bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5f69a6eefae31a4fec58fd56cf156abd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__compression.html#ga5f69a6eefae31a4fec58fd56cf156abd">clod_decompressor_free</a> (struct <a class="el" href="structclod__decompressor.html">clod_decompressor</a> *ctx)</td></tr>
+<tr class="separator:ga5f69a6eefae31a4fec58fd56cf156abd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab6bc8fa3446d1ad0d7c0728980da70cf"><td class="memItemLeft" align="right" valign="top">enum <a class="el" href="group__compression.html#ga4fa96aedc14866e8e9fc0a2d47cb8d64">clod_compression_result</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__compression.html#gab6bc8fa3446d1ad0d7c0728980da70cf">clod_decompress</a> (struct <a class="el" href="structclod__decompressor.html">clod_decompressor</a> *ctx, void *dst, size_t dst_size, const void *src, size_t src_size, size_t *actual_size, enum <a class="el" href="group__compression.html#gae74641a34313623f69d63a408439c56e">clod_compression_algo</a> algo)</td></tr>
+<tr class="separator:gab6bc8fa3446d1ad0d7c0728980da70cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Macro Definition Documentation</h2>
-<a id="a7e1d56fd2005053eeb68c4535aab7097" name="a7e1d56fd2005053eeb68c4535aab7097"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7e1d56fd2005053eeb68c4535aab7097">&#9670;&#160;</a></span>CLOD_COMPRESSION_DEFAULT_LEVEL</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define CLOD_COMPRESSION_DEFAULT_LEVEL&#160;&#160;&#160;INT8_MAX</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="compression_8h_source.html#l00011">11</a> of file <a class="el" href="compression_8h_source.html">compression.h</a>.</p>
-
-</div>
-</div>
-<a id="a59492b3b6d97849740805a98ff543a44" name="a59492b3b6d97849740805a98ff543a44"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a59492b3b6d97849740805a98ff543a44">&#9670;&#160;</a></span>CLOD_GZIP</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define CLOD_GZIP&#160;&#160;&#160;(1ull&lt;&lt;0)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="compression_8h_source.html#l00013">13</a> of file <a class="el" href="compression_8h_source.html">compression.h</a>.</p>
-
-</div>
-</div>
-<a id="ad0a8ce45bbdba4a5066761fe2103a73d" name="ad0a8ce45bbdba4a5066761fe2103a73d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad0a8ce45bbdba4a5066761fe2103a73d">&#9670;&#160;</a></span>CLOD_ZLIB</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define CLOD_ZLIB&#160;&#160;&#160;(1ull&lt;&lt;1)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="compression_8h_source.html#l00014">14</a> of file <a class="el" href="compression_8h_source.html">compression.h</a>.</p>
-
-</div>
-</div>
-<a id="a95d508d92f770e186037e13e23227ecb" name="a95d508d92f770e186037e13e23227ecb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a95d508d92f770e186037e13e23227ecb">&#9670;&#160;</a></span>CLOD_DEFLATE</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define CLOD_DEFLATE&#160;&#160;&#160;(1ull&lt;&lt;2)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="compression_8h_source.html#l00015">15</a> of file <a class="el" href="compression_8h_source.html">compression.h</a>.</p>
-
-</div>
-</div>
-<a id="acca991313572cbccac78c1d0a2e5e583" name="acca991313572cbccac78c1d0a2e5e583"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acca991313572cbccac78c1d0a2e5e583">&#9670;&#160;</a></span>CLOD_LZ4</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define CLOD_LZ4&#160;&#160;&#160;(1ull&lt;&lt;3)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="compression_8h_source.html#l00016">16</a> of file <a class="el" href="compression_8h_source.html">compression.h</a>.</p>
-
-</div>
-</div>
-<a id="ac87a93c2b959de2f74da13597220cb81" name="ac87a93c2b959de2f74da13597220cb81"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac87a93c2b959de2f74da13597220cb81">&#9670;&#160;</a></span>CLOD_LZ4HC</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define CLOD_LZ4HC&#160;&#160;&#160;(1ull&lt;&lt;4)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="compression_8h_source.html#l00017">17</a> of file <a class="el" href="compression_8h_source.html">compression.h</a>.</p>
-
-</div>
-</div>
-<a id="ad3007cc801cc5bf61fcd3dfebb71cefe" name="ad3007cc801cc5bf61fcd3dfebb71cefe"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad3007cc801cc5bf61fcd3dfebb71cefe">&#9670;&#160;</a></span>CLOD_LZMA</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define CLOD_LZMA&#160;&#160;&#160;(1ull&lt;&lt;5)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="compression_8h_source.html#l00018">18</a> of file <a class="el" href="compression_8h_source.html">compression.h</a>.</p>
-
-</div>
-</div>
-<a id="a97ee80de6d4417f30493658a924aed45" name="a97ee80de6d4417f30493658a924aed45"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a97ee80de6d4417f30493658a924aed45">&#9670;&#160;</a></span>CLOD_ZSTD</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define CLOD_ZSTD&#160;&#160;&#160;(1ull&lt;&lt;6)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="compression_8h_source.html#l00019">19</a> of file <a class="el" href="compression_8h_source.html">compression.h</a>.</p>
-
-</div>
-</div>
-<h2 class="groupheader">Enumeration Type Documentation</h2>
-<a id="a4fa96aedc14866e8e9fc0a2d47cb8d64" name="a4fa96aedc14866e8e9fc0a2d47cb8d64"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4fa96aedc14866e8e9fc0a2d47cb8d64">&#9670;&#160;</a></span>clod_compression_result</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum <a class="el" href="compression_8h.html#a4fa96aedc14866e8e9fc0a2d47cb8d64">clod_compression_result</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a4fa96aedc14866e8e9fc0a2d47cb8d64ac31463ec25374dc12f3889b87f5d46d6" name="a4fa96aedc14866e8e9fc0a2d47cb8d64ac31463ec25374dc12f3889b87f5d46d6"></a>CLOD_COMPRESSION_SUCCESS&#160;</td><td class="fielddoc"><p>The operation was successful. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a4fa96aedc14866e8e9fc0a2d47cb8d64a4ff538b7aabebc1fb9f0a3696e801364" name="a4fa96aedc14866e8e9fc0a2d47cb8d64a4ff538b7aabebc1fb9f0a3696e801364"></a>CLOD_COMPRESSION_UNSUPPORTED&#160;</td><td class="fielddoc"><p>The specified algorithm isn't supported. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a4fa96aedc14866e8e9fc0a2d47cb8d64a41277a6596265216e9f2a069bd0f6e57" name="a4fa96aedc14866e8e9fc0a2d47cb8d64a41277a6596265216e9f2a069bd0f6e57"></a>CLOD_COMPRESSION_MALFORMED&#160;</td><td class="fielddoc"><p>The compressed data is malformed. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a4fa96aedc14866e8e9fc0a2d47cb8d64aefe2e52721dbb74ee806ff6ae1958f56" name="a4fa96aedc14866e8e9fc0a2d47cb8d64aefe2e52721dbb74ee806ff6ae1958f56"></a>CLOD_COMPRESSION_SHORT_BUFFER&#160;</td><td class="fielddoc"><p>The provided buffer is too short to hold the output. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a4fa96aedc14866e8e9fc0a2d47cb8d64a12ad9fad94333808c7718dcb07d0edb8" name="a4fa96aedc14866e8e9fc0a2d47cb8d64a12ad9fad94333808c7718dcb07d0edb8"></a>CLOD_COMPRESSION_SHORT_OUTPUT&#160;</td><td class="fielddoc"><p>The output buffer is larger than the output, and bytes_written was null. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a4fa96aedc14866e8e9fc0a2d47cb8d64a0bd406dac80042aa423c1e4eb1eebd09" name="a4fa96aedc14866e8e9fc0a2d47cb8d64a0bd406dac80042aa423c1e4eb1eebd09"></a>CLOD_COMPRESSION_ALLOC_FAILED&#160;</td><td class="fielddoc"><p>Allocation failed. </p>
-</td></tr>
-</table>
-
-<p class="definition">Definition at line <a class="el" href="compression_8h_source.html#l00025">25</a> of file <a class="el" href="compression_8h_source.html">compression.h</a>.</p>
-
-</div>
-</div>
-<h2 class="groupheader">Function Documentation</h2>
-<a id="a31f2ff7de76cbe9b630f2a226937c699" name="a31f2ff7de76cbe9b630f2a226937c699"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a31f2ff7de76cbe9b630f2a226937c699">&#9670;&#160;</a></span>clod_compression_support()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint64_t clod_compression_support </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="compression_8c_source.html#l00004">4</a> of file <a class="el" href="compression_8c_source.html">compression.c</a>.</p>
-
-</div>
-</div>
-<a id="a33b63475f9b56be574909e3d1d83e8ff" name="a33b63475f9b56be574909e3d1d83e8ff"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a33b63475f9b56be574909e3d1d83e8ff">&#9670;&#160;</a></span>clod_compressor_init()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">struct <a class="el" href="structclod__compressor.html">clod_compressor</a> * clod_compressor_init </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Create a new compressor. </p><dl class="section return"><dt>Returns</dt><dd>Newly allocated compressor, or nullptr on allocation failure. </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="compress_8c_source.html#l00027">27</a> of file <a class="el" href="compress_8c_source.html">compress.c</a>.</p>
-
-<p class="reference">References <a class="el" href="compress_8c_source.html#l00027">clod_compressor_init()</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="compress_8c_source.html#l00027">clod_compressor_init()</a>.</p>
-
-</div>
-</div>
-<a id="a1ebfdc46cf5296c8639ddcf519ec70c1" name="a1ebfdc46cf5296c8639ddcf519ec70c1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1ebfdc46cf5296c8639ddcf519ec70c1">&#9670;&#160;</a></span>clod_compressor_free()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void clod_compressor_free </td>
-          <td>(</td>
-          <td class="paramtype">struct <a class="el" href="structclod__compressor.html">clod_compressor</a> *&#160;</td>
-          <td class="paramname"><em>ctx</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Releases resources associated with the compressor. </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">ctx</td><td>Compressor to free. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p class="definition">Definition at line <a class="el" href="compress_8c_source.html#l00033">33</a> of file <a class="el" href="compress_8c_source.html">compress.c</a>.</p>
-
-<p class="reference">References <a class="el" href="compress_8c_source.html#l00033">clod_compressor_free()</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="compress_8c_source.html#l00033">clod_compressor_free()</a>.</p>
-
-</div>
-</div>
-<a id="a352d9dbbd6ef61e97b01714737c1a454" name="a352d9dbbd6ef61e97b01714737c1a454"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a352d9dbbd6ef61e97b01714737c1a454">&#9670;&#160;</a></span>clod_compress()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum <a class="el" href="compression_8h.html#a4fa96aedc14866e8e9fc0a2d47cb8d64">clod_compression_result</a> clod_compress </td>
-          <td>(</td>
-          <td class="paramtype">struct <a class="el" href="structclod__compressor.html">clod_compressor</a> *&#160;</td>
-          <td class="paramname"><em>ctx</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">void *&#160;</td>
-          <td class="paramname"><em>dst</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>dst_size</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const void *&#160;</td>
-          <td class="paramname"><em>src</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>src_size</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">size_t *&#160;</td>
-          <td class="paramname"><em>compressed_size</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint64_t&#160;</td>
-          <td class="paramname"><em>algo</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int8_t&#160;</td>
-          <td class="paramname"><em>level</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Compress data with a given compression algorithm. </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">ctx</td><td>Compressor. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">dst</td><td>Where compressed data is written. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">dst_size</td><td>Size of dst. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">src</td><td>Where data to be compressed is read from. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">src_size</td><td>Size of src. </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">compressed_size</td><td>The actual size of the compressed output, or 0 if compression failed and the compressed size isn't known. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">algo</td><td>The compression algorith to use. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">level</td><td>Compression level to use. CLOD_COMPRESSION_DEFAULT_LEVEL will use the algos default. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Result of compression. </dd></dl>
-<dl class="exception"><dt>Exceptions</dt><dd>
-  <table class="exception">
-    <tr><td class="paramname">CLOD_COMPRESSION_SUCCESS</td><td>on successful compression. </td></tr>
-    <tr><td class="paramname">CLOD_COMPRESSION_UNSUPPORTED</td><td>if the algo is unsupported. </td></tr>
-    <tr><td class="paramname">CLOD_COMPRESSION_SHORT_BUFFER</td><td>if the destination buffer is too small to hold the compressed output. </td></tr>
-    <tr><td class="paramname">CLOD_COMPRESSION_ALLOC_FAILED</td><td>if memory allocation failed. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p class="definition">Definition at line <a class="el" href="compress_8c_source.html#l00062">62</a> of file <a class="el" href="compress_8c_source.html">compress.c</a>.</p>
-
-<p class="reference">References <a class="el" href="compress_8c_source.html#l00062">clod_compress()</a>, <a class="el" href="compression_8h_source.html#l00037">CLOD_COMPRESSION_ALLOC_FAILED</a>, <a class="el" href="compression_8h_source.html#l00035">CLOD_COMPRESSION_SHORT_OUTPUT</a>, <a class="el" href="compression_8h_source.html#l00027">CLOD_COMPRESSION_SUCCESS</a>, and <a class="el" href="compression_8h_source.html#l00029">CLOD_COMPRESSION_UNSUPPORTED</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="compress_8c_source.html#l00062">clod_compress()</a>.</p>
-
-</div>
-</div>
-<a id="a69d69ad30053ad90066c3c7b84c154bd" name="a69d69ad30053ad90066c3c7b84c154bd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a69d69ad30053ad90066c3c7b84c154bd">&#9670;&#160;</a></span>clod_decompressor_init()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">struct <a class="el" href="structclod__decompressor.html">clod_decompressor</a> * clod_decompressor_init </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Create a new decompressor. </p><dl class="section return"><dt>Returns</dt><dd>Newly allocated decompressor, or nullptr on allocation failure. </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="decompress_8c_source.html#l00026">26</a> of file <a class="el" href="decompress_8c_source.html">decompress.c</a>.</p>
-
-<p class="reference">References <a class="el" href="decompress_8c_source.html#l00026">clod_decompressor_init()</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="decompress_8c_source.html#l00026">clod_decompressor_init()</a>.</p>
-
-</div>
-</div>
-<a id="a5f69a6eefae31a4fec58fd56cf156abd" name="a5f69a6eefae31a4fec58fd56cf156abd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5f69a6eefae31a4fec58fd56cf156abd">&#9670;&#160;</a></span>clod_decompressor_free()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void clod_decompressor_free </td>
-          <td>(</td>
-          <td class="paramtype">struct <a class="el" href="structclod__decompressor.html">clod_decompressor</a> *&#160;</td>
-          <td class="paramname"><em>ctx</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Release resources associated with the decompressor. </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">ctx</td><td>Decompressor to free. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p class="definition">Definition at line <a class="el" href="decompress_8c_source.html#l00032">32</a> of file <a class="el" href="decompress_8c_source.html">decompress.c</a>.</p>
-
-<p class="reference">References <a class="el" href="decompress_8c_source.html#l00032">clod_decompressor_free()</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="decompress_8c_source.html#l00032">clod_decompressor_free()</a>.</p>
-
-</div>
-</div>
-<a id="ad3a65545898b7195a49627412ed828b0" name="ad3a65545898b7195a49627412ed828b0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad3a65545898b7195a49627412ed828b0">&#9670;&#160;</a></span>clod_decompress()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum <a class="el" href="compression_8h.html#a4fa96aedc14866e8e9fc0a2d47cb8d64">clod_compression_result</a> clod_decompress </td>
-          <td>(</td>
-          <td class="paramtype">struct <a class="el" href="structclod__decompressor.html">clod_decompressor</a> *&#160;</td>
-          <td class="paramname"><em>ctx</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">void *&#160;</td>
-          <td class="paramname"><em>dst</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>dst_size</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const void *&#160;</td>
-          <td class="paramname"><em>src</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>src_size</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">size_t *&#160;</td>
-          <td class="paramname"><em>decompressed_size</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint64_t&#160;</td>
-          <td class="paramname"><em>algo</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Decompress some data with the given algorithm. </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">ctx</td><td>Decompressor. </td></tr>
-    <tr><td class="paramname">dst</td><td>Where uncompressed data is written. </td></tr>
-    <tr><td class="paramname">dst_size</td><td>Size of dst. </td></tr>
-    <tr><td class="paramname">src</td><td>Where compressed data is read from. </td></tr>
-    <tr><td class="paramname">src_size</td><td>Size of src. </td></tr>
-    <tr><td class="paramname">decompressed_size</td><td>The actual size of the uncompressed output, or 0 if decompression failed and the decompressed size isn't known. </td></tr>
-    <tr><td class="paramname">algo</td><td>The compression algorithm to use. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>The result of the decompression. </dd></dl>
-<dl class="exception"><dt>Exceptions</dt><dd>
-  <table class="exception">
-    <tr><td class="paramname">CLOD_COMPRESSION_SUCCESS</td><td>on successful decompression. </td></tr>
-    <tr><td class="paramname">CLOD_COMPRESSION_UNSUPPORTED</td><td>if the algo is unsupported. </td></tr>
-    <tr><td class="paramname">CLOD_COMPRESSION_MALFORMED</td><td>if the compressed data is malformed. THIS IS NOT AN INTEGRITY CHECK. </td></tr>
-    <tr><td class="paramname">CLOD_COMPRESSION_SHORT_BUFFER</td><td>if the destination buffer is too small to hold the decompressed output. </td></tr>
-    <tr><td class="paramname">CLOD_COMPRESSION_SHORT_OUTPUT</td><td>if dst is larger than the decompressed output and bytes_written is null. </td></tr>
-    <tr><td class="paramname">CLOD_COMPRESSION_ALLOC_FAILED</td><td>if memory allocation failed. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p class="definition">Definition at line <a class="el" href="decompress_8c_source.html#l00061">61</a> of file <a class="el" href="decompress_8c_source.html">decompress.c</a>.</p>
-
-<p class="reference">References <a class="el" href="compression_8h_source.html#l00037">CLOD_COMPRESSION_ALLOC_FAILED</a>, <a class="el" href="compression_8h_source.html#l00031">CLOD_COMPRESSION_MALFORMED</a>, <a class="el" href="compression_8h_source.html#l00033">CLOD_COMPRESSION_SHORT_BUFFER</a>, <a class="el" href="compression_8h_source.html#l00035">CLOD_COMPRESSION_SHORT_OUTPUT</a>, <a class="el" href="compression_8h_source.html#l00027">CLOD_COMPRESSION_SUCCESS</a>, <a class="el" href="compression_8h_source.html#l00029">CLOD_COMPRESSION_UNSUPPORTED</a>, and <a class="el" href="decompress_8c_source.html#l00061">clod_decompress()</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="decompress_8c_source.html#l00061">clod_decompress()</a>.</p>
-
-</div>
-</div>
 </div><!-- contents -->
-</div><!-- doc-content -->
 <!-- start footer part -->
-<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
-  <ul>
-    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_565cdd2637a496adff24344f738a7244.html">clod</a></li><li class="navelem"><a class="el" href="compression_8h.html">compression.h</a></li>
-    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
-  </ul>
-</div>
+<hr class="footer"/><address class="footer"><small>
+Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6
+</small></address>
 </body>
 </html>

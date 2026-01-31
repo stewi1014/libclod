@@ -9,10 +9,6 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
-<link href="navtree.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="resize.js"></script>
-<script type="text/javascript" src="navtreedata.js"></script>
-<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -27,7 +23,7 @@
   <td id="projectalign">
    <div id="projectname">libclod
    </div>
-   <div id="projectbrief">C library for interacting with NBT, region files, LOD data and other things.a</div>
+   <div id="projectbrief">C library for interacting with NBTs, region files, LOD data and other things.</div>
   </td>
  </tr>
  </tbody>
@@ -51,23 +47,6 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
-</div><!-- top -->
-<div id="side-nav" class="ui-resizable side-nav-resizable">
-  <div id="nav-tree">
-    <div id="nav-tree-contents">
-      <div id="nav-sync" class="sync"></div>
-    </div>
-  </div>
-  <div id="splitbar" style="-moz-user-select:none;" 
-       class="ui-resizable-handle">
-  </div>
-</div>
-<script type="text/javascript">
-/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('table_8c_source.html',''); initResizable(); });
-/* @license-end */
-</script>
-<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -89,6 +68,11 @@ $(document).ready(function(){initNavTree('table_8c_source.html',''); initResizab
 </div>
 </div>
 
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_20706930dc76f634e133f76dc3cfb728.html">table</a></li>  </ul>
+</div>
+</div><!-- top -->
 <div class="header">
   <div class="headertitle"><div class="title">table.c</div></div>
 </div><!--header-->
@@ -116,12 +100,12 @@ $(document).ready(function(){initNavTree('table_8c_source.html',''); initResizab
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#define INDEX_NIL ((size_t)-1)</span></div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="keyword">struct </span>element {</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <span class="keyword">const</span> <span class="keywordtype">void</span> *element;</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="structelement.html">   24</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structelement.html">element</a> {</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <span class="keyword">const</span> <span class="keywordtype">void</span> *<a class="code hl_struct" href="structelement.html">element</a>;</div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <span class="keywordtype">size_t</span> key_size;</div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>};</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="keyword">struct </span>clod_table {</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="keyword">struct </span>clod_table_opts opts;</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="structclod__table.html">   28</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structclod__table.html">clod_table</a> {</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="keyword">struct </span><a class="code hl_struct" href="structclod__table__opts.html">clod_table_opts</a> opts;</div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="keywordtype">size_t</span> elem_count;</div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <span class="keywordtype">size_t</span> deleted_count;</div>
@@ -129,27 +113,27 @@ $(document).ready(function(){initNavTree('table_8c_source.html',''); initResizab
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <span class="keywordtype">size_t</span> cursor;</div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    uint8_t *restrict control;</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="keyword">struct </span>element *restrict elements;</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="keyword">struct </span><a class="code hl_struct" href="structelement.html">element</a> *restrict elements;</div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>};</div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="keyword">static</span> <span class="keyword">struct </span>table_position {</div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="keywordtype">size_t</span> index;</div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    uint8_t ctl;</div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>}</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>get_position(<span class="keyword">const</span> <span class="keyword">struct</span> clod_table *t, <span class="keyword">const</span> <span class="keywordtype">void</span> *key, <span class="keyword">const</span> <span class="keywordtype">size_t</span> key_size) {</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>get_position(<span class="keyword">const</span> <span class="keyword">struct</span> <a class="code hl_struct" href="structclod__table.html">clod_table</a> *t, <span class="keyword">const</span> <span class="keywordtype">void</span> *key, <span class="keyword">const</span> <span class="keywordtype">size_t</span> key_size) {</div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    assert(t-&gt;table_size &gt; 0);</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="keyword">auto</span> <span class="keyword">const</span> hash = t-&gt;opts.hash_func((<span class="keywordtype">size_t</span>)t-&gt;control, key, key_size);</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="keyword">auto</span> <span class="keyword">const</span> hash = t-&gt;opts.<a class="code hl_variable" href="structclod__table__opts.html#a9bf67621f2258892b570834e3464555f">hash_func</a>((<span class="keywordtype">size_t</span>)t-&gt;control, key, key_size);</div>
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="keywordflow">return</span> (<span class="keyword">struct</span> table_position){</div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        .ctl = CTL_OCCUPIED(hash),</div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        .index = (hash &gt;&gt; CTL_HASH_BITS) % t-&gt;table_size</div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    };</div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>}</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="keyword">static</span> <span class="keywordtype">bool</span> create(<span class="keyword">struct</span> clod_table *t, <span class="keyword">const</span> <span class="keyword">struct</span> clod_table_opts *opts, <span class="keyword">const</span> <span class="keywordtype">size_t</span> new_table_size) {</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="keyword">static</span> <span class="keywordtype">bool</span> create(<span class="keyword">struct</span> <a class="code hl_struct" href="structclod__table.html">clod_table</a> *t, <span class="keyword">const</span> <span class="keyword">struct</span> <a class="code hl_struct" href="structclod__table__opts.html">clod_table_opts</a> *opts, <span class="keyword">const</span> <span class="keywordtype">size_t</span> new_table_size) {</div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    memcpy(&amp;t-&gt;opts, opts, <span class="keyword">sizeof</span>(t-&gt;opts));</div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    t-&gt;elem_count = 0;</div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    t-&gt;deleted_count = 0;</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    t-&gt;table_size = new_table_size &lt; LF_CAPACITY_TO_SIZE(LF_MAX, t-&gt;opts.min_capacity)</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        ? LF_CAPACITY_TO_SIZE(LF_MAX, t-&gt;opts.min_capacity)</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    t-&gt;table_size = new_table_size &lt; LF_CAPACITY_TO_SIZE(LF_MAX, t-&gt;opts.<a class="code hl_variable" href="structclod__table__opts.html#a43e5fd77a335eee620c7092e8ccecfea">min_capacity</a>)</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        ? LF_CAPACITY_TO_SIZE(LF_MAX, t-&gt;opts.<a class="code hl_variable" href="structclod__table__opts.html#a43e5fd77a335eee620c7092e8ccecfea">min_capacity</a>)</div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        : new_table_size;</div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    t-&gt;cursor = 0;</div>
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
@@ -167,19 +151,19 @@ $(document).ready(function(){initNavTree('table_8c_source.html',''); initResizab
 <div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>}</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="keyword">static</span> <span class="keywordtype">void</span> destroy(<span class="keyword">const</span> <span class="keyword">struct</span> clod_table *t) {</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="keyword">static</span> <span class="keywordtype">void</span> destroy(<span class="keyword">const</span> <span class="keyword">struct</span> <a class="code hl_struct" href="structclod__table.html">clod_table</a> *t) {</div>
 <div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    free(t-&gt;elements);</div>
 <div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>}</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span><span class="keyword">static</span> <span class="keywordtype">bool</span> key_equal(<span class="keyword">const</span> <span class="keyword">struct</span> clod_table *t, <span class="keyword">const</span> <span class="keywordtype">size_t</span> index, <span class="keyword">const</span> <span class="keywordtype">void</span> *key, <span class="keyword">const</span> <span class="keywordtype">size_t</span> key_size) {</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span><span class="keyword">static</span> <span class="keywordtype">bool</span> key_equal(<span class="keyword">const</span> <span class="keyword">struct</span> <a class="code hl_struct" href="structclod__table.html">clod_table</a> *t, <span class="keyword">const</span> <span class="keywordtype">size_t</span> index, <span class="keyword">const</span> <span class="keywordtype">void</span> *key, <span class="keyword">const</span> <span class="keywordtype">size_t</span> key_size) {</div>
 <div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    <span class="keyword">auto</span> <span class="keyword">const</span> res = t-&gt;elements[index];</div>
 <div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    <span class="keywordflow">if</span> (res.key_size != key_size) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    <span class="keywordflow">return</span> t-&gt;opts.cmp_func(res.element, key, res.key_size) == 0;</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    <span class="keywordflow">return</span> t-&gt;opts.<a class="code hl_variable" href="structclod__table__opts.html#a1747b1fe62c2ed27960d43dd213bff60">cmp_func</a>(res.element, key, res.key_size) == 0;</div>
 <div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>}</div>
 <div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span><span class="keyword">static</span> <span class="keyword">struct </span>probe {</div>
 <div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    <span class="keywordtype">size_t</span> existing;</div>
 <div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    <span class="keywordtype">size_t</span> available;</div>
 <div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>}</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>probe(<span class="keyword">const</span> <span class="keyword">struct</span> clod_table *t, <span class="keyword">const</span> <span class="keyword">struct</span> table_position pos, <span class="keyword">const</span> <span class="keywordtype">void</span> *key, <span class="keyword">const</span> <span class="keywordtype">size_t</span> key_size) {</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>probe(<span class="keyword">const</span> <span class="keyword">struct</span> <a class="code hl_struct" href="structclod__table.html">clod_table</a> *t, <span class="keyword">const</span> <span class="keyword">struct</span> table_position pos, <span class="keyword">const</span> <span class="keywordtype">void</span> *key, <span class="keyword">const</span> <span class="keywordtype">size_t</span> key_size) {</div>
 <div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    assert(pos.index &lt; t-&gt;table_size);</div>
 <div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span> </div>
 <div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    <span class="keywordtype">size_t</span> available = INDEX_NIL;</div>
@@ -210,16 +194,16 @@ $(document).ready(function(){initNavTree('table_8c_source.html',''); initResizab
 <div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>        .available = available</div>
 <div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>    };</div>
 <div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>}</div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span><span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">void</span> *insert(<span class="keyword">struct</span> clod_table *t, <span class="keyword">const</span> <span class="keywordtype">bool</span> replace, <span class="keyword">const</span> <span class="keywordtype">void</span> *element, <span class="keyword">const</span> <span class="keywordtype">size_t</span> key_size) {</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span><span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">void</span> *insert(<span class="keyword">struct</span> <a class="code hl_struct" href="structclod__table.html">clod_table</a> *t, <span class="keyword">const</span> <span class="keywordtype">bool</span> replace, <span class="keyword">const</span> <span class="keywordtype">void</span> *<a class="code hl_struct" href="structelement.html">element</a>, <span class="keyword">const</span> <span class="keywordtype">size_t</span> key_size) {</div>
 <div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>    assert(t-&gt;elem_count &lt; t-&gt;table_size);</div>
 <div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span> </div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>    <span class="keyword">auto</span> <span class="keyword">const</span> pos = get_position(t, element, key_size);</div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>    <span class="keyword">auto</span> <span class="keyword">const</span> res = probe(t, pos, element, key_size);</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>    <span class="keyword">auto</span> <span class="keyword">const</span> pos = get_position(t, <a class="code hl_struct" href="structelement.html">element</a>, key_size);</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>    <span class="keyword">auto</span> <span class="keyword">const</span> res = probe(t, pos, <a class="code hl_struct" href="structelement.html">element</a>, key_size);</div>
 <div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span> </div>
 <div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>    <span class="keywordflow">if</span> (res.existing != INDEX_NIL) {</div>
 <div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>        <span class="keywordflow">if</span> (replace) {</div>
 <div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>            <span class="keyword">const</span> <span class="keywordtype">void</span> *previous = t-&gt;elements[res.existing].element;</div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>            t-&gt;elements[res.existing].element = element;</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>            t-&gt;elements[res.existing].element = <a class="code hl_struct" href="structelement.html">element</a>;</div>
 <div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>            t-&gt;elements[res.existing].key_size = key_size;</div>
 <div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>            <span class="keywordflow">return</span> previous;</div>
 <div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>        } <span class="keywordflow">else</span> {</div>
@@ -231,20 +215,20 @@ $(document).ready(function(){initNavTree('table_8c_source.html',''); initResizab
 <div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>    t-&gt;elem_count++;</div>
 <div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>    <span class="keywordflow">if</span> (t-&gt;control[res.available] == CTL_REMOVED) t-&gt;deleted_count--;</div>
 <div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>    t-&gt;control[res.available] = pos.ctl;</div>
-<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>    t-&gt;elements[res.available].element = element;</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>    t-&gt;elements[res.available].element = <a class="code hl_struct" href="structelement.html">element</a>;</div>
 <div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>    t-&gt;elements[res.available].key_size = key_size;</div>
 <div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>    <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
 <div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>}</div>
-<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span><span class="keyword">static</span> <span class="keywordtype">bool</span> rebuild(<span class="keyword">struct</span> clod_table *t, <span class="keyword">const</span> <span class="keywordtype">size_t</span> new_table_size) {</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span><span class="keyword">static</span> <span class="keywordtype">bool</span> rebuild(<span class="keyword">struct</span> <a class="code hl_struct" href="structclod__table.html">clod_table</a> *t, <span class="keyword">const</span> <span class="keywordtype">size_t</span> new_table_size) {</div>
 <div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>    assert(new_table_size &gt;= t-&gt;elem_count);</div>
 <div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span> </div>
-<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>    <span class="keyword">struct </span>clod_table new;</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>    <span class="keyword">struct </span><a class="code hl_struct" href="structclod__table.html">clod_table</a> new;</div>
 <div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>    <span class="keywordflow">if</span> (!create(&amp;<span class="keyword">new</span>, &amp;t-&gt;opts, new_table_size)) {</div>
 <div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>    }</div>
 <div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span> </div>
 <div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>    <span class="keyword">auto</span> iter = CLOD_TABLE_ITER_INIT;</div>
-<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>    <span class="keywordflow">while</span> (<a class="code hl_function" href="group__table.html#ga4782517629528b5c714af9d132082364">clod_table_iter</a>(t, &amp;iter)) {</div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>    <span class="keywordflow">while</span> (<a class="code hl_struct" href="structclod__table__iter.html">clod_table_iter</a>(t, &amp;iter)) {</div>
 <div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>        <span class="keywordflow">if</span> (insert(&amp;<span class="keyword">new</span>, <span class="keyword">false</span>, iter.element, iter.key_size) != <span class="keyword">nullptr</span>) {</div>
 <div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>            destroy(&amp;<span class="keyword">new</span>);</div>
 <div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
@@ -260,51 +244,51 @@ $(document).ready(function(){initNavTree('table_8c_source.html',''); initResizab
 <div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>    state = <a class="code hl_function" href="group__hash.html#gaaefe591a503d0c93d185a0a69a197ef2">clod_sip64_add</a>(state, data, data_size);</div>
 <div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="group__hash.html#ga614d5bf14c7d9712f5730270766f88e6">clod_sip64_finalise</a>(state);</div>
 <div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>}</div>
-<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span><span class="keyword">static</span> <span class="keywordtype">void</span> apply_default_opts(<span class="keyword">struct</span> clod_table_opts *opts) {</div>
-<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>    <span class="keywordflow">if</span> (!opts-&gt;hash_func) opts-&gt;hash_func = default_hash;</div>
-<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>    <span class="keywordflow">if</span> (!opts-&gt;cmp_func) opts-&gt;cmp_func = memcmp;</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span><span class="keyword">static</span> <span class="keywordtype">void</span> apply_default_opts(<span class="keyword">struct</span> <a class="code hl_struct" href="structclod__table__opts.html">clod_table_opts</a> *opts) {</div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>    <span class="keywordflow">if</span> (!opts-&gt;<a class="code hl_variable" href="structclod__table__opts.html#a9bf67621f2258892b570834e3464555f">hash_func</a>) opts-&gt;<a class="code hl_variable" href="structclod__table__opts.html#a9bf67621f2258892b570834e3464555f">hash_func</a> = default_hash;</div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>    <span class="keywordflow">if</span> (!opts-&gt;<a class="code hl_variable" href="structclod__table__opts.html#a1747b1fe62c2ed27960d43dd213bff60">cmp_func</a>) opts-&gt;<a class="code hl_variable" href="structclod__table__opts.html#a1747b1fe62c2ed27960d43dd213bff60">cmp_func</a> = memcmp;</div>
 <div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>}</div>
-<div class="line"><a id="l00172" name="l00172"></a><span class="lineno"><a class="line" href="group__table.html#gaaa4f82888b60e6a15ad73726a81c835a">  172</a></span><span class="keyword">struct </span>clod_table *<a class="code hl_function" href="group__table.html#gaaa4f82888b60e6a15ad73726a81c835a">clod_table_create</a>(<span class="keyword">const</span> <span class="keyword">struct</span> clod_table_opts *opts) {</div>
-<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>    <span class="keyword">struct </span>clod_table *t = malloc(<span class="keyword">sizeof</span>(*t));</div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno"><a class="line" href="group__table.html#gaaa4f82888b60e6a15ad73726a81c835a">  172</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structclod__table.html">clod_table</a> *<a class="code hl_function" href="group__table.html#gaaa4f82888b60e6a15ad73726a81c835a">clod_table_create</a>(<span class="keyword">const</span> <span class="keyword">struct</span> <a class="code hl_struct" href="structclod__table__opts.html">clod_table_opts</a> *opts) {</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>    <span class="keyword">struct </span><a class="code hl_struct" href="structclod__table.html">clod_table</a> *t = malloc(<span class="keyword">sizeof</span>(*t));</div>
 <div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>    <span class="keywordflow">if</span> (!t) <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
 <div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span> </div>
 <div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>    <span class="keywordflow">if</span> (opts) memcpy(&amp;t-&gt;opts, opts, <span class="keyword">sizeof</span>(t-&gt;opts));</div>
 <div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>    <span class="keywordflow">else</span> memset(&amp;t-&gt;opts, 0, <span class="keyword">sizeof</span>(t-&gt;opts));</div>
 <div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>    apply_default_opts(&amp;t-&gt;opts);</div>
 <div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span> </div>
-<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>    <span class="keywordflow">if</span> (!create(t, &amp;t-&gt;opts, LF_CAPACITY_TO_SIZE(LF_MAX, t-&gt;opts.min_capacity))) {</div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>    <span class="keywordflow">if</span> (!create(t, &amp;t-&gt;opts, LF_CAPACITY_TO_SIZE(LF_MAX, t-&gt;opts.<a class="code hl_variable" href="structclod__table__opts.html#a43e5fd77a335eee620c7092e8ccecfea">min_capacity</a>))) {</div>
 <div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>        free(t);</div>
 <div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
 <div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>    }</div>
 <div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span> </div>
 <div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>    <span class="keywordflow">return</span> t;</div>
 <div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>}</div>
-<div class="line"><a id="l00187" name="l00187"></a><span class="lineno"><a class="line" href="group__table.html#ga239b3e23b7e9a91d1e32014257e8ee5a">  187</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="group__table.html#ga239b3e23b7e9a91d1e32014257e8ee5a">clod_table_destroy</a>(<span class="keyword">struct</span> clod_table *t) {</div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno"><a class="line" href="group__table.html#ga239b3e23b7e9a91d1e32014257e8ee5a">  187</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="group__table.html#ga239b3e23b7e9a91d1e32014257e8ee5a">clod_table_destroy</a>(<span class="keyword">struct</span> <a class="code hl_struct" href="structclod__table.html">clod_table</a> *t) {</div>
 <div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>    destroy(t);</div>
 <div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>    free(t);</div>
 <div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>}</div>
-<div class="line"><a id="l00191" name="l00191"></a><span class="lineno"><a class="line" href="group__table.html#ga1b3e25a7596146eba0a019e5eb95900a">  191</a></span><span class="keywordtype">size_t</span> <a class="code hl_function" href="group__table.html#ga1b3e25a7596146eba0a019e5eb95900a">clod_table_len</a>(<span class="keyword">const</span> <span class="keyword">struct</span> clod_table *t) {</div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno"><a class="line" href="group__table.html#ga1b3e25a7596146eba0a019e5eb95900a">  191</a></span><span class="keywordtype">size_t</span> <a class="code hl_function" href="group__table.html#ga1b3e25a7596146eba0a019e5eb95900a">clod_table_len</a>(<span class="keyword">const</span> <span class="keyword">struct</span> <a class="code hl_struct" href="structclod__table.html">clod_table</a> *t) {</div>
 <div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>    <span class="keywordflow">return</span> t-&gt;elem_count;</div>
 <div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>}</div>
-<div class="line"><a id="l00194" name="l00194"></a><span class="lineno"><a class="line" href="group__table.html#ga0461d4310832868c49bc80d92ae97380">  194</a></span><span class="keywordtype">void</span> *<a class="code hl_function" href="group__table.html#ga0461d4310832868c49bc80d92ae97380">clod_table_add</a>(<span class="keyword">struct</span> clod_table *t, <span class="keyword">const</span> <span class="keywordtype">void</span> *element, <span class="keyword">const</span> <span class="keywordtype">size_t</span> key_size) {</div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno"><a class="line" href="group__table.html#ga0461d4310832868c49bc80d92ae97380">  194</a></span><span class="keywordtype">void</span> *<a class="code hl_function" href="group__table.html#ga0461d4310832868c49bc80d92ae97380">clod_table_add</a>(<span class="keyword">struct</span> <a class="code hl_struct" href="structclod__table.html">clod_table</a> *t, <span class="keyword">const</span> <span class="keywordtype">void</span> *<a class="code hl_struct" href="structelement.html">element</a>, <span class="keyword">const</span> <span class="keywordtype">size_t</span> key_size) {</div>
 <div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>    <span class="keywordflow">if</span> (t-&gt;table_size == 0 || LF(t) &gt;= LF_MAX) {</div>
 <div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>        <span class="keywordflow">if</span> (!rebuild(t, LF_CAPACITY_TO_SIZE(LF_MIN, t-&gt;elem_count + 1))) {</div>
-<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>            <span class="keywordflow">return</span> (<span class="keywordtype">void</span>*)element;</div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>            <span class="keywordflow">return</span> (<span class="keywordtype">void</span>*)<a class="code hl_struct" href="structelement.html">element</a>;</div>
 <div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>        }</div>
 <div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>    }</div>
 <div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span> </div>
-<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>    <span class="keywordflow">return</span> (<span class="keywordtype">void</span>*)insert(t, <span class="keyword">false</span>, element, key_size);</div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>    <span class="keywordflow">return</span> (<span class="keywordtype">void</span>*)insert(t, <span class="keyword">false</span>, <a class="code hl_struct" href="structelement.html">element</a>, key_size);</div>
 <div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>}</div>
-<div class="line"><a id="l00203" name="l00203"></a><span class="lineno"><a class="line" href="group__table.html#ga9e9bc355477840c482ea564f31b39239">  203</a></span><span class="keywordtype">void</span> *<a class="code hl_function" href="group__table.html#ga9e9bc355477840c482ea564f31b39239">clod_table_set</a>(<span class="keyword">struct</span> clod_table *t, <span class="keyword">const</span> <span class="keywordtype">void</span> *element, <span class="keyword">const</span> <span class="keywordtype">size_t</span> key_size) {</div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno"><a class="line" href="group__table.html#ga9e9bc355477840c482ea564f31b39239">  203</a></span><span class="keywordtype">void</span> *<a class="code hl_function" href="group__table.html#ga9e9bc355477840c482ea564f31b39239">clod_table_set</a>(<span class="keyword">struct</span> <a class="code hl_struct" href="structclod__table.html">clod_table</a> *t, <span class="keyword">const</span> <span class="keywordtype">void</span> *<a class="code hl_struct" href="structelement.html">element</a>, <span class="keyword">const</span> <span class="keywordtype">size_t</span> key_size) {</div>
 <div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>    <span class="keywordflow">if</span> (t-&gt;table_size == 0 || LF(t) &gt;= LF_MAX) {</div>
 <div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>        <span class="keywordflow">if</span> (!rebuild(t, LF_CAPACITY_TO_SIZE(LF_MIN, t-&gt;elem_count + 1))) {</div>
-<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>            <span class="keywordflow">return</span> (<span class="keywordtype">void</span>*)element;</div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>            <span class="keywordflow">return</span> (<span class="keywordtype">void</span>*)<a class="code hl_struct" href="structelement.html">element</a>;</div>
 <div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>        }</div>
 <div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>    }</div>
 <div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span> </div>
-<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>    <span class="keywordflow">return</span> (<span class="keywordtype">void</span>*)insert(t, <span class="keyword">true</span>, element, key_size);</div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>    <span class="keywordflow">return</span> (<span class="keywordtype">void</span>*)insert(t, <span class="keyword">true</span>, <a class="code hl_struct" href="structelement.html">element</a>, key_size);</div>
 <div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>}</div>
-<div class="line"><a id="l00212" name="l00212"></a><span class="lineno"><a class="line" href="group__table.html#gacca658a9b075d4f6d5b551d637f14290">  212</a></span><span class="keywordtype">void</span> *<a class="code hl_function" href="group__table.html#gacca658a9b075d4f6d5b551d637f14290">clod_table_get</a>(<span class="keyword">const</span> <span class="keyword">struct</span> clod_table *t, <span class="keyword">const</span> <span class="keywordtype">void</span> *key, <span class="keyword">const</span> <span class="keywordtype">size_t</span> key_size) {</div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno"><a class="line" href="group__table.html#gacca658a9b075d4f6d5b551d637f14290">  212</a></span><span class="keywordtype">void</span> *<a class="code hl_function" href="group__table.html#gacca658a9b075d4f6d5b551d637f14290">clod_table_get</a>(<span class="keyword">const</span> <span class="keyword">struct</span> <a class="code hl_struct" href="structclod__table.html">clod_table</a> *t, <span class="keyword">const</span> <span class="keywordtype">void</span> *key, <span class="keyword">const</span> <span class="keywordtype">size_t</span> key_size) {</div>
 <div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>    <span class="keywordflow">if</span> (t-&gt;table_size == 0) <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
 <div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>    <span class="keyword">auto</span> <span class="keyword">const</span> res = probe(t, get_position(t, key, key_size), key, key_size);</div>
 <div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>    <span class="keywordflow">if</span> (res.existing != INDEX_NIL) {</div>
@@ -313,7 +297,7 @@ $(document).ready(function(){initNavTree('table_8c_source.html',''); initResizab
 <div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span> </div>
 <div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>    <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
 <div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>}</div>
-<div class="line"><a id="l00221" name="l00221"></a><span class="lineno"><a class="line" href="group__table.html#gae007e3135fdf976ccd71b3b2f485c441">  221</a></span><span class="keywordtype">void</span> *<a class="code hl_function" href="group__table.html#gae007e3135fdf976ccd71b3b2f485c441">clod_table_del</a>(<span class="keyword">struct</span> clod_table *t, <span class="keyword">const</span> <span class="keywordtype">void</span> *key, <span class="keyword">const</span> <span class="keywordtype">size_t</span> key_size) {</div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno"><a class="line" href="group__table.html#gae007e3135fdf976ccd71b3b2f485c441">  221</a></span><span class="keywordtype">void</span> *<a class="code hl_function" href="group__table.html#gae007e3135fdf976ccd71b3b2f485c441">clod_table_del</a>(<span class="keyword">struct</span> <a class="code hl_struct" href="structclod__table.html">clod_table</a> *t, <span class="keyword">const</span> <span class="keywordtype">void</span> *key, <span class="keyword">const</span> <span class="keywordtype">size_t</span> key_size) {</div>
 <div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>    <span class="keywordflow">if</span> (t-&gt;table_size == 0) <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
 <div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>    <span class="keyword">auto</span> <span class="keyword">const</span> res = probe(t, get_position(t, key, key_size), key, key_size);</div>
 <div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>    <span class="keywordflow">if</span> (res.existing != INDEX_NIL) {</div>
@@ -326,7 +310,7 @@ $(document).ready(function(){initNavTree('table_8c_source.html',''); initResizab
 <div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span> </div>
 <div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>    <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
 <div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>}</div>
-<div class="line"><a id="l00234" name="l00234"></a><span class="lineno"><a class="line" href="group__table.html#ga4782517629528b5c714af9d132082364">  234</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="group__table.html#ga4782517629528b5c714af9d132082364">clod_table_iter</a>(<span class="keyword">const</span> <span class="keyword">struct</span> clod_table *t, <span class="keyword">struct</span> clod_table_iter *iter) {</div>
+<div class="line"><a id="l00234" name="l00234"></a><span class="lineno"><a class="line" href="group__table.html#ga4782517629528b5c714af9d132082364">  234</a></span><span class="keywordtype">bool</span> <a class="code hl_struct" href="structclod__table__iter.html">clod_table_iter</a>(<span class="keyword">const</span> <span class="keyword">struct</span> <a class="code hl_struct" href="structclod__table.html">clod_table</a> *t, <span class="keyword">struct</span> <a class="code hl_struct" href="structclod__table__iter.html">clod_table_iter</a> *iter) {</div>
 <div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>    <span class="keywordflow">while</span> (iter-&gt;_internal &lt; t-&gt;table_size) {</div>
 <div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>        <span class="keyword">const</span> <span class="keywordtype">size_t</span> index = (iter-&gt;_internal + t-&gt;cursor) % t-&gt;table_size;</div>
 <div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>        if (CTL_IS_OCCUPIED(t-&gt;control[index])) {</div>
@@ -349,20 +333,22 @@ $(document).ready(function(){initNavTree('table_8c_source.html',''); initResizab
 <div class="ttc" id="agroup__table_html_ga0461d4310832868c49bc80d92ae97380"><div class="ttname"><a href="group__table.html#ga0461d4310832868c49bc80d92ae97380">clod_table_add</a></div><div class="ttdeci">void * clod_table_add(struct clod_table *t, const void *element, const size_t key_size)</div><div class="ttdef"><b>Definition:</b> <a href="table_8c_source.html#l00194">table.c:194</a></div></div>
 <div class="ttc" id="agroup__table_html_ga1b3e25a7596146eba0a019e5eb95900a"><div class="ttname"><a href="group__table.html#ga1b3e25a7596146eba0a019e5eb95900a">clod_table_len</a></div><div class="ttdeci">size_t clod_table_len(const struct clod_table *t)</div><div class="ttdef"><b>Definition:</b> <a href="table_8c_source.html#l00191">table.c:191</a></div></div>
 <div class="ttc" id="agroup__table_html_ga239b3e23b7e9a91d1e32014257e8ee5a"><div class="ttname"><a href="group__table.html#ga239b3e23b7e9a91d1e32014257e8ee5a">clod_table_destroy</a></div><div class="ttdeci">void clod_table_destroy(struct clod_table *t)</div><div class="ttdef"><b>Definition:</b> <a href="table_8c_source.html#l00187">table.c:187</a></div></div>
-<div class="ttc" id="agroup__table_html_ga4782517629528b5c714af9d132082364"><div class="ttname"><a href="group__table.html#ga4782517629528b5c714af9d132082364">clod_table_iter</a></div><div class="ttdeci">bool clod_table_iter(const struct clod_table *t, struct clod_table_iter *iter)</div><div class="ttdef"><b>Definition:</b> <a href="table_8c_source.html#l00234">table.c:234</a></div></div>
 <div class="ttc" id="agroup__table_html_ga9e9bc355477840c482ea564f31b39239"><div class="ttname"><a href="group__table.html#ga9e9bc355477840c482ea564f31b39239">clod_table_set</a></div><div class="ttdeci">void * clod_table_set(struct clod_table *t, const void *element, const size_t key_size)</div><div class="ttdef"><b>Definition:</b> <a href="table_8c_source.html#l00203">table.c:203</a></div></div>
 <div class="ttc" id="agroup__table_html_gaaa4f82888b60e6a15ad73726a81c835a"><div class="ttname"><a href="group__table.html#gaaa4f82888b60e6a15ad73726a81c835a">clod_table_create</a></div><div class="ttdeci">struct clod_table * clod_table_create(const struct clod_table_opts *opts)</div><div class="ttdef"><b>Definition:</b> <a href="table_8c_source.html#l00172">table.c:172</a></div></div>
 <div class="ttc" id="agroup__table_html_gacca658a9b075d4f6d5b551d637f14290"><div class="ttname"><a href="group__table.html#gacca658a9b075d4f6d5b551d637f14290">clod_table_get</a></div><div class="ttdeci">void * clod_table_get(const struct clod_table *t, const void *key, const size_t key_size)</div><div class="ttdef"><b>Definition:</b> <a href="table_8c_source.html#l00212">table.c:212</a></div></div>
 <div class="ttc" id="agroup__table_html_gae007e3135fdf976ccd71b3b2f485c441"><div class="ttname"><a href="group__table.html#gae007e3135fdf976ccd71b3b2f485c441">clod_table_del</a></div><div class="ttdeci">void * clod_table_del(struct clod_table *t, const void *key, const size_t key_size)</div><div class="ttdef"><b>Definition:</b> <a href="table_8c_source.html#l00221">table.c:221</a></div></div>
+<div class="ttc" id="astructclod__table__iter_html"><div class="ttname"><a href="structclod__table__iter.html">clod_table_iter</a></div><div class="ttdef"><b>Definition:</b> <a href="table_8h_source.html#l00119">table.h:119</a></div></div>
+<div class="ttc" id="astructclod__table__opts_html"><div class="ttname"><a href="structclod__table__opts.html">clod_table_opts</a></div><div class="ttdef"><b>Definition:</b> <a href="table_8h_source.html#l00027">table.h:27</a></div></div>
+<div class="ttc" id="astructclod__table__opts_html_a1747b1fe62c2ed27960d43dd213bff60"><div class="ttname"><a href="structclod__table__opts.html#a1747b1fe62c2ed27960d43dd213bff60">clod_table_opts::cmp_func</a></div><div class="ttdeci">int(* cmp_func)(const void *key1, const void *key2, size_t key_size)</div><div class="ttdef"><b>Definition:</b> <a href="table_8h_source.html#l00039">table.h:39</a></div></div>
+<div class="ttc" id="astructclod__table__opts_html_a43e5fd77a335eee620c7092e8ccecfea"><div class="ttname"><a href="structclod__table__opts.html#a43e5fd77a335eee620c7092e8ccecfea">clod_table_opts::min_capacity</a></div><div class="ttdeci">size_t min_capacity</div><div class="ttdef"><b>Definition:</b> <a href="table_8h_source.html#l00030">table.h:30</a></div></div>
+<div class="ttc" id="astructclod__table__opts_html_a9bf67621f2258892b570834e3464555f"><div class="ttname"><a href="structclod__table__opts.html#a9bf67621f2258892b570834e3464555f">clod_table_opts::hash_func</a></div><div class="ttdeci">uint64_t(* hash_func)(uint64_t seed, const void *key, size_t key_size)</div><div class="ttdef"><b>Definition:</b> <a href="table_8h_source.html#l00034">table.h:34</a></div></div>
+<div class="ttc" id="astructclod__table_html"><div class="ttname"><a href="structclod__table.html">clod_table</a></div><div class="ttdef"><b>Definition:</b> <a href="table_8c_source.html#l00028">table.c:28</a></div></div>
+<div class="ttc" id="astructelement_html"><div class="ttname"><a href="structelement.html">element</a></div><div class="ttdef"><b>Definition:</b> <a href="table_8c_source.html#l00024">table.c:24</a></div></div>
 <div class="ttc" id="atable_8h_html"><div class="ttname"><a href="table_8h.html">table.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
-</div><!-- doc-content -->
 <!-- start footer part -->
-<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
-  <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_20706930dc76f634e133f76dc3cfb728.html">table</a></li><li class="navelem"><b>table.c</b></li>
-    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
-  </ul>
-</div>
+<hr class="footer"/><address class="footer"><small>
+Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6
+</small></address>
 </body>
 </html>

@@ -9,10 +9,6 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
-<link href="navtree.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="resize.js"></script>
-<script type="text/javascript" src="navtreedata.js"></script>
-<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -27,7 +23,7 @@
   <td id="projectalign">
    <div id="projectname">libclod
    </div>
-   <div id="projectbrief">C library for interacting with NBT, region files, LOD data and other things.a</div>
+   <div id="projectbrief">C library for interacting with NBTs, region files, LOD data and other things.</div>
   </td>
  </tr>
  </tbody>
@@ -51,23 +47,6 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
-</div><!-- top -->
-<div id="side-nav" class="ui-resizable side-nav-resizable">
-  <div id="nav-tree">
-    <div id="nav-tree-contents">
-      <div id="nav-sync" class="sync"></div>
-    </div>
-  </div>
-  <div id="splitbar" style="-moz-user-select:none;" 
-       class="ui-resizable-handle">
-  </div>
-</div>
-<script type="text/javascript">
-/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('simple__all__methods_8c_source.html',''); initResizable(); });
-/* @license-end */
-</script>
-<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -89,6 +68,11 @@ $(document).ready(function(){initNavTree('simple__all__methods_8c_source.html','
 </div>
 </div>
 
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_13e138d54eb8818da29c3992edef070a.html">test</a></li><li class="navelem"><a class="el" href="dir_640a5ecfd31c8c02dc5abd6d82ef02ce.html">table</a></li>  </ul>
+</div>
+</div><!-- top -->
 <div class="header">
   <div class="headertitle"><div class="title">simple_all_methods.c</div></div>
 </div><!--header-->
@@ -104,9 +88,9 @@ $(document).ready(function(){initNavTree('simple__all__methods_8c_source.html','
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="keywordtype">int</span> main() {</div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    <span class="keyword">const</span> <span class="keywordtype">char</span> *val = STR;</div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    <span class="keyword">const</span> <span class="keywordtype">char</span> *val2 = STR;</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    <span class="keyword">struct </span><a class="code hl_function" href="group__table.html#ga4782517629528b5c714af9d132082364">clod_table_iter</a> iter;</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    <span class="keyword">struct </span><a class="code hl_struct" href="structclod__table__iter.html">clod_table_iter</a> iter;</div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    <span class="keyword">struct </span>clod_table *t = <a class="code hl_function" href="group__table.html#gaaa4f82888b60e6a15ad73726a81c835a">clod_table_create</a>(<span class="keyword">nullptr</span>);</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    <span class="keyword">struct </span><a class="code hl_struct" href="structclod__table.html">clod_table</a> *t = <a class="code hl_function" href="group__table.html#gaaa4f82888b60e6a15ad73726a81c835a">clod_table_create</a>(<span class="keyword">nullptr</span>);</div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    check(<a class="code hl_function" href="group__table.html#ga1b3e25a7596146eba0a019e5eb95900a">clod_table_len</a>(t) == 0);</div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    check(<a class="code hl_function" href="group__table.html#gacca658a9b075d4f6d5b551d637f14290">clod_table_get</a>(t, val, LEN) == <span class="keyword">nullptr</span>);</div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    check(<a class="code hl_function" href="group__table.html#gae007e3135fdf976ccd71b3b2f485c441">clod_table_del</a>(t, val, LEN) == <span class="keyword">nullptr</span>);</div>
@@ -114,10 +98,10 @@ $(document).ready(function(){initNavTree('simple__all__methods_8c_source.html','
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    check(<a class="code hl_function" href="group__table.html#ga0461d4310832868c49bc80d92ae97380">clod_table_add</a>(t, val, LEN) == val2);</div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    check(<a class="code hl_function" href="group__table.html#ga9e9bc355477840c482ea564f31b39239">clod_table_set</a>(t, val, LEN) == val2);</div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    iter = CLOD_TABLE_ITER_INIT;</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    check(<a class="code hl_function" href="group__table.html#ga4782517629528b5c714af9d132082364">clod_table_iter</a>(t, &amp;iter));</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    check(<a class="code hl_struct" href="structclod__table__iter.html">clod_table_iter</a>(t, &amp;iter));</div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    check(iter.element == val);</div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    check(iter.key_size == LEN);</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    check(!<a class="code hl_function" href="group__table.html#ga4782517629528b5c714af9d132082364">clod_table_iter</a>(t, &amp;iter));</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    check(!<a class="code hl_struct" href="structclod__table__iter.html">clod_table_iter</a>(t, &amp;iter));</div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    check(<a class="code hl_function" href="group__table.html#gacca658a9b075d4f6d5b551d637f14290">clod_table_get</a>(t, STR, LEN) == val);</div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    check(<a class="code hl_function" href="group__table.html#gae007e3135fdf976ccd71b3b2f485c441">clod_table_del</a>(t, STR, LEN) == val);</div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    check(<a class="code hl_function" href="group__table.html#gacca658a9b075d4f6d5b551d637f14290">clod_table_get</a>(t, STR, LEN) == <span class="keyword">nullptr</span>);</div>
@@ -129,20 +113,17 @@ $(document).ready(function(){initNavTree('simple__all__methods_8c_source.html','
 <div class="ttc" id="agroup__table_html_ga0461d4310832868c49bc80d92ae97380"><div class="ttname"><a href="group__table.html#ga0461d4310832868c49bc80d92ae97380">clod_table_add</a></div><div class="ttdeci">void * clod_table_add(struct clod_table *t, const void *element, size_t key_size)</div><div class="ttdef"><b>Definition:</b> <a href="table_8c_source.html#l00194">table.c:194</a></div></div>
 <div class="ttc" id="agroup__table_html_ga1b3e25a7596146eba0a019e5eb95900a"><div class="ttname"><a href="group__table.html#ga1b3e25a7596146eba0a019e5eb95900a">clod_table_len</a></div><div class="ttdeci">size_t clod_table_len(const struct clod_table *t)</div><div class="ttdef"><b>Definition:</b> <a href="table_8c_source.html#l00191">table.c:191</a></div></div>
 <div class="ttc" id="agroup__table_html_ga239b3e23b7e9a91d1e32014257e8ee5a"><div class="ttname"><a href="group__table.html#ga239b3e23b7e9a91d1e32014257e8ee5a">clod_table_destroy</a></div><div class="ttdeci">void clod_table_destroy(struct clod_table *t)</div><div class="ttdef"><b>Definition:</b> <a href="table_8c_source.html#l00187">table.c:187</a></div></div>
-<div class="ttc" id="agroup__table_html_ga4782517629528b5c714af9d132082364"><div class="ttname"><a href="group__table.html#ga4782517629528b5c714af9d132082364">clod_table_iter</a></div><div class="ttdeci">bool clod_table_iter(const struct clod_table *t, struct clod_table_iter *iter)</div><div class="ttdef"><b>Definition:</b> <a href="table_8c_source.html#l00234">table.c:234</a></div></div>
 <div class="ttc" id="agroup__table_html_ga9e9bc355477840c482ea564f31b39239"><div class="ttname"><a href="group__table.html#ga9e9bc355477840c482ea564f31b39239">clod_table_set</a></div><div class="ttdeci">void * clod_table_set(struct clod_table *t, const void *element, size_t key_size)</div><div class="ttdef"><b>Definition:</b> <a href="table_8c_source.html#l00203">table.c:203</a></div></div>
 <div class="ttc" id="agroup__table_html_gaaa4f82888b60e6a15ad73726a81c835a"><div class="ttname"><a href="group__table.html#gaaa4f82888b60e6a15ad73726a81c835a">clod_table_create</a></div><div class="ttdeci">struct clod_table * clod_table_create(const struct clod_table_opts *opts)</div><div class="ttdef"><b>Definition:</b> <a href="table_8c_source.html#l00172">table.c:172</a></div></div>
 <div class="ttc" id="agroup__table_html_gacca658a9b075d4f6d5b551d637f14290"><div class="ttname"><a href="group__table.html#gacca658a9b075d4f6d5b551d637f14290">clod_table_get</a></div><div class="ttdeci">void * clod_table_get(const struct clod_table *t, const void *key, size_t key_size)</div><div class="ttdef"><b>Definition:</b> <a href="table_8c_source.html#l00212">table.c:212</a></div></div>
 <div class="ttc" id="agroup__table_html_gae007e3135fdf976ccd71b3b2f485c441"><div class="ttname"><a href="group__table.html#gae007e3135fdf976ccd71b3b2f485c441">clod_table_del</a></div><div class="ttdeci">void * clod_table_del(struct clod_table *t, const void *key, size_t key_size)</div><div class="ttdef"><b>Definition:</b> <a href="table_8c_source.html#l00221">table.c:221</a></div></div>
+<div class="ttc" id="astructclod__table__iter_html"><div class="ttname"><a href="structclod__table__iter.html">clod_table_iter</a></div><div class="ttdef"><b>Definition:</b> <a href="table_8h_source.html#l00119">table.h:119</a></div></div>
+<div class="ttc" id="astructclod__table_html"><div class="ttname"><a href="structclod__table.html">clod_table</a></div><div class="ttdef"><b>Definition:</b> <a href="table_8c_source.html#l00028">table.c:28</a></div></div>
 <div class="ttc" id="atable_8h_html"><div class="ttname"><a href="table_8h.html">table.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
-</div><!-- doc-content -->
 <!-- start footer part -->
-<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
-  <ul>
-    <li class="navelem"><a class="el" href="dir_13e138d54eb8818da29c3992edef070a.html">test</a></li><li class="navelem"><a class="el" href="dir_640a5ecfd31c8c02dc5abd6d82ef02ce.html">table</a></li><li class="navelem"><b>simple_all_methods.c</b></li>
-    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
-  </ul>
-</div>
+<hr class="footer"/><address class="footer"><small>
+Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6
+</small></address>
 </body>
 </html>

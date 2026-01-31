@@ -9,10 +9,6 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
-<link href="navtree.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="resize.js"></script>
-<script type="text/javascript" src="navtreedata.js"></script>
-<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -27,7 +23,7 @@
   <td id="projectalign">
    <div id="projectname">libclod
    </div>
-   <div id="projectbrief">C library for interacting with NBT, region files, LOD data and other things.a</div>
+   <div id="projectbrief">C library for interacting with NBTs, region files, LOD data and other things.</div>
   </td>
  </tr>
  </tbody>
@@ -52,22 +48,6 @@ $(function() {
 </script>
 <div id="main-nav"></div>
 </div><!-- top -->
-<div id="side-nav" class="ui-resizable side-nav-resizable">
-  <div id="nav-tree">
-    <div id="nav-tree-contents">
-      <div id="nav-sync" class="sync"></div>
-    </div>
-  </div>
-  <div id="splitbar" style="-moz-user-select:none;" 
-       class="ui-resizable-handle">
-  </div>
-</div>
-<script type="text/javascript">
-/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('group__region.html',''); initResizable(); });
-/* @license-end */
-</script>
-<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -103,10 +83,6 @@ $(document).ready(function(){initNavTree('group__region.html',''); initResizable
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclod__region__opts.html">clod_region_opts</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclod__region.html">clod_region</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclod__region__iter.html">clod_region_iter</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
@@ -132,35 +108,14 @@ Functions</h2></td></tr>
 <tr class="separator:gaa4dd6bd26f738b803ce56d31e73c8c96"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga46d10dbc713b1a588bfd64f1df1be9ac"><td class="memItemLeft" align="right" valign="top">enum <a class="el" href="group__region.html#ga9e5053f4d6bd4efc2f4ba2352276e4d5">clod_region_result</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__region.html#ga46d10dbc713b1a588bfd64f1df1be9ac">clod_region_mtime</a> (struct <a class="el" href="structclod__region.html">clod_region</a> *region, const int64_t *pos, time_t *mtime)</td></tr>
 <tr class="separator:ga46d10dbc713b1a588bfd64f1df1be9ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gabc75537688ace3a1a629c58ebccf317b"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structclod__region__iter.html">clod_region_iter</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__region.html#gabc75537688ace3a1a629c58ebccf317b">clod_region_iter_start</a> (struct <a class="el" href="structclod__region.html">clod_region</a> *region)</td></tr>
+<tr class="memitem:gabc75537688ace3a1a629c58ebccf317b"><td class="memItemLeft" align="right" valign="top">struct clod_region_iter *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__region.html#gabc75537688ace3a1a629c58ebccf317b">clod_region_iter_start</a> (struct <a class="el" href="structclod__region.html">clod_region</a> *region)</td></tr>
 <tr class="separator:gabc75537688ace3a1a629c58ebccf317b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gacf8173268fd72dcf817ebfe22ff5d475"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__region.html#gacf8173268fd72dcf817ebfe22ff5d475">clod_region_iter_next</a> (struct <a class="el" href="structclod__region__iter.html">clod_region_iter</a> *iter, int64_t *pos)</td></tr>
+<tr class="memitem:gacf8173268fd72dcf817ebfe22ff5d475"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__region.html#gacf8173268fd72dcf817ebfe22ff5d475">clod_region_iter_next</a> (struct clod_region_iter *iter, int64_t *pos)</td></tr>
 <tr class="separator:gacf8173268fd72dcf817ebfe22ff5d475"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga6811ac8ed653bc1e77646e87491ee580"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__region.html#ga6811ac8ed653bc1e77646e87491ee580">clod_region_iter_end</a> (struct <a class="el" href="structclod__region__iter.html">clod_region_iter</a> *iter)</td></tr>
+<tr class="memitem:ga6811ac8ed653bc1e77646e87491ee580"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__region.html#ga6811ac8ed653bc1e77646e87491ee580">clod_region_iter_end</a> (struct clod_region_iter *iter)</td></tr>
 <tr class="separator:ga6811ac8ed653bc1e77646e87491ee580"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga2def35799e8269eb70d540c251a293e9"><td class="memItemLeft" align="right" valign="top">enum <a class="el" href="group__region.html#ga9e5053f4d6bd4efc2f4ba2352276e4d5">clod_region_result</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__region.html#ga2def35799e8269eb70d540c251a293e9">clod_region_close</a> (struct <a class="el" href="structclod__region.html">clod_region</a> *r)</td></tr>
-<tr class="separator:ga2def35799e8269eb70d540c251a293e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader">Compression types</h2></td></tr>
-<tr><td class="ititle" colspan="2"><p>Each algorithm has a unique multiple of ten to represent it, with intermediate values representing the compression level. i.e. compression algorithm 2 at compression level 8 is 28, algorithm 3 at compression level 2 is 32.</p>
-<p>The provided macros use sane default compression levels for each algorithm, and can be changed using the REGION_COMPRESSION macro. i.e. LZMA at level 9 is REGION_COMPRESSION(REGION_COMPRESS_LZMA, 9). </p>
-</td></tr>
-<tr class="memitem:ga1d6a9ced0cb3a33f61a62a440063cedf"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__region.html#ga1d6a9ced0cb3a33f61a62a440063cedf">CLOD_REGION_COMPRESSION</a>(algo,  level)&#160;&#160;&#160;(((algo)/10 * 10) + ((level) &lt; 0 ? 0 : (level) &gt; 9 ? 9 : (level)))</td></tr>
-<tr class="separator:ga1d6a9ced0cb3a33f61a62a440063cedf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga0ccdbe22cbc7185f14dfa02756812a6b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__region.html#ga0ccdbe22cbc7185f14dfa02756812a6b">CLOD_REGION_UNCOMPRESSED</a>&#160;&#160;&#160;10</td></tr>
-<tr class="separator:ga0ccdbe22cbc7185f14dfa02756812a6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaaba234a1c15b227c8193b2305c254941"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__region.html#gaaba234a1c15b227c8193b2305c254941">CLOD_REGION_COMPRESS_GZIP</a>&#160;&#160;&#160;26</td></tr>
-<tr class="separator:gaaba234a1c15b227c8193b2305c254941"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga70a9688d00b936d7d879f04ca26fff7a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__region.html#ga70a9688d00b936d7d879f04ca26fff7a">CLOD_REGION_COMPRESS_ZLIB</a>&#160;&#160;&#160;36</td></tr>
-<tr class="separator:ga70a9688d00b936d7d879f04ca26fff7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga68a8a2b3a3bdcc635cebfec095340a5c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__region.html#ga68a8a2b3a3bdcc635cebfec095340a5c">CLOD_REGION_COMPRESS_LZ4</a>&#160;&#160;&#160;49</td></tr>
-<tr class="separator:ga68a8a2b3a3bdcc635cebfec095340a5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gad02b6d2cf320003951ac1906422c2e2d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__region.html#gad02b6d2cf320003951ac1906422c2e2d">CLOD_REGION_COMPRESS_LZ4HC</a>&#160;&#160;&#160;59</td></tr>
-<tr class="separator:gad02b6d2cf320003951ac1906422c2e2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga7f3dd2e82d864a238c126afa99fd1ead"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__region.html#ga7f3dd2e82d864a238c126afa99fd1ead">CLOD_REGION_COMPRESS_ZSTD</a>&#160;&#160;&#160;63</td></tr>
-<tr class="separator:ga7f3dd2e82d864a238c126afa99fd1ead"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaca82618c60787b3245c4acd5d44f2ed2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__region.html#gaca82618c60787b3245c4acd5d44f2ed2">CLOD_REGION_COMPRESS_LZMA</a>&#160;&#160;&#160;76</td></tr>
-<tr class="separator:gaca82618c60787b3245c4acd5d44f2ed2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae492d379334029c41adbe8779ef61484"><td class="memItemLeft" align="right" valign="top">enum <a class="el" href="group__region.html#ga9e5053f4d6bd4efc2f4ba2352276e4d5">clod_region_result</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__region.html#gae492d379334029c41adbe8779ef61484">clod_region_close</a> (struct <a class="el" href="structclod__region.html">clod_region</a> *region)</td></tr>
+<tr class="separator:gae492d379334029c41adbe8779ef61484"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader">Open modes</h2></td></tr>
 <tr class="memitem:gaf4e2710e0ea1e462aa5c6806a4c69fd7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__region.html#gaf4e2710e0ea1e462aa5c6806a4c69fd7">CLOD_REGION_MODE_RDONLY</a>&#160;&#160;&#160;1</td></tr>
@@ -175,15 +130,140 @@ Functions</h2></td></tr>
 <tr class="separator:ga222224f27124a685f018e85711db844b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga672ea2413452dd3f7f4ca889ce7dbdc6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__region.html#ga672ea2413452dd3f7f4ca889ce7dbdc6">CLOD_REGION_DIMENSIONS_MAX</a>&#160;&#160;&#160;10</td></tr>
 <tr class="separator:ga672ea2413452dd3f7f4ca889ce7dbdc6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaaf05592a314a7549f6c3a7790c8769be"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__region.html#gaaf05592a314a7549f6c3a7790c8769be">CLOD_REGION_CHUNK_SIZE_MAX</a>&#160;&#160;&#160;((size_t)(1 &lt;&lt; 40) - 1)</td></tr>
-<tr class="separator:gaaf05592a314a7549f6c3a7790c8769be"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p><a class="el" href="region_8h.html">region.h</a> defines the public interface libclod exposes for interacting with a gentrified and extended version of the minecraft region file format that retains compatibility with minecraft.</p>
 <p><a href="https://minecraft.wiki/w/Region_file_format">https://minecraft.wiki/w/Region_file_format</a></p>
 <p>libclod extends the region file format with a header supporting dynamic features and uses that support to add checksums and uncompressed chunk size to</p>
 <p>Thanks to <a href="https://github.com/ishland">ishland</a> for his insights while brainstorming approaches to this. </p>
-<h2 class="groupheader">Macro Definition Documentation</h2>
+
+
+<h3><a id="md_src_region_region_format_libclod_format" name="md_src_region_region_format_libclod_format"></a>Region File Format</h3><div class="textblock"><a class="anchor" id="region_format"></a> <h1><a class="anchor" id="autotoc_md0"></a>
+Region file format</h1>
+<p>Libclod supports 3 region file header variants. The vanilla header, the libclod header, and a backwards compatible combination of both. The vanilla header is only supported for reading with reduced functionality, due to limitations with the format itself, e.g. no data validation or crash recovery. The libclod header is not backwards compatible. The compound header is backwards compatible and includes both headers.</p>
+<h2><a class="anchor" id="autotoc_md1"></a>
+Vanilla</h2>
+<p>The vanilla header does not have any dynamic storage capability. It is a fixed size header and chunk data begins directly after.</p>
+<h3><a class="anchor" id="autotoc_md2"></a>
+Header</h3>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Offset   </th><th class="markdownTableHeadNone">Size   </th><th class="markdownTableHeadNone">Description    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">0   </td><td class="markdownTableBodyNone">4096   </td><td class="markdownTableBodyNone">Chunk locations [1024]    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">4096   </td><td class="markdownTableBodyNone">4096   </td><td class="markdownTableBodyNone">Modification time in unix epoch seconds [1024]    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">8192   </td><td class="markdownTableBodyNone">...   </td><td class="markdownTableBodyNone">Chunk data   </td></tr>
+</table>
+<h4><a class="anchor" id="autotoc_md3"></a>
+Chunk location</h4>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Offset   </th><th class="markdownTableHeadNone">Size   </th><th class="markdownTableHeadNone">Type    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">0   </td><td class="markdownTableBodyNone">3   </td><td class="markdownTableBodyNone">Offset in sectors    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">3   </td><td class="markdownTableBodyNone">1   </td><td class="markdownTableBodyNone">Size in sectors   </td></tr>
+</table>
+<h4><a class="anchor" id="autotoc_md4"></a>
+Chunk data</h4>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Offset   </th><th class="markdownTableHeadNone">Size   </th><th class="markdownTableHeadNone">Type    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">0   </td><td class="markdownTableBodyNone">4   </td><td class="markdownTableBodyNone">Compressed chunk size in bytes    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">4   </td><td class="markdownTableBodyNone">1   </td><td class="markdownTableBodyNone">Chunk compression type    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">5   </td><td class="markdownTableBodyNone">...   </td><td class="markdownTableBodyNone">Compressed chunk data   </td></tr>
+</table>
+<h2><a class="anchor" id="autotoc_md5"></a>
+Libclod</h2>
+<p>The libclod region file format uses NBTs to store header data; as such, the static header is smaller, although intentionally oversized, and only stores some metadata and other things that need static storage.</p>
+<p>The static header is padded to 256 bytes, leaving some space for any future extensions that might need static storage such as shared mutexes.</p>
+<p>All CRC-32 values use the polynomial <code>0x04C11DB7</code>, reflect input and output, use <code>0xFFFFFFFF</code> as the initial value, and xor with <code>0xFFFFFFFF</code> to finalise. AFAICT this is the most common CRC-32 variant, so an implementation should always be close at hand.</p>
+<h3><a class="anchor" id="autotoc_md6"></a>
+Header</h3>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Offset   </th><th class="markdownTableHeadNone">Size   </th><th class="markdownTableHeadNone">Type    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">0   </td><td class="markdownTableBodyNone">128   </td><td class="markdownTableBodyNone">Human readable magic used to identify the file    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">128   </td><td class="markdownTableBodyNone">4   </td><td class="markdownTableBodyNone">CRC-32 checksum of NBT data    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">132   </td><td class="markdownTableBodyNone">4   </td><td class="markdownTableBodyNone">Size of NBT data in bytes    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">136   </td><td class="markdownTableBodyNone">4   </td><td class="markdownTableBodyNone">Generation number incremented at the start and end of every write    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">256   </td><td class="markdownTableBodyNone">...   </td><td class="markdownTableBodyNone">NBT data    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">...   </td><td class="markdownTableBodyNone">...   </td><td class="markdownTableBodyNone">Chunk data   </td></tr>
+</table>
+<h3><a class="anchor" id="autotoc_md7"></a>
+NBT data</h3>
+<p>The idea behind the NBT structure is that implementations can store whatever they need to. Data not relevant to a given implementation is simply ignored by it, and there's backwards compatible extensibility for new features.</p>
+<p>There are a couple limitations to NBT data, most of which stem from the fact that writes can cause other tags to move memory locations. Since dynamic storage is the goal, the alternative to copying is some kind of memory allocation scheme that will have to deal with issues like fragmentation, backwards compatability and require a complex structure to organise it all. By the end of all that you probably won't even be any faster than NBT's dumb copying anyways. Modern CPUs copy at tens of GB/s on a bad day. You'll just have an overengineered file format for the sake of being able to cache pointers a little easier.</p>
+<p>Besides, when it comes to dynamic storage formats, we already have a reliable and well-understood in-domain format. It doesn't make sense to use something else without a concrete reason.</p>
+<h4><a class="anchor" id="autotoc_md8"></a>
+Root Tag</h4>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Key   </th><th class="markdownTableHeadNone">Type   </th><th class="markdownTableHeadNone">Description    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">ChunkFilePrefix   </td><td class="markdownTableBodyNone">String   </td><td class="markdownTableBodyNone">Prefix chunk filenames have (e.g. "c")    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">ChunkFileExtension   </td><td class="markdownTableBodyNone">String   </td><td class="markdownTableBodyNone">Extension chunk filenames have (e.g. "mcc")    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Dimensions   </td><td class="markdownTableBodyNone">Byte   </td><td class="markdownTableBodyNone">Number of dimensions in the region file    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">SectorSize   </td><td class="markdownTableBodyNone">Int   </td><td class="markdownTableBodyNone">Sector size    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Chunks   </td><td class="markdownTableBodyNone">Compound   </td><td class="markdownTableBodyNone">Chunk metadata   </td></tr>
+</table>
+<h4><a class="anchor" id="autotoc_md9"></a>
+Chunks Tag</h4>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Key   </th><th class="markdownTableHeadNone">Type   </th><th class="markdownTableHeadNone">Description    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">ModificationTime   </td><td class="markdownTableBodyNone">Int Array [1024]   </td><td class="markdownTableBodyNone">Chunk last modification time in unix epoch seconds    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">FileOffset   </td><td class="markdownTableBodyNone">Int Array [1024]   </td><td class="markdownTableBodyNone">Location of the chunk data in the file    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">FileSectors   </td><td class="markdownTableBodyNone">Byte Array [1024]   </td><td class="markdownTableBodyNone">Chunk size in sectors    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Checksum   </td><td class="markdownTableBodyNone">Int Array [1024]   </td><td class="markdownTableBodyNone">Checksum of chunk data    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">UncompressedSize   </td><td class="markdownTableBodyNone">Int Array [1024]   </td><td class="markdownTableBodyNone">Chunk size in bytes   </td></tr>
+</table>
+<h2><a class="anchor" id="autotoc_md10"></a>
+Compound</h2>
+<p>The compound format aims to provide backwards compatibility with the vanilla format. It is simply both the vanilla and libclod header concatenated together, with the <em>Chunk/ModificationTime</em>, <em>Chunk/FileOffset</em> and <em>Chunk/FileSectors</em> arrays missing from the libclod header and chunks being stored at a larger offset to make space.</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Offset   </th><th class="markdownTableHeadNone">Size   </th><th class="markdownTableHeadNone">Type   </th><th class="markdownTableHeadNone">Description    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">0   </td><td class="markdownTableBodyNone">8192   </td><td class="markdownTableBodyNone">Vanilla header   </td><td class="markdownTableBodyNone">The vanilla header    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">8192   </td><td class="markdownTableBodyNone">...   </td><td class="markdownTableBodyNone">Libclod header   </td><td class="markdownTableBodyNone">The libclod header   </td></tr>
+</table>
+<p>Implementations that don't support the libclod format will see a perfectly valid and correct vanilla header and function normally; however, it's likely they will overwrite the libclod header with chunk data when writing. Libclod will see a failing magic or checksum and fall back to treating the file as a pure vanilla region file, and information in the libclod header is lost.</p>
+<p>Notably, to facilitate backwards compatibility, some attributes must be fixed. When opening a compound header, libclod will ignore existing values and set them to the following. If the implementation uses different values for these, then backwards compatibility is broken, and the libclod header should be used instead.</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Key   </th><th class="markdownTableHeadNone">Value    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">ChunkFilePrefix   </td><td class="markdownTableBodyNone">"c"    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">ChunkFileExtension   </td><td class="markdownTableBodyNone">"mcc"    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Dimensions   </td><td class="markdownTableBodyNone">2    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">SectorSize   </td><td class="markdownTableBodyNone">4096   </td></tr>
+</table>
+</div><h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="ga66208641dc846d8ad041b018369e0598" name="ga66208641dc846d8ad041b018369e0598"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga66208641dc846d8ad041b018369e0598">&#9670;&#160;</a></span>CLOD_REGION_VERSION</h2>
 
@@ -195,152 +275,9 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Library ABI version. </p>
+<p>Library ABI version. Backwards compatability with old ABI versions/behaviours will be ensured, at least until a major SO version bump, this identifies which ABI version the program is expecting. </p>
 
-<p class="definition">Definition at line <a class="el" href="region_8h_source.html#l00025">25</a> of file <a class="el" href="region_8h_source.html">region.h</a>.</p>
-
-</div>
-</div>
-<a id="ga1d6a9ced0cb3a33f61a62a440063cedf" name="ga1d6a9ced0cb3a33f61a62a440063cedf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga1d6a9ced0cb3a33f61a62a440063cedf">&#9670;&#160;</a></span>CLOD_REGION_COMPRESSION</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define CLOD_REGION_COMPRESSION</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">algo, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">level&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td>&#160;&#160;&#160;(((algo)/10 * 10) + ((level) &lt; 0 ? 0 : (level) &gt; 9 ? 9 : (level)))</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="region_8h_source.html#l00170">170</a> of file <a class="el" href="region_8h_source.html">region.h</a>.</p>
-
-</div>
-</div>
-<a id="ga0ccdbe22cbc7185f14dfa02756812a6b" name="ga0ccdbe22cbc7185f14dfa02756812a6b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga0ccdbe22cbc7185f14dfa02756812a6b">&#9670;&#160;</a></span>CLOD_REGION_UNCOMPRESSED</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define CLOD_REGION_UNCOMPRESSED&#160;&#160;&#160;10</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Uncompressed </p>
-
-<p class="definition">Definition at line <a class="el" href="region_8h_source.html#l00172">172</a> of file <a class="el" href="region_8h_source.html">region.h</a>.</p>
-
-</div>
-</div>
-<a id="gaaba234a1c15b227c8193b2305c254941" name="gaaba234a1c15b227c8193b2305c254941"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gaaba234a1c15b227c8193b2305c254941">&#9670;&#160;</a></span>CLOD_REGION_COMPRESS_GZIP</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define CLOD_REGION_COMPRESS_GZIP&#160;&#160;&#160;26</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="region_8h_source.html#l00173">173</a> of file <a class="el" href="region_8h_source.html">region.h</a>.</p>
-
-</div>
-</div>
-<a id="ga70a9688d00b936d7d879f04ca26fff7a" name="ga70a9688d00b936d7d879f04ca26fff7a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga70a9688d00b936d7d879f04ca26fff7a">&#9670;&#160;</a></span>CLOD_REGION_COMPRESS_ZLIB</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define CLOD_REGION_COMPRESS_ZLIB&#160;&#160;&#160;36</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="region_8h_source.html#l00174">174</a> of file <a class="el" href="region_8h_source.html">region.h</a>.</p>
-
-</div>
-</div>
-<a id="ga68a8a2b3a3bdcc635cebfec095340a5c" name="ga68a8a2b3a3bdcc635cebfec095340a5c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga68a8a2b3a3bdcc635cebfec095340a5c">&#9670;&#160;</a></span>CLOD_REGION_COMPRESS_LZ4</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define CLOD_REGION_COMPRESS_LZ4&#160;&#160;&#160;49</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="region_8h_source.html#l00175">175</a> of file <a class="el" href="region_8h_source.html">region.h</a>.</p>
-
-</div>
-</div>
-<a id="gad02b6d2cf320003951ac1906422c2e2d" name="gad02b6d2cf320003951ac1906422c2e2d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gad02b6d2cf320003951ac1906422c2e2d">&#9670;&#160;</a></span>CLOD_REGION_COMPRESS_LZ4HC</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define CLOD_REGION_COMPRESS_LZ4HC&#160;&#160;&#160;59</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="region_8h_source.html#l00176">176</a> of file <a class="el" href="region_8h_source.html">region.h</a>.</p>
-
-</div>
-</div>
-<a id="ga7f3dd2e82d864a238c126afa99fd1ead" name="ga7f3dd2e82d864a238c126afa99fd1ead"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga7f3dd2e82d864a238c126afa99fd1ead">&#9670;&#160;</a></span>CLOD_REGION_COMPRESS_ZSTD</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define CLOD_REGION_COMPRESS_ZSTD&#160;&#160;&#160;63</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="region_8h_source.html#l00177">177</a> of file <a class="el" href="region_8h_source.html">region.h</a>.</p>
-
-</div>
-</div>
-<a id="gaca82618c60787b3245c4acd5d44f2ed2" name="gaca82618c60787b3245c4acd5d44f2ed2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gaca82618c60787b3245c4acd5d44f2ed2">&#9670;&#160;</a></span>CLOD_REGION_COMPRESS_LZMA</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define CLOD_REGION_COMPRESS_LZMA&#160;&#160;&#160;76</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="region_8h_source.html#l00178">178</a> of file <a class="el" href="region_8h_source.html">region.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="region_8h_source.html#l00030">30</a> of file <a class="el" href="region_8h_source.html">region.h</a>.</p>
 
 </div>
 </div>
@@ -356,7 +293,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="region_8h_source.html#l00183">183</a> of file <a class="el" href="region_8h_source.html">region.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="region_8h_source.html#l00153">153</a> of file <a class="el" href="region_8h_source.html">region.h</a>.</p>
 
 </div>
 </div>
@@ -372,7 +309,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="region_8h_source.html#l00184">184</a> of file <a class="el" href="region_8h_source.html">region.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="region_8h_source.html#l00154">154</a> of file <a class="el" href="region_8h_source.html">region.h</a>.</p>
 
 </div>
 </div>
@@ -388,7 +325,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="region_8h_source.html#l00189">189</a> of file <a class="el" href="region_8h_source.html">region.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="region_8h_source.html#l00159">159</a> of file <a class="el" href="region_8h_source.html">region.h</a>.</p>
 
 </div>
 </div>
@@ -404,7 +341,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="region_8h_source.html#l00190">190</a> of file <a class="el" href="region_8h_source.html">region.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="region_8h_source.html#l00160">160</a> of file <a class="el" href="region_8h_source.html">region.h</a>.</p>
 
 </div>
 </div>
@@ -420,23 +357,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="region_8h_source.html#l00191">191</a> of file <a class="el" href="region_8h_source.html">region.h</a>.</p>
-
-</div>
-</div>
-<a id="gaaf05592a314a7549f6c3a7790c8769be" name="gaaf05592a314a7549f6c3a7790c8769be"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gaaf05592a314a7549f6c3a7790c8769be">&#9670;&#160;</a></span>CLOD_REGION_CHUNK_SIZE_MAX</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define CLOD_REGION_CHUNK_SIZE_MAX&#160;&#160;&#160;((size_t)(1 &lt;&lt; 40) - 1)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="region_8h_source.html#l00192">192</a> of file <a class="el" href="region_8h_source.html">region.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="region_8h_source.html#l00161">161</a> of file <a class="el" href="region_8h_source.html">region.h</a>.</p>
 
 </div>
 </div>
@@ -464,7 +385,7 @@ Functions</h2></td></tr>
 </td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="region_8h_source.html#l00051">51</a> of file <a class="el" href="region_8h_source.html">region.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="region_8h_source.html#l00043">43</a> of file <a class="el" href="region_8h_source.html">region.h</a>.</p>
 
 </div>
 </div>
@@ -504,8 +425,6 @@ Functions</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>Handle to the directory and configuration, or nullptr on error. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="region__open_8c_source.html#l00089">89</a> of file <a class="el" href="region__open_8c_source.html">region_open.c</a>.</p>
-
-<p class="reference">References <a class="el" href="region_8h_source.html#l00053">CLOD_REGION_OK</a>.</p>
 
 </div>
 </div>
@@ -573,8 +492,6 @@ Functions</h2></td></tr>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="region__read_8c_source.html#l00006">6</a> of file <a class="el" href="region__read_8c_source.html">region_read.c</a>.</p>
-
-<p class="reference">References <a class="el" href="region_8h_source.html#l00053">CLOD_REGION_OK</a>.</p>
 
 </div>
 </div>
@@ -693,7 +610,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">struct <a class="el" href="structclod__region__iter.html">clod_region_iter</a> * clod_region_iter_start </td>
+          <td class="memname">struct clod_region_iter * clod_region_iter_start </td>
           <td>(</td>
           <td class="paramtype">struct <a class="el" href="structclod__region.html">clod_region</a> *&#160;</td>
           <td class="paramname"><em>region</em></td><td>)</td>
@@ -720,7 +637,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">bool clod_region_iter_next </td>
           <td>(</td>
-          <td class="paramtype">struct <a class="el" href="structclod__region__iter.html">clod_region_iter</a> *&#160;</td>
+          <td class="paramtype">struct clod_region_iter *&#160;</td>
           <td class="paramname"><em>iter</em>, </td>
         </tr>
         <tr>
@@ -756,7 +673,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void clod_region_iter_end </td>
           <td>(</td>
-          <td class="paramtype">struct <a class="el" href="structclod__region__iter.html">clod_region_iter</a> *&#160;</td>
+          <td class="paramtype">struct clod_region_iter *&#160;</td>
           <td class="paramname"><em>iter</em></td><td>)</td>
           <td></td>
         </tr>
@@ -771,8 +688,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ga2def35799e8269eb70d540c251a293e9" name="ga2def35799e8269eb70d540c251a293e9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga2def35799e8269eb70d540c251a293e9">&#9670;&#160;</a></span>clod_region_close()</h2>
+<a id="gae492d379334029c41adbe8779ef61484" name="gae492d379334029c41adbe8779ef61484"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gae492d379334029c41adbe8779ef61484">&#9670;&#160;</a></span>clod_region_close()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -781,31 +698,26 @@ Functions</h2></td></tr>
           <td class="memname">enum <a class="el" href="group__region.html#ga9e5053f4d6bd4efc2f4ba2352276e4d5">clod_region_result</a> clod_region_close </td>
           <td>(</td>
           <td class="paramtype">struct <a class="el" href="structclod__region.html">clod_region</a> *&#160;</td>
-          <td class="paramname"><em>r</em></td><td>)</td>
+          <td class="paramname"><em>region</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 <p>Release resources associated with the region handle. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">r</td><td>The handle to free. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">region</td><td>The handle to free. </td></tr>
   </table>
   </dd>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="region__open_8c_source.html#l00112">112</a> of file <a class="el" href="region__open_8c_source.html">region_open.c</a>.</p>
 
-<p class="reference">References <a class="el" href="region_8h_source.html#l00057">CLOD_REGION_INVALID_USAGE</a>, and <a class="el" href="region_8h_source.html#l00053">CLOD_REGION_OK</a>.</p>
-
 </div>
 </div>
 </div><!-- contents -->
-</div><!-- doc-content -->
 <!-- start footer part -->
-<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
-  <ul>
-    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
-  </ul>
-</div>
+<hr class="footer"/><address class="footer"><small>
+Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6
+</small></address>
 </body>
 </html>
