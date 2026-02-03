@@ -143,7 +143,8 @@ $(function(){initNavTree('header_8h_source.html','',''); });
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>};</div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="comment">// The vanilla header.</span></div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="keyword">struct </span>vanilla_header {</div>
+<div class="foldopen" id="foldopen00052" data-start="{" data-end="};">
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="structvanilla__header.html">   52</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structvanilla__header.html">vanilla_header</a> {</div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="keyword">struct </span>{</div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        beu24 offset_sectors;</div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        beu8 size_sectors;</div>
@@ -154,13 +155,16 @@ $(function(){initNavTree('header_8h_source.html','',''); });
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <span class="keywordtype">char</span> chunk_data[];</div>
 <div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>};</div>
+</div>
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="keyword">struct </span>extended_header {</div>
+<div class="foldopen" id="foldopen00064" data-start="{" data-end="};">
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno"><a class="line" href="structextended__header.html">   64</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structextended__header.html">extended_header</a> {</div>
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <span class="keywordtype">char</span> magic[64];</div>
 <div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    beu32 header_checksum;</div>
 <div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    <span class="keywordtype">char</span> _reserved[128 - 4];</div>
 <div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    <span class="keywordtype">char</span> nbt_data[];</div>
 <div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>};</div>
+</div>
 <div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
 <div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="keywordtype">size_t</span> header_chunk_offset(<span class="keywordtype">void</span> *header, ) {</div>
 <div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
@@ -311,6 +315,8 @@ $(function(){initNavTree('header_8h_source.html','',''); });
 <div class="ttc" id="abig__endian_8h_html"><div class="ttname"><a href="big__endian_8h.html">big_endian.h</a></div><div class="ttdoc">Methods for big-endian encoding numbers.</div></div>
 <div class="ttc" id="ahash_8h_html"><div class="ttname"><a href="hash_8h.html">hash.h</a></div></div>
 <div class="ttc" id="aregion_8h_html"><div class="ttname"><a href="region_8h.html">region.h</a></div></div>
+<div class="ttc" id="astructextended__header_html"><div class="ttname"><a href="structextended__header.html">extended_header</a></div><div class="ttdef"><b>Definition</b> <a href="#l00064">header.h:64</a></div></div>
+<div class="ttc" id="astructvanilla__header_html"><div class="ttname"><a href="structvanilla__header.html">vanilla_header</a></div><div class="ttdef"><b>Definition</b> <a href="#l00052">header.h:52</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 </div><!-- container -->

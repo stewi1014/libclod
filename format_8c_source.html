@@ -98,22 +98,22 @@ $(function(){initNavTree('format_8c_source.html','',''); });
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;string.h&gt;</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;assert.h&gt;</span></div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="keyword">static</span> <span class="keywordtype">int</span> header_version(<span class="keyword">const</span> <span class="keywordtype">char</span> *file, <span class="keyword">const</span> <span class="keywordtype">char</span> *file_end) {</div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>    assert(file_end &gt; file);</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="keyword">static</span> <span class="keywordtype">int</span> header_version(<span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code hl_struct" href="structfile.html">file</a>, <span class="keyword">const</span> <span class="keywordtype">char</span> *file_end) {</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>    assert(file_end &gt; <a class="code hl_struct" href="structfile.html">file</a>);</div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    <span class="keywordflow">if</span> (file_end - file &gt;= HEADER_LIBCLOD_SIZE_MIN) {</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>        <span class="keywordflow">if</span> (strncmp(file, HEADER_MAGIC, strlen(HEADER_MAGIC)) == 0) {</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    <span class="keywordflow">if</span> (file_end - <a class="code hl_struct" href="structfile.html">file</a> &gt;= HEADER_LIBCLOD_SIZE_MIN) {</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>        <span class="keywordflow">if</span> (strncmp(<a class="code hl_struct" href="structfile.html">file</a>, HEADER_MAGIC, strlen(HEADER_MAGIC)) == 0) {</div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>            <span class="keywordflow">return</span> HEADER_VERSION_LIBCLOD;</div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>        }</div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    }</div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <span class="keywordflow">if</span> (file_end - file &gt;= HEADER_VANILLA_SIZE + HEADER_LIBCLOD_SIZE_MIN) {</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>        <span class="keywordflow">if</span> (strncmp(file + HEADER_VANILLA_SIZE, HEADER_MAGIC, strlen(HEADER_MAGIC)) == 0) {</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <span class="keywordflow">if</span> (file_end - <a class="code hl_struct" href="structfile.html">file</a> &gt;= HEADER_VANILLA_SIZE + HEADER_LIBCLOD_SIZE_MIN) {</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>        <span class="keywordflow">if</span> (strncmp(<a class="code hl_struct" href="structfile.html">file</a> + HEADER_VANILLA_SIZE, HEADER_MAGIC, strlen(HEADER_MAGIC)) == 0) {</div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>            <span class="keywordflow">return</span> HEADER_VERSION_COMPOUND;</div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>        }</div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    }</div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <span class="keywordflow">if</span> (file_end - file &gt;= HEADER_VANILLA_SIZE) {</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <span class="keywordflow">if</span> (file_end - <a class="code hl_struct" href="structfile.html">file</a> &gt;= HEADER_VANILLA_SIZE) {</div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        <span class="keywordflow">return</span> HEADER_VERSION_VANILLA;</div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    }</div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
@@ -130,23 +130,25 @@ $(function(){initNavTree('format_8c_source.html','',''); });
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>}</div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="keyword">struct </span>format_chunk_get {</div>
+<div class="foldopen" id="foldopen00039" data-start="{" data-end="};">
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="structformat__chunk__get.html">   39</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structformat__chunk__get.html">format_chunk_get</a> {</div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="keywordtype">size_t</span> chunk_offset;</div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="keywordtype">size_t</span> chunk_size;</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>} format_chunk_get(<span class="keywordtype">char</span> *file, <span class="keyword">const</span> <span class="keywordtype">char</span> *<span class="keyword">const</span> file_end, int64_t *pos, uint8_t dims) {</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="keywordtype">size_t</span> chunk_index = vec_group(pos, dims, 10);</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>} <a class="code hl_struct" href="structformat__chunk__get.html">format_chunk_get</a>(<span class="keywordtype">char</span> *<a class="code hl_struct" href="structfile.html">file</a>, <span class="keyword">const</span> <span class="keywordtype">char</span> *<span class="keyword">const</span> file_end, int64_t *pos, uint8_t dims) {</div>
+</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="keywordtype">size_t</span> chunk_index = <a class="code hl_function" href="vmath_8h.html#af9860b60dcba05e9026049e4afd3bdc1">vec_group</a>(pos, dims, 10);</div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="keywordflow">switch</span> (header_version(file, file_end)) {</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="keywordflow">switch</span> (header_version(<a class="code hl_struct" href="structfile.html">file</a>, file_end)) {</div>
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        <span class="keywordflow">case</span> HEADER_VERSION_VANILLA: {</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>            <span class="keywordflow">return</span> (<span class="keyword">struct</span> format_chunk_get){</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>                .chunk_offset = (size_t)beu24_dec(file + chunk_index * 4) * HEADER_VANILLA_SECTOR_SIZE,</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>                .chunk_size = (size_t)beu8_dec(file + chunk_index * 4 + 3) * HEADER_VANILLA_SECTOR_SIZE</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>            <span class="keywordflow">return</span> (<span class="keyword">struct</span> <a class="code hl_struct" href="structformat__chunk__get.html">format_chunk_get</a>){</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>                .chunk_offset = (size_t)<a class="code hl_function" href="big__endian_8h.html#a1c1b3800ba5e5123129d1e9dfcec8bb0">beu24_dec</a>(<a class="code hl_struct" href="structfile.html">file</a> + chunk_index * 4) * HEADER_VANILLA_SECTOR_SIZE,</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>                .chunk_size = (size_t)<a class="code hl_function" href="big__endian_8h.html#a8cbf4b14b0c452de78ddcdb00740153f">beu8_dec</a>(<a class="code hl_struct" href="structfile.html">file</a> + chunk_index * 4 + 3) * HEADER_VANILLA_SECTOR_SIZE</div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>            };</div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        }</div>
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        <span class="keywordflow">case</span> HEADER_VERSION_COMPOUND: {</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>            <span class="keywordflow">return</span> (<span class="keyword">struct</span> format_chunk_get){</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>                .chunk_offset = (size_t)beu24_dec(file + chunk_index * 4) * HEADER_VANILLA_SECTOR_SIZE,</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>                .chunk_size = (size_t)beu8_dec(file + chunk_index * 4 + 3) * HEADER_VANILLA_SECTOR_SIZE</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>            <span class="keywordflow">return</span> (<span class="keyword">struct</span> <a class="code hl_struct" href="structformat__chunk__get.html">format_chunk_get</a>){</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>                .chunk_offset = (size_t)<a class="code hl_function" href="big__endian_8h.html#a1c1b3800ba5e5123129d1e9dfcec8bb0">beu24_dec</a>(<a class="code hl_struct" href="structfile.html">file</a> + chunk_index * 4) * HEADER_VANILLA_SECTOR_SIZE,</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>                .chunk_size = (size_t)<a class="code hl_function" href="big__endian_8h.html#a8cbf4b14b0c452de78ddcdb00740153f">beu8_dec</a>(<a class="code hl_struct" href="structfile.html">file</a> + chunk_index * 4 + 3) * HEADER_VANILLA_SECTOR_SIZE</div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>            };</div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        }</div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        <span class="keywordflow">case</span> HEADER_VERSION_LIBCLOD: {</div>
@@ -157,12 +159,18 @@ $(function(){initNavTree('format_8c_source.html','',''); });
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
 <div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>}</div>
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="keywordtype">bool</span> format_chunk_set(<span class="keyword">struct</span> format *fmt, int64_t *pos) {</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="keywordtype">bool</span> format_chunk_set(<span class="keyword">struct</span> <a class="code hl_struct" href="structformat.html">format</a> *fmt, int64_t *pos) {</div>
 <div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>}</div>
 <div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
+<div class="ttc" id="abig__endian_8h_html_a1c1b3800ba5e5123129d1e9dfcec8bb0"><div class="ttname"><a href="big__endian_8h.html#a1c1b3800ba5e5123129d1e9dfcec8bb0">beu24_dec</a></div><div class="ttdeci">static uint32_t beu24_dec(const char ptr[3])</div><div class="ttdoc">Decode a 24-bit unsigned integer in big-endian format.</div><div class="ttdef"><b>Definition</b> <a href="big__endian_8h_source.html#l00057">big_endian.h:57</a></div></div>
+<div class="ttc" id="abig__endian_8h_html_a8cbf4b14b0c452de78ddcdb00740153f"><div class="ttname"><a href="big__endian_8h.html#a8cbf4b14b0c452de78ddcdb00740153f">beu8_dec</a></div><div class="ttdeci">static uint8_t beu8_dec(const char ptr[1])</div><div class="ttdoc">Decode an 8-bit unsigned integer in big-endian format.</div><div class="ttdef"><b>Definition</b> <a href="big__endian_8h_source.html#l00053">big_endian.h:53</a></div></div>
 <div class="ttc" id="anbt_8h_html"><div class="ttname"><a href="nbt_8h.html">nbt.h</a></div></div>
+<div class="ttc" id="astructfile_html"><div class="ttname"><a href="structfile.html">file</a></div><div class="ttdef"><b>Definition</b> <a href="file_8c_source.html#l00013">file.c:13</a></div></div>
+<div class="ttc" id="astructformat__chunk__get_html"><div class="ttname"><a href="structformat__chunk__get.html">format_chunk_get</a></div><div class="ttdef"><b>Definition</b> <a href="#l00039">format.c:39</a></div></div>
+<div class="ttc" id="astructformat_html"><div class="ttname"><a href="structformat.html">format</a></div><div class="ttdef"><b>Definition</b> <a href="region__header_8h_source.html#l00011">region_header.h:11</a></div></div>
 <div class="ttc" id="avmath_8h_html"><div class="ttname"><a href="vmath_8h.html">vmath.h</a></div><div class="ttdoc">Math and vector methods.</div></div>
+<div class="ttc" id="avmath_8h_html_af9860b60dcba05e9026049e4afd3bdc1"><div class="ttname"><a href="vmath_8h.html#af9860b60dcba05e9026049e4afd3bdc1">vec_group</a></div><div class="ttdeci">static uint64_t vec_group(int64_t *restrict vec, uint8_t vec_len, uint8_t group_bits)</div><div class="ttdef"><b>Definition</b> <a href="vmath_8h_source.html#l00057">vmath.h:57</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 </div><!-- container -->

@@ -94,35 +94,33 @@ $(function(){initNavTree('compression_8h.html','',''); });
 <div class="contents">
 <div class="textblock"><code>#include &lt;<a class="el" href="lib_8h_source.html">clod/lib.h</a>&gt;</code><br />
 <code>#include &lt;stddef.h&gt;</code><br />
-<code>#include &lt;stdint.h&gt;</code><br />
 </div>
 <p><a href="compression_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 id="header-define-members" class="groupheader"><a id="define-members" name="define-members"></a>
-Macros</h2></td></tr>
-<tr class="memitem:ga7e1d56fd2005053eeb68c4535aab7097" id="r_ga7e1d56fd2005053eeb68c4535aab7097"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="group__compression.html#ga7e1d56fd2005053eeb68c4535aab7097">CLOD_COMPRESSION_DEFAULT_LEVEL</a>&#160;&#160;&#160;INT8_MAX</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-enum-members" class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:gae74641a34313623f69d63a408439c56e" id="r_gae74641a34313623f69d63a408439c56e"><td class="memItemLeft">enum &#160;</td><td class="memItemRight"><a class="el" href="group__compression.html#gae74641a34313623f69d63a408439c56e">clod_compression_algo</a> { <br />
-&#160;&#160;<a class="el" href="group__compression.html#ggae74641a34313623f69d63a408439c56ea1135552fe1e023ab5a194452a0e60bc4">CLOD_UNCOMPRESSED</a> = 1
-, <a class="el" href="group__compression.html#ggae74641a34313623f69d63a408439c56ea0b82c00ba3a2eee3524629db3428615b">CLOD_GZIP</a> = 2
-, <a class="el" href="group__compression.html#ggae74641a34313623f69d63a408439c56eadf57dc08acd127070ecf92c7d2ff7995">CLOD_ZLIB</a> = 3
-, <a class="el" href="group__compression.html#ggae74641a34313623f69d63a408439c56eab671c7130bdcb08b9410811fb05a8bf3">CLOD_DEFLATE</a> = 4
+<tr class="memitem:gaa25ec6fcc462b88c783f626e4f0dcaf1" id="r_gaa25ec6fcc462b88c783f626e4f0dcaf1"><td class="memItemLeft">enum &#160;</td><td class="memItemRight"><a class="el" href="group__compression.html#gaa25ec6fcc462b88c783f626e4f0dcaf1">clod_compression_method</a> { <br />
+&#160;&#160;<a class="el" href="group__compression.html#ggaa25ec6fcc462b88c783f626e4f0dcaf1a1135552fe1e023ab5a194452a0e60bc4">CLOD_UNCOMPRESSED</a> = 1
+, <a class="el" href="group__compression.html#ggaa25ec6fcc462b88c783f626e4f0dcaf1a0b82c00ba3a2eee3524629db3428615b">CLOD_GZIP</a> = 2
+, <a class="el" href="group__compression.html#ggaa25ec6fcc462b88c783f626e4f0dcaf1adf57dc08acd127070ecf92c7d2ff7995">CLOD_ZLIB</a> = 3
+, <a class="el" href="group__compression.html#ggaa25ec6fcc462b88c783f626e4f0dcaf1ab671c7130bdcb08b9410811fb05a8bf3">CLOD_DEFLATE</a> = 4
 , <br />
-&#160;&#160;<a class="el" href="group__compression.html#ggae74641a34313623f69d63a408439c56ea2d16e2a06d5c48e4d2d464d3dd9b064e">CLOD_LZ4</a> = 5
-, <a class="el" href="group__compression.html#ggae74641a34313623f69d63a408439c56eac7f022ca58dc4ee88d6501bd80a034e5">CLOD_LZMA</a> = 6
-, <a class="el" href="group__compression.html#ggae74641a34313623f69d63a408439c56ea6ff17f5ddb5ba14e40a71ac662bb233c">CLOD_ZSTD</a> = 7
-, <a class="el" href="group__compression.html#ggae74641a34313623f69d63a408439c56eabcb942319113c9c9b0efe6d850c0dabd">CLOD_MINECRAFT_LZ4</a> = 8
+&#160;&#160;<a class="el" href="group__compression.html#ggaa25ec6fcc462b88c783f626e4f0dcaf1a76c2d6781ce9e11a7dc0c408da154d25">CLOD_LZ4F</a> = 5
+, <a class="el" href="group__compression.html#ggaa25ec6fcc462b88c783f626e4f0dcaf1a968884aab54663a1169cc0462086ba15">CLOD_XZ</a> = 6
+, <a class="el" href="group__compression.html#ggaa25ec6fcc462b88c783f626e4f0dcaf1a6ff17f5ddb5ba14e40a71ac662bb233c">CLOD_ZSTD</a> = 7
+, <a class="el" href="group__compression.html#ggaa25ec6fcc462b88c783f626e4f0dcaf1a4e8ea4118718e67776cf4081ed6cac88">CLOD_BZIP2</a> = 8
+, <br />
+&#160;&#160;<a class="el" href="group__compression.html#ggaa25ec6fcc462b88c783f626e4f0dcaf1abcb942319113c9c9b0efe6d850c0dabd">CLOD_MINECRAFT_LZ4</a> = 10
 <br />
  }</td></tr>
 <tr class="memitem:ga3e5b6fd1deb15716507d0846b47d05be" id="r_ga3e5b6fd1deb15716507d0846b47d05be"><td class="memItemLeft">enum &#160;</td><td class="memItemRight"><a class="el" href="group__compression.html#ga3e5b6fd1deb15716507d0846b47d05be">clod_compression_level</a> { <br />
-&#160;&#160;<a class="el" href="group__compression.html#gga3e5b6fd1deb15716507d0846b47d05bea7a2aac32b477f63aac4f832f61968108">CLOD_COMPRESSION_LOWEST</a> = -2
-, <a class="el" href="group__compression.html#gga3e5b6fd1deb15716507d0846b47d05bea4a7cf2471c8cf54c489a194e3c84b95e">CLOD_COMPRESSION_LOW</a> = -1
-, <a class="el" href="group__compression.html#gga3e5b6fd1deb15716507d0846b47d05bea416b0577678431ec2157b3bcb0ec5bbe">CLOD_COMPRESSION_NORMAL</a> = 0
-, <a class="el" href="group__compression.html#gga3e5b6fd1deb15716507d0846b47d05bea1114d3173e287b38d34ef7bc976180be">CLOD_COMPRESSION_HIGH</a> = 1
+&#160;&#160;<a class="el" href="group__compression.html#gga3e5b6fd1deb15716507d0846b47d05bea7a2aac32b477f63aac4f832f61968108">CLOD_COMPRESSION_LOWEST</a> = 0
+, <a class="el" href="group__compression.html#gga3e5b6fd1deb15716507d0846b47d05bea4a7cf2471c8cf54c489a194e3c84b95e">CLOD_COMPRESSION_LOW</a> = 1
+, <a class="el" href="group__compression.html#gga3e5b6fd1deb15716507d0846b47d05bea416b0577678431ec2157b3bcb0ec5bbe">CLOD_COMPRESSION_NORMAL</a> = 2
+, <a class="el" href="group__compression.html#gga3e5b6fd1deb15716507d0846b47d05bea1114d3173e287b38d34ef7bc976180be">CLOD_COMPRESSION_HIGH</a> = 3
 , <br />
-&#160;&#160;<a class="el" href="group__compression.html#gga3e5b6fd1deb15716507d0846b47d05beac005e3c8397bff3b544faa7fee891aa0">CLOD_COMPRESSION_HIGHEST</a> = 2
+&#160;&#160;<a class="el" href="group__compression.html#gga3e5b6fd1deb15716507d0846b47d05beac005e3c8397bff3b544faa7fee891aa0">CLOD_COMPRESSION_HIGHEST</a> = 4
+, <a class="el" href="group__compression.html#gga3e5b6fd1deb15716507d0846b47d05beaca4d28f1b0366e14a4cc39813eea01e3">CLOD_COMPRESSION_LEVELS</a>
 <br />
  }</td></tr>
 <tr class="memitem:ga4fa96aedc14866e8e9fc0a2d47cb8d64" id="r_ga4fa96aedc14866e8e9fc0a2d47cb8d64"><td class="memItemLeft">enum &#160;</td><td class="memItemRight"><a class="el" href="group__compression.html#ga4fa96aedc14866e8e9fc0a2d47cb8d64">clod_compression_result</a> { <br />
@@ -138,13 +136,13 @@ Enumerations</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ga308ef7cc4123c582e9458b423889d317" id="r_ga308ef7cc4123c582e9458b423889d317"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="group__compression.html#ga308ef7cc4123c582e9458b423889d317">clod_compression_support</a> (enum <a class="el" href="group__compression.html#gae74641a34313623f69d63a408439c56e">clod_compression_algo</a> algo)</td></tr>
-<tr class="memitem:ga33b63475f9b56be574909e3d1d83e8ff" id="r_ga33b63475f9b56be574909e3d1d83e8ff"><td class="memItemLeft">struct clod_compressor *&#160;</td><td class="memItemRight"><a class="el" href="group__compression.html#ga33b63475f9b56be574909e3d1d83e8ff">clod_compressor_init</a> ()</td></tr>
-<tr class="memitem:ga1ebfdc46cf5296c8639ddcf519ec70c1" id="r_ga1ebfdc46cf5296c8639ddcf519ec70c1"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="group__compression.html#ga1ebfdc46cf5296c8639ddcf519ec70c1">clod_compressor_free</a> (struct clod_compressor *ctx)</td></tr>
-<tr class="memitem:ga1a6bcffd74696e27a294998c7695e0c7" id="r_ga1a6bcffd74696e27a294998c7695e0c7"><td class="memItemLeft">enum <a class="el" href="group__compression.html#ga4fa96aedc14866e8e9fc0a2d47cb8d64">clod_compression_result</a>&#160;</td><td class="memItemRight"><a class="el" href="group__compression.html#ga1a6bcffd74696e27a294998c7695e0c7">clod_compress</a> (struct clod_compressor *ctx, void *dst, size_t dst_max_size, const void *src, size_t src_size, size_t *actual_size, enum <a class="el" href="group__compression.html#gae74641a34313623f69d63a408439c56e">clod_compression_algo</a> algo, enum <a class="el" href="group__compression.html#ga3e5b6fd1deb15716507d0846b47d05be">clod_compression_level</a> level)</td></tr>
-<tr class="memitem:ga69d69ad30053ad90066c3c7b84c154bd" id="r_ga69d69ad30053ad90066c3c7b84c154bd"><td class="memItemLeft">struct clod_decompressor *&#160;</td><td class="memItemRight"><a class="el" href="group__compression.html#ga69d69ad30053ad90066c3c7b84c154bd">clod_decompressor_init</a> ()</td></tr>
-<tr class="memitem:ga5f69a6eefae31a4fec58fd56cf156abd" id="r_ga5f69a6eefae31a4fec58fd56cf156abd"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="group__compression.html#ga5f69a6eefae31a4fec58fd56cf156abd">clod_decompressor_free</a> (struct clod_decompressor *ctx)</td></tr>
-<tr class="memitem:gab6bc8fa3446d1ad0d7c0728980da70cf" id="r_gab6bc8fa3446d1ad0d7c0728980da70cf"><td class="memItemLeft">enum <a class="el" href="group__compression.html#ga4fa96aedc14866e8e9fc0a2d47cb8d64">clod_compression_result</a>&#160;</td><td class="memItemRight"><a class="el" href="group__compression.html#gab6bc8fa3446d1ad0d7c0728980da70cf">clod_decompress</a> (struct clod_decompressor *ctx, void *dst, size_t dst_size, const void *src, size_t src_size, size_t *actual_size, enum <a class="el" href="group__compression.html#gae74641a34313623f69d63a408439c56e">clod_compression_algo</a> algo)</td></tr>
+<tr class="memitem:ga5b4577a0914e737bca9fcbf553e4da32" id="r_ga5b4577a0914e737bca9fcbf553e4da32"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="group__compression.html#ga5b4577a0914e737bca9fcbf553e4da32">clod_compression_support</a> (enum <a class="el" href="group__compression.html#gaa25ec6fcc462b88c783f626e4f0dcaf1">clod_compression_method</a> method)</td></tr>
+<tr class="memitem:ga33b63475f9b56be574909e3d1d83e8ff" id="r_ga33b63475f9b56be574909e3d1d83e8ff"><td class="memItemLeft">struct <a class="el" href="structclod__compressor.html">clod_compressor</a> *&#160;</td><td class="memItemRight"><a class="el" href="group__compression.html#ga33b63475f9b56be574909e3d1d83e8ff">clod_compressor_init</a> ()</td></tr>
+<tr class="memitem:ga1ebfdc46cf5296c8639ddcf519ec70c1" id="r_ga1ebfdc46cf5296c8639ddcf519ec70c1"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="group__compression.html#ga1ebfdc46cf5296c8639ddcf519ec70c1">clod_compressor_free</a> (struct <a class="el" href="structclod__compressor.html">clod_compressor</a> *ctx)</td></tr>
+<tr class="memitem:gaa3951121375c8544fa7c56ff2c7aac03" id="r_gaa3951121375c8544fa7c56ff2c7aac03"><td class="memItemLeft">enum <a class="el" href="group__compression.html#ga4fa96aedc14866e8e9fc0a2d47cb8d64">clod_compression_result</a>&#160;</td><td class="memItemRight"><a class="el" href="group__compression.html#gaa3951121375c8544fa7c56ff2c7aac03">clod_compress</a> (struct <a class="el" href="structclod__compressor.html">clod_compressor</a> *ctx, void *dst, size_t dst_max_size, const void *src, size_t src_size, size_t *actual_size, enum <a class="el" href="group__compression.html#gaa25ec6fcc462b88c783f626e4f0dcaf1">clod_compression_method</a> method, enum <a class="el" href="group__compression.html#ga3e5b6fd1deb15716507d0846b47d05be">clod_compression_level</a> level)</td></tr>
+<tr class="memitem:ga69d69ad30053ad90066c3c7b84c154bd" id="r_ga69d69ad30053ad90066c3c7b84c154bd"><td class="memItemLeft">struct <a class="el" href="structclod__decompressor.html">clod_decompressor</a> *&#160;</td><td class="memItemRight"><a class="el" href="group__compression.html#ga69d69ad30053ad90066c3c7b84c154bd">clod_decompressor_init</a> ()</td></tr>
+<tr class="memitem:ga5f69a6eefae31a4fec58fd56cf156abd" id="r_ga5f69a6eefae31a4fec58fd56cf156abd"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="group__compression.html#ga5f69a6eefae31a4fec58fd56cf156abd">clod_decompressor_free</a> (struct <a class="el" href="structclod__decompressor.html">clod_decompressor</a> *ctx)</td></tr>
+<tr class="memitem:gacf9f21c72354678b1b890c61f8bf7617" id="r_gacf9f21c72354678b1b890c61f8bf7617"><td class="memItemLeft">enum <a class="el" href="group__compression.html#ga4fa96aedc14866e8e9fc0a2d47cb8d64">clod_compression_result</a>&#160;</td><td class="memItemRight"><a class="el" href="group__compression.html#gacf9f21c72354678b1b890c61f8bf7617">clod_decompress</a> (struct <a class="el" href="structclod__decompressor.html">clod_decompressor</a> *ctx, void *dst, size_t dst_size, const void *src, size_t src_size, size_t *actual_size, enum <a class="el" href="group__compression.html#gaa25ec6fcc462b88c783f626e4f0dcaf1">clod_compression_method</a> method)</td></tr>
 </table>
 </div><!-- contents -->
 </div><!-- doc-content -->

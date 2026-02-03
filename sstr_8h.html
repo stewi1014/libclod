@@ -110,6 +110,13 @@ Macros</h2></td></tr>
 <tr class="memitem:a471ba1745bf73213273bdf35f848680e" id="r_a471ba1745bf73213273bdf35f848680e"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a471ba1745bf73213273bdf35f848680e">clod_sstr</a>(ptr_v,  size_v)</td></tr>
 <tr class="memitem:ae7af76b94df17824d4032af811caa797" id="r_ae7af76b94df17824d4032af811caa797"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#ae7af76b94df17824d4032af811caa797">CLOD_SSTR_NULL</a>&#160;&#160;&#160;((<a class="el" href="structclod__sstr.html">clod_sstr</a>){ .ptr = nullptr, .size = 0 })</td></tr>
 <tr class="memitem:a85569fbd3cfec29b6eee87f6dab87090" id="r_a85569fbd3cfec29b6eee87f6dab87090"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a85569fbd3cfec29b6eee87f6dab87090">CLOD_SSTR_C</a>(c_string)</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:afd3c83f75d8b9cb0bae2a6f2dc0122a9" id="r_afd3c83f75d8b9cb0bae2a6f2dc0122a9"><td class="memItemLeft">static bool&#160;</td><td class="memItemRight"><a class="el" href="#afd3c83f75d8b9cb0bae2a6f2dc0122a9">clod_sstr_eq</a> (const <a class="el" href="structclod__sstr.html">clod_sstr</a> str1, const <a class="el" href="structclod__sstr.html">clod_sstr</a> str2)</td></tr>
+<tr class="memitem:adc389b565a2b9d390bb3e26fa7042e96" id="r_adc389b565a2b9d390bb3e26fa7042e96"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#adc389b565a2b9d390bb3e26fa7042e96">clod_sstr_cat</a> (<a class="el" href="structclod__sstr.html">clod_sstr</a> *str1, const <a class="el" href="structclod__sstr.html">clod_sstr</a> str2)</td></tr>
+<tr class="memitem:a5b6c5b981287ca40f6d005b6f9bf8aba" id="r_a5b6c5b981287ca40f6d005b6f9bf8aba"><td class="memItemLeft">static <a class="el" href="structclod__sstr.html">clod_sstr</a>&#160;</td><td class="memItemRight"><a class="el" href="#a5b6c5b981287ca40f6d005b6f9bf8aba">clod_sstr_contains</a> (const <a class="el" href="structclod__sstr.html">clod_sstr</a> str, const <a class="el" href="structclod__sstr.html">clod_sstr</a> elem)</td></tr>
+<tr class="memitem:a596bc50617c2f963d1fe34b8bc77d7cc" id="r_a596bc50617c2f963d1fe34b8bc77d7cc"><td class="memItemLeft">static <a class="el" href="structclod__sstr.html">clod_sstr</a>&#160;</td><td class="memItemRight"><a class="el" href="#a596bc50617c2f963d1fe34b8bc77d7cc">clod_sstr_find</a> (const <a class="el" href="structclod__sstr.html">clod_sstr</a> str, const char elem, ptrdiff_t occurrence)</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Sized string helpers. </p>
@@ -174,6 +181,172 @@ Macros</h2></td></tr>
 <b>Value:</b><div class="fragment"><div class="line">((clod_sstr){ .ptr = (<span class="keywordtype">char</span>*)(c_string), .size = strlen(c_string) })</div>
 </div><!-- fragment -->
 <p class="definition">Definition at line <a class="el" href="sstr_8h_source.html#l00032">32</a> of file <a class="el" href="sstr_8h_source.html">sstr.h</a>.</p>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Function Documentation</h2>
+<a id="afd3c83f75d8b9cb0bae2a6f2dc0122a9" name="afd3c83f75d8b9cb0bae2a6f2dc0122a9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afd3c83f75d8b9cb0bae2a6f2dc0122a9">&#9670;&#160;</a></span>clod_sstr_eq()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool clod_sstr_eq </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structclod__sstr.html">clod_sstr</a></td>          <td class="paramname"><span class="paramname"><em>str1</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structclod__sstr.html">clod_sstr</a></td>          <td class="paramname"><span class="paramname"><em>str2</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Compare two strings. Two strings are considered equal if their sizes are the same, and their pointers are either equal or point to objects that are equal.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">str1</td><td>1st string. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">str2</td><td>2nd string. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>If the strings are equal. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="sstr_8h_source.html#l00044">44</a> of file <a class="el" href="sstr_8h_source.html">sstr.h</a>.</p>
+
+</div>
+</div>
+<a id="adc389b565a2b9d390bb3e26fa7042e96" name="adc389b565a2b9d390bb3e26fa7042e96"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adc389b565a2b9d390bb3e26fa7042e96">&#9670;&#160;</a></span>clod_sstr_cat()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void clod_sstr_cat </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structclod__sstr.html">clod_sstr</a> *</td>          <td class="paramname"><span class="paramname"><em>str1</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structclod__sstr.html">clod_sstr</a></td>          <td class="paramname"><span class="paramname"><em>str2</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Append bytes to a string, incrementing the appended-to string's size to reflect the new size.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">str1</td><td>String to be appended to. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">str2</td><td>String to append. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="sstr_8h_source.html#l00058">58</a> of file <a class="el" href="sstr_8h_source.html">sstr.h</a>.</p>
+
+</div>
+</div>
+<a id="a5b6c5b981287ca40f6d005b6f9bf8aba" name="a5b6c5b981287ca40f6d005b6f9bf8aba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5b6c5b981287ca40f6d005b6f9bf8aba">&#9670;&#160;</a></span>clod_sstr_contains()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structclod__sstr.html">clod_sstr</a> clod_sstr_contains </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structclod__sstr.html">clod_sstr</a></td>          <td class="paramname"><span class="paramname"><em>str</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structclod__sstr.html">clod_sstr</a></td>          <td class="paramname"><span class="paramname"><em>elem</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Find the first instance of a string inside another string.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">str</td><td>The string to search in. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">elem</td><td>String to search for. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>String pointing to the same object <code class="param">str</code> points to at the offset where <code class="param">elem</code> was found and with a size equal to <code class="param">elem's</code> size. If no match was found, it returns null. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="sstr_8h_source.html#l00074">74</a> of file <a class="el" href="sstr_8h_source.html">sstr.h</a>.</p>
+
+</div>
+</div>
+<a id="a596bc50617c2f963d1fe34b8bc77d7cc" name="a596bc50617c2f963d1fe34b8bc77d7cc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a596bc50617c2f963d1fe34b8bc77d7cc">&#9670;&#160;</a></span>clod_sstr_find()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structclod__sstr.html">clod_sstr</a> clod_sstr_find </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structclod__sstr.html">clod_sstr</a></td>          <td class="paramname"><span class="paramname"><em>str</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char</td>          <td class="paramname"><span class="paramname"><em>elem</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ptrdiff_t</td>          <td class="paramname"><span class="paramname"><em>occurrence</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Find the Nth instance of <code class="param">elem</code> in <code class="param">str</code>. When <code class="param">occurrence</code> is positive or negative, it searches from the start or end of <code class="param">str</code> respectively. Then, abs(<code class="param">occurrence</code>) - 1 instances of <code class="param">elem</code> are skipped, and a string pointing to the final instance returned.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">str</td><td>The string to search in. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">elem</td><td>The character to search for. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">occurrence</td><td>Which instance of <code class="param">elem</code> to search for. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>String pointing to the found instance of <code class="param">elem</code>, and a length including the rest of <code class="param">str</code>. If <code class="param">occurrence</code> is 0, <code class="param">str</code> is returned. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="sstr_8h_source.html#l00099">99</a> of file <a class="el" href="sstr_8h_source.html">sstr.h</a>.</p>
 
 </div>
 </div>

@@ -1,5 +1,12 @@
 var group__table =
 [
+    [ "clod_table_opts", "structclod__table__opts.html", [
+      [ "min_capacity", "structclod__table__opts.html#a43e5fd77a335eee620c7092e8ccecfea", null ],
+      [ "hash_func", "structclod__table__opts.html#a9bf67621f2258892b570834e3464555f", null ],
+      [ "cmp_func", "structclod__table__opts.html#a1747b1fe62c2ed27960d43dd213bff60", null ]
+    ] ],
+    [ "clod_table_iter", "structclod__table__iter.html", null ],
+    [ "clod_table", "structclod__table.html", null ],
     [ "clod_table_create", "group__table.html#gaaa4f82888b60e6a15ad73726a81c835a", null ],
     [ "clod_table_destroy", "group__table.html#ga239b3e23b7e9a91d1e32014257e8ee5a", null ],
     [ "clod_table_len", "group__table.html#ga1b3e25a7596146eba0a019e5eb95900a", null ],

@@ -25,17 +25,20 @@
 var NAVTREE =
 [
   [ "libclod", "index.html", [
-    [ "Dependencies", "index.html#autotoc_md12", null ],
-    [ "Building", "index.html#autotoc_md13", null ],
-    [ "Features", "index.html#autotoc_md14", [
-      [ "<a href=\"https://stewi1014.github.io/libclod/group__compression.html\">Compression wrappers</a>", "index.html#autotoc_md15", null ],
-      [ "<a href=\"https://stewi1014.github.io/libclod/group__nbt.html\">NBT parsing</a>", "index.html#autotoc_md16", null ],
-      [ "<a href=\"https://stewi1014.github.io/libclod/group__region.html\">Region storage</a>", "index.html#autotoc_md17", null ]
+    [ "Dependencies", "index.html#autotoc_md12", [
+      [ "Platforms", "index.html#autotoc_md13", [
+        [ "Linux", "index.html#autotoc_md14", null ],
+        [ "BSD", "index.html#autotoc_md15", null ],
+        [ "macOS", "index.html#autotoc_md16", null ],
+        [ "Windows", "index.html#autotoc_md17", null ]
+      ] ]
     ] ],
-    [ "Public headers", "index.html#autotoc_md18", null ],
-    [ "Development", "index.html#autotoc_md19", [
-      [ "Building", "index.html#autotoc_md20", null ],
-      [ "Platforms", "index.html#autotoc_md21", null ]
+    [ "Building", "index.html#autotoc_md18", null ],
+    [ "Public headers", "index.html#autotoc_md19", null ],
+    [ "Features", "index.html#autotoc_md20", [
+      [ "<a href=\"https://stewi1014.github.io/libclod/group__compression.html\">Compression wrappers</a>", "index.html#autotoc_md21", null ],
+      [ "<a href=\"https://stewi1014.github.io/libclod/group__nbt.html\">NBT parsing</a>", "index.html#autotoc_md22", null ],
+      [ "<a href=\"https://stewi1014.github.io/libclod/group__region.html\">Region storage</a>", "index.html#autotoc_md23", null ]
     ] ],
     [ "Topics", "topics.html", "topics" ],
     [ "Classes", "annotated.html", [
@@ -61,7 +64,8 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"annotated.html"
+"annotated.html",
+"sstr_8h.html#adc389b565a2b9d390bb3e26fa7042e96"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronization';

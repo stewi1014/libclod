@@ -93,6 +93,10 @@ $(function(){initNavTree('group__hash.html','',''); });
 </div><!--header-->
 <div class="contents">
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:clod_5Fsip64_5Fstate" id="r_clod_5Fsip64_5Fstate"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structclod__sip64__state.html">clod_sip64_state</a></td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-define-members" class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:gae4491c7187bf0d4dac90113d8e5bb3bb" id="r_gae4491c7187bf0d4dac90113d8e5bb3bb"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#gae4491c7187bf0d4dac90113d8e5bb3bb">clod_sip64_init</a>(seed)</td></tr>
@@ -115,8 +119,8 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:gaaefe591a503d0c93d185a0a69a197ef2" id="r_gaaefe591a503d0c93d185a0a69a197ef2"><td class="memItemLeft">clod_sip64_state&#160;</td><td class="memItemRight"><a class="el" href="#gaaefe591a503d0c93d185a0a69a197ef2">clod_sip64_add</a> (clod_sip64_state state, const void *data, size_t size)</td></tr>
-<tr class="memitem:ga614d5bf14c7d9712f5730270766f88e6" id="r_ga614d5bf14c7d9712f5730270766f88e6"><td class="memItemLeft">uint64_t&#160;</td><td class="memItemRight"><a class="el" href="#ga614d5bf14c7d9712f5730270766f88e6">clod_sip64_finalise</a> (clod_sip64_state state)</td></tr>
+<tr class="memitem:gaaefe591a503d0c93d185a0a69a197ef2" id="r_gaaefe591a503d0c93d185a0a69a197ef2"><td class="memItemLeft"><a class="el" href="structclod__sip64__state.html">clod_sip64_state</a>&#160;</td><td class="memItemRight"><a class="el" href="#gaaefe591a503d0c93d185a0a69a197ef2">clod_sip64_add</a> (<a class="el" href="structclod__sip64__state.html">clod_sip64_state</a> state, const void *data, size_t size)</td></tr>
+<tr class="memitem:ga614d5bf14c7d9712f5730270766f88e6" id="r_ga614d5bf14c7d9712f5730270766f88e6"><td class="memItemLeft">uint64_t&#160;</td><td class="memItemRight"><a class="el" href="#ga614d5bf14c7d9712f5730270766f88e6">clod_sip64_finalise</a> (<a class="el" href="structclod__sip64__state.html">clod_sip64_state</a> state)</td></tr>
 <tr class="memitem:ga54b1ea9b3947481f166d318c466a039d" id="r_ga54b1ea9b3947481f166d318c466a039d"><td class="memItemLeft">uint64_t&#160;</td><td class="memItemRight"><a class="el" href="#ga54b1ea9b3947481f166d318c466a039d">clod_crc64_add</a> (uint64_t crc, const void *data, size_t data_len)</td></tr>
 <tr class="memitem:ga81307715e33c7cb5678f977baae58415" id="r_ga81307715e33c7cb5678f977baae58415"><td class="memItemLeft">uint32_t&#160;</td><td class="memItemRight"><a class="el" href="#ga81307715e33c7cb5678f977baae58415">clod_crc32_add</a> (uint32_t crc, const void *data, size_t data_len)</td></tr>
 <tr class="memitem:ga7252d02eb9df44dc25c2b20f0bd94baf" id="r_ga7252d02eb9df44dc25c2b20f0bd94baf"><td class="memItemLeft">uint32_t&#160;</td><td class="memItemRight"><a class="el" href="#ga7252d02eb9df44dc25c2b20f0bd94baf">clod_crc24_add</a> (uint32_t crc, const void *data, size_t data_len)</td></tr>
@@ -148,21 +152,22 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">    ((clod_sip64_state){\</div>
+<b>Value:</b><div class="fragment"><div class="line">    ((<a class="code hl_struct" href="structclod__sip64__state.html">clod_sip64_state</a>){\</div>
 <div class="line">    ._v0 = UINT64_C(0x736f6d6570736575) ^ seed,\</div>
 <div class="line">    ._v1 = UINT64_C(0x646f72616e646f6d) ^ seed,\</div>
 <div class="line">    ._v2 = UINT64_C(0x6c7967656e657261) ^ seed,\</div>
 <div class="line">    ._v3 = UINT64_C(0x7465646279746573) ^ seed,\</div>
 <div class="line">    ._size = 0\</div>
 <div class="line">})</div>
-</div><!-- fragment --><p>Initialise a sip64 hash state. </p><dl class="params"><dt>Parameters</dt><dd>
+<div class="ttc" id="astructclod__sip64__state_html"><div class="ttname"><a href="structclod__sip64__state.html">clod_sip64_state</a></div><div class="ttdef"><b>Definition</b> <a href="hash_8h_source.html#l00043">hash.h:43</a></div></div>
+</div><!-- fragment --><p>Initialise the hash state. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">seed</td><td>Seed value for the hash. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="hash_8h_source.html#l00052">52</a> of file <a class="el" href="hash_8h_source.html">hash.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="hash_8h_source.html#l00056">56</a> of file <a class="el" href="hash_8h_source.html">hash.h</a>.</p>
 
 </div>
 </div>
@@ -192,9 +197,19 @@ Functions</h2></td></tr>
 <b>Value:</b><div class="fragment"><div class="line"><a class="code hl_function" href="#ga614d5bf14c7d9712f5730270766f88e6">clod_sip64_finalise</a>(<a class="code hl_function" href="#gaaefe591a503d0c93d185a0a69a197ef2">clod_sip64_add</a>(<a class="code hl_define" href="#gae4491c7187bf0d4dac90113d8e5bb3bb">clod_sip64_init</a>(seed), data, size))</div>
 <div class="ttc" id="agroup__hash_html_ga614d5bf14c7d9712f5730270766f88e6"><div class="ttname"><a href="#ga614d5bf14c7d9712f5730270766f88e6">clod_sip64_finalise</a></div><div class="ttdeci">uint64_t clod_sip64_finalise(clod_sip64_state state)</div><div class="ttdef"><b>Definition</b> <a href="siphash_8c_source.html#l00096">siphash.c:96</a></div></div>
 <div class="ttc" id="agroup__hash_html_gaaefe591a503d0c93d185a0a69a197ef2"><div class="ttname"><a href="#gaaefe591a503d0c93d185a0a69a197ef2">clod_sip64_add</a></div><div class="ttdeci">clod_sip64_state clod_sip64_add(clod_sip64_state state, const void *data, size_t size)</div><div class="ttdef"><b>Definition</b> <a href="siphash_8c_source.html#l00052">siphash.c:52</a></div></div>
-<div class="ttc" id="agroup__hash_html_gae4491c7187bf0d4dac90113d8e5bb3bb"><div class="ttname"><a href="#gae4491c7187bf0d4dac90113d8e5bb3bb">clod_sip64_init</a></div><div class="ttdeci">#define clod_sip64_init(seed)</div><div class="ttdef"><b>Definition</b> <a href="hash_8h_source.html#l00052">hash.h:52</a></div></div>
-</div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="hash_8h_source.html#l00080">80</a> of file <a class="el" href="hash_8h_source.html">hash.h</a>.</p>
+<div class="ttc" id="agroup__hash_html_gae4491c7187bf0d4dac90113d8e5bb3bb"><div class="ttname"><a href="#gae4491c7187bf0d4dac90113d8e5bb3bb">clod_sip64_init</a></div><div class="ttdeci">#define clod_sip64_init(seed)</div><div class="ttdef"><b>Definition</b> <a href="hash_8h_source.html#l00056">hash.h:56</a></div></div>
+</div><!-- fragment --><p>One-shot a sip64 hash.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">seed</td><td>Seed value for the hash. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">data</td><td>Value to be hashed. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">size</td><td>Size of <code class="param">data</code>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>64-bit hash value. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="hash_8h_source.html#l00093">93</a> of file <a class="el" href="hash_8h_source.html">hash.h</a>.</p>
 
 </div>
 </div>
@@ -212,9 +227,10 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">UINT64_C(0x0)</div>
-</div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="hash_8h_source.html#l00090">90</a> of file <a class="el" href="hash_8h_source.html">hash.h</a>.</p>
+<b>Value:</b><div class="fragment"><div class="line">UINT64_C(0xFFFFFFFFFFFFFFFF)</div>
+</div><!-- fragment --><p>Initialise a crc64 hash state. </p>
+
+<p class="definition">Definition at line <a class="el" href="hash_8h_source.html#l00098">98</a> of file <a class="el" href="hash_8h_source.html">hash.h</a>.</p>
 
 </div>
 </div>
@@ -232,9 +248,17 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">((uint64_t)((uint64_t)crc ^ UINT64_C(0x0)))</div>
-</div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="hash_8h_source.html#l00091">91</a> of file <a class="el" href="hash_8h_source.html">hash.h</a>.</p>
+<b>Value:</b><div class="fragment"><div class="line">((uint64_t)((uint64_t)crc ^ UINT64_C(0xFFFFFFFFFFFFFFFF)))</div>
+</div><!-- fragment --><p>Finalise a crc64 hash.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">crc</td><td>Hash state. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>64-bit hash value. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="hash_8h_source.html#l00119">119</a> of file <a class="el" href="hash_8h_source.html">hash.h</a>.</p>
 
 </div>
 </div>
@@ -256,10 +280,21 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">clod_crc64_finalise(<a class="code hl_function" href="#ga54b1ea9b3947481f166d318c466a039d">clod_crc64_add</a>(clod_crc64_init(), data, size))</div>
+<b>Value:</b><div class="fragment"><div class="line"><a class="code hl_define" href="#gab241a0b1a65e435123369668757e804b">clod_crc64_finalise</a>(<a class="code hl_function" href="#ga54b1ea9b3947481f166d318c466a039d">clod_crc64_add</a>(<a class="code hl_define" href="#ga06d5b2deed2eea28e80d2d40062a94f3">clod_crc64_init</a>(), data, size))</div>
+<div class="ttc" id="agroup__hash_html_ga06d5b2deed2eea28e80d2d40062a94f3"><div class="ttname"><a href="#ga06d5b2deed2eea28e80d2d40062a94f3">clod_crc64_init</a></div><div class="ttdeci">#define clod_crc64_init()</div><div class="ttdef"><b>Definition</b> <a href="hash_8h_source.html#l00098">hash.h:98</a></div></div>
 <div class="ttc" id="agroup__hash_html_ga54b1ea9b3947481f166d318c466a039d"><div class="ttname"><a href="#ga54b1ea9b3947481f166d318c466a039d">clod_crc64_add</a></div><div class="ttdeci">uint64_t clod_crc64_add(uint64_t crc, const void *data, size_t data_len)</div></div>
-</div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="hash_8h_source.html#l00092">92</a> of file <a class="el" href="hash_8h_source.html">hash.h</a>.</p>
+<div class="ttc" id="agroup__hash_html_gab241a0b1a65e435123369668757e804b"><div class="ttname"><a href="#gab241a0b1a65e435123369668757e804b">clod_crc64_finalise</a></div><div class="ttdeci">#define clod_crc64_finalise(crc)</div><div class="ttdef"><b>Definition</b> <a href="hash_8h_source.html#l00119">hash.h:119</a></div></div>
+</div><!-- fragment --><p>One-shot a crc64 hash.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">data</td><td>Data to hash. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">size</td><td>Size of <code class="param">data</code>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>64-bit hash value. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="hash_8h_source.html#l00128">128</a> of file <a class="el" href="hash_8h_source.html">hash.h</a>.</p>
 
 </div>
 </div>
@@ -278,8 +313,9 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line">UINT32_C(0xFFFFFFFF)</div>
-</div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="hash_8h_source.html#l00100">100</a> of file <a class="el" href="hash_8h_source.html">hash.h</a>.</p>
+</div><!-- fragment --><p>Initialise a crc32 hash state. </p>
+
+<p class="definition">Definition at line <a class="el" href="hash_8h_source.html#l00133">133</a> of file <a class="el" href="hash_8h_source.html">hash.h</a>.</p>
 
 </div>
 </div>
@@ -298,8 +334,16 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line">((uint32_t)((uint32_t)crc ^ UINT32_C(0xFFFFFFFF)))</div>
-</div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="hash_8h_source.html#l00101">101</a> of file <a class="el" href="hash_8h_source.html">hash.h</a>.</p>
+</div><!-- fragment --><p>Finalise a crc32 hash state.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">crc</td><td>Hash state. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>32-bit hash value. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="hash_8h_source.html#l00154">154</a> of file <a class="el" href="hash_8h_source.html">hash.h</a>.</p>
 
 </div>
 </div>
@@ -321,10 +365,21 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">clod_crc32_finalise(<a class="code hl_function" href="#ga81307715e33c7cb5678f977baae58415">clod_crc32_add</a>(clod_crc32_init(), data, size))</div>
+<b>Value:</b><div class="fragment"><div class="line"><a class="code hl_define" href="#ga688b5c7889b654506285770e8bad203b">clod_crc32_finalise</a>(<a class="code hl_function" href="#ga81307715e33c7cb5678f977baae58415">clod_crc32_add</a>(<a class="code hl_define" href="#gafce7ca69c1b86a6aa44396032c4a8f9a">clod_crc32_init</a>(), data, size))</div>
+<div class="ttc" id="agroup__hash_html_ga688b5c7889b654506285770e8bad203b"><div class="ttname"><a href="#ga688b5c7889b654506285770e8bad203b">clod_crc32_finalise</a></div><div class="ttdeci">#define clod_crc32_finalise(crc)</div><div class="ttdef"><b>Definition</b> <a href="hash_8h_source.html#l00154">hash.h:154</a></div></div>
 <div class="ttc" id="agroup__hash_html_ga81307715e33c7cb5678f977baae58415"><div class="ttname"><a href="#ga81307715e33c7cb5678f977baae58415">clod_crc32_add</a></div><div class="ttdeci">uint32_t clod_crc32_add(uint32_t crc, const void *data, size_t data_len)</div></div>
-</div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="hash_8h_source.html#l00102">102</a> of file <a class="el" href="hash_8h_source.html">hash.h</a>.</p>
+<div class="ttc" id="agroup__hash_html_gafce7ca69c1b86a6aa44396032c4a8f9a"><div class="ttname"><a href="#gafce7ca69c1b86a6aa44396032c4a8f9a">clod_crc32_init</a></div><div class="ttdeci">#define clod_crc32_init()</div><div class="ttdef"><b>Definition</b> <a href="hash_8h_source.html#l00133">hash.h:133</a></div></div>
+</div><!-- fragment --><p>One-shot a crc32 hash.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">data</td><td>Data to hash. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">size</td><td>Size of <code class="param">data</code>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>32-bit hash value. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="hash_8h_source.html#l00163">163</a> of file <a class="el" href="hash_8h_source.html">hash.h</a>.</p>
 
 </div>
 </div>
@@ -342,9 +397,10 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">UINT32_C(0xB704CE)</div>
-</div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="hash_8h_source.html#l00110">110</a> of file <a class="el" href="hash_8h_source.html">hash.h</a>.</p>
+<b>Value:</b><div class="fragment"><div class="line">UINT32_C(0xFFFFFF)</div>
+</div><!-- fragment --><p>Initialise a crc24 hash state. </p>
+
+<p class="definition">Definition at line <a class="el" href="hash_8h_source.html#l00168">168</a> of file <a class="el" href="hash_8h_source.html">hash.h</a>.</p>
 
 </div>
 </div>
@@ -362,9 +418,17 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">((uint32_t)((uint32_t)crc ^ UINT32_C(0x0)))</div>
-</div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="hash_8h_source.html#l00111">111</a> of file <a class="el" href="hash_8h_source.html">hash.h</a>.</p>
+<b>Value:</b><div class="fragment"><div class="line">((uint32_t)((uint32_t)crc ^ UINT32_C(0xFFFFFF)))</div>
+</div><!-- fragment --><p>Finalise a crc24 hash state.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">crc</td><td>Hash state </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>24-bit hash value. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="hash_8h_source.html#l00189">189</a> of file <a class="el" href="hash_8h_source.html">hash.h</a>.</p>
 
 </div>
 </div>
@@ -386,10 +450,21 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">clod_crc24_finalise(<a class="code hl_function" href="#ga7252d02eb9df44dc25c2b20f0bd94baf">clod_crc24_add</a>(clod_crc24_init(), data, size))</div>
+<b>Value:</b><div class="fragment"><div class="line"><a class="code hl_define" href="#gac7812450c3601ddbee37e176e12a015f">clod_crc24_finalise</a>(<a class="code hl_function" href="#ga7252d02eb9df44dc25c2b20f0bd94baf">clod_crc24_add</a>(<a class="code hl_define" href="#gada10c89d90d70243d58b21c306383233">clod_crc24_init</a>(), data, size))</div>
 <div class="ttc" id="agroup__hash_html_ga7252d02eb9df44dc25c2b20f0bd94baf"><div class="ttname"><a href="#ga7252d02eb9df44dc25c2b20f0bd94baf">clod_crc24_add</a></div><div class="ttdeci">uint32_t clod_crc24_add(uint32_t crc, const void *data, size_t data_len)</div></div>
-</div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="hash_8h_source.html#l00112">112</a> of file <a class="el" href="hash_8h_source.html">hash.h</a>.</p>
+<div class="ttc" id="agroup__hash_html_gac7812450c3601ddbee37e176e12a015f"><div class="ttname"><a href="#gac7812450c3601ddbee37e176e12a015f">clod_crc24_finalise</a></div><div class="ttdeci">#define clod_crc24_finalise(crc)</div><div class="ttdef"><b>Definition</b> <a href="hash_8h_source.html#l00189">hash.h:189</a></div></div>
+<div class="ttc" id="agroup__hash_html_gada10c89d90d70243d58b21c306383233"><div class="ttname"><a href="#gada10c89d90d70243d58b21c306383233">clod_crc24_init</a></div><div class="ttdeci">#define clod_crc24_init()</div><div class="ttdef"><b>Definition</b> <a href="hash_8h_source.html#l00168">hash.h:168</a></div></div>
+</div><!-- fragment --><p>One-shot a crc24 hash.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">data</td><td>Data to hash. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">size</td><td>Size of <code class="param">data</code>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>24-bit hash value. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="hash_8h_source.html#l00198">198</a> of file <a class="el" href="hash_8h_source.html">hash.h</a>.</p>
 
 </div>
 </div>
@@ -407,9 +482,10 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">UINT16_C(0x0)</div>
-</div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="hash_8h_source.html#l00120">120</a> of file <a class="el" href="hash_8h_source.html">hash.h</a>.</p>
+<b>Value:</b><div class="fragment"><div class="line">UINT16_C(0xFFFF)</div>
+</div><!-- fragment --><p>Initialise a crc16 hash state. </p>
+
+<p class="definition">Definition at line <a class="el" href="hash_8h_source.html#l00203">203</a> of file <a class="el" href="hash_8h_source.html">hash.h</a>.</p>
 
 </div>
 </div>
@@ -427,9 +503,17 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">((uint16_t)((uint16_t)crc ^ UINT16_C(0x0)))</div>
-</div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="hash_8h_source.html#l00121">121</a> of file <a class="el" href="hash_8h_source.html">hash.h</a>.</p>
+<b>Value:</b><div class="fragment"><div class="line">((uint16_t)((uint16_t)crc ^ UINT16_C(0xFFFF)))</div>
+</div><!-- fragment --><p>Finalise a crc16 hash state.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">crc</td><td>Hash state </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>16-bit hash value. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="hash_8h_source.html#l00224">224</a> of file <a class="el" href="hash_8h_source.html">hash.h</a>.</p>
 
 </div>
 </div>
@@ -451,10 +535,21 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">clod_crc16_finalise(<a class="code hl_function" href="#gadc7c1cf85eeaaf4ef997f44f103d72b6">clod_crc16_add</a>(clod_crc16_init(), data, size))</div>
+<b>Value:</b><div class="fragment"><div class="line"><a class="code hl_define" href="#gab39d5c1cba431f4aa2779ac8bdf68b82">clod_crc16_finalise</a>(<a class="code hl_function" href="#gadc7c1cf85eeaaf4ef997f44f103d72b6">clod_crc16_add</a>(<a class="code hl_define" href="#ga62034d48f335675ae10d18459e3f9706">clod_crc16_init</a>(), data, size))</div>
+<div class="ttc" id="agroup__hash_html_ga62034d48f335675ae10d18459e3f9706"><div class="ttname"><a href="#ga62034d48f335675ae10d18459e3f9706">clod_crc16_init</a></div><div class="ttdeci">#define clod_crc16_init()</div><div class="ttdef"><b>Definition</b> <a href="hash_8h_source.html#l00203">hash.h:203</a></div></div>
+<div class="ttc" id="agroup__hash_html_gab39d5c1cba431f4aa2779ac8bdf68b82"><div class="ttname"><a href="#gab39d5c1cba431f4aa2779ac8bdf68b82">clod_crc16_finalise</a></div><div class="ttdeci">#define clod_crc16_finalise(crc)</div><div class="ttdef"><b>Definition</b> <a href="hash_8h_source.html#l00224">hash.h:224</a></div></div>
 <div class="ttc" id="agroup__hash_html_gadc7c1cf85eeaaf4ef997f44f103d72b6"><div class="ttname"><a href="#gadc7c1cf85eeaaf4ef997f44f103d72b6">clod_crc16_add</a></div><div class="ttdeci">uint16_t clod_crc16_add(uint16_t crc, const void *data, size_t data_len)</div></div>
-</div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="hash_8h_source.html#l00122">122</a> of file <a class="el" href="hash_8h_source.html">hash.h</a>.</p>
+</div><!-- fragment --><p>One-shot a crc16 hash.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">data</td><td>Data to hash. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">size</td><td>Size of <code class="param">data</code>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>16-bit hash value. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="hash_8h_source.html#l00233">233</a> of file <a class="el" href="hash_8h_source.html">hash.h</a>.</p>
 
 </div>
 </div>
@@ -472,9 +567,10 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">UINT8_C(0x0)</div>
-</div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="hash_8h_source.html#l00130">130</a> of file <a class="el" href="hash_8h_source.html">hash.h</a>.</p>
+<b>Value:</b><div class="fragment"><div class="line">UINT8_C(0xFF)</div>
+</div><!-- fragment --><p>Initialise a crc8 hash state. </p>
+
+<p class="definition">Definition at line <a class="el" href="hash_8h_source.html#l00238">238</a> of file <a class="el" href="hash_8h_source.html">hash.h</a>.</p>
 
 </div>
 </div>
@@ -492,9 +588,17 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">((uint8_t)((uint8_t)crc ^ UINT8_C(0x0)))</div>
-</div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="hash_8h_source.html#l00131">131</a> of file <a class="el" href="hash_8h_source.html">hash.h</a>.</p>
+<b>Value:</b><div class="fragment"><div class="line">((uint8_t)((uint8_t)crc ^ UINT8_C(0xFF)))</div>
+</div><!-- fragment --><p>Finalise a crc8 hash state.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">crc</td><td>Hash state </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>8-bit hash value. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="hash_8h_source.html#l00259">259</a> of file <a class="el" href="hash_8h_source.html">hash.h</a>.</p>
 
 </div>
 </div>
@@ -516,10 +620,21 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">clod_crc8_finalise(<a class="code hl_function" href="#ga67801a1899e1ba817087bffe2cd682cc">clod_crc8_add</a>(clod_crc8_init(), data, size))</div>
+<b>Value:</b><div class="fragment"><div class="line"><a class="code hl_define" href="#ga5395f5450fd1a947affcadd4271c61e3">clod_crc8_finalise</a>(<a class="code hl_function" href="#ga67801a1899e1ba817087bffe2cd682cc">clod_crc8_add</a>(<a class="code hl_define" href="#ga0298ed49e52c82225c87d4a925a48e30">clod_crc8_init</a>(), data, size))</div>
+<div class="ttc" id="agroup__hash_html_ga0298ed49e52c82225c87d4a925a48e30"><div class="ttname"><a href="#ga0298ed49e52c82225c87d4a925a48e30">clod_crc8_init</a></div><div class="ttdeci">#define clod_crc8_init()</div><div class="ttdef"><b>Definition</b> <a href="hash_8h_source.html#l00238">hash.h:238</a></div></div>
+<div class="ttc" id="agroup__hash_html_ga5395f5450fd1a947affcadd4271c61e3"><div class="ttname"><a href="#ga5395f5450fd1a947affcadd4271c61e3">clod_crc8_finalise</a></div><div class="ttdeci">#define clod_crc8_finalise(crc)</div><div class="ttdef"><b>Definition</b> <a href="hash_8h_source.html#l00259">hash.h:259</a></div></div>
 <div class="ttc" id="agroup__hash_html_ga67801a1899e1ba817087bffe2cd682cc"><div class="ttname"><a href="#ga67801a1899e1ba817087bffe2cd682cc">clod_crc8_add</a></div><div class="ttdeci">uint8_t clod_crc8_add(uint8_t crc, const void *data, size_t data_len)</div></div>
-</div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="hash_8h_source.html#l00132">132</a> of file <a class="el" href="hash_8h_source.html">hash.h</a>.</p>
+</div><!-- fragment --><p>One-shot a crc8 hash.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">data</td><td>Data to hash. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">size</td><td>Size of <code class="param">data</code>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>8-bit hash value. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="hash_8h_source.html#l00268">268</a> of file <a class="el" href="hash_8h_source.html">hash.h</a>.</p>
 
 </div>
 </div>
@@ -531,9 +646,9 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">clod_sip64_state clod_sip64_add </td>
+          <td class="memname"><a class="el" href="structclod__sip64__state.html">clod_sip64_state</a> clod_sip64_add </td>
           <td>(</td>
-          <td class="paramtype">clod_sip64_state</td>          <td class="paramname"><span class="paramname"><em>state</em></span>, </td>
+          <td class="paramtype"><a class="el" href="structclod__sip64__state.html">clod_sip64_state</a></td>          <td class="paramname"><span class="paramname"><em>state</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -547,7 +662,7 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Add data to a sip64 hash. SipHash is aimed at maximising speed and uniformity of entropy across the 64-bit range.</p>
+<p>Add data to the hash state. SipHash is aimed at maximising speed and uniformity of entropy across the 64-bit range.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">state</td><td>Hash state. </td></tr>
@@ -571,12 +686,13 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">uint64_t clod_sip64_finalise </td>
           <td>(</td>
-          <td class="paramtype">clod_sip64_state</td>          <td class="paramname"><span class="paramname"><em>state</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="structclod__sip64__state.html">clod_sip64_state</a></td>          <td class="paramname"><span class="paramname"><em>state</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Finalise a sip64 hash. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Finalise a sip64 hash.</p>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">state</td><td>Hash state. </td></tr>
   </table>
@@ -611,7 +727,16 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Polynomial: 0x42F0E1EBA9EA3693 Reflected: false </p>
+<p>Add data to the hash state. Polynomial: 0x42F0E1EBA9EA3693 Reflected: false</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">crc</td><td>Hash state. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">data</td><td>Data to add to hash. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">data_len</td><td>Size of <code class="param">data</code>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Updated hash state. </dd></dl>
 
 </div>
 </div>
@@ -638,7 +763,16 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Polynomial: 0x4C11DB7 Reflected: true </p>
+<p>Add data to the hash state. Polynomial: 0x4C11DB7 Reflected: true</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">crc</td><td>Hash state. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">data</td><td>Data to add to hash. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">data_len</td><td>Size of <code class="param">data</code>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Updated hash state. </dd></dl>
 
 </div>
 </div>
@@ -665,7 +799,16 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Polynomial: 0x864CFB Reflected: false </p>
+<p>Add data to the hash state. Polynomial: 0x864CFB Reflected: false</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">crc</td><td>Hash state. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">data</td><td>Data to add to hash. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">data_len</td><td>Size of <code class="param">data</code>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Updated hash state. </dd></dl>
 
 </div>
 </div>
@@ -692,7 +835,16 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Polynomial: 0x1021 Reflected: true </p>
+<p>Add data to the hash state. Polynomial: 0x1021 Reflected: true</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">crc</td><td>Hash state. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">data</td><td>Data to add to hash. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">data_len</td><td>Size of <code class="param">data</code>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Updated hash state. </dd></dl>
 
 </div>
 </div>
@@ -719,7 +871,16 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Polynomial: 0x7 Reflected: false </p>
+<p>Add data to the hash state. Polynomial: 0x7 Reflected: false</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">crc</td><td>Hash state. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">data</td><td>Data to add to hash. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">data_len</td><td>Size of <code class="param">data</code>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Updated hash state. </dd></dl>
 
 </div>
 </div>

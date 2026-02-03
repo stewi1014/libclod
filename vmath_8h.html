@@ -100,6 +100,16 @@ $(function(){initNavTree('vmath_8h.html','',''); });
 </div>
 <p><a href="vmath_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:divi64" id="r_divi64"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structdivi64.html">divi64</a></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:aa9b6809bdaa0555982cfaec9cb68e915" id="r_aa9b6809bdaa0555982cfaec9cb68e915"><td class="memItemLeft">static uint64_t&#160;</td><td class="memItemRight"><a class="el" href="#aa9b6809bdaa0555982cfaec9cb68e915">mask64</a> (uint8_t bits)</td></tr>
+<tr class="memitem:ac5f6152e5ce479fe948d63aaa076d33f" id="r_ac5f6152e5ce479fe948d63aaa076d33f"><td class="memItemLeft">static struct divi64&#160;</td><td class="memItemRight"><a class="el" href="#ac5f6152e5ce479fe948d63aaa076d33f">divi64</a> (const int64_t x, const int64_t divisor)</td></tr>
+<tr class="memitem:af9860b60dcba05e9026049e4afd3bdc1" id="r_af9860b60dcba05e9026049e4afd3bdc1"><td class="memItemLeft">static uint64_t&#160;</td><td class="memItemRight"><a class="el" href="#af9860b60dcba05e9026049e4afd3bdc1">vec_group</a> (int64_t *restrict vec, uint8_t vec_len, uint8_t group_bits)</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
 <tr class="memitem:a2f934c3199290d2340f61155c578f76e" id="r_a2f934c3199290d2340f61155c578f76e"><td class="memItemLeft">int64_t&#160;</td><td class="memItemRight"><a class="el" href="#a2f934c3199290d2340f61155c578f76e">quot</a></td></tr>
@@ -109,7 +119,114 @@ Variables</h2></td></tr>
 <div class="textblock"><p>Math and vector methods. </p>
 
 <p class="definition">Definition in file <a class="el" href="vmath_8h_source.html">vmath.h</a>.</p>
-</div><a name="doc-var-members" id="doc-var-members"></a><h2 id="header-doc-var-members" class="groupheader">Variable Documentation</h2>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Function Documentation</h2>
+<a id="aa9b6809bdaa0555982cfaec9cb68e915" name="aa9b6809bdaa0555982cfaec9cb68e915"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa9b6809bdaa0555982cfaec9cb68e915">&#9670;&#160;</a></span>mask64()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint64_t mask64 </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>bits</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="vmath_8h_source.html#l00016">16</a> of file <a class="el" href="vmath_8h_source.html">vmath.h</a>.</p>
+
+</div>
+</div>
+<a id="ac5f6152e5ce479fe948d63aaa076d33f" name="ac5f6152e5ce479fe948d63aaa076d33f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac5f6152e5ce479fe948d63aaa076d33f">&#9670;&#160;</a></span>divi64()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct divi64 divi64 </td>
+          <td>(</td>
+          <td class="paramtype">const int64_t</td>          <td class="paramname"><span class="paramname"><em>x</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int64_t</td>          <td class="paramname"><span class="paramname"><em>divisor</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="vmath_8h_source.html#l00016">16</a> of file <a class="el" href="vmath_8h_source.html">vmath.h</a>.</p>
+
+</div>
+</div>
+<a id="af9860b60dcba05e9026049e4afd3bdc1" name="af9860b60dcba05e9026049e4afd3bdc1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af9860b60dcba05e9026049e4afd3bdc1">&#9670;&#160;</a></span>vec_group()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint64_t vec_group </td>
+          <td>(</td>
+          <td class="paramtype">int64_t *restrict</td>          <td class="paramname"><span class="paramname"><em>vec</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>vec_len</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>group_bits</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Group points together into groups of size 2^<code class="param">group_bits</code>, modifying the vector to point to the new group.</p>
+<p>If <code class="param">group_bits</code> is divisible by <code class="param">vec_len</code>, it's really quite simple. For example, 10 bits per group, 2 dimensions = 5 bits from each dimension, each group is 2^5 * 2^5. 10 bits per group, 5 dimensions = 2 bits from each dimension, each group is 2^2 * 2^2 * 2^2 * 2^2 * 2^2.</p>
+<p>The real reason for this method beyond simple division is when <code class="param">group_bits</code> is <em>not</em> divisible by <code class="param">vec_len</code>. For example, for 3 dimensions and 10 bits it does 2^4 * 2^3 * 2^3.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">vec</td><td></td></tr>
+    <tr><td class="paramname">vec_len</td><td></td></tr>
+    <tr><td class="paramname">group_bits</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="vmath_8h_source.html#l00057">57</a> of file <a class="el" href="vmath_8h_source.html">vmath.h</a>.</p>
+
+</div>
+</div>
+<a name="doc-var-members" id="doc-var-members"></a><h2 id="header-doc-var-members" class="groupheader">Variable Documentation</h2>
 <a id="a2f934c3199290d2340f61155c578f76e" name="a2f934c3199290d2340f61155c578f76e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2f934c3199290d2340f61155c578f76e">&#9670;&#160;</a></span>quot</h2>
 

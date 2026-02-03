@@ -99,67 +99,82 @@ $(function(){initNavTree('hash_8h_source.html','',''); });
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="preprocessor">#include &lt;<a class="code" href="lib_8h.html">clod/lib.h</a>&gt;</span></div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="preprocessor">#include &lt;stddef.h&gt;</span></div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    uint64_t _v0;</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    uint64_t _v1;</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    uint64_t _v2;</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    uint64_t _v3;</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    uint8_t _size;</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> _buf[7];</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>} clod_sip64_state;</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span></div>
-<div class="foldopen" id="foldopen00052" data-start="" data-end="">
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="group__hash.html#gae4491c7187bf0d4dac90113d8e5bb3bb">   52</a></span><span class="preprocessor">#define clod_sip64_init(seed) ((clod_sip64_state){\</span></div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="preprocessor">    ._v0 = UINT64_C(0x736f6d6570736575) ^ seed,\</span></div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="preprocessor">    ._v1 = UINT64_C(0x646f72616e646f6d) ^ seed,\</span></div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="preprocessor">    ._v2 = UINT64_C(0x6c7967656e657261) ^ seed,\</span></div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="preprocessor">    ._v3 = UINT64_C(0x7465646279746573) ^ seed,\</span></div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="preprocessor">    ._size = 0\</span></div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="preprocessor">})</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span></div>
+<div class="foldopen" id="foldopen00043" data-start="{" data-end="};">
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="structclod__sip64__state.html">   43</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    uint64_t _v0;</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    uint64_t _v1;</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    uint64_t _v2;</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    uint64_t _v3;</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    uint8_t _size;</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> _buf[7];</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>} <a class="code hl_struct" href="structclod__sip64__state.html">clod_sip64_state</a>;</div>
 </div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span></div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>CLOD_API CLOD_USE_RETURN CLOD_PURE CLOD_NONNULL(2)</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>clod_sip64_state <a class="code hl_function" href="group__hash.html#gaaefe591a503d0c93d185a0a69a197ef2">clod_sip64_add</a>(clod_sip64_state state, const <span class="keywordtype">void</span> *data, <span class="keywordtype">size_t</span> size);</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span></div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>CLOD_API CLOD_USE_RETURN CLOD_PURE</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>uint64_t <a class="code hl_function" href="group__hash.html#ga614d5bf14c7d9712f5730270766f88e6">clod_sip64_finalise</a>(clod_sip64_state state);</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span><span class="preprocessor">#define clod_sip64(seed, data, size) clod_sip64_finalise(clod_sip64_add(clod_sip64_init(seed), data, size))</span></div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span></div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>CLOD_API CLOD_USE_RETURN CLOD_PURE CLOD_NONNULL(2)</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>uint64_t</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno"><a class="line" href="group__hash.html#ga54b1ea9b3947481f166d318c466a039d">   89</a></span><a class="code hl_function" href="group__hash.html#ga54b1ea9b3947481f166d318c466a039d">clod_crc64_add</a>(uint64_t crc, const <span class="keywordtype">void</span> *data, <span class="keywordtype">size_t</span> data_len);</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span><span class="preprocessor">#define clod_crc64_init() UINT64_C(0x0)</span></div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span><span class="preprocessor">#define clod_crc64_finalise(crc) ((uint64_t)((uint64_t)crc ^ UINT64_C(0x0)))</span></div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span><span class="preprocessor">#define clod_crc64(data, size) clod_crc64_finalise(clod_crc64_add(clod_crc64_init(), data, size))</span></div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span></div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>CLOD_API CLOD_USE_RETURN CLOD_PURE CLOD_NONNULL(2)</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno"><a class="line" href="group__hash.html#ga81307715e33c7cb5678f977baae58415">   99</a></span>uint32_t <a class="code hl_function" href="group__hash.html#ga81307715e33c7cb5678f977baae58415">clod_crc32_add</a>(uint32_t crc, const <span class="keywordtype">void</span> *data, <span class="keywordtype">size_t</span> data_len);</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span><span class="preprocessor">#define clod_crc32_init() UINT32_C(0xFFFFFFFF)</span></div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span><span class="preprocessor">#define clod_crc32_finalise(crc) ((uint32_t)((uint32_t)crc ^ UINT32_C(0xFFFFFFFF)))</span></div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span><span class="preprocessor">#define clod_crc32(data, size) clod_crc32_finalise(clod_crc32_add(clod_crc32_init(), data, size))</span></div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span></div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>CLOD_API CLOD_USE_RETURN CLOD_PURE CLOD_NONNULL(2)</div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno"><a class="line" href="group__hash.html#ga7252d02eb9df44dc25c2b20f0bd94baf">  109</a></span>uint32_t <a class="code hl_function" href="group__hash.html#ga7252d02eb9df44dc25c2b20f0bd94baf">clod_crc24_add</a>(uint32_t crc, const <span class="keywordtype">void</span> *data, <span class="keywordtype">size_t</span> data_len);</div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span><span class="preprocessor">#define clod_crc24_init() UINT32_C(0xB704CE)</span></div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span><span class="preprocessor">#define clod_crc24_finalise(crc) ((uint32_t)((uint32_t)crc ^ UINT32_C(0x0)))</span></div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span><span class="preprocessor">#define clod_crc24(data, size) clod_crc24_finalise(clod_crc24_add(clod_crc24_init(), data, size))</span></div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span></div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>CLOD_API CLOD_USE_RETURN CLOD_PURE CLOD_NONNULL(2)</div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno"><a class="line" href="group__hash.html#gadc7c1cf85eeaaf4ef997f44f103d72b6">  119</a></span>uint16_t <a class="code hl_function" href="group__hash.html#gadc7c1cf85eeaaf4ef997f44f103d72b6">clod_crc16_add</a>(uint16_t crc, const <span class="keywordtype">void</span> *data, <span class="keywordtype">size_t</span> data_len);</div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span><span class="preprocessor">#define clod_crc16_init() UINT16_C(0x0)</span></div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span><span class="preprocessor">#define clod_crc16_finalise(crc) ((uint16_t)((uint16_t)crc ^ UINT16_C(0x0)))</span></div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span><span class="preprocessor">#define clod_crc16(data, size) clod_crc16_finalise(clod_crc16_add(clod_crc16_init(), data, size))</span></div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span></div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>CLOD_API CLOD_USE_RETURN CLOD_PURE CLOD_NONNULL(2)</div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno"><a class="line" href="group__hash.html#ga67801a1899e1ba817087bffe2cd682cc">  129</a></span>uint8_t <a class="code hl_function" href="group__hash.html#ga67801a1899e1ba817087bffe2cd682cc">clod_crc8_add</a>(uint8_t crc, const <span class="keywordtype">void</span> *data, <span class="keywordtype">size_t</span> data_len);</div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span><span class="preprocessor">#define clod_crc8_init() UINT8_C(0x0)</span></div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span><span class="preprocessor">#define clod_crc8_finalise(crc) ((uint8_t)((uint8_t)crc ^ UINT8_C(0x0)))</span></div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span><span class="preprocessor">#define clod_crc8(data, size) clod_crc8_finalise(clod_crc8_add(clod_crc8_init(), data, size))</span></div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span></div>
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span></div>
+<div class="foldopen" id="foldopen00056" data-start="" data-end="">
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="group__hash.html#gae4491c7187bf0d4dac90113d8e5bb3bb">   56</a></span><span class="preprocessor">#define clod_sip64_init(seed) ((clod_sip64_state){\</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="preprocessor">    ._v0 = UINT64_C(0x736f6d6570736575) ^ seed,\</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="preprocessor">    ._v1 = UINT64_C(0x646f72616e646f6d) ^ seed,\</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="preprocessor">    ._v2 = UINT64_C(0x6c7967656e657261) ^ seed,\</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="preprocessor">    ._v3 = UINT64_C(0x7465646279746573) ^ seed,\</span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="preprocessor">    ._size = 0\</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="preprocessor">})</span></div>
+</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span></div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>CLOD_API CLOD_USE_RETURN CLOD_PURE CLOD_NONNULL(2)</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><a class="code hl_struct" href="structclod__sip64__state.html">clod_sip64_state</a> <a class="code hl_function" href="group__hash.html#gaaefe591a503d0c93d185a0a69a197ef2">clod_sip64_add</a>(<a class="code hl_struct" href="structclod__sip64__state.html">clod_sip64_state</a> state, const <span class="keywordtype">void</span> *data, <span class="keywordtype">size_t</span> size);</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span></div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>CLOD_API CLOD_USE_RETURN CLOD_PURE</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>uint64_t <a class="code hl_function" href="group__hash.html#ga614d5bf14c7d9712f5730270766f88e6">clod_sip64_finalise</a>(<a class="code hl_struct" href="structclod__sip64__state.html">clod_sip64_state</a> state);</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span></div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno"><a class="line" href="group__hash.html#ga86909978d31f5c30b6f81d1d1e338bad">   93</a></span><span class="preprocessor">#define clod_sip64(seed, data, size) clod_sip64_finalise(clod_sip64_add(clod_sip64_init(seed), data, size))</span></div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span></div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno"><a class="line" href="group__hash.html#ga06d5b2deed2eea28e80d2d40062a94f3">   98</a></span><span class="preprocessor">#define clod_crc64_init() UINT64_C(0xFFFFFFFFFFFFFFFF)</span></div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span></div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>CLOD_API CLOD_USE_RETURN CLOD_PURE CLOD_NONNULL(2)</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno"><a class="line" href="group__hash.html#ga54b1ea9b3947481f166d318c466a039d">  111</a></span>uint64_t <a class="code hl_function" href="group__hash.html#ga54b1ea9b3947481f166d318c466a039d">clod_crc64_add</a>(uint64_t crc, const <span class="keywordtype">void</span> *data, <span class="keywordtype">size_t</span> data_len);</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span></div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno"><a class="line" href="group__hash.html#gab241a0b1a65e435123369668757e804b">  119</a></span><span class="preprocessor">#define clod_crc64_finalise(crc) ((uint64_t)((uint64_t)crc ^ UINT64_C(0xFFFFFFFFFFFFFFFF)))</span></div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span></div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno"><a class="line" href="group__hash.html#ga9ccf20727107bd5e8eb9078b3ae9eccb">  128</a></span><span class="preprocessor">#define clod_crc64(data, size) clod_crc64_finalise(clod_crc64_add(clod_crc64_init(), data, size))</span></div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span></div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno"><a class="line" href="group__hash.html#gafce7ca69c1b86a6aa44396032c4a8f9a">  133</a></span><span class="preprocessor">#define clod_crc32_init() UINT32_C(0xFFFFFFFF)</span></div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span></div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>CLOD_API CLOD_USE_RETURN CLOD_PURE CLOD_NONNULL(2)</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno"><a class="line" href="group__hash.html#ga81307715e33c7cb5678f977baae58415">  146</a></span>uint32_t <a class="code hl_function" href="group__hash.html#ga81307715e33c7cb5678f977baae58415">clod_crc32_add</a>(uint32_t crc, const <span class="keywordtype">void</span> *data, <span class="keywordtype">size_t</span> data_len);</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span></div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno"><a class="line" href="group__hash.html#ga688b5c7889b654506285770e8bad203b">  154</a></span><span class="preprocessor">#define clod_crc32_finalise(crc) ((uint32_t)((uint32_t)crc ^ UINT32_C(0xFFFFFFFF)))</span></div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span></div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno"><a class="line" href="group__hash.html#gacd6b930197a662010f86bf03fc47a0d3">  163</a></span><span class="preprocessor">#define clod_crc32(data, size) clod_crc32_finalise(clod_crc32_add(clod_crc32_init(), data, size))</span></div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span></div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno"><a class="line" href="group__hash.html#gada10c89d90d70243d58b21c306383233">  168</a></span><span class="preprocessor">#define clod_crc24_init() UINT32_C(0xFFFFFF)</span></div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span></div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>CLOD_API CLOD_USE_RETURN CLOD_PURE CLOD_NONNULL(2)</div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno"><a class="line" href="group__hash.html#ga7252d02eb9df44dc25c2b20f0bd94baf">  181</a></span>uint32_t <a class="code hl_function" href="group__hash.html#ga7252d02eb9df44dc25c2b20f0bd94baf">clod_crc24_add</a>(uint32_t crc, const <span class="keywordtype">void</span> *data, <span class="keywordtype">size_t</span> data_len);</div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span></div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno"><a class="line" href="group__hash.html#gac7812450c3601ddbee37e176e12a015f">  189</a></span><span class="preprocessor">#define clod_crc24_finalise(crc) ((uint32_t)((uint32_t)crc ^ UINT32_C(0xFFFFFF)))</span></div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span></div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno"><a class="line" href="group__hash.html#gaa10f6be477f2b7c9d3d6e06c55e3ecc6">  198</a></span><span class="preprocessor">#define clod_crc24(data, size) clod_crc24_finalise(clod_crc24_add(clod_crc24_init(), data, size))</span></div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span></div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno"><a class="line" href="group__hash.html#ga62034d48f335675ae10d18459e3f9706">  203</a></span><span class="preprocessor">#define clod_crc16_init() UINT16_C(0xFFFF)</span></div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span></div>
+<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>CLOD_API CLOD_USE_RETURN CLOD_PURE CLOD_NONNULL(2)</div>
+<div class="line"><a id="l00216" name="l00216"></a><span class="lineno"><a class="line" href="group__hash.html#gadc7c1cf85eeaaf4ef997f44f103d72b6">  216</a></span>uint16_t <a class="code hl_function" href="group__hash.html#gadc7c1cf85eeaaf4ef997f44f103d72b6">clod_crc16_add</a>(uint16_t crc, const <span class="keywordtype">void</span> *data, <span class="keywordtype">size_t</span> data_len);</div>
+<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span></div>
+<div class="line"><a id="l00224" name="l00224"></a><span class="lineno"><a class="line" href="group__hash.html#gab39d5c1cba431f4aa2779ac8bdf68b82">  224</a></span><span class="preprocessor">#define clod_crc16_finalise(crc) ((uint16_t)((uint16_t)crc ^ UINT16_C(0xFFFF)))</span></div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span></div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno"><a class="line" href="group__hash.html#gaec246c916d1b9a392781fb89fbc81240">  233</a></span><span class="preprocessor">#define clod_crc16(data, size) clod_crc16_finalise(clod_crc16_add(clod_crc16_init(), data, size))</span></div>
+<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span></div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno"><a class="line" href="group__hash.html#ga0298ed49e52c82225c87d4a925a48e30">  238</a></span><span class="preprocessor">#define clod_crc8_init() UINT8_C(0xFF)</span></div>
+<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span></div>
+<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>CLOD_API CLOD_USE_RETURN CLOD_PURE CLOD_NONNULL(2)</div>
+<div class="line"><a id="l00251" name="l00251"></a><span class="lineno"><a class="line" href="group__hash.html#ga67801a1899e1ba817087bffe2cd682cc">  251</a></span>uint8_t <a class="code hl_function" href="group__hash.html#ga67801a1899e1ba817087bffe2cd682cc">clod_crc8_add</a>(uint8_t crc, const <span class="keywordtype">void</span> *data, <span class="keywordtype">size_t</span> data_len);</div>
+<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span></div>
+<div class="line"><a id="l00259" name="l00259"></a><span class="lineno"><a class="line" href="group__hash.html#ga5395f5450fd1a947affcadd4271c61e3">  259</a></span><span class="preprocessor">#define clod_crc8_finalise(crc) ((uint8_t)((uint8_t)crc ^ UINT8_C(0xFF)))</span></div>
+<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span></div>
+<div class="line"><a id="l00268" name="l00268"></a><span class="lineno"><a class="line" href="group__hash.html#gac852e1ffa9689d3639a3c243b3017fb6">  268</a></span><span class="preprocessor">#define clod_crc8(data, size) clod_crc8_finalise(clod_crc8_add(clod_crc8_init(), data, size))</span></div>
+<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span></div>
+<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="agroup__hash_html_ga54b1ea9b3947481f166d318c466a039d"><div class="ttname"><a href="group__hash.html#ga54b1ea9b3947481f166d318c466a039d">clod_crc64_add</a></div><div class="ttdeci">uint64_t clod_crc64_add(uint64_t crc, const void *data, size_t data_len)</div></div>
 <div class="ttc" id="agroup__hash_html_ga614d5bf14c7d9712f5730270766f88e6"><div class="ttname"><a href="group__hash.html#ga614d5bf14c7d9712f5730270766f88e6">clod_sip64_finalise</a></div><div class="ttdeci">uint64_t clod_sip64_finalise(clod_sip64_state state)</div><div class="ttdef"><b>Definition</b> <a href="siphash_8c_source.html#l00096">siphash.c:96</a></div></div>
 <div class="ttc" id="agroup__hash_html_ga67801a1899e1ba817087bffe2cd682cc"><div class="ttname"><a href="group__hash.html#ga67801a1899e1ba817087bffe2cd682cc">clod_crc8_add</a></div><div class="ttdeci">uint8_t clod_crc8_add(uint8_t crc, const void *data, size_t data_len)</div></div>
@@ -168,6 +183,7 @@ $(function(){initNavTree('hash_8h_source.html','',''); });
 <div class="ttc" id="agroup__hash_html_gaaefe591a503d0c93d185a0a69a197ef2"><div class="ttname"><a href="group__hash.html#gaaefe591a503d0c93d185a0a69a197ef2">clod_sip64_add</a></div><div class="ttdeci">clod_sip64_state clod_sip64_add(clod_sip64_state state, const void *data, size_t size)</div><div class="ttdef"><b>Definition</b> <a href="siphash_8c_source.html#l00052">siphash.c:52</a></div></div>
 <div class="ttc" id="agroup__hash_html_gadc7c1cf85eeaaf4ef997f44f103d72b6"><div class="ttname"><a href="group__hash.html#gadc7c1cf85eeaaf4ef997f44f103d72b6">clod_crc16_add</a></div><div class="ttdeci">uint16_t clod_crc16_add(uint16_t crc, const void *data, size_t data_len)</div></div>
 <div class="ttc" id="alib_8h_html"><div class="ttname"><a href="lib_8h.html">lib.h</a></div></div>
+<div class="ttc" id="astructclod__sip64__state_html"><div class="ttname"><a href="structclod__sip64__state.html">clod_sip64_state</a></div><div class="ttdef"><b>Definition</b> <a href="#l00043">hash.h:43</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 </div><!-- container -->

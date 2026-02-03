@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['tag_0',['Tag',['../group__region.html#autotoc_md9',1,'Chunks Tag'],['../group__region.html#autotoc_md8',1,'Root Tag']]]
+  ['storage_0',['&lt;a href=&quot;https://stewi1014.github.io/libclod/group__region.html&quot;&gt;Region storage&lt;/a&gt;',['../index.html#autotoc_md23',1,'']]]
 ];

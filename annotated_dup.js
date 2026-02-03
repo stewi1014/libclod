@@ -1,5 +1,25 @@
 var annotated_dup =
 [
+    [ "clod_compressor", "structclod__compressor.html", null ],
+    [ "clod_decompressor", "structclod__decompressor.html", null ],
     [ "clod_nbt_iter", "structclod__nbt__iter.html", "structclod__nbt__iter" ],
-    [ "clod_sstr", "structclod__sstr.html", "structclod__sstr" ]
+    [ "clod_region", "structclod__region.html", null ],
+    [ "clod_region_opts", "structclod__region__opts.html", "structclod__region__opts" ],
+    [ "clod_sip64_state", "structclod__sip64__state.html", null ],
+    [ "clod_sstr", "structclod__sstr.html", "structclod__sstr" ],
+    [ "clod_table", "structclod__table.html", null ],
+    [ "clod_table_iter", "structclod__table__iter.html", null ],
+    [ "clod_table_opts", "structclod__table__opts.html", "structclod__table__opts" ],
+    [ "crc_details", "structcrc__details.html", null ],
+    [ "divi64", "structdivi64.html", null ],
+    [ "element", "structelement.html", null ],
+    [ "extended_header", "structextended__header.html", null ],
+    [ "file", "structfile.html", null ],
+    [ "file_cache", "structfile__cache.html", null ],
+    [ "format", "structformat.html", null ],
+    [ "format_chunk_get", "structformat__chunk__get.html", null ],
+    [ "probe", "structprobe.html", null ],
+    [ "region_file", "structregion__file.html", null ],
+    [ "table_position", "structtable__position.html", null ],
+    [ "vanilla_header", "structvanilla__header.html", null ]
 ];

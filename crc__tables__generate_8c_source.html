@@ -103,12 +103,14 @@ $(function(){initNavTree('crc__tables__generate_8c_source.html','',''); });
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="keyword">struct </span>crc_details {</div>
+<div class="foldopen" id="foldopen00012" data-start="{" data-end="};">
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="structcrc__details.html">   12</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structcrc__details.html">crc_details</a> {</div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    <span class="keyword">const</span> <span class="keywordtype">char</span> *name;</div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    uint8_t bits;</div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    uint64_t polynomial;</div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <span class="keywordtype">bool</span> reflect;</div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>};</div>
+</div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#define TABLE_LEN(details) ((details).bits &gt;= 8 ? 256u : 1u &lt;&lt; (details).bits)</span></div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#define MASK(details) ((details).bits == 64 ? ~UINT64_C(0) : (UINT64_C(1) &lt;&lt; (details).bits) - UINT64_C(1))</span></div>
@@ -136,7 +138,7 @@ $(function(){initNavTree('crc__tables__generate_8c_source.html','',''); });
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        <span class="keywordflow">return</span> r;</div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="keywordflow">return</span> r &amp; ((UINT64_C(1) &lt;&lt; bits) - 1);</div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>}</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="keyword">static</span> <span class="keywordtype">void</span> table_gen(uint64_t *table, <span class="keyword">const</span> <span class="keyword">struct</span> crc_details details) {</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="keyword">static</span> <span class="keywordtype">void</span> table_gen(uint64_t *table, <span class="keyword">const</span> <span class="keyword">struct</span> <a class="code hl_struct" href="structcrc__details.html">crc_details</a> details) {</div>
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <span class="keyword">const</span> uint64_t mask = MASK(details);</div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="keyword">const</span> uint64_t polynomial = details.polynomial &amp; mask;</div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
@@ -160,7 +162,7 @@ $(function(){initNavTree('crc__tables__generate_8c_source.html','',''); });
 <div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>            table[i] = crc &amp; mask;</div>
 <div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    }</div>
 <div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>}</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="keywordtype">void</span> write_table(<span class="keyword">const</span> <span class="keyword">struct</span> crc_details details) {</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="keywordtype">void</span> write_table(<span class="keyword">const</span> <span class="keyword">struct</span> <a class="code hl_struct" href="structcrc__details.html">crc_details</a> details) {</div>
 <div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    uint64_t table[256];</div>
 <div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    table_gen(table, details);</div>
 <div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
@@ -181,7 +183,7 @@ $(function(){initNavTree('crc__tables__generate_8c_source.html','',''); });
 <div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    printf(<span class="stringliteral">&quot;\n};\n&quot;</span>);</div>
 <div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>}</div>
 <div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span><span class="keywordtype">int</span> main() {</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    <span class="keyword">const</span> <span class="keyword">struct </span>crc_details details[] = {</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    <span class="keyword">const</span> <span class="keyword">struct </span><a class="code hl_struct" href="structcrc__details.html">crc_details</a> details[] = {</div>
 <div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        {</div>
 <div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>            .name = <span class="stringliteral">&quot;crc64&quot;</span>,</div>
 <div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>            .bits = 64,</div>
@@ -225,6 +227,7 @@ $(function(){initNavTree('crc__tables__generate_8c_source.html','',''); });
 <div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>    }</div>
 <div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>    printf(<span class="stringliteral">&quot;#endif\n&quot;</span>);</div>
 <div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>}</div>
+<div class="ttc" id="astructcrc__details_html"><div class="ttname"><a href="structcrc__details.html">crc_details</a></div><div class="ttdef"><b>Definition</b> <a href="#l00012">crc_tables_generate.c:12</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 </div><!-- container -->

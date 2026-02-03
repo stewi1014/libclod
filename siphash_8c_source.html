@@ -112,7 +112,7 @@ $(function(){initNavTree('siphash_8c_source.html','',''); });
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#define set_remaining(state, size) ((state)._size = (uint8_t)(((state)._size &amp; 0b11111000) | ((uint8_t)(size) &amp; 0b00000111)))</span></div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>CLOD_INLINE <span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">void</span></div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>sip_round(clod_sip64_state *state) {</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>sip_round(<a class="code hl_struct" href="structclod__sip64__state.html">clod_sip64_state</a> *state) {</div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    state-&gt;_v0 += state-&gt;_v1;</div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    state-&gt;_v1 = state-&gt;_v1 &lt;&lt; 13 | state-&gt;_v1 &gt;&gt; 51;</div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    state-&gt;_v1 ^= state-&gt;_v0;</div>
@@ -144,7 +144,7 @@ $(function(){initNavTree('siphash_8c_source.html','',''); });
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    }</div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>}</div>
 <div class="foldopen" id="foldopen00052" data-start="{" data-end="}">
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="group__hash.html#gaaefe591a503d0c93d185a0a69a197ef2">   52</a></span>clod_sip64_state <a class="code hl_function" href="group__hash.html#gaaefe591a503d0c93d185a0a69a197ef2">clod_sip64_add</a>(clod_sip64_state state, <span class="keyword">const</span> <span class="keywordtype">void</span> *data, <span class="keyword">const</span> <span class="keywordtype">size_t</span> size) {</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="group__hash.html#gaaefe591a503d0c93d185a0a69a197ef2">   52</a></span><a class="code hl_struct" href="structclod__sip64__state.html">clod_sip64_state</a> <a class="code hl_function" href="group__hash.html#gaaefe591a503d0c93d185a0a69a197ef2">clod_sip64_add</a>(<a class="code hl_struct" href="structclod__sip64__state.html">clod_sip64_state</a> state, <span class="keyword">const</span> <span class="keywordtype">void</span> *data, <span class="keyword">const</span> <span class="keywordtype">size_t</span> size) {</div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="keywordflow">if</span> (size == 0) <span class="keywordflow">return</span> state;</div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>* restrict in = data;</div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    set_data_size(state, data_size(state) + size);</div>
@@ -190,7 +190,7 @@ $(function(){initNavTree('siphash_8c_source.html','',''); });
 <div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>}</div>
 </div>
 <div class="foldopen" id="foldopen00096" data-start="{" data-end="}">
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno"><a class="line" href="group__hash.html#ga614d5bf14c7d9712f5730270766f88e6">   96</a></span>uint64_t <a class="code hl_function" href="group__hash.html#ga614d5bf14c7d9712f5730270766f88e6">clod_sip64_finalise</a>(clod_sip64_state state) {</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno"><a class="line" href="group__hash.html#ga614d5bf14c7d9712f5730270766f88e6">   96</a></span>uint64_t <a class="code hl_function" href="group__hash.html#ga614d5bf14c7d9712f5730270766f88e6">clod_sip64_finalise</a>(<a class="code hl_struct" href="structclod__sip64__state.html">clod_sip64_state</a> state) {</div>
 <div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    uint64_t d = read_uint64(state._buf, remaining(state));</div>
 <div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    d |= (uint64_t)(data_size(state)) &lt;&lt; 56;</div>
 <div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    state._v3 ^= d;</div>
@@ -208,6 +208,7 @@ $(function(){initNavTree('siphash_8c_source.html','',''); });
 <div class="ttc" id="agroup__hash_html_ga614d5bf14c7d9712f5730270766f88e6"><div class="ttname"><a href="group__hash.html#ga614d5bf14c7d9712f5730270766f88e6">clod_sip64_finalise</a></div><div class="ttdeci">uint64_t clod_sip64_finalise(clod_sip64_state state)</div><div class="ttdef"><b>Definition</b> <a href="#l00096">siphash.c:96</a></div></div>
 <div class="ttc" id="agroup__hash_html_gaaefe591a503d0c93d185a0a69a197ef2"><div class="ttname"><a href="group__hash.html#gaaefe591a503d0c93d185a0a69a197ef2">clod_sip64_add</a></div><div class="ttdeci">clod_sip64_state clod_sip64_add(clod_sip64_state state, const void *data, const size_t size)</div><div class="ttdef"><b>Definition</b> <a href="#l00052">siphash.c:52</a></div></div>
 <div class="ttc" id="ahash_8h_html"><div class="ttname"><a href="hash_8h.html">hash.h</a></div></div>
+<div class="ttc" id="astructclod__sip64__state_html"><div class="ttname"><a href="structclod__sip64__state.html">clod_sip64_state</a></div><div class="ttdef"><b>Definition</b> <a href="hash_8h_source.html#l00043">hash.h:43</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 </div><!-- container -->

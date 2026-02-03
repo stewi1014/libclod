@@ -94,54 +94,69 @@ $(function(){initNavTree('index.html','',''); });
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="md_README"></a></p>
 <p>C library for interacting with NBT data, region files, LOD data, data storage and other things.</p>
-<p>Libclod has came a long way since I started working on it a few months ago. A lot of core infrastructure is now in place, and I've solidified some core data formats the library is using. There is still a decent amount of functionality from my original proof of concept that remains to be documented and polished into a good public API, and I won't be rushing any of it.</p>
+<p>Libclod is licenced under the <a href="./LICENCE.txt">GNU Affero General Public License v3.0</a> or later. For alternate licencing contact me.</p>
+<p>Libclod is still a work in progress.</p>
 <h1 class="doxsection"><a class="anchor" id="autotoc_md12"></a>
 Dependencies</h1>
+<p>All dependencies are optional! They can be enabled or disabled at build time, thereby omitting the features said dependency provided. The only exception is the C standard library.</p>
+<p>That being said, omitting the majority of compression libraries will make most file formats that this library interacts with unreadable. Region files, for example, typically use zlib compression, which requires libdeflate. Vendoring some of these dependencies might be a good idea to implement in future.</p>
+<p>I reserve the right to use the entire feature set of these dependencies; using libclod with dependencies that have features intentionally disabled is, in general, not supported, although many specific cases would be fine.</p>
 <ul>
-<li>libdeflate</li>
-<li>liblz4</li>
-<li>libzstd</li>
-<li>liblzma</li>
-<li>sqlite3</li>
-<li>libpq</li>
+<li>libc</li>
+<li>libdeflate <span class="tt">-DUSE_LIBDEFLATE=ON/OFF</span></li>
+<li>liblz4 <span class="tt">-DUSE_LIBLZ4=ON/OFF</span></li>
+<li>liblzma <span class="tt">-DUSE_LIBLZMA=ON/OFF</span></li>
+<li>libzstd <span class="tt">-DUSE_LIBZSTD=ON/OFF</span></li>
+<li>libbz2 <span class="tt">-DUSE_LIBBZ2=ON/OFF</span></li>
+<li>sqlite3 <span class="tt">-DUSE_SQLITE3=ON/OFF</span></li>
+<li>libpq <span class="tt">-DUSE_LIBPQ=ON/OFF</span></li>
 </ul>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md13"></a>
-Building</h1>
-<p>Use cmake as usual. <span class="tt">mkdir build &amp;&amp; cd build &amp;$ cmake .. &amp;&amp; make</span></p>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md14"></a>
-Features</h1>
-<h2 class="doxsection"><a class="anchor" id="autotoc_md15"></a>
-<a href="https://stewi1014.github.io/libclod/group__compression.html">Compression wrappers</a></h2>
-<p>Libclod wraps some compression libraries to provide a single uniform interface across all compression algorithms. It might be helpful for FFI users who have slow native compression libraries. Shoutout to libdeflate for being a work of art.</p>
-<h2 class="doxsection"><a class="anchor" id="autotoc_md16"></a>
-<a href="https://stewi1014.github.io/libclod/group__nbt.html">NBT parsing</a></h2>
-<p>The NBT parser is fast and doesn't use any memory. It doesn't have an intermediate data structure. It recursively steps through NBT data at approx 6GB/s on my machine.</p>
-<h2 class="doxsection"><a class="anchor" id="autotoc_md17"></a>
-<a href="https://stewi1014.github.io/libclod/group__region.html">Region storage</a></h2>
-<p>This is not a region file parser, although it might be a good idea to expose a public interface for that in the future. Instead, libclod's region storage implements the whole storage system, providing a fast and memory-efficient coordinate-&gt;blob file-backed storage database that leverages low-level OS features to optimise access.</p>
-<p>It extends the vanilla implementation with a number of new features, including support for more compression algorithms, up to 10 dimension coordinates, crash recovery, effective concurrency, strong data validation, and more.</p>
-<p>These new features are built on top of a revised file format that is (optionally) backwards compatible with vanilla region files and supports future extensibility with dynamic storage in the header.</p>
-<p>Multithreaded usage is supported, including from coroutines, and is well optimised. However, multiple processes writing at the same time is not supported. That might seem obvious, but I don't feel like it's an unreasonable feature to ask for. Libclod is already aiming to implement features that make it look like a database; it's not a stretch to ask for one more database-like feature. I would have implemented this already; POSIX robust shared mutexes are an obvious choice, but macOS's shared mutexes aren't robust and Windows doesn't even have shared mutexes. I want to know what kind of architecture is needed for whatever features Windows and macOS might have for this. Or, complete sufficient research that I'm satisfied in saying I can't ever support macOS or Windows, and architect the feature around Linux and BSD exclusively.</p>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md13"></a>
+Platforms</h2>
+<h3 class="doxsection"><a class="anchor" id="autotoc_md14"></a>
+Linux</h3>
+<p>Linux is fully supported and tested with posix code paths. Some linux-specific optimisations are enabled when possible.</p>
+<h3 class="doxsection"><a class="anchor" id="autotoc_md15"></a>
+BSD</h3>
+<p>BSD variants should hopefully work out of the box with posix code paths. It's possible I missed some things, and minor changes are required for BSD support.</p>
+<h3 class="doxsection"><a class="anchor" id="autotoc_md16"></a>
+macOS</h3>
+<p>macOS should hopefully work out of the box with posix code paths. It's possible I missed some things, and minor changes are required for macOS support.</p>
+<h3 class="doxsection"><a class="anchor" id="autotoc_md17"></a>
+Windows</h3>
+<p>Windows is the only OS that doesn't play well with others, so platform-specific code sections will need to be rewritten from scratch for the Windows API. I have intentionally left space in the codebase for this, but don't have a Windows development environment to work on them.</p>
 <h1 class="doxsection"><a class="anchor" id="autotoc_md18"></a>
+Building</h1>
+<p>Building requires CMake &gt;= 4.0 and a C23 compliant toolchain. GCC has been specifically optimised for, but CLang also does a fine job and is known to work. If a C23 compliant toolchain doesn't work with this library, then fixing that is a goal.</p>
+<div class="fragment"><div class="line">mkdir build</div>
+<div class="line">cd build</div>
+<div class="line">cmake ..</div>
+<div class="line">cmake --build .</div>
+<div class="line">ctest .</div>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md19"></a>
 Public headers</h1>
 <ul>
-<li><span class="tt"><a class="el" href="compression_8h.html">compression.h</a></span> - Generalised interface for compression algorithms.</li>
-<li><span class="tt"><a class="el" href="hash_8h.html">hash.h</a></span> - Hashing functions.</li>
-<li><span class="tt"><a class="el" href="nbt_8h.html">nbt.h</a></span> - NBT parsing and writing.</li>
-<li><span class="tt"><a class="el" href="region_8h.html">region.h</a></span> - Region file reading and writing.</li>
-<li><span class="tt"><a class="el" href="table_8h.html">table.h</a></span> - Hash table implementation.</li>
+<li><span class="tt"><a class="el" href="compression_8h.html">clod/compression.h</a></span> - Generalised interface for compression algorithms.</li>
+<li><span class="tt"><a class="el" href="hash_8h.html">clod/hash.h</a></span> - Hashing functions.</li>
+<li><span class="tt"><a class="el" href="nbt_8h.html">clod/nbt.h</a></span> - NBT parsing and writing.</li>
+<li><span class="tt"><a class="el" href="region_8h.html">clod/region.h</a></span> - Region storage.</li>
+<li><span class="tt"><a class="el" href="table_8h.html">clod/table.h</a></span> - Hash table implementation.</li>
 </ul>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md19"></a>
-Development</h1>
-<p>The project is written with C23 and Cmake 4.0.</p>
-<p>GCC is specifically optimised for, but any C23 compliant toolchain such as Clang should work. If a C23 compliant toolchain doesn't work with this project, then fixing that is a goal.</p>
-<h2 class="doxsection"><a class="anchor" id="autotoc_md20"></a>
-Building</h2>
-<p>Use CMake as normal. Those unfamiliar with normal C workflows should note that you're responsible for providing dependencies. Some dependencies are optional and can be disabled at configure time.</p>
+<p>Some standalone headers are also included for things such as sized-strings, vector math and big-endian encoding.</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md20"></a>
+Features</h1>
 <h2 class="doxsection"><a class="anchor" id="autotoc_md21"></a>
-Platforms</h2>
-<p>I'm developing on linux.x86_64. Other architectures and posix-compliant platforms should work with no, or minimal changes. If you use a different platform, I'd love any help you can offer in supporting it.</p>
-<p>At the time of writing; Any combination of *BSD, Linux, x86_64, and ARM should work perfectly if the system is up to date. With any luck I've one-shot OSX support. I've tried to have pure posix fallbacks for everything. Windows is missing some platform-dependent functions, and support will need to be added. </p>
+<a href="https://stewi1014.github.io/libclod/group__compression.html">Compression wrappers</a></h2>
+<p>Libclod wraps some compression libraries to provide a single compress and decompress method with uniform behavior across all compression methods it supports. Most compression methods attempt to be compatible with some existing format. It is used internally and might be helpful for FFI users who have slow native compression libraries. Shoutout to libdeflate for being a work of art.</p>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md22"></a>
+<a href="https://stewi1014.github.io/libclod/group__nbt.html">NBT parsing</a></h2>
+<p>The NBT parser is fast and doesn't use any memory. It doesn't have an intermediate data structure. It recursively steps through NBT data at approx 6GB/s on my machine.</p>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md23"></a>
+<a href="https://stewi1014.github.io/libclod/group__region.html">Region storage</a></h2>
+<p>This is not a region file parser, although it might be a good idea to expose a public interface for that in the future. Instead, libclod's region storage implements the whole storage system, providing a fast and memory-efficient coordinate-&gt;blob file-backed storage database that leverages low-level OS features to optimise access.</p>
+<p>It extends the vanilla implementation with a number of new features, including support for more compression algorithms, up to 10 dimension coordinates, crash recovery, effective concurrency, strong data validation and more.</p>
+<p>These new features are built on top of a revised file format that is (optionally) backwards compatible with vanilla region files and supports future extensibility with dynamic storage in the header.</p>
+<p>Multithreaded usage is supported, including from coroutines, and is well optimised. However, multiple processes writing at the same time is not supported. That might seem obvious, but I don't feel like it's an unreasonable feature to ask for. Libclod is already aiming to implement features that make it look like a database; it's not a stretch to ask for one more database-like feature. I would have implemented this already; POSIX robust shared mutexes are an obvious choice, but macOS's shared mutexes aren't robust and Windows doesn't even have shared mutexes. I want to know what kind of architecture is needed for whatever features Windows and macOS might have for this. Or, complete sufficient research that I'm satisfied in saying I can't ever support macOS or Windows, and architect the feature around Linux and BSD exclusively. </p>
 </div></div><!-- PageDoc -->
 <a href="doxygen_crawl.html"></a>
 </div><!-- contents -->
