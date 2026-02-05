@@ -19,8 +19,9 @@
 #define CLOD_NBT_H
 
 #include <clod/lib.h>
-#include <clod/big_endian.h>
+#include <clod/endian_big.h>
 #include <clod/sstr.h>
+#include <limits.h>
 #include <stddef.h>
 
 static_assert(CHAR_BIT == 8);

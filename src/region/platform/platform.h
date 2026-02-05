@@ -47,12 +47,4 @@ int num_procs();
 	#error "Mutex implementation for this platform has not been added"
 #endif
 
-#if defined(TIME_MONOTONIC)
-	#define monotonic_now(timespec) (timespec_get((timespec), TIME_MONOTONIC) == TIME_MONOTONIC)
-#elif HAVE_CLOCK_GETTIME
-	#define monotonic_now(timespec) (clock_gettime(CLOCK_MONOTONIC, (timespec)) == 0)
-#else
-	#error "Monotonic time for this platform has not been implemented"
-#endif
-
 #endif

@@ -22,13 +22,6 @@
 #include <stdint.h>
 #include <time.h>
 
-/**
- * Library ABI version.
- * Backwards compatability with old ABI versions/behaviours will be ensured, at least until a major SO version bump,
- * this identifies which ABI version the program is expecting.
- */
-#define CLOD_REGION_VERSION 1
-
 struct clod_region;
 struct clod_region_opts;
 struct clod_region_iter;
@@ -166,9 +159,6 @@ clod_region_close(struct clod_region *region);
  * Zero values imply defaults.
  */
 struct clod_region_opts {
-	/** Must be the value of the CLOD_REGION_VERSION macro. Used to ensure backwards compatability. */
-	uint8_t version;
-
 	/** Number of dimensions. Min 1, Max 10. Defaults to 2. */
 	uint8_t dims;
 

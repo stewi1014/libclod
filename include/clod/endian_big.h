@@ -1,5 +1,5 @@
 /**
- * @file big_endian.h
+ * @file endian_big.h
  * @brief Methods for big-endian encoding numbers.
  */
 
@@ -143,5 +143,98 @@ CLOD_INLINE static inline void bef64_enc(char ptr[8], const double f) { const un
 CLOD_INLINE static inline float  bef32_dec(const char ptr[4]) { const union { float  f; uint32_t i; } u = { .i = beu32_dec(ptr) }; return u.f; }
 /// Decode a double in big_endian format.
 CLOD_INLINE static inline double bef64_dec(const char ptr[8]) { const union { double f; uint64_t i; } u = { .i = beu64_dec(ptr) }; return u.f; }
+
+/// Maximum varint unsigned value.
+#define BEUV_MAX UINT64_MAX
+
+/// Size of a variable length unsigned integer in big-endian format.
+CLOD_INLINE CLOD_CONST static inline uint8_t beuv_size(uint64_t val) {
+	uint8_t ret = 1;
+	while (val > 0x7F) {
+		ret++;
+		val >>= 7;
+	}
+	return ret;
+}
+
+/// Encode a variable length unsigned integer in big-endian format.
+/// @return True if the buffer was large enough.
+CLOD_INLINE static inline bool beuv_enc(char *ptr, const void *end, uint64_t val) {
+	const uint8_t size = beuv_size(val);
+	uint8_t i = 0;
+	while (i + 1 < size) {
+		if (ptr + i == end) return false;
+		ptr[i] = (char)(val >> ((size - i - 1) * 7) | 0b10000000);
+		i++;
+	}
+	if (ptr + i == end) return false;
+	ptr[i] = (char)(val & 0b01111111);
+	return true;
+}
+
+/// Decode a variable length unsigned integer in big-endian format.
+/// @return True if the buffer was large enough.
+CLOD_INLINE static inline bool beuv_dec(const char *ptr, const void *end, uint64_t *val) {
+	uint64_t ret = 0;
+	uint8_t i = 0;
+	while (i < 9 && ptr + i != end && ptr[i] & 0b10000000) {
+		ret <<= 7;
+		ret |= (uint64_t)(ptr[i] & 0b01111111);
+		i++;
+	}
+	if (ptr + i == end) return false;
+	ret <<= 7;
+	ret |= (uint64_t)(ptr[i] & 0b01111111);
+	*val = ret;
+	return true;
+}
+
+/// Maximum variable length signed value.
+#define BEIV_MAX INT64_MAX
+/// Minimum variable length signed value.
+#define BEIV_MIN INT64_MIN
+
+/// Size of a variable length signed integer in big-endian format.
+CLOD_INLINE CLOD_CONST static inline uint8_t beiv_size(int64_t val) {
+	uint8_t ret = 1;
+	while (val > 0x3F || val < -0x40) {
+		ret++;
+		val >>= 7;
+	}
+	return ret;
+}
+
+/// Encode a variable length signed integer in big-endian format.
+/// @return True if the buffer was large enough.
+CLOD_INLINE static inline bool beiv_enc(char *ptr, const void *end, int64_t val) {
+	const uint8_t size = beiv_size(val);
+	uint8_t i = 0;
+	while (i + 1 < size) {
+		if (ptr + i == end) return false;
+		ptr[i] = (char)((uint64_t)val >> ((size - i - 1) * 7) | 0b10000000);
+		i++;
+	}
+	if (ptr + i == end) return false;
+	ptr[i] = (char)(val & 0b01111111);
+	return true;
+}
+
+/// Decode a variable length signed integer in big-endian format.
+/// @return True if the buffer was large enough.
+CLOD_INLINE static inline bool beiv_dec(const char *ptr, const void *end, int64_t *val) {
+	int64_t ret = 0;
+	uint8_t i = 0;
+	while (i < 9 && ptr + i != end && ptr[i] & 0b10000000) {
+		ret <<= 7;
+		ret |= (int64_t)(ptr[i] & 0b01111111);
+		i++;
+	}
+	if (ptr + i == end) return false;
+	ret <<= 7;
+	ret |= (int64_t)(ptr[i] & 0b01111111);
+	if (i < 9 && ptr[0] & 0b01000000) ret |= (int64_t)(UINT64_C(~0) << ((i + 1) * 7));
+	*val = ret;
+	return true;
+}
 
 #endif

@@ -17,9 +17,11 @@ configure_file(clod_config.h.in clod_config.h)
 target_include_directories(clod PRIVATE "${CMAKE_CURRENT_BINARY_DIR}")
 
 libclod_test(vec_group)
+libclod_test(endian)
 
 add_subdirectory(compression)
 add_subdirectory(hash)
 add_subdirectory(nbt)
 add_subdirectory(region)
+add_subdirectory(region_header)
 add_subdirectory(table)

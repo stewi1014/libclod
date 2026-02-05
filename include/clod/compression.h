@@ -65,7 +65,7 @@ enum clod_compression_method {
 	/** Custom minecraft container with LZ4 compression.
 	 * Some very unfortunate design decisions must have been made to land us with this.
 	 * Uncompressed size might be known on failure. */
-	CLOD_MINECRAFT_LZ4 = 10
+	CLOD_MINECRAFT_LZ4 = 11
 };
 
 /** The compression level to use.

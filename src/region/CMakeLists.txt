@@ -4,6 +4,7 @@ target_sources(clod PRIVATE
     file_cache.c
     filename.c
     filename.h
+    opts.c
     region_file.c
     region_file.h
     region_impl.h
@@ -12,4 +13,3 @@ target_sources(clod PRIVATE
 )
 
 add_subdirectory(platform)
-add_subdirectory(region_format)

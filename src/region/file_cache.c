@@ -47,7 +47,7 @@ static int64_t timespec_diff_ns(const struct timespec from, const struct timespe
 // global mutex must be held.
 enum clod_region_result region_file_get(struct clod_region *r, struct region_file **rf_ptr, const int64_t *pos, const bool create) {
 	struct timespec now;
-	if (!monotonic_now(&now)) {
+	if (!clock_gettime(CLOCK_MONOTONIC, &now)) {
 		region_error(CLOD_REGION_INVALID_USAGE, "Failed to get current time.");
 		return CLOD_REGION_INVALID_USAGE;
 	}

@@ -1,4 +1,6 @@
 # libclod
+#### [Documentation](https://stewi1014.github.io/libclod/)
+#### [Source](https://github.com/stewi1014/libclod)
 C library for interacting with NBT data, region files, LOD data, data storage and other things.
 
 Libclod is licenced under the [GNU Affero General Public License v3.0](./LICENCE.txt) or later.
