@@ -5,12 +5,21 @@
 #include <string.h>
 #include <clod/compression.h>
 
-const uint8_t data[] = {
-#embed "fractal_Mandelbrot_3840x2160_644.png"
+const uint8_t good_compressibility[] = {
+#embed "good_compressibility.srt"
 };
 
-void compression_test_level(struct clod_compressor *compressor, struct clod_decompressor *decompressor, enum clod_compression_method method, enum clod_compression_level level) {
-	constexpr size_t data_size = sizeof(data);
+const uint8_t poor_compressibility[] = {
+#embed "poor_compressibility.webp"
+};
+
+void compression_test_level(
+	const void *data, const size_t data_size,
+	struct clod_compressor *compressor,
+	struct clod_decompressor *decompressor,
+	enum clod_compression_method method,
+	enum clod_compression_level level
+) {
 	char *cmp_data = malloc(data_size * 2);
 	size_t sizeof_cmp_data = data_size * 2;
 	char *dec_data = malloc(data_size + 1024);
@@ -159,8 +168,10 @@ void compression_test_level(struct clod_compressor *compressor, struct clod_deco
 }
 
 void compression_test(struct clod_compressor *compressor, struct clod_decompressor *decompressor, enum clod_compression_method method) {
-	for (enum clod_compression_level level = 0; level < CLOD_COMPRESSION_LEVELS; level++)
-		compression_test_level(compressor, decompressor, method, level);
+	for (enum clod_compression_level level = 0; level < CLOD_COMPRESSION_LEVELS; level++) {
+		compression_test_level(poor_compressibility, sizeof(poor_compressibility), compressor, decompressor, method, level);
+		compression_test_level(good_compressibility, sizeof(good_compressibility), compressor, decompressor, method, level);
+	}
 }
 
 int main() {

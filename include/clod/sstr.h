@@ -40,7 +40,6 @@ typedef struct {
  * @param[in] str2 2nd string.
  * @return If the strings are equal.
  */
-CLOD_INLINE
 static inline bool clod_sstr_eq(const clod_sstr str1, const clod_sstr str2) {
 	if (str1.size != str2.size) return false;
 	if (str1.ptr == str2.ptr) return true;
@@ -54,7 +53,6 @@ static inline bool clod_sstr_eq(const clod_sstr str1, const clod_sstr str2) {
  * @param[in,out] str1 String to be appended to.
  * @param[in] str2 String to append.
  */
-CLOD_INLINE
 static inline void clod_sstr_cat(clod_sstr *str1, const clod_sstr str2) {
 	if (str2.size == 0) return;
 	memcpy(str1->ptr + str1->size, str2.ptr, str2.size);
@@ -70,7 +68,6 @@ static inline void clod_sstr_cat(clod_sstr *str1, const clod_sstr str2) {
  * where \p elem was found and with a size equal to \p elem's size.
  * If no match was found, it returns null.
  */
-CLOD_INLINE
 static inline clod_sstr clod_sstr_contains(const clod_sstr str, const clod_sstr elem) {
 	if (str.size < elem.size) return CLOD_SSTR_NULL;
 	if (elem.size == 0) return clod_sstr(str.ptr, 0);
@@ -95,7 +92,6 @@ static inline clod_sstr clod_sstr_contains(const clod_sstr str, const clod_sstr 
  * and a length including the rest of \p str.
  * If \p occurrence is 0, \p str is returned.
  */
-CLOD_INLINE
 static inline clod_sstr clod_sstr_find(const clod_sstr str, const char elem, ptrdiff_t occurrence) {
 	if (occurrence > 0) {
 		for (size_t i = 0; i < str.size; i++) {

@@ -17,8 +17,7 @@
 #define set_data_size(state, size) ((state)._size = (uint8_t)(((state)._size & 0b00000111) | ((uint8_t)(size) << 3)))
 #define set_remaining(state, size) ((state)._size = (uint8_t)(((state)._size & 0b11111000) | ((uint8_t)(size) & 0b00000111)))
 
-CLOD_INLINE static inline void
-sip_round(clod_sip64_state *state) {
+static void sip_round(clod_sip64_state *state) {
 	state->_v0 += state->_v1;
 	state->_v1 = state->_v1 << 13 | state->_v1 >> 51;
 	state->_v1 ^= state->_v0;
@@ -34,8 +33,7 @@ sip_round(clod_sip64_state *state) {
 	state->_v1 ^= state->_v2;
 	state->_v2 = state->_v2 << 32 | state->_v2 >> 32;
 }
-CLOD_INLINE static inline uint64_t
-read_uint64(const unsigned char *restrict data, const size_t data_size) {
+static uint64_t read_uint64(const unsigned char *restrict data, const size_t data_size) {
 	uint64_t r = 0;
 	switch (data_size) {
 		default: r |= (uint64_t)data[7] << 7 * 8; __attribute__((fallthrough));

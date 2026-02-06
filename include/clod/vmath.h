@@ -12,15 +12,16 @@
 
 static_assert(__STDC_VERSION__ >= 202311L, "Some behavior only defined in C23 is depended upon");
 
-CLOD_CONST CLOD_INLINE
-static inline uint64_t mask64(uint8_t bits) {
+CLOD_CONST static inline
+uint64_t
+mask64(uint8_t bits) {
 	if (bits >= 64) return UINT64_MAX;
 	return (UINT64_C(1) << bits) - 1;
 }
 
 /** division the way god intended */
-CLOD_CONST CLOD_INLINE
-static inline struct divi64 { int64_t quot; int64_t rem; }
+CLOD_CONST static inline
+struct divi64 { int64_t quot; int64_t rem; }
 divi64(const int64_t x, const int64_t divisor) {
 	struct divi64 res;
 	res.quot = x / divisor;
@@ -53,8 +54,9 @@ divi64(const int64_t x, const int64_t divisor) {
  * @param group_bits
  * @return
  */
-CLOD_INLINE CLOD_NONNULL(1)
-static inline uint64_t vec_group(int64_t *restrict vec, uint8_t vec_len, uint8_t group_bits) {
+CLOD_NONNULL(1) static inline
+uint64_t
+vec_group(int64_t *restrict vec, uint8_t vec_len, uint8_t group_bits) {
 	if (group_bits > 64) group_bits = 64;
 	uint64_t res = 0;
 	uint8_t res_bits = 0;
