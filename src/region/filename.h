@@ -1,5 +1,5 @@
-#ifndef CLOD_REGION_FILENAME_H
-#define CLOD_REGION_FILENAME_H
+#ifndef LIBCLOD_REGION_FILENAME_H
+#define LIBCLOD_REGION_FILENAME_H
 
 #include <string.h>
 #include <clod/region.h>

@@ -4,5 +4,6 @@ target_sources(clod PRIVATE
     siphash.c
 )
 
-libclod_test(expected_outputs)
-libclod_test(streaming_test)
+libclod_test(expected)
+libclod_test(stream)
+libclod_test(replace)

@@ -14,8 +14,8 @@
  *
  * @{
  */
-#ifndef CLOD_TABLE_H
-#define CLOD_TABLE_H
+#ifndef LIBCLOD_TABLE_H
+#define LIBCLOD_TABLE_H
 
 #include <clod/lib.h>
 #include <clod/hash.h>

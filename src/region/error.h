@@ -1,5 +1,5 @@
-#ifndef CLOD_REGION_ERROR_H
-#define CLOD_REGION_ERROR_H
+#ifndef LIBCLOD_REGION_ERROR_H
+#define LIBCLOD_REGION_ERROR_H
 
 #include <clod/region.h>
 

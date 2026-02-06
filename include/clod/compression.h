@@ -13,8 +13,8 @@
  * As such, compressing many small blobs of data can result in bad compression ratios
  * and static overheads making relative performance worse.
  */
-#ifndef CLOD_COMPRESSION_H
-#define CLOD_COMPRESSION_H
+#ifndef LIBCLOD_COMPRESSION_H
+#define LIBCLOD_COMPRESSION_H
 
 #include <clod/lib.h>
 #include <stddef.h>

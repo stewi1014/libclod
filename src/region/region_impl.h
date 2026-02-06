@@ -1,5 +1,5 @@
-#ifndef CLOD_REGION_IMPL_H
-#define CLOD_REGION_IMPL_H
+#ifndef LIBCLOD_REGION_IMPL_H
+#define LIBCLOD_REGION_IMPL_H
 
 #include <clod/region.h>
 #include "platform/platform.h"

@@ -45,7 +45,7 @@ function(libclod_test name)
     endif()
 
     add_executable(test_${test_name} ${test_dir}/${name}.c)
-    target_include_directories(test_${test_name} PRIVATE ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/test)
+    target_include_directories(test_${test_name} PRIVATE ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/test include)
     target_link_libraries(test_${test_name} PRIVATE clod)
     add_test(NAME ${test_name} COMMAND test_${test_name})
 endfunction()

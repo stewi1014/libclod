@@ -6,8 +6,8 @@
  * Needs to not just work with compilers the library supports,
  * but any potential toolchains that might include the public headers and use the library.
  */
-#ifndef CLOD_LIB_H
-#define CLOD_LIB_H
+#ifndef LIBCLOD_LIB_H
+#define LIBCLOD_LIB_H
 
 #if defined(__GNUC__) // GCC and Clang
 	#if defined(_WIN32) // Windows - Clang

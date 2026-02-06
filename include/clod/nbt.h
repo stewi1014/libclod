@@ -15,33 +15,30 @@
  * has been modified from its original state is an insane alternative to using a checksum and out of scope for this library.
  * Please, for the love of good code, rely on dedicated verification methods instead of incidental parsing errors.
  */
-#ifndef CLOD_NBT_H
-#define CLOD_NBT_H
+#ifndef LIBCLOD_NBT_H
+#define LIBCLOD_NBT_H
 
 #include <clod/lib.h>
-#include <clod/endian_big.h>
 #include <clod/sstr.h>
-#include <limits.h>
+#include <stdint.h>
 #include <stddef.h>
 
-static_assert(CHAR_BIT == 8);
+#define CLOD_NBT_ZERO        (uint8_t)(0)
+#define CLOD_NBT_INT8        (uint8_t)(1)
+#define CLOD_NBT_INT16       (uint8_t)(2)
+#define CLOD_NBT_INT32       (uint8_t)(3)
+#define CLOD_NBT_INT64       (uint8_t)(4)
+#define CLOD_NBT_FLOAT32     (uint8_t)(5)
+#define CLOD_NBT_FLOAT64     (uint8_t)(6)
+#define CLOD_NBT_INT8_ARRAY  (uint8_t)(7)
+#define CLOD_NBT_INT32_ARRAY (uint8_t)(11)
+#define CLOD_NBT_INT64_ARRAY (uint8_t)(12)
+#define CLOD_NBT_STRING      (uint8_t)(8)
+#define CLOD_NBT_LIST        (uint8_t)(9)
+#define CLOD_NBT_COMPOUND    (uint8_t)(10)
 
-#define CLOD_NBT_ZERO        (char)(0)
-#define CLOD_NBT_INT8        (char)(1)
-#define CLOD_NBT_INT16       (char)(2)
-#define CLOD_NBT_INT32       (char)(3)
-#define CLOD_NBT_INT64       (char)(4)
-#define CLOD_NBT_FLOAT32     (char)(5)
-#define CLOD_NBT_FLOAT64     (char)(6)
-#define CLOD_NBT_INT8_ARRAY  (char)(7)
-#define CLOD_NBT_INT32_ARRAY (char)(11)
-#define CLOD_NBT_INT64_ARRAY (char)(12)
-#define CLOD_NBT_STRING      (char)(8)
-#define CLOD_NBT_LIST        (char)(9)
-#define CLOD_NBT_COMPOUND    (char)(10)
-
-#define CLOD_NBT_ROOT_COMPOUND_INIT   ((char[]){CLOD_NBT_COMPOUND, 0, 0, 0})
-#define CLOD_NBT_ROOT_LIST_INIT(type) ((char[]){CLOD_NBT_LIST, type, 0, 0, 0, 0})
+#define CLOD_NBT_ROOT_COMPOUND_INIT   ((uint8_t[]){CLOD_NBT_COMPOUND, 0, 0, 0})
+#define CLOD_NBT_ROOT_LIST_INIT(type) ((uint8_t[]){CLOD_NBT_LIST, type, 0, 0, 0, 0})
 
 /**
  * Get the size of a payload.
@@ -54,9 +51,9 @@ static_assert(CHAR_BIT == 8);
  */
 CLOD_API CLOD_PURE CLOD_NONNULL(1, 2)
 size_t clod_nbt_payload_size(
-	const char *restrict payload,
+	const uint8_t *restrict payload,
 	const void *end,
-	char payload_type
+	uint8_t payload_type
 );
 
 /**
@@ -67,7 +64,7 @@ size_t clod_nbt_payload_size(
  * @return Size of the tag, or 0 on failure.
  */
 CLOD_API CLOD_PURE CLOD_NONNULL(1)
-size_t clod_nbt_tag_size(const char *restrict tag, const void *end);
+size_t clod_nbt_tag_size(const uint8_t *restrict tag, const void *end);
 
 /**
  * Get a tag's payload.
@@ -77,7 +74,7 @@ size_t clod_nbt_tag_size(const char *restrict tag, const void *end);
  * @return The tag's payload.
  */
 CLOD_API CLOD_PURE CLOD_NONNULL(1, 2)
-char *clod_nbt_tag_payload(const char *restrict tag, const void *end);
+uint8_t *clod_nbt_tag_payload(const uint8_t *restrict tag, const void *end);
 
 /**
  * Get the name of a tag.
@@ -87,7 +84,7 @@ char *clod_nbt_tag_payload(const char *restrict tag, const void *end);
  * @return The tag's name.
  */
 CLOD_API CLOD_PURE CLOD_NONNULL(1, 2)
-clod_sstr clod_nbt_tag_name(const char *tag, const void *end);
+clod_sstr clod_nbt_tag_name(const uint8_t *tag, const void *end);
 
 /**
  * Iterator.
@@ -97,13 +94,13 @@ clod_sstr clod_nbt_tag_name(const char *tag, const void *end);
 struct clod_nbt_iter {
 	/** The tag, if one exists.
 	 * It points to the byte following the last iterated payload when iteration ends. */
-	char *tag;
+	uint8_t *tag;
 	/** The payload. A null value starts iteration. */
-	char *payload;
+	uint8_t *payload;
 	/** Size of payload, or tag + payload if tag exists. */
 	size_t size;
 	/** Type of the payload. */
-	char type;
+	uint8_t type;
 	/** The index of the payload. Equal to the total number of elements after the iteration ends. */
 	uint32_t index;
 };
@@ -124,9 +121,9 @@ struct clod_nbt_iter {
  */
 CLOD_API CLOD_USE_RETURN CLOD_NONNULL(1, 2, 4)
 bool clod_nbt_iter_next(
-	const char *restrict payload,
+	const uint8_t *restrict payload,
 	const void *end,
-	char payload_type,
+	uint8_t payload_type,
 	struct clod_nbt_iter *iter
 );
 
@@ -139,8 +136,8 @@ bool clod_nbt_iter_next(
  * @return Element tag, or null if none was found.
  */
 CLOD_API CLOD_NONNULL(1, 2)
-char *clod_nbt_compound_get(
-	const char *restrict compound,
+uint8_t *clod_nbt_compound_get(
+	const uint8_t *restrict compound,
 	const void *end,
 	clod_sstr name
 );
@@ -161,12 +158,12 @@ char *clod_nbt_compound_get(
  * or null if there isn't enough free space.
  */
 CLOD_API CLOD_NONNULL(2, 3)
-char *clod_nbt_compound_add(
-	char *restrict compound,
+uint8_t *clod_nbt_compound_add(
+	uint8_t *restrict compound,
 	const void **end,
 	ptrdiff_t *free,
 	clod_sstr name,
-	char type
+	uint8_t type
 );
 
 /**
@@ -180,7 +177,7 @@ char *clod_nbt_compound_add(
  */
 CLOD_API CLOD_NONNULL(1, 2, 3)
 bool clod_nbt_compound_del(
-	char *restrict compound,
+	uint8_t *restrict compound,
 	const void **end,
 	ptrdiff_t *free,
 	clod_sstr name
@@ -199,10 +196,10 @@ bool clod_nbt_compound_del(
  */
 CLOD_API CLOD_NONNULL(2)
 bool clod_nbt_list_resize(
-	char *restrict list,
-	const char **end,
+	uint8_t *restrict list,
+	const uint8_t **end,
 	ptrdiff_t *free,
-	char type,
+	uint8_t type,
 	uint32_t length
 );
 

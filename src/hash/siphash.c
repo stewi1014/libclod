@@ -33,7 +33,7 @@ static void sip_round(clod_sip64_state *state) {
 	state->_v1 ^= state->_v2;
 	state->_v2 = state->_v2 << 32 | state->_v2 >> 32;
 }
-static uint64_t read_uint64(const unsigned char *restrict data, const size_t data_size) {
+static uint64_t read_uint64(const uint8_t *restrict data, const size_t data_size) {
 	uint64_t r = 0;
 	switch (data_size) {
 		default: r |= (uint64_t)data[7] << 7 * 8; __attribute__((fallthrough));
@@ -47,13 +47,12 @@ static uint64_t read_uint64(const unsigned char *restrict data, const size_t dat
 		case 0: return r;
 	}
 }
-clod_sip64_state clod_sip64_add(clod_sip64_state state, const void *data, const size_t size) {
+clod_sip64_state clod_sip64_add(clod_sip64_state state, const uint8_t *restrict data, const size_t size) {
 	if (size == 0) return state;
-	const unsigned char* restrict in = data;
 	set_data_size(state, data_size(state) + size);
 
 	if (remaining(state) + size < 8) {
-		memcpy(state._buf + remaining(state), in, size);
+		memcpy(state._buf + remaining(state), data, size);
 		set_remaining(state, remaining(state) + size);
 		return state;
 	}
@@ -61,11 +60,11 @@ clod_sip64_state clod_sip64_add(clod_sip64_state state, const void *data, const 
 	uint64_t d, off = 0;
 	if (remaining(state) > 0) {
 		d = read_uint64(state._buf, remaining(state));
-		d |= read_uint64(in, 8 - remaining(state)) << remaining(state) * 8;
+		d |= read_uint64(data, 8 - remaining(state)) << remaining(state) * 8;
 		off = 8 - remaining(state);
 		set_remaining(state, 0);
 	} else {
-		d = read_uint64(in, 8);
+		d = read_uint64(data, 8);
 		off = 8;
 	}
 
@@ -75,7 +74,7 @@ clod_sip64_state clod_sip64_add(clod_sip64_state state, const void *data, const 
 	state._v0 ^= d;
 
 	while (off + 8 <= size) {
-		d = read_uint64(in + off, 8);
+		d = read_uint64(data + off, 8);
 		off += 8;
 
 		state._v3 ^= d;
@@ -85,7 +84,7 @@ clod_sip64_state clod_sip64_add(clod_sip64_state state, const void *data, const 
 	}
 
 	if (off < size) {
-		memcpy(state._buf, in + off, size - off);
+		memcpy(state._buf, data + off, size - off);
 		set_remaining(state, size - off);
 	}
 
