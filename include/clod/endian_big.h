@@ -10,7 +10,6 @@
 #include <limits.h>
 #include <stdint.h>
 
-static_assert(CHAR_BIT == 8);
 static_assert(__STDC_IEC_60559_BFP__, "bit representation of floats must be ICE 559");
 static_assert(sizeof(float) == 4);
 static_assert(sizeof(double) == 8);
@@ -33,38 +32,38 @@ static_assert(sizeof(double) == 8);
 #define BEU64_MAX UINT64_C(0xFFFFFFFFFFFFFFFF)
 
 /// Encode an 8-bit unsigned integer into big-endian format.
-static inline void beu8_enc (char ptr[1], const uint8_t  val) { ptr[0] = (char)(val); }
+static inline void beu8_enc (uint8_t ptr[1], const uint8_t  val) { ptr[0] = val; }
 /// Encode a 16-bit unsigned integer into big-endian format.
-static inline void beu16_enc(char ptr[2], const uint16_t val) { ptr[0] = (char)(val >> 8 ); ptr[1] = (char)(val); }
+static inline void beu16_enc(uint8_t ptr[2], const uint16_t val) { ptr[0] = (uint8_t)(val >> 8); ptr[1] = (uint8_t)(val); }
 /// Encode a 24-bit unsigned integer into big-endian format.
-static inline void beu24_enc(char ptr[3], const uint32_t val) { ptr[0] = (char)(val >> 16); ptr[1] = (char)(val >> 8 ); ptr[2] = (char)(val); }
+static inline void beu24_enc(uint8_t ptr[3], const uint32_t val) { ptr[0] = (uint8_t)(val >> 16); ptr[1] = (uint8_t)(val >> 8); ptr[2] = (uint8_t)(val); }
 /// Encode a 32-bit unsigned integer into big-endian format.
-static inline void beu32_enc(char ptr[4], const uint32_t val) { ptr[0] = (char)(val >> 24); ptr[1] = (char)(val >> 16); ptr[2] = (char)(val >> 8 ); ptr[3] = (char)(val); }
+static inline void beu32_enc(uint8_t ptr[4], const uint32_t val) { ptr[0] = (uint8_t)(val >> 24); ptr[1] = (uint8_t)(val >> 16); ptr[2] = (uint8_t)(val >> 8); ptr[3] = (uint8_t)(val); }
 /// Encode a 40-bit unsigned integer into big-endian format.
-static inline void beu40_enc(char ptr[5], const uint64_t val) { ptr[0] = (char)(val >> 32); ptr[1] = (char)(val >> 24); ptr[2] = (char)(val >> 16); ptr[3] = (char)(val >> 8 ); ptr[4] = (char)(val); }
+static inline void beu40_enc(uint8_t ptr[5], const uint64_t val) { ptr[0] = (uint8_t)(val >> 32); ptr[1] = (uint8_t)(val >> 24); ptr[2] = (uint8_t)(val >> 16); ptr[3] = (uint8_t)(val >> 8); ptr[4] = (uint8_t)(val); }
 /// Encode a 48-bit unsigned integer into big-endian format.
-static inline void beu48_enc(char ptr[6], const uint64_t val) { ptr[0] = (char)(val >> 40); ptr[1] = (char)(val >> 32); ptr[2] = (char)(val >> 24); ptr[3] = (char)(val >> 16); ptr[4] = (char)(val >> 8 ); ptr[5] = (char)(val); }
+static inline void beu48_enc(uint8_t ptr[6], const uint64_t val) { ptr[0] = (uint8_t)(val >> 40); ptr[1] = (uint8_t)(val >> 32); ptr[2] = (uint8_t)(val >> 24); ptr[3] = (uint8_t)(val >> 16); ptr[4] = (uint8_t)(val >> 8); ptr[5] = (uint8_t)(val); }
 /// Encode a 56-bit unsigned integer into big-endian format.
-static inline void beu56_enc(char ptr[7], const uint64_t val) { ptr[0] = (char)(val >> 48); ptr[1] = (char)(val >> 40); ptr[2] = (char)(val >> 32); ptr[3] = (char)(val >> 24); ptr[4] = (char)(val >> 16); ptr[5] = (char)(val >> 8 ); ptr[6] = (char)(val); }
+static inline void beu56_enc(uint8_t ptr[7], const uint64_t val) { ptr[0] = (uint8_t)(val >> 48); ptr[1] = (uint8_t)(val >> 40); ptr[2] = (uint8_t)(val >> 32); ptr[3] = (uint8_t)(val >> 24); ptr[4] = (uint8_t)(val >> 16); ptr[5] = (uint8_t)(val >> 8); ptr[6] = (uint8_t)(val); }
 /// Encode a 64-bit unsigned integer into big-endian format.
-static inline void beu64_enc(char ptr[8], const uint64_t val) { ptr[0] = (char)(val >> 56); ptr[1] = (char)(val >> 48); ptr[2] = (char)(val >> 40); ptr[3] = (char)(val >> 32); ptr[4] = (char)(val >> 24); ptr[5] = (char)(val >> 16); ptr[6] = (char)(val >> 8 ); ptr[7] = (char)(val); }
+static inline void beu64_enc(uint8_t ptr[8], const uint64_t val) { ptr[0] = (uint8_t)(val >> 56); ptr[1] = (uint8_t)(val >> 48); ptr[2] = (uint8_t)(val >> 40); ptr[3] = (uint8_t)(val >> 32); ptr[4] = (uint8_t)(val >> 24); ptr[5] = (uint8_t)(val >> 16); ptr[6] = (uint8_t)(val >> 8); ptr[7] = (uint8_t)(val); }
 
 /// Decode an 8-bit unsigned integer in big-endian format.
-CLOD_PURE static inline uint8_t  beu8_dec (const char ptr[1]) { return (uint8_t)ptr[0]; }
+CLOD_PURE static inline uint8_t  beu8_dec (const uint8_t ptr[1]) { return ptr[0]; }
 /// Decode a 16-bit unsigned integer in big-endian format.
-CLOD_PURE static inline uint16_t beu16_dec(const char ptr[2]) { return (uint16_t)((uint16_t)(uint8_t)ptr[0] << 8  | (uint16_t)(uint8_t)ptr[1]); }
+CLOD_PURE static inline uint16_t beu16_dec(const uint8_t ptr[2]) { return (uint16_t)ptr[0] << 8  | (uint16_t)ptr[1]; }
 /// Decode a 24-bit unsigned integer in big-endian format.
-CLOD_PURE static inline uint32_t beu24_dec(const char ptr[3]) { return (uint32_t)((uint32_t)(uint8_t)ptr[0] << 16 | (uint32_t)(uint8_t)ptr[1] << 8  | (uint32_t)(uint8_t)ptr[2]); }
+CLOD_PURE static inline uint32_t beu24_dec(const uint8_t ptr[3]) { return (uint32_t)ptr[0] << 16 | (uint32_t)ptr[1] << 8  | (uint32_t)ptr[2]; }
 /// Decode a 32-bit unsigned integer in big-endian format.
-CLOD_PURE static inline uint32_t beu32_dec(const char ptr[4]) { return (uint32_t)((uint32_t)(uint8_t)ptr[0] << 24 | (uint32_t)(uint8_t)ptr[1] << 16 | (uint32_t)(uint8_t)ptr[2] << 8  | (uint32_t)(uint8_t)ptr[3]); }
+CLOD_PURE static inline uint32_t beu32_dec(const uint8_t ptr[4]) { return (uint32_t)ptr[0] << 24 | (uint32_t)ptr[1] << 16 | (uint32_t)ptr[2] << 8  | (uint32_t)ptr[3]; }
 /// Decode a 40-bit unsigned integer in big-endian format.
-CLOD_PURE static inline uint64_t beu40_dec(const char ptr[5]) { return (uint64_t)((uint64_t)(uint8_t)ptr[0] << 32 | (uint64_t)(uint8_t)ptr[1] << 24 | (uint64_t)(uint8_t)ptr[2] << 16 | (uint64_t)(uint8_t)ptr[3] << 8  | (uint64_t)(uint8_t)ptr[4]); }
+CLOD_PURE static inline uint64_t beu40_dec(const uint8_t ptr[5]) { return (uint64_t)ptr[0] << 32 | (uint64_t)ptr[1] << 24 | (uint64_t)ptr[2] << 16 | (uint64_t)ptr[3] << 8  | (uint64_t)ptr[4]; }
 /// Decode a 48-bit unsigned integer in big-endian format.
-CLOD_PURE static inline uint64_t beu48_dec(const char ptr[6]) { return (uint64_t)((uint64_t)(uint8_t)ptr[0] << 40 | (uint64_t)(uint8_t)ptr[1] << 32 | (uint64_t)(uint8_t)ptr[2] << 24 | (uint64_t)(uint8_t)ptr[3] << 16 | (uint64_t)(uint8_t)ptr[4] << 8  | (uint64_t)(uint8_t)ptr[5]); }
+CLOD_PURE static inline uint64_t beu48_dec(const uint8_t ptr[6]) { return (uint64_t)ptr[0] << 40 | (uint64_t)ptr[1] << 32 | (uint64_t)ptr[2] << 24 | (uint64_t)ptr[3] << 16 | (uint64_t)ptr[4] << 8  | (uint64_t)ptr[5]; }
 /// Decode a 56-bit unsigned integer in big-endian format.
-CLOD_PURE static inline uint64_t beu56_dec(const char ptr[7]) { return (uint64_t)((uint64_t)(uint8_t)ptr[0] << 48 | (uint64_t)(uint8_t)ptr[1] << 40 | (uint64_t)(uint8_t)ptr[2] << 32 | (uint64_t)(uint8_t)ptr[3] << 24 | (uint64_t)(uint8_t)ptr[4] << 16 | (uint64_t)(uint8_t)ptr[5] << 8  | (uint64_t)(uint8_t)ptr[6]); }
+CLOD_PURE static inline uint64_t beu56_dec(const uint8_t ptr[7]) { return (uint64_t)ptr[0] << 48 | (uint64_t)ptr[1] << 40 | (uint64_t)ptr[2] << 32 | (uint64_t)ptr[3] << 24 | (uint64_t)ptr[4] << 16 | (uint64_t)ptr[5] << 8  | (uint64_t)ptr[6]; }
 /// Decode a 64-bit unsigned integer in big-endian format.
-CLOD_PURE static inline uint64_t beu64_dec(const char ptr[8]) { return (uint64_t)((uint64_t)(uint8_t)ptr[0] << 56 | (uint64_t)(uint8_t)ptr[1] << 48 | (uint64_t)(uint8_t)ptr[2] << 40 | (uint64_t)(uint8_t)ptr[3] << 32 | (uint64_t)(uint8_t)ptr[4] << 24 | (uint64_t)(uint8_t)ptr[5] << 16 | (uint64_t)(uint8_t)ptr[6] << 8  | (uint64_t)(uint8_t)ptr[7]); }
+CLOD_PURE static inline uint64_t beu64_dec(const uint8_t ptr[8]) { return (uint64_t)ptr[0] << 56 | (uint64_t)ptr[1] << 48 | (uint64_t)ptr[2] << 40 | (uint64_t)ptr[3] << 32 | (uint64_t)ptr[4] << 24 | (uint64_t)ptr[5] << 16 | (uint64_t)ptr[6] << 8  | (uint64_t)ptr[7]; }
 
 /// Minimum 8-bit signed value.
 #define BEI8_MIN   INT8_C(-0x80)
@@ -101,48 +100,48 @@ CLOD_PURE static inline uint64_t beu64_dec(const char ptr[8]) { return (uint64_t
 #define BEI64_MAX INT64_C(0x7FFFFFFFFFFFFFFF)
 
 /// Encode an 8-bit signed integer into big-endian format.
-static inline void bei8_enc (char ptr[1], const int8_t  val) { beu8_enc (ptr, (uint8_t )(val)); }
+static inline void bei8_enc (uint8_t ptr[1], const int8_t  val) { beu8_enc (ptr, (uint8_t )(val)); }
 /// Encode a 16-bit signed integer into big-endian format.
-static inline void bei16_enc(char ptr[2], const int16_t val) { beu16_enc(ptr, (uint16_t)(val)); }
+static inline void bei16_enc(uint8_t ptr[2], const int16_t val) { beu16_enc(ptr, (uint16_t)(val)); }
 /// Encode a 24-bit signed integer into big-endian format.
-static inline void bei24_enc(char ptr[3], const int32_t val) { beu24_enc(ptr, (uint32_t)(val > BEI24_MAX ? BEI24_MAX : val < BEI24_MIN ? BEI24_MIN : val)); }
+static inline void bei24_enc(uint8_t ptr[3], const int32_t val) { beu24_enc(ptr, (uint32_t)(val > BEI24_MAX ? BEI24_MAX : val < BEI24_MIN ? BEI24_MIN : val)); }
 /// Encode a 32-bit signed integer into big-endian format.
-static inline void bei32_enc(char ptr[4], const int32_t val) { beu32_enc(ptr, (uint32_t)(val)); }
+static inline void bei32_enc(uint8_t ptr[4], const int32_t val) { beu32_enc(ptr, (uint32_t)(val)); }
 /// Encode a 40-bit signed integer into big-endian format.
-static inline void bei40_enc(char ptr[5], const int64_t val) { beu40_enc(ptr, (uint64_t)(val > BEI40_MAX ? BEI40_MAX : val < BEI40_MIN ? BEI40_MIN : val)); }
+static inline void bei40_enc(uint8_t ptr[5], const int64_t val) { beu40_enc(ptr, (uint64_t)(val > BEI40_MAX ? BEI40_MAX : val < BEI40_MIN ? BEI40_MIN : val)); }
 /// Encode a 48-bit signed integer into big-endian format.
-static inline void bei48_enc(char ptr[6], const int64_t val) { beu48_enc(ptr, (uint64_t)(val > BEI48_MAX ? BEI48_MAX : val < BEI48_MIN ? BEI48_MIN : val)); }
+static inline void bei48_enc(uint8_t ptr[6], const int64_t val) { beu48_enc(ptr, (uint64_t)(val > BEI48_MAX ? BEI48_MAX : val < BEI48_MIN ? BEI48_MIN : val)); }
 /// Encode a 56-bit signed integer into big-endian format.
-static inline void bei56_enc(char ptr[7], const int64_t val) { beu56_enc(ptr, (uint64_t)(val > BEI56_MAX ? BEI56_MAX : val < BEI56_MIN ? BEI56_MIN : val)); }
+static inline void bei56_enc(uint8_t ptr[7], const int64_t val) { beu56_enc(ptr, (uint64_t)(val > BEI56_MAX ? BEI56_MAX : val < BEI56_MIN ? BEI56_MIN : val)); }
 /// Encode a 64-bit signed integer into big-endian format.
-static inline void bei64_enc(char ptr[8], const int64_t val) { beu64_enc(ptr, (uint64_t)(val)); }
+static inline void bei64_enc(uint8_t ptr[8], const int64_t val) { beu64_enc(ptr, (uint64_t)(val)); }
 
 /// Decode an 8-bit signed integer in big-endian format.
-CLOD_PURE static inline int8_t  bei8_dec (const char ptr[1]) { return (int8_t )(beu8_dec (ptr)); }
+CLOD_PURE static inline int8_t  bei8_dec (const uint8_t ptr[1]) { return (int8_t )(beu8_dec (ptr)); }
 /// Decode a 16-bit signed integer in big-endian format.
-CLOD_PURE static inline int16_t bei16_dec(const char ptr[2]) { return (int16_t)(beu16_dec(ptr)); }
+CLOD_PURE static inline int16_t bei16_dec(const uint8_t ptr[2]) { return (int16_t)(beu16_dec(ptr)); }
 /// Decode a 24-bit signed integer in big-endian format.
-CLOD_PURE static inline int32_t bei24_dec(const char ptr[3]) { return (int32_t)(beu24_dec(ptr) << 8) >> 8; }
+CLOD_PURE static inline int32_t bei24_dec(const uint8_t ptr[3]) { return (int32_t)(beu24_dec(ptr) << 8) >> 8; }
 /// Decode a 32-bit signed integer in big-endian format.
-CLOD_PURE static inline int32_t bei32_dec(const char ptr[4]) { return (int32_t)(beu32_dec(ptr)); }
+CLOD_PURE static inline int32_t bei32_dec(const uint8_t ptr[4]) { return (int32_t)(beu32_dec(ptr)); }
 /// Decode a 40-bit signed integer in big-endian format.
-CLOD_PURE static inline int64_t bei40_dec(const char ptr[5]) { return (int64_t)(beu40_dec(ptr) << 24) >> 24; }
+CLOD_PURE static inline int64_t bei40_dec(const uint8_t ptr[5]) { return (int64_t)(beu40_dec(ptr) << 24) >> 24; }
 /// Decode a 48-bit signed integer in big-endian format.
-CLOD_PURE static inline int64_t bei48_dec(const char ptr[6]) { return (int64_t)(beu48_dec(ptr) << 16) >> 16; }
+CLOD_PURE static inline int64_t bei48_dec(const uint8_t ptr[6]) { return (int64_t)(beu48_dec(ptr) << 16) >> 16; }
 /// Decode a 56-bit signed integer in big-endian format.
-CLOD_PURE static inline int64_t bei56_dec(const char ptr[7]) { return (int64_t)(beu56_dec(ptr) << 8) >> 8; }
+CLOD_PURE static inline int64_t bei56_dec(const uint8_t ptr[7]) { return (int64_t)(beu56_dec(ptr) << 8) >> 8; }
 /// Decode a 64-bit signed integer in big-endian format.
-CLOD_PURE static inline int64_t bei64_dec(const char ptr[8]) { return (int64_t)(beu64_dec(ptr)); }
+CLOD_PURE static inline int64_t bei64_dec(const uint8_t ptr[8]) { return (int64_t)(beu64_dec(ptr)); }
 
 /// Encode a float in big-endian format.
-static inline void bef32_enc(char ptr[4], const float  f) { const union { float  f; uint32_t i; } u = { f }; beu32_enc(ptr, u.i); }
+static inline void bef32_enc(uint8_t ptr[4], const float  f) { const union { float  f; uint32_t i; } u = { f }; beu32_enc(ptr, u.i); }
 /// Encode a double in big-endian format.
-static inline void bef64_enc(char ptr[8], const double f) { const union { double f; uint64_t i; } u = { f }; beu64_enc(ptr, u.i); }
+static inline void bef64_enc(uint8_t ptr[8], const double f) { const union { double f; uint64_t i; } u = { f }; beu64_enc(ptr, u.i); }
 
 /// Decode a float in big_endian format.
-CLOD_PURE static inline float  bef32_dec(const char ptr[4]) { const union { float  f; uint32_t i; } u = { .i = beu32_dec(ptr) }; return u.f; }
+CLOD_PURE static inline float  bef32_dec(const uint8_t ptr[4]) { const union { float  f; uint32_t i; } u = { .i = beu32_dec(ptr) }; return u.f; }
 /// Decode a double in big_endian format.
-CLOD_PURE static inline double bef64_dec(const char ptr[8]) { const union { double f; uint64_t i; } u = { .i = beu64_dec(ptr) }; return u.f; }
+CLOD_PURE static inline double bef64_dec(const uint8_t ptr[8]) { const union { double f; uint64_t i; } u = { .i = beu64_dec(ptr) }; return u.f; }
 
 /// Maximum varint unsigned value.
 #define BEUV_MAX UINT64_MAX
@@ -159,22 +158,22 @@ CLOD_CONST static inline uint8_t beuv_size(uint64_t val) {
 
 /// Encode a variable length unsigned integer in big-endian format.
 /// @return True if the buffer was large enough.
-static inline bool beuv_enc(char *ptr, const void *end, uint64_t val) {
+static inline bool beuv_enc(uint8_t *ptr, const void *end, uint64_t val) {
 	const uint8_t size = beuv_size(val);
 	uint8_t i = 0;
 	while (i + 1 < size) {
 		if (ptr + i == end) return false;
-		ptr[i] = (char)(val >> ((size - i - 1) * 7) | 0b10000000);
+		ptr[i] = (uint8_t)(val >> ((size - i - 1) * 7) | 0b10000000);
 		i++;
 	}
 	if (ptr + i == end) return false;
-	ptr[i] = (char)(val & 0b01111111);
+	ptr[i] = (uint8_t)(val & 0b01111111);
 	return true;
 }
 
 /// Decode a variable length unsigned integer in big-endian format.
 /// @return True if the buffer was large enough.
-static inline bool beuv_dec(const char *ptr, const void *end, uint64_t *val) {
+static inline bool beuv_dec(const uint8_t *ptr, const void *end, uint64_t *val) {
 	uint64_t ret = 0;
 	uint8_t i = 0;
 	while (i < 9 && ptr + i != end && ptr[i] & 0b10000000) {
@@ -206,22 +205,22 @@ CLOD_CONST static inline uint8_t beiv_size(int64_t val) {
 
 /// Encode a variable length signed integer in big-endian format.
 /// @return True if the buffer was large enough.
-static inline bool beiv_enc(char *ptr, const void *end, int64_t val) {
+static inline bool beiv_enc(uint8_t *ptr, const void *end, int64_t val) {
 	const uint8_t size = beiv_size(val);
 	uint8_t i = 0;
 	while (i + 1 < size) {
 		if (ptr + i == end) return false;
-		ptr[i] = (char)((uint64_t)val >> ((size - i - 1) * 7) | 0b10000000);
+		ptr[i] = (uint8_t)((uint64_t)val >> ((size - i - 1) * 7) | 0b10000000);
 		i++;
 	}
 	if (ptr + i == end) return false;
-	ptr[i] = (char)(val & 0b01111111);
+	ptr[i] = (uint8_t)(val & 0b01111111);
 	return true;
 }
 
 /// Decode a variable length signed integer in big-endian format.
 /// @return True if the buffer was large enough.
-static inline bool beiv_dec(const char *ptr, const void *end, int64_t *val) {
+static inline bool beiv_dec(const uint8_t *ptr, const void *end, int64_t *val) {
 	int64_t ret = 0;
 	uint8_t i = 0;
 	while (i < 9 && ptr + i != end && ptr[i] & 0b10000000) {

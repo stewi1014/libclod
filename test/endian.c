@@ -7,7 +7,7 @@
 const struct {
 	uint64_t n;
 	uint8_t data_size;
-	char data[10];
+	uint8_t data[10];
 } le_unsigned_tests[] = {
 	{UINT64_MAX,        10,{-1, -1, -1, -1, -1, -1, -1, -1, -1, 1}},
 	{UINT64_MAX - 1,    10,{-2, -1, -1, -1, -1, -1, -1, -1, -1, 1}},
@@ -20,7 +20,7 @@ const struct {
 const struct {
 	int64_t n;
 	uint8_t data_size;
-	char data[10];
+	uint8_t data[10];
 } le_signed_tests[] = {
 	{ INT64_MAX,        10,{-1, -1, -1, -1, -1, -1, -1, -1, -1, 0}},
 	{ INT64_MIN,        10,{-128, -128, -128, -128, -128, -128, -128, -128, -128, 1}},
@@ -33,7 +33,7 @@ const struct {
 const struct {
 	uint64_t n;
 	uint8_t data_size;
-	char data[10];
+	uint8_t data[10];
 } be_unsigned_tests[] = {
 	{UINT64_MAX,        10,{-127, -1, -1, -1, -1, -1, -1, -1, -1, 127}},
 	{UINT64_MAX - 1,    10,{-127, -1, -1, -1, -1, -1, -1, -1, -1, 126}},
@@ -46,7 +46,7 @@ const struct {
 const struct {
 	int64_t n;
 	uint8_t data_size;
-	char data[10];
+	uint8_t data[10];
 } be_signed_tests[] = {
 	{ INT64_MAX,        10,{-128, -1, -1, -1, -1, -1, -1, -1, -1, 127}},
 	{ INT64_MIN,        10,{-127, -128, -128, -128, -128, -128, -128, -128, -128, 0}},
@@ -61,13 +61,13 @@ const struct {
 #define NUM_TEST (1<<(3 * 7))
 
 #define EMPTY_BYTE 0b01010101
-static bool is_empty(const char *ptr, size_t size) {
+static bool is_empty(const uint8_t *ptr, size_t size) {
 	for (size_t i = 0; i < size; i++) if (ptr[i] != EMPTY_BYTE) return false;
 	return true;
 }
 
 int main() {
-	char buff[10];
+	uint8_t buff[10];
 
 	for (uint64_t i = 0; i < NUM_TEST; i++) {
 		uint64_t ret;
