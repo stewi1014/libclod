@@ -1,6 +1,6 @@
 /**
  * @file clod/region.h
- * @defgroup region Region storage
+ * @defgroup region Region Storage
  * @{
  *
  * region.h defines the public interface libclod exposes for interacting with a
@@ -8,14 +8,11 @@
  *
  * https://minecraft.wiki/w/Region_file_format
  *
- * libclod extends the region file format with a header supporting dynamic features and uses
- * that support to add checksums and uncompressed chunk size to
- *
  * Thanks to [ishland](https://github.com/ishland) for his insights while brainstorming approaches to this.
  */
 
-#ifndef CLOD_REGION_H
-#define CLOD_REGION_H
+#ifndef LIBCLOD_REGION_H
+#define LIBCLOD_REGION_H
 
 #include <clod/compression.h>
 #include <clod/lib.h>

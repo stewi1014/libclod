@@ -39,12 +39,18 @@ struct clod_table_opts {
 	/** Custom hash function.
 	 * This map implementation demands a uniform spread of entropy across _all_ bits in uint64,
 	 * and that two keys with nonequal hashes are also not equal when using the cmp_func method.*/
-	uint64_t (*hash_func)(uint64_t seed, const void *key, size_t key_size);
+	uint64_t (*hash_func)(uint64_t seed, const void *key, size_t key_size, void *user);
 	/** Custom equality function.
 	 * The required behaviour for the hash_func and cmp_func relationship is;
 	 * assert(cmp_func(a, b) != 0 || hash_func(a) == hash_func(b));
 	 * In other words, if cmp_func thinks two elements are equal, hash_func must agree.*/
-	int (*cmp_func)(const void *key1, const void *key2, size_t key_size);
+	int (*cmp_func)(const void *key1, const void *key2, size_t key_size, void *user);
+	/** Custom memory allocation function. */
+	void *(*malloc_func)(size_t, void *user);
+	/** Custom memory freeing function. */
+	void (*free_func)(void*, void *user);
+	/** Value passed to callbacks. */
+	void *user;
 };
 
 /**
@@ -75,31 +81,35 @@ clod_table_len(const struct clod_table *t);
 
 /**
  * Add an element.
- * If the key already exists, the operation will fail and return the existing key.
- *
- * @param[in] t Handle to the table.
- * @param[in] element Element to add. The table takes ownership on success.
- * @param[in] key_size Size of the key.
- * @return Nullptr on success, the existing element if the key exists, or the provided element on allocation failure.
- * The table retains ownership of an existing element.
- */
-CLOD_API CLOD_NONNULL(1, 2)
-void *
-clod_table_add(struct clod_table *t, const void *element, size_t key_size);
-
-/**
- * Add or replace an element.
- * If the key already exists, it is replaced.
+ * If the key already exists the operation fails.
+ * A false return and null \p existing_out indicates an allocation failure.
  *
  * @param[in] t Handle to the table.
  * @param[in] element Element to insert. The table takes ownership on success.
  * @param[in] key_size Size of the key.
- * @return Previous element if the key existed, nullptr if it didn't, or the provided element on allocation failure.
- * The caller takes ownership of the previous element.
+ * @param[out] existing_out (nullable) Returns the existing element if the key already existed.
+ * The table retains ownership. Returns null on allocation failure.
+ * @return True on success. False if the key already existed, or on allocation failure.
  */
-CLOD_API CLOD_USE_RETURN CLOD_NONNULL(1, 2)
-void *
-clod_table_set(struct clod_table *t, const void *element, size_t key_size);
+CLOD_API CLOD_NONNULL(1, 2)
+bool
+clod_table_add(struct clod_table *t, const void *element, size_t key_size, void **existing_out);
+
+/**
+ * Add or replace an element.
+ * If the key already exists, it is replaced.
+ * A false return and null \p existing_out indicates allocation failure.
+ *
+ * @param[in] t Handle to the table.
+ * @param[in] element Element to insert. The table takes ownership on success.
+ * @param[in] key_size Size of the key.
+ * @param[out] existing_out Returns the existing element if the key already existed.
+ * The caller takes ownership on success. Returns null on allocation failure.
+ * @return True on success. False on allocation failure.
+ */
+CLOD_API CLOD_NONNULL(1, 2, 4)
+bool
+clod_table_set(struct clod_table *t, const void *element, size_t key_size, void **existing_out);
 
 /**
  * Get an element from the table.
@@ -117,7 +127,7 @@ clod_table_get(const struct clod_table *t, const void *key, size_t key_size);
  * @param[in] t Handle to the table.
  * @param[in] key Key to delete. Caller retains ownership.
  * @param[in] key_size Size of the key.
- * @return Pointer to the removed element, or nullptr if the key doesn't exist.
+ * @return The removed element, or nullptr if the key doesn't exist.
  * The caller takes ownership of the element.
  */
 CLOD_API CLOD_USE_RETURN CLOD_NONNULL(1, 2)

@@ -11,13 +11,15 @@ int main() {
 	const char *val2 = STR;
 	struct clod_table_iter iter;
 
+	void *existing;
+
 	struct clod_table *t = clod_table_create(nullptr);
 	check("", clod_table_len(t) == 0);
 	check("", clod_table_get(t, val, LEN) == nullptr);
 	check("", clod_table_del(t, val, LEN) == nullptr);
-	check("", clod_table_add(t, val2, LEN) == nullptr);
-	check("", clod_table_add(t, val, LEN) == val2);
-	check("", clod_table_set(t, val, LEN) == val2);
+	check("", clod_table_add(t, val2, LEN, &existing) && existing == nullptr);
+	check("", !clod_table_add(t, val, LEN, &existing) && existing == val2);
+	check("", clod_table_set(t, val, LEN, &existing) && existing == val2);
 	iter = CLOD_TABLE_ITER_INIT;
 	check("", clod_table_iter(t, &iter));
 	check("", iter.element == val);

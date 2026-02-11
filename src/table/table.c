@@ -42,7 +42,7 @@ static struct table_position {
 }
 get_position(const struct clod_table *t, const void *key, const size_t key_size) {
 	assert(t->table_size > 0);
-	auto const hash = t->opts.hash_func((size_t)t->control, key, key_size);
+	auto const hash = t->opts.hash_func((size_t)t->control, key, key_size, t->opts.user);
 
 	return (struct table_position){
 		.ctl = CTL_OCCUPIED(hash),
@@ -59,7 +59,7 @@ static bool create(struct clod_table *t, const struct clod_table_opts *opts, con
 	t->cursor = 0;
 
 	if (t->table_size > 0) {
-		t->elements = malloc(t->table_size * (sizeof(t->control[0]) + sizeof(t->elements[0])));
+		t->elements = t->opts.malloc_func(t->table_size * (sizeof(t->control[0]) + sizeof(t->elements[0])), t->opts.user);
 		if (!t->elements) {
 			return false;
 		}
@@ -73,12 +73,12 @@ static bool create(struct clod_table *t, const struct clod_table_opts *opts, con
 	return true;
 }
 static void destroy(const struct clod_table *t) {
-	free(t->elements);
+	t->opts.free_func(t->elements, t->opts.user);
 }
 static bool key_equal(const struct clod_table *t, const size_t index, const void *key, const size_t key_size) {
 	auto const res = t->elements[index];
 	if (res.key_size != key_size) return false;
-	return t->opts.cmp_func(res.element, key, res.key_size) == 0;
+	return t->opts.cmp_func(res.element, key, res.key_size, t->opts.user) == 0;
 }
 static struct probe {
 	size_t existing;
@@ -122,14 +122,12 @@ static const void *insert(struct clod_table *t, const bool replace, const void *
 	auto const res = probe(t, pos, element, key_size);
 
 	if (res.existing != INDEX_NIL) {
+		const void *previous = t->elements[res.existing].element;
 		if (replace) {
-			const void *previous = t->elements[res.existing].element;
 			t->elements[res.existing].element = element;
 			t->elements[res.existing].key_size = key_size;
-			return previous;
-		} else {
-			return t->elements[res.existing].element;
 		}
+		return previous;
 	}
 
 	assert(res.available != INDEX_NIL);
@@ -160,17 +158,18 @@ static bool rebuild(struct clod_table *t, const size_t new_table_size) {
 	memcpy(t, &new, sizeof(new));
 	return true;
 }
-uint64_t default_hash(uint64_t seed, const void *data, size_t data_size) {
-	auto state = clod_sip64_init(seed);
-	state = clod_sip64_add(state, data, data_size);
-	return clod_sip64_finalise(state);
-}
+static uint64_t default_hash(uint64_t seed, const void *data, size_t data_size, void*) { return clod_sip64(seed, data, data_size); }
+static void *default_malloc(size_t size, void*) { return malloc(size); }
+static void default_free(void *ptr, void*) { free(ptr); }
+static int default_cmp(const void *key1, const void *key2, size_t key_size, void *) { return memcmp(key1, key2, key_size); }
 static void apply_default_opts(struct clod_table_opts *opts) {
 	if (!opts->hash_func) opts->hash_func = default_hash;
-	if (!opts->cmp_func) opts->cmp_func = memcmp;
+	if (!opts->cmp_func) opts->cmp_func = default_cmp;
+	if (!opts->malloc_func) opts->malloc_func = default_malloc;
+	if (!opts->free_func) opts->free_func = default_free;
 }
 struct clod_table *clod_table_create(const struct clod_table_opts *opts) {
-	struct clod_table *t = malloc(sizeof(*t));
+	struct clod_table *t = opts && opts->malloc_func ? opts->malloc_func(sizeof(*t), opts->user) : malloc(sizeof(*t));
 	if (!t) return nullptr;
 
 	if (opts) memcpy(&t->opts, opts, sizeof(t->opts));
@@ -178,7 +177,7 @@ struct clod_table *clod_table_create(const struct clod_table_opts *opts) {
 	apply_default_opts(&t->opts);
 
 	if (!create(t, &t->opts, LF_CAPACITY_TO_SIZE(LF_MAX, t->opts.min_capacity))) {
-		free(t);
+		t->opts.free_func(t, t->opts.user);
 		return nullptr;
 	}
 
@@ -186,28 +185,34 @@ struct clod_table *clod_table_create(const struct clod_table_opts *opts) {
 }
 void clod_table_destroy(struct clod_table *t) {
 	destroy(t);
-	free(t);
+	t->opts.free_func(t, t->opts.user);
 }
 size_t clod_table_len(const struct clod_table *t) {
 	return t->elem_count;
 }
-void *clod_table_add(struct clod_table *t, const void *element, const size_t key_size) {
+bool clod_table_add(struct clod_table *t, const void *element, const size_t key_size, void **existing_out) {
 	if (t->table_size == 0 || LF(t) >= LF_MAX) {
 		if (!rebuild(t, LF_CAPACITY_TO_SIZE(LF_MIN, t->elem_count + 1))) {
-			return (void*)element;
+			if (existing_out) *existing_out = nullptr;
+			return false;
 		}
 	}
 
-	return (void*)insert(t, false, element, key_size);
+	const void *existing = insert(t, false, element, key_size);
+	if (existing_out) *existing_out = (void*)existing;
+	return !existing;
 }
-void *clod_table_set(struct clod_table *t, const void *element, const size_t key_size) {
+bool clod_table_set(struct clod_table *t, const void *element, const size_t key_size, void **existing_out) {
 	if (t->table_size == 0 || LF(t) >= LF_MAX) {
 		if (!rebuild(t, LF_CAPACITY_TO_SIZE(LF_MIN, t->elem_count + 1))) {
-			return (void*)element;
+			*existing_out = nullptr;
+			return false;
 		}
 	}
 
-	return (void*)insert(t, true, element, key_size);
+	const void *existing = insert(t, true, element, key_size);
+	*existing_out = (void*)existing;
+	return true;
 }
 void *clod_table_get(const struct clod_table *t, const void *key, const size_t key_size) {
 	if (t->table_size == 0) return nullptr;

@@ -15,21 +15,28 @@ int main() {
 
 	struct clod_table *t = clod_table_create(nullptr);
 	for (int i = 0; i < NUM_ELEMS; i++) {
-		check("no element is returned when adding a unique key", clod_table_add(t, &elems[i], 4) == nullptr);
+		void *existing;
+		check("success when adding a unique key", clod_table_add(t, &elems[i], 4, &existing));
+		check("no element was returned when adding a unique key", existing == nullptr);
 	}
 	for (int i = 0; i < NUM_ELEMS; i++) {
-		check("existing element is returned when trying to add an existing key", clod_table_add(t, &elems[i], 4) == &elems[i]);
+		void *existing;
+		check("adding duplicate key fails", !clod_table_add(t, &elems[i], 4, &existing));
+		check("returned existing element is correct", existing == &elems[i]);
 	}
 	for (int i = 0; i < NUM_ELEMS; i++) {
 		const int *p = &i;
-		check("correct existing element is returned when replacing an existing key", clod_table_set(t, p, 4) == &elems[i]);
-		check("correct updated existing element is returned when replacing an existing key", clod_table_set(t, &elems[i], 4) == p);
+		void *existing;
+		check("replacing an existing key works", clod_table_set(t, p, 4, &existing));
+		check("replacing returns correct existing element", existing == &elems[i]);
+		check("replacing an existing key a second time works", clod_table_set(t, &elems[i], 4, &existing));
+		check("replacing an existing key a second time returns the correct existing element", existing == p);
 	}
 	for (int i = 0; i < NUM_ELEMS; i++) {
-		check("adding more keys succeeds", clod_table_add(t, &elems2[i], 4) == nullptr);
+		check("adding keys without specifying an existing out works", clod_table_add(t, &elems2[i], 4, nullptr));
 	}
 	for (int i = 0; i < NUM_ELEMS; i++) {
-		check("old keys still exist after modifications", clod_table_add(t, &elems[i], 4) == &elems[i]);
+		check("getting old keys after adding some more returns correct elements", clod_table_get(t, &elems[i], 4) == &elems[i]);
 	}
 	bool found[NUM_ELEMS * 2] = {0};
 	struct clod_table_iter iter = {0};

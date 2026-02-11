@@ -51,7 +51,7 @@ static inline void beu64_enc(uint8_t ptr[8], const uint64_t val) { ptr[0] = (uin
 /// Decode an 8-bit unsigned integer in big-endian format.
 CLOD_PURE static inline uint8_t  beu8_dec (const uint8_t ptr[1]) { return ptr[0]; }
 /// Decode a 16-bit unsigned integer in big-endian format.
-CLOD_PURE static inline uint16_t beu16_dec(const uint8_t ptr[2]) { return (uint16_t)ptr[0] << 8  | (uint16_t)ptr[1]; }
+CLOD_PURE static inline uint16_t beu16_dec(const uint8_t ptr[2]) { return (uint16_t)(ptr[0] << 8  | ptr[1]); }
 /// Decode a 24-bit unsigned integer in big-endian format.
 CLOD_PURE static inline uint32_t beu24_dec(const uint8_t ptr[3]) { return (uint32_t)ptr[0] << 16 | (uint32_t)ptr[1] << 8  | (uint32_t)ptr[2]; }
 /// Decode a 32-bit unsigned integer in big-endian format.
