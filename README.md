@@ -36,8 +36,8 @@ It recursively steps through NBT data at approx 6GB/s on my machine.
 
 ## Building
 
-Building requires CMake >= 4.0 and a C23 compliant toolchain.
-GCC has been specifically optimised for, but CLang also does a fine job and is known to work.
+Building requires CMake >= 4.0 and a C23 compliant toolchain. I test with both GCC and Clang.
+All else being equal, GCC and glibc are probably best optimised as that's what I test against the most.
 If a C23 compliant toolchain doesn't work with this library, then fixing that is a goal.
 
 ```bash
@@ -77,25 +77,30 @@ in general, not supported, although many specific cases would be fine.
 ### Platforms
 
 #### Linux
-Linux is fully supported and tested with posix code paths.
-Some linux-specific optimisations are enabled.
+Linux is tested.
+Some linux-specific optimisations are used if they are available.
 
 #### BSD
-BSD variants might work out of the box. They support everything I need perfectly, and I've tried to follow documentation.
-I don't have a BSD machine to test on, so it's possible I missed some things, and minor changes are required for BSD support.
-I'll probably test this myself at some point.
+BSD variants are untested.
+They support everything libclod needs, so the only barrier to support
+is getting things plugged in properly if they aren't already.
 
 #### macOS
-macOS 14.4+ might work out of the box.
-They only added a proper futex API in 14.4 which I need.
-Some hacks exist (accessing non-public methods) for versions before that, which could possibly be used to support <14.4.
-I don't have a macOS machine to test on, and since macOS is unique in forcing developers to
-buy macs for development, it's highly unlikely I'll ever be able to test it myself.
-It's possible, perhapse likely, I missed some things, and minor changes are required for macOS support.
+macOS is untested.
+In 14.4 they added a public API for a futex-style feature, which libclod needs.
+Before then, projects would use a private and undocumented API for this (yuck!).
+Other than that, macOS seems to have a reasonably strong feature set and robust public API.
+The only barrier to support is getting things plugged in properly if they aren't already.
 
 #### Windows
-Windows is the only OS that doesn't play well with the others,
-so large sections of posix code paths will need to be rewritten from scratch for the Windows API.
-In addition, some fundamental OS features simply don't exist on Windows such as IPC methods,
-so it might never be possible to implement some features on Windows.
-I have intentionally left space in the codebase for alternative code paths on Windows.
+Unfortunately, this project highlights Windows's weakness as an operating system and platform.
+Not only is Windows unable to share code paths that other operating systems share, requiring
+maintaining duplicate code for Windows vs everything else, but functionality ubiquitous among
+other systems is often missing in Windows. Due to this lack of functionality, it might not
+be possible to implement libclod for Windows without significant feature culling.
+To top it off, Windows also lacks a modern C compiler or toolchain. Libclod is written in modern C.
+
+Libclod is attempting to implement some database-like features, and there's a reason why
+robust support for Windows by database software is almost unheard of. While it won't be easy,
+and I'm far from finished complaining about it, I'm not willing to write Windows off yet.
+Hopefully there's a way to work around most of the problems and get libclod working on Windows.

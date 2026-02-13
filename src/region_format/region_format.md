@@ -3,19 +3,19 @@
 
 # Region File Format
 Libclod implements a novel region file format designed to provide data integrity and concurrency.
-Methods are provided for interacting with the format directly, in addition to a complete
-storage system, however, the format is documented here for my own rubber ducking,
-reference and for any other potential implementations.
+It remains backwards compatible with vanilla implementations. Methods are provided for interacting
+with the format directly, in addition to a complete storage system, however, the format is documented
+here for my own rubber ducking, reference and for any other potential implementations.
 
 ## Prior Reading
- - https://docs.kernel.org/locking/seqlock.html Is almost identical to the counters used in the libclod format.
- - https://man7.org/linux/man-pages/man2/futex.2.html Concurrency primitive used for synchronisation.
+ - https://docs.kernel.org/locking/seqlock.html Same approach to locking that the libclod format uses.
+ - https://www.akkadia.org/drepper/futex.pdf Futex overview. What libclod uses to block threads on locks.
+ - https://man7.org/linux/man-pages/man2/futex.2.html Linux futex.
+ - https://developer.apple.com/documentation/os/os_sync_wait_on_address macOS futex.
+ - https://learn.microsoft.com/en-us/windows/win32/api/synchapi/nf-synchapi-waitonaddress Half-arsed Windows version
+of a futex that doesn't work properly, but could still prove useful.
 
 ## Structure
-The libclod region file format uses a shadow and checkpoint table instead of a single chunk location table.
-Both tables have the same format as the vanilla chunk location table, and the shadow table is stored
-in the same location as the vanilla chunk location table. This provides backwards compatability with vanilla.
-
 | Offset | Size | Name                     | Description                                               |
 |--------|------|--------------------------|-----------------------------------------------------------|
 | 0      | 4096 | Shadow Table [1024]      | Shadow table of chunk locations in the region file.       |

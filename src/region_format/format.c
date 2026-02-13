@@ -2,6 +2,7 @@
 #include <clod/region_format.h>
 #include <assert.h>
 #include <stdlib.h>
+#include <string.h>
 
 static void *default_malloc(size_t size, void*) { return malloc(size); }
 static void default_free(void *ptr, void*) { free(ptr); }
@@ -21,15 +22,8 @@ struct clod_rfmt *rfmt_new(struct clod_rfmt_opts *opts) {
 	rfmt->data_size = 0;
 
 #ifndef NDEBUG
-	struct clod_table_opts table_opts = {0};
-	table_opts.malloc_func = opts->malloc_func;
-	table_opts.free_func = opts->free_func;
-	table_opts.user = opts->user;
-	rfmt->held_locks = clod_table_create(nullptr);
-	if (!rfmt->held_locks) {
-		opts->free_func(rfmt, opts->user);
-		return nullptr;
-	}
+	bitarray_unset_all(rfmt->held_locks);
+	bitarray_unset_all(rfmt->observing_locks);
 #endif
 
 	return rfmt;
@@ -68,11 +62,6 @@ struct clod_rfmt *clod_rfmt_init_ro(struct clod_rfmt_opts *opts) {
 	if (!rfmt) return nullptr;
 
 }
-
-#define bitarray_size(elems) (((elems) + 7) / 8)
-static inline bool bitarray_get(const uint8_t *bitarray, uint32_t index) { return bitarray[index / 8] & (1 << (index & 7)); }
-static inline void bitarray_set(uint8_t *bitarray, uint32_t index) { bitarray[index / 8] |= (1 << (index & 7)); }
-static inline void bitarray_unset(uint8_t *bitarray, uint32_t index) { bitarray[index / 8] &=~ (1 << (index & 7)); }
 
 /*
 typedef struct {

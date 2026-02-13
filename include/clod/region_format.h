@@ -7,6 +7,10 @@
  * Methods for reading and writing to region files.
  * None of the methods here are thread safe; for concurrent usage each
  * thread must independently create its own handle to the same region file.
+ *
+ * When the NDEBUG flag is _not_ set (i.e. in debug builds), additional checks are performed
+ * to ensure that usage follows the file specification e.g. holding required locks before certain accesses.
+ *
  */
 #ifndef LIBCLOD_REGION_FORMAT_H
 #define LIBCLOD_REGION_FORMAT_H
@@ -132,4 +136,17 @@ struct clod_rfmt *clod_rfmt_init_rw(struct clod_rfmt_opts *opts);
 CLOD_API CLOD_NONNULL(1)
 struct clod_rfmt *clod_rfmt_init_ro(struct clod_rfmt_opts *opts);
 
+/**
+ * Release resources associated with the file handle.
+ *
+ * @param[in] rfmt The file handle to free.
+ * @return Result of any cleanup operations.
+ */
+CLOD_API CLOD_NONNULL(1)
+enum clod_rfmt_result clod_rfmt_free(struct clod_rfmt *rfmt);
+
+CLOD_API CLOD_NONNULL(1)
+enum clod_rfmt_result clod_rfmt_lock_acquire(struct clod_rfmt *rfmt, uint32_t )
+
+/** @} */
 #endif
