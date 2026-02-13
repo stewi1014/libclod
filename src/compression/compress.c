@@ -5,24 +5,24 @@
 #include <stdlib.h>
 #include <string.h>
 
-#if HAVE_LIBDEFLATE
+#if CLOD_USE_LIBDEFLATE
 #include <libdeflate.h>
 #endif
 
-#if HAVE_LIBLZ4
+#if CLOD_USE_LIBLZ4
 #include <lz4hc.h>
 #include <lz4frame.h>
 #endif
 
-#if HAVE_LIBLZMA
+#if CLOD_USE_LIBLZMA
 #include <lzma.h>
 #endif
 
-#if HAVE_LIBZSTD
+#if CLOD_USE_LIBZSTD
 #include <zstd.h>
 #endif
 
-#if HAVE_LIBBZ2
+#if CLOD_USE_LIBBZ2
 #include <bzlib.h>
 #endif
 
@@ -30,16 +30,16 @@ struct clod_compressor {
 	void *(*malloc_func)(size_t);
 	void (*free_func)(void *);
 
-#if HAVE_LIBDEFLATE
+#if CLOD_USE_LIBDEFLATE
 	struct libdeflate_compressor *libdeflate_compressor[CLOD_COMPRESSION_LEVELS];
 #endif
 
-#if HAVE_LIBZSTD
+#if CLOD_USE_LIBZSTD
 	ZSTD_CCtx *zstd_cctx;
 #endif
 };
 
-#if HAVE_LIBLZMA
+#if CLOD_USE_LIBLZMA
 void *compressor_lzma_malloc(void *user, size_t n, size_t size) {
 	auto const ctx = (struct clod_compressor *)user;
 	return ctx->malloc_func(n * size);
@@ -50,7 +50,7 @@ void compressor_lzma_free(void *user, void *address) {
 }
 #endif
 
-#if HAVE_LIBBZ2
+#if CLOD_USE_LIBBZ2
 void *compressor_bz2_malloc(void *user, int n, int size) {
 	auto const ctx = (struct clod_compressor *)user;
 	return ctx->malloc_func((size_t)n * (size_t)size);
@@ -71,13 +71,13 @@ struct clod_compressor *clod_compressor_init() {
 }
 
 void clod_compressor_free(struct clod_compressor *ctx) {
-#if HAVE_LIBDEFLATE
+#if CLOD_USE_LIBDEFLATE
 	for (int i = 0; i < CLOD_COMPRESSION_LEVELS; i++)
 		if (ctx->libdeflate_compressor[i])
 			libdeflate_free_compressor(ctx->libdeflate_compressor[i]);
 #endif
 
-#if HAVE_LIBZSTD
+#if CLOD_USE_LIBZSTD
 	if (ctx->zstd_cctx)
 		ZSTD_freeCCtx(ctx->zstd_cctx);
 #endif
@@ -103,7 +103,7 @@ clod_compress(struct clod_compressor *ctx,
 			return CLOD_COMPRESSION_SUCCESS;
 		}
 		case CLOD_GZIP: {
-			#if HAVE_LIBDEFLATE
+			#if CLOD_USE_LIBDEFLATE
 
 				struct libdeflate_compressor *compressor = ctx->libdeflate_compressor[level];
 				if (!compressor) {
@@ -140,7 +140,7 @@ clod_compress(struct clod_compressor *ctx,
 			#endif
 		}
 		case CLOD_ZLIB: {
-			#if HAVE_LIBDEFLATE
+			#if CLOD_USE_LIBDEFLATE
 
 				struct libdeflate_compressor *compressor = ctx->libdeflate_compressor[level];
 				if (!compressor) {
@@ -177,7 +177,7 @@ clod_compress(struct clod_compressor *ctx,
 			#endif
 		}
 		case CLOD_DEFLATE: {
-			#if HAVE_LIBDEFLATE
+			#if CLOD_USE_LIBDEFLATE
 
 				struct libdeflate_compressor *compressor = ctx->libdeflate_compressor[level];
 				if (!compressor) {
@@ -214,7 +214,7 @@ clod_compress(struct clod_compressor *ctx,
 			#endif
 		}
 		case CLOD_LZ4F: {
-			#if HAVE_LIBLZ4
+			#if CLOD_USE_LIBLZ4
 
 				LZ4F_preferences_t prefs = LZ4F_INIT_PREFERENCES;
 				prefs.frameInfo.contentSize = src_size;
@@ -243,7 +243,7 @@ clod_compress(struct clod_compressor *ctx,
 			#endif
 		}
 		case CLOD_XZ: {
-			#if HAVE_LIBLZMA
+			#if CLOD_USE_LIBLZMA
 
 				const lzma_allocator allocator = {
 					.alloc = compressor_lzma_malloc,
@@ -297,7 +297,7 @@ clod_compress(struct clod_compressor *ctx,
 			#endif
 		}
 		case CLOD_ZSTD: {
-			#if HAVE_LIBZSTD
+			#if CLOD_USE_LIBZSTD
 				if (!ctx->zstd_cctx) {
 					ctx->zstd_cctx = ZSTD_createCCtx();
 					if (!ctx->zstd_cctx) return CLOD_COMPRESSION_ALLOC_FAILED;
@@ -332,7 +332,7 @@ clod_compress(struct clod_compressor *ctx,
 			#endif
 		}
 		case CLOD_BZIP2: {
-			#if HAVE_LIBBZ2
+			#if CLOD_USE_LIBBZ2
 				// TODO: support sizes > UINT32_MAX
 				if (src_size > UINT_MAX)
 					return CLOD_COMPRESSION_UNSUPPORTED;
