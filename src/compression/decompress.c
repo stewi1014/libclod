@@ -1,4 +1,4 @@
-#include "compression_config.h"
+#include "clod_config.h"
 #include <clod/compression.h>
 #include <stdlib.h>
 #include <string.h>

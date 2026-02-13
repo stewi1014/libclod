@@ -58,7 +58,8 @@ The only exception is the C standard library.
 That being said, omitting the majority of compression libraries
 will make most file formats that this library interacts with unreadable.
 Region files, for example, typically use zlib compression, which requires libdeflate.
-Vendoring some of these dependencies might be a good idea to implement in future.
+~~Vendoring some of these dependencies might be a good idea to implement in future.~~
+Vendoring compression libraries **is a very good idea** which I intend to implement.
 
 I reserve the right to use the entire feature set of these dependencies;
 using libclod with dependencies that have features intentionally disabled is,

@@ -3,13 +3,23 @@
  * @defgroup compression Compression
  * @{
  *
- * These compression methods provide a generic interface for compressing data using
- * a variety of compression algorithms. Support for compression algorithms
- * can be configured at compile time through enabling or disabling the libraries that provide them.
+ * compression.h describes libclod's public API for compressing and decompressing data using a variety of
+ * compression formats and algorithms. It aims to provide a uniform API across compression methods.
+ * Support for compression algorithms can be configured at compile time through enabling or disabling
+ * the libraries that provide them.
+ *
+ * To be frank, I dislike this abstraction. The usability of any given compression algorithm is highly
+ * coupled with the data it is compressing and the contexts in which it will be used. This fact is
+ * hidden to users by this abstraction - and I dislike that, but that's not my main problem with it.
+ * No, my problem with this abstraction is that it follows formats, _not algorithms_ - container formats,
+ * which fundamentally differ in their goals and intended use cases. Some compression formats supported
+ * here have full-fat containers with checksums, uncompressed size, configuration parameters, and more.
+ * Their functionality is culled here at the expense of both performance and correctness. Other methods
+ * are bare-bones compression algorithms which have little knowledge about the size or validity of the
+ * data they are decompressing. Smashing all of them into the same public API feels wrong because it is.
  *
  * Each compressed output is independent of the last, and no external state (i.e. dictionaries) exists.
- * Some algorithms are only well optimised for small data sizes when used
- * in a way which breaks one of those two properties.
+ * Some approaches are only well optimised for small data sizes when used in a way which breaks one of those two properties.
  * As such, compressing many small blobs of data can result in bad compression ratios
  * and static overheads making relative performance worse.
  */
@@ -55,7 +65,7 @@ enum clod_compression_method {
 
 	/** ZSTD compression, provided by libzstd.
 	 * Uncompressed size might be known on failure.
-	 * This is probably the best choice for most use cases. */
+	 * This is probably a good balance of performance and compression ratio for most use cases. */
 	CLOD_ZSTD = 7,
 
 	/** BZIP2 compression, provided by libbz2.
@@ -229,8 +239,5 @@ enum clod_compression_result clod_decompress(
 	enum clod_compression_method method
 );
 
-/**
- * @}
- */
-
+/** @} */
 #endif

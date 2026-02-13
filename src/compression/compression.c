@@ -1,4 +1,4 @@
-#include "compression_config.h"
+#include "clod_config.h"
 #include <clod/compression.h>
 
 bool clod_compression_support(enum clod_compression_method method) {

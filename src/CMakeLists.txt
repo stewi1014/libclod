@@ -5,7 +5,6 @@ set(CMAKE_REQUIRED_DEFINITIONS -D_GNU_SOURCE)
 check_symbol_exists(mremap "sys/mman.h" HAVE_MREMAP)
 check_symbol_exists(statx "sys/stat.h" HAVE_STATX)
 check_include_file("pthread.h" HAVE_PTHREAD)
-check_symbol_exists(clock_gettime "time.h" HAVE_CLOCK_GETTIME)
 
 execute_process(COMMAND git rev-parse --short HEAD
         WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
@@ -25,6 +24,6 @@ add_subdirectory(compression)
 add_subdirectory(hash)
 add_subdirectory(nbt)
 add_subdirectory(region)
-add_subdirectory(region_format)
+#add_subdirectory(region_format)
 add_subdirectory(sstr)
 add_subdirectory(table)

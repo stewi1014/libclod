@@ -6,6 +6,12 @@
 #cmakedefine01 HAVE_MREMAP
 #cmakedefine01 HAVE_STATX
 #cmakedefine01 HAVE_PTHREAD
-#cmakedefine01 HAVE_CLOCK_GETTIME
+
+#cmakedefine01 HAVE_LIBDEFLATE
+#cmakedefine01 HAVE_LIBLZ4
+#cmakedefine01 HAVE_LIBLZMA
+#cmakedefine01 HAVE_LIBZSTD
+#cmakedefine01 HAVE_LIBBZ2
+#cmakedefine01 HAVE_LIBLZO2
 
 #endif

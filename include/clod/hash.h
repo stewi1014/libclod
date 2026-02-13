@@ -3,11 +3,11 @@
  * @defgroup hash Hash methods
  *
  * The general idea is each hash method provides an init/add/finalise method.
- * Initialisation creates a hash state which is initialised to some constant optionally with a seed,
- * adding is the meat of the implementation and updates the state with new data, and
- * finalising parses the state to produce a final output.
- * In the case of CRC, the state is the CRC itself less some simple xor finalisation for some variants,
- * but this is not always the case (i.e. sip64).
+ * Initialisation creates a hash state which is initialised to some constant optionally including a seed value.
+ * Adding is the meat of the implementation and updates the state with new data.
+ * Finalisation parses the state to produce a final output.
+ * In the case of CRC, finalisation is a single xor with a constant, which can be undone to produce
+ * the hash state as it was before finalisation by simply performing finalisation a second time.
  *
  * The CRC methods use lookup tables. See libclod/src/hash/crc_tables_generate.c for how they are generated,
  * and libclod/src/hash/crc.c for how they are used.
