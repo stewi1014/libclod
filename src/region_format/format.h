@@ -22,15 +22,11 @@ struct clod_rfmt {
 	size_t data_size;
 
 #ifndef NDEBUG
+	bool file_locked;
 	bitarray(1024) held_locks;
 	bitarray(1024) observing_locks;
 #endif
 };
-
-typedef struct {
-	uint32_t offset : 24;
-	uint8_t size : 8;
-} chunk_loc;
 
 enum clod_rfmt_result chunk_lock_acquire(struct clod_rfmt *rfmt, unsigned chunk_index);
 enum clod_rfmt_result chunk_lock_refresh(struct clod_rfmt *rfmt, unsigned chunk_index);

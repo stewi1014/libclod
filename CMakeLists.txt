@@ -18,6 +18,8 @@ set_target_properties(clod PROPERTIES
     VISIBILITY_INLINES_HIDDEN ON
 )
 
+option(CLOD_REGION_DEBUG "Enables extra checks to ensure region file interaction follows spec" ON)
+
 option(CLOD_NATIVE "Optimize for host architecture" ON)
 if(CLOD_NATIVE)
     add_compile_options(-march=native)

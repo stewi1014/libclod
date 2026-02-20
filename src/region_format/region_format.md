@@ -1,5 +1,4 @@
 @page region_format Region File Format
-@ingroup region_format
 
 # Region File Format
 Libclod implements a novel region file format designed to provide data integrity and concurrency.
@@ -9,51 +8,37 @@ here for my own rubber ducking, reference and for any other potential implementa
 
 ## Prior Reading
  - https://docs.kernel.org/locking/seqlock.html Same approach to locking that the libclod format uses.
- - https://www.akkadia.org/drepper/futex.pdf Futex overview. What libclod uses to block threads on locks.
- - https://man7.org/linux/man-pages/man2/futex.2.html Linux futex.
- - https://developer.apple.com/documentation/os/os_sync_wait_on_address macOS futex.
+ - https://www.akkadia.org/drepper/futex.pdf Futex overview, OS API used for inter-process synchronization.
+ - https://man7.org/linux/man-pages/man2/futex.2.html Linux's futex.
+ - https://man.freebsd.org/cgi/man.cgi?query=_umtx_op FreeBSD's futex.
+ - https://man.openbsd.org/futex.2 OpenBSD's futex.
+ - https://developer.apple.com/documentation/os/os_sync_wait_on_address macOS's futex.
  - https://learn.microsoft.com/en-us/windows/win32/api/synchapi/nf-synchapi-waitonaddress Half-arsed Windows version
-of a futex that doesn't work properly, but could still prove useful.
+of a futex that doesn't support IPC, but could still prove useful.
 
 ## Structure
-| Offset | Size | Name                     | Description                                               |
-|--------|------|--------------------------|-----------------------------------------------------------|
-| 0      | 4096 | Shadow Table [1024]      | Shadow table of chunk locations in the region file.       |
-| 4096   | 4096 | MTime Table [1024]       | Modification times in unix epoch seconds.                 |
-| 8192   | 128  | Libclod Magic            | Bytes that uniquely identify the file format.             |
-| 8320   | 30   | Chunk Filename Prefix    | Filename prefix that chunk files have.                    |
-| 8350   | 10   | Chunk Filename Extension | Filename extension that chunk files have.                 |
-| 8360   | 4    | Sector Size              | Size of a sector. Ideally a multiple of system page size. |
-| 8364   | 4    | File Resize Lock         | Size of the file and a lock protecting file resizing.     |
-| 8368   | 4    |                          | Reserved                                                  |
-| 8372   | 4    | Checkpoint Table CRC-32  | CRC-32 of the checkpoint table.                           |
-| 8376   | 4    | Shadowed Sectors         | Approximation of how much duplicate chunk data exists.    |
-| ...    | ...  |                          | Reserved for future use.                                  |
-| 9216   | 3072 |                          | Unused, free for custom implementation data.              |
-| 12288  | 4096 | Chunk Locks [1024]       | Locks used to protect each chunk.                         |
-| 16384  | 4096 | Checkpoint Table [1024]  | Checkpoint table of chunk locations in the region file.   |
+| Offset | Size | Name                     | Description                                                |
+|--------|------|--------------------------|------------------------------------------------------------|
+| 0      | 4096 | Shadow Table [1024]      | Shadow table of chunk locations in the region file.        |
+| 4096   | 4096 | MTime Table [1024]       | Modification times in unix epoch seconds.                  |
+| 8192   | 128  | Magic                    | Bytes that uniquely identify the file format.              |
+| 8320   | 31   | Chunk Filename Prefix    | Filename prefix that chunk files have. Null terminated.    |
+| 8351   | 11   | Chunk Filename Extension | Filename extension that chunk files have. Null terminated. |
+| 8364   | 4    | Sector Size              | Size of a sector. Ideally a multiple of system page size.  |
+| 8368   | 4    | File Operation Lock      | Lock protecting file operations such as resizing.          |
+| 8372   | 4    | File Size                | File size in sectors.                                      |
+| 8376   | 4    | Checkpoint Table CRC-32  | CRC-32 of the checkpoint table.                            |
+| 8380   | 4    | Shadowed Sectors         | Approximation of how much duplicate chunk data exists.     |
+| ...    | ...  |                          | Reserved for future use.                                   |
+| 9216   | 3072 |                          | Unused, free for custom implementation data.               |
+| 12288  | 4096 | Chunk Locks [1024]       | Locks used to protect each chunk.                          |
+| 16384  | 4096 | Checkpoint Table [1024]  | Checkpoint table of chunk locations in the region file.    |
 
 ### Chunk Location
 | Offset | Size | Type              |
 |--------|------|-------------------|
 | 0      | 3    | Offset in sectors |
 | 3      | 1    | Size in sectors   |
-
-### Chunk Lock
-| Bit | Size | Name         | Description                                       |
-|-----|------|--------------|---------------------------------------------------|
-| 0   | 1    | Blocked Flag | Blocks aquiring of the lock, even if it is free.  |
-| 1   | 1    | Wait Acquire | If there is a thread waiting to acquire the lock. |
-| 2   | 1    | Locked Flag  | If the lock is locked or not.                     |
-| 3   | 29   | Counter      | Counter number.                                   |
-
-### File Resize Lock
-| Bit | Size | Name                 | Description                                       |
-|-----|------|----------------------|---------------------------------------------------|
-| 0   | 1    | Blocked Flag         | Blocks aquiring of the lock, even if it is free.  |
-| 1   | 1    | Wait Acquire         | If there is a thread waiting to acquire the lock. |
-| 2   | 1    | Locked Flag          | If the lock is locked or not.                     |
-| 3   | 29   | File size in sectors | Size of the file in sectors.                      |
 
 ### Chunk Data
 | Offset | Size | Type                           |
@@ -62,12 +47,15 @@ of a futex that doesn't work properly, but could still prove useful.
 | 4      | 1    | Chunk compression type         |
 | 5      | ...  | Compressed chunk data          |
 
-# Chunk Locking
+# Locking
+TODO: update with new lock format.
 The format uses a counter-style locking scheme that forms the basis of synchronisation for users of the format
 and is a requirement for any program that wishes to write to the format or ensure the consistency of read data.
+While the format can be implemented with spinning alone, the use of an inter-process futex is highly recommended.
 Acquiring a lock involves exclusively exchanging the locked flag from unset to set and incrementing the counter.
 Then, on lock release, the counter is incremented again, the locked flag is cleared, and waiters are woken up.
 
+Knowing when a previous operation failed and how to recover from it is fundamentally important to data integrity.
 The detection of a dead lock holder is done through a simple timeout, and the unsavory nature of this approach
 is mitigated by the ability for lock holders to refresh their locks by incrementing the counter. The period of
 this lock refreshing may vary depending on the implementation, but a duration of ~100 milliseconds is probably
@@ -78,49 +66,60 @@ Each part of the file has strict rules on what locks must be held or observed be
 consistency of read data and the integrity of the file. The only exception is for a reader that does not
 care about data integrity. In this documentation it is assumed that readers do care about data integrity.
 
-This table is not a comprehensive description of when operations are or are not allowed.
-For example, the detection of a dead lock holder comes with a new set of constraints as it's possible
-that the semantics of the shadow and checkpoint tables are reversed.
+## Structure
+| Bit | Size | Name            | Description                                                |
+|-----|------|-----------------|------------------------------------------------------------|
+| 0   | 1    | Blocked Flag    | Prevents aquiring the lock, even if it's unlocked.         |
+| 1   | 1    | Write Lock      | Lock which only one thread may hold at a time.             |
+| 2   | 6    | Read Lock Count | Lock which up to 64 threads may hold at a time.            |
+| 8   | 24   | Generation      | Generation number incremented on every write lock acquire. |
 
-| Name                     | No Lock           | Observe One Lock    | One Lock                  | All Locks         |
-|--------------------------|-------------------|---------------------|---------------------------|-------------------|
-| Shadow Table [1024]      | None              | Read specific chunk | Read/Write specific chunk | Read/Write        |
-| MTime Table [1024]       | None              | Read specific chunk | Read/Write specific chunk | Read/Write        |
-| Libclod Magic            | Read Only         | Read Only           | Read Only                 | Read Only         |
-| Chunk Filename Prefix    | Read Only         | Read Only           | Read Only                 | Read Only         |
-| Chunk Filename Extension | Read Only         | Read Only           | Read Only                 | Read Only         |
-| Sector Size              | Read Only         | Read Only           | Read Only                 | Read Only         |
-| File Resize Lock         | None              | None                | Lockable                  | Lockable          |
-| Checkpoint Table CRC-32  | None              | Read Only           | Read Only                 | Read/Write        |
-| Shadowed Count           | Atomic            | Atomic              | Atomic                    | Atomic            |
-| Chunk Locks [1024]       | Atomic Read/Write | Atomic Read/Write   | Atomic Read/Write         | Atomic Read/Write |
-| Checkpoint Table [1024]  | None              | Read Only           | Read Only                 | Read/Write        |
+## Lock Requirements
+This table is a rough guide for what locks are required to interact with different format elements.
+It is not comprehensive. For example, the detection of a dead lock holder comes with a new set of
+constraints as it's possible that the semantics of the shadow and checkpoint tables are reversed.
+
+| Name                     | Read                        | Write                                         |
+|--------------------------|-----------------------------|-----------------------------------------------|
+| Shadow Table [1024]      | Observe specific chunk lock | Hold chunk lock                               |
+| MTime Table [1024]       | Observe specific chunk lock | Hold chunk lock                               |
+| Magic                    | Always                      | Never                                         |
+| Chunk Filename Prefix    | Always                      | Never                                         |
+| Chunk Filename Extension | Always                      | Never                                         |
+| Sector Size              | Always                      | Never                                         |
+| File Operation Lock      | Observable                  | Lockable                                      |
+| File Size                | Observe file operation lock | Hold file operation lock                      |
+| Checkpoint Table CRC-32  | Observe any chunk lock      | Hold all chunk locks                          |
+| Shadowed Sectors         | None                        | Hold chunk lock                               |
+| Chunk Locks [1024]       | Observable                  | Lockable when not holding file operation lock |
+| Checkpoint Table [1024]  | Observe any chunk lock      | Hold all chunk locks                          |
 
 # Reading
-The format supports true read-only capability, and as such, readers must operate without modifying anything,
-including locks. This, in addition to the want for simplicity, means that readers can't exclude writers.
-Instead, readers perform their operation while observing the lock to ensure that read data is consistent.
-When a reader observes a change to the lock, i.e. an acquisition during the read, it has a couple of options.
+The format supports true read-only capability, and as such, readers must be able to operate without modifying
+anything, including locks. This, in addition to the want for simplicity, means that readers may observe locks
+instead of holding them. In this way, readers make a note of the lock state before beginning their operation.
+Then, if a reader observes a change to the lock, i.e. an acquisition during the read, it has a couple of options.
 If the chunk data comes with its own checksum, the data can be independently verified and no retry is needed.
 If the read operation is some kind of background scaper, the operation could be cancelled altogether
 and retried on the next pass. Or, if stale data is acceptable, the reader could use the checkpoint table,
 which only requires that at least one lock was not held during the read.
 
 # Writing
-Writes must never overwrite chunk data referenced by the checkpoint table or other chunks in the shadow table.
+Writes must never overwrite chunk data referenced by the checkpoint table or by other chunks in the shadow table.
 Put another way, the writer may only overwrite chunk data if it is the chunk it is writing to and the chunk is shadowed.
-The easiest approach to this is to simply append to the end of the file. The writer must also ensure that all
-potential avenues for chunk invalidity result in the chunk's lock appearing to have a dead writer. I.e.
-a writer is not allowed to abort partway through a write operation and leave the chunk in an invalid state.
-In that case it must either revert the chunk to a previous valid state or leave the lock locked to indicate failure,
-which will cause other conforming implementations to revert the chunk to the last checkpoint.
+The easiest approach to this is to simply append to the end of the file using the file operation lock. The writer must
+also ensure that all potential avenues for chunk invalidity result in the chunk's lock appearing to have a dead owner.
+I.e. a writer is allowed to crash while holding the chunk lock and leave invalid chunk data, but it may never cleanly
+release the chunk lock if the chunk data is not valid. Put another way, a writer must not lie about the validity of its
+chunk. If a writer is unable to leave a chunk in a valid state, it must either restore the chunk from the previous
+checkpoint or leave the lock locked to indicate failure.
 
 Secondly, writes must correctly use their chunk's lock and respond to a dead lock holder.
 If the writer detects that the previous lock holder is dead, it must start the recovery process or abort the
-write operation. That being said, the recovery process for a failed write to a chunk is to get the chunk from the
-last checkpoint and restore it to the shadow table, which the write method is about to immediately overwrite anyway.
-As such, a writer can check if the necessary recovery is simply restoring the chunk it's writing to, and if so,
-continue as normal.
+write operation. That being said, the recovery process for a failed write to a chunk is to restore the chunk
+from the last checkpoint, and the write method is about to immediately overwrite said chunk anyway. As such,
+a write method may simply confirm that the chunk it's writing to is the only thing that needs restoring,
+and if so, ignore recovery entirely in favour of its own new data.
 
 While appending to the end of the file is the most straightforward approach, it eventually leads
 to blow out file sizes far larger than what is needed to actually store the data the file contains.
@@ -141,7 +140,18 @@ it gives up and appends instead.
    table doesn't point to the same space. If it does, discard the space and append instead.
 7. Use the space.
 
-# File Resize
+# File Operations
+Some file operations would have race conditions if not otherwise managed. A global file operation lock exists
+to manage this.
+
+## File Creation
+To address file initialisation race conditions, the OS is relied on to ensure exclusive file creation.
+On unix-based systems this is the O_EXCL flag. The method which exclusively created the file is then
+responsible for initialising the file with magic and other constants before setting the file lock to
+a non-zero value. Conversely, methods which open an existing file must observe the file lock for a
+a non-zero value before reading any constants.
+
+## File resizing
 To facilitate the atomic allocation of new space at the end of the file, a file growth lock is used.
 This lock is used to protect resizing of the file during concurrent usage. To prevent the potential
 for deadlock, no chunk locks can be acquired while the file resize lock is held. The lock internally

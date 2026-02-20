@@ -18,12 +18,14 @@ target_include_directories(clod
     PRIVATE include
 )
 
+libclod_test(bitarray)
 libclod_test(endian)
 
+add_subdirectory(bigint)
 add_subdirectory(compression)
 add_subdirectory(hash)
 add_subdirectory(nbt)
 add_subdirectory(region)
-add_subdirectory(region_format)
+#add_subdirectory(region_format)
 add_subdirectory(sstr)
 add_subdirectory(table)

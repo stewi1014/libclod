@@ -1,3 +1,4 @@
+@mainpage
 # libclod
 #### [Documentation](https://stewi1014.github.io/libclod/)
 #### [Source](https://github.com/stewi1014/libclod)
@@ -50,16 +51,14 @@ ctest .
 
 ## Dependencies
 
-All dependencies are optional!
+All library dependencies are optional!
 They can be enabled or disabled at build time,
 thereby omitting the features said dependency provided.
 The only exception is the C standard library.
 
 That being said, omitting the majority of compression libraries
 will make most file formats that this library interacts with unreadable.
-Region files, for example, typically use zlib compression, which requires libdeflate.
-~~Vendoring some of these dependencies might be a good idea to implement in future.~~
-Vendoring compression libraries **is a very good idea** which I intend to implement.
+Vendoring compression libraries is a future goal.
 
 I reserve the right to use the entire feature set of these dependencies;
 using libclod with dependencies that have features intentionally disabled is,
@@ -74,31 +73,29 @@ in general, not supported, although many specific cases would be fine.
 - sqlite3 `-DUSE_SQLITE3=ON/OFF`
 - libpq `-DUSE_LIBPQ=ON/OFF`
 
-### Platforms
-
-#### Linux
+### Linux
 Linux is tested.
 Some linux-specific optimisations are used if they are available.
 
-#### BSD
-BSD variants are untested.
+### BSD
+BSD variants are untested but expected to work with minimal changes, if any.
 They support everything libclod needs, so the only barrier to support
 is getting things plugged in properly if they aren't already.
 
-#### macOS
-macOS is untested.
-In 14.4 they added a public API for a futex-style feature, which libclod needs.
-Before then, projects would use a private and undocumented API for this (yuck!).
+### macOS
+macOS is untested but expected to work with minimal changes, if any.
+The lowest common denominator is 14.4 where they added a public API for a futex-style feature,
+which libclod needs. Before then, projects would use a private and undocumented API for this (yuck!).
 Other than that, macOS seems to have a reasonably strong feature set and robust public API.
 The only barrier to support is getting things plugged in properly if they aren't already.
 
-#### Windows
-Unfortunately, this project highlights Windows's weakness as an operating system and platform.
-Not only is Windows unable to share code paths that other operating systems share, requiring
-maintaining duplicate code for Windows vs everything else, but functionality ubiquitous among
-other systems is often missing in Windows. Due to this lack of functionality, it might not
-be possible to implement libclod for Windows without significant feature culling.
-To top it off, Windows also lacks a modern C compiler or toolchain. Libclod is written in modern C.
+### Windows
+Unfortunately, this project highlights Windows's weakness as an operating system and platform. Not only does
+Windows lack support for the standardised APIs that other operating systems share, requiring maintaining duplicate
+code for Windows vs everything else, but functionality ubiquitous among other systems is often missing in Windows.
+Due to this lack of functionality, it might not be possible to implement libclod for Windows without significant
+feature culling. To top it off, Windows also lacks a modern C compiler or toolchain without 3rd party software.
+Libclod is written in modern C.
 
 Libclod is attempting to implement some database-like features, and there's a reason why
 robust support for Windows by database software is almost unheard of. While it won't be easy,

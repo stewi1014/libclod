@@ -1,6 +1,5 @@
 /**
- * @file clod/region_format.h
- * @ingroup region
+ * @file clod/region_format/format.h
  * @defgroup region_format Region Format
  * @{
  *
@@ -40,20 +39,23 @@ struct clod_rfmt_opts;
 enum clod_rfmt_result {
 	/** No worries. */
 	CLOD_RFMT_OK = 0,
+	/** Memory allocation failure. */
+	CLOD_RFMT_ALLOCATION_FAILURE = 1,
 	/** The provided timeout was reached. */
 	CLOD_RFMT_TIMEOUT = 2,
+	/** Other error. */
+	CLOD_RFMT_OTHER = 3,
 	/** Invalid parameters. */
 	CLOD_RFMT_INVALID = 4,
-	/** The library successfully stopped an invalid operation that may have caused data loss.
-	 * Some checks to prevent such misuse are put behind NDEBUG, and as such won't detect the misuse,
-	 * and potentially cause data loss, in release builds. The return of this result indicates a
-	 * critical bug in the library user. */
-	CLOD_RFMT_OWN_MISUSE = 5,
+	/** The operation is not allowed to be performed in the current state. This typically indicates that a
+	 * required lock was not held. Many checks which return this value are configurable, and may not be
+	 * included in release builds. The return of this result indicates a critical bug in the library user. */
+	CLOD_RFMT_MISUSE = 5,
 	/** Someone else is interacting with the region file in a way which causes corruption and permanent
 	 * data loss, or there is a critical bug in this library. The return of this error likely means
 	 * data loss has already occurred. The implementation that caused this error needs to be fixed. */
 	CLOD_RFMT_OTHER_MISUSE = 6,
-	/** The provided \p file_manage method indicated an error. */
+	/** The provided \p file_manage method indicated an error or returned invalid values. */
 	CLOD_RFMT_FILE_MANAGE_ERROR = 7,
 	/** The provided \p file_sync method indicated an error. */
 	CLOD_RFMT_FILE_SYNC_ERROR = 8
@@ -68,12 +70,12 @@ struct clod_rfmt_opts {
 	uint32_t dead_lock_timeout_ms;
 
 	/**
-	 * Method provided by the user that is used to get, query, and resize the region file.
+	 * Method provided by the user that is used to get, query, and truncate the region file.
 	 * Multiple optional arguments may be provided in the same call.
 	 *
 	 * @param[in] data (nullable) If non-null, the method shall return a pointer to the complete file contents.
 	 * @param[in] size (nullable) If non-null, the method shall return the size of the file.
-	 * @param[in] new_size (nullable) If non-null, the method shall resize the file to the provided size.
+	 * @param[in] new_size (nullable) If non-null, the method shall truncate the file to the provided size.
 	 * @param[in] user The provided user pointer.
 	 * @return True if the operation was successful, false if not.
 	 */
@@ -90,20 +92,21 @@ struct clod_rfmt_opts {
 	 */
 	bool (*file_sync)(size_t size, void *user);
 
-	/** Custom memory allocation function. Nullable.
+	/** Custom allocation function. Nullable.
 	 * This is not used for any buffers, this library doesn't buffer anything. */
 	void *(*malloc_func)(size_t size, void *user);
 
-	/** Custom memory free function. Nullable. */
+	/** Custom free function. Nullable. */
 	void (*free_func)(void *ptr, void *user);
 
-	/** User value passed to callbacks. Anything. */
+	/** User value passed to callbacks. */
 	void *user;
 };
 
 /**
  * Create a new region file in read/write mode.
  *
+ * @param[out] rfmt_out Handle to the region file.
  * @param[in] opts Configuration options for the opened file.
  * @param[in] chunk_filename_prefix Filename prefix for chunk files.
  * @param[in] chunk_filename_extension Filename extension for chunk files.
@@ -111,7 +114,8 @@ struct clod_rfmt_opts {
  * @return Handle to the file.
  */
 CLOD_API CLOD_NONNULL(1, 2, 3)
-struct clod_rfmt *clod_rfmt_init_new(
+enum clod_rfmt_result clod_rfmt_init_new(
+	struct clod_rfmt **rfmt_out,
 	struct clod_rfmt_opts *opts,
 	char *chunk_filename_prefix,
 	char *chunk_filename_extension,
@@ -121,20 +125,22 @@ struct clod_rfmt *clod_rfmt_init_new(
 /**
  * Initialise a region file for read/write interaction.
  *
+ * @param[out] rfmt_out Handle to the region file.
  * @param[in] opts Configuration options for the opened file.
  * @return Handle to the region file.
  */
 CLOD_API CLOD_NONNULL(1)
-struct clod_rfmt *clod_rfmt_init_rw(struct clod_rfmt_opts *opts);
+enum clod_rfmt_result clod_rfmt_init_rw(struct clod_rfmt **rfmt_out, struct clod_rfmt_opts *opts);
 
 /**
  * Initialise a region file for read-only interaction.
  *
+ * @param[out] rfmt_out Handle to the region file.
  * @param[in] opts Configuration options for the opened file.
  * @return Handle to the region file.
  */
 CLOD_API CLOD_NONNULL(1)
-struct clod_rfmt *clod_rfmt_init_ro(struct clod_rfmt_opts *opts);
+enum clod_rfmt_result clod_rfmt_init_ro(struct clod_rfmt **rfmt_out, struct clod_rfmt_opts *opts);
 
 /**
  * Release resources associated with the file handle.
@@ -146,7 +152,10 @@ CLOD_API CLOD_NONNULL(1)
 enum clod_rfmt_result clod_rfmt_free(struct clod_rfmt *rfmt);
 
 CLOD_API CLOD_NONNULL(1)
-enum clod_rfmt_result clod_rfmt_lock_acquire(struct clod_rfmt *rfmt, uint32_t )
+enum clod_rfmt_result clod_rfmt_lock_acquire(struct clod_rfmt *rfmt, uint32_t index);
+
+CLOD_API CLOD_NONNULL(1)
+enum clod_rfmt_result clod_rfmt_lock_refresh(struct clod_rfmt *rfmt, uint32_t index);
 
 /** @} */
 #endif
