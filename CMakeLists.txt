@@ -3,24 +3,37 @@ list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 set(
     CMAKE_C_STANDARD 23
     CMAKE_C_STANDARD_REQUIRED ON
+    CMAKE_REQUIRED_DEFINITIONS -D_FILE_OFFSET_BITS=64
 )
 
 project(libclod LANGUAGES C)
+
+include(CMakePackageConfigHelpers)
 include(CTest)
 enable_testing()
+
+###########
+# Libclod #
+###########
 
 add_library(clod SHARED)
 set_target_properties(clod PROPERTIES SOVERSION 1)
 target_include_directories(clod PUBLIC include)
-target_compile_definitions(clod PRIVATE _GNU_SOURCE _FILE_OFFSET_BITS=64)
-set_target_properties(clod PROPERTIES
-    C_VISIBILITY_PRESET hidden
-    VISIBILITY_INLINES_HIDDEN ON
-)
+set_target_properties(clod PROPERTIES C_VISIBILITY_PRESET hidden)
+target_compile_definitions(clod PRIVATE CLOD_BUILD)
 
-option(CLOD_NATIVE "Optimize for host architecture" ON)
+#########################
+# Configuration Options #
+#########################
+
+option(CLOD_RWSEQ_DEBUG "Enables extra checks to ensure rwseq usage is normal" ON)
+option(CLOD_REGION_DEBUG "Enables extra checks to ensure region file interaction follows spec" ON)
+
+option(CLOD_NATIVE "Optimise for host architecture and use nonportable platform features" ON)
 if(CLOD_NATIVE)
     add_compile_options(-march=native)
+    set(CMAKE_REQUIRED_DEFINITIONS -D_GNU_SOURCE)
+    target_compile_definitions(clod PRIVATE _GNU_SOURCE)
 endif()
 
 option(CLOD_SANITISERS "Enable sanitisers" OFF)
@@ -68,24 +81,11 @@ if (CLOD_USE_LIBBZ2)
     target_link_libraries(clod PRIVATE BZip2::BZip2)
 endif ()
 
-#############
-# Functions #
-#############
+###########
+# Install #
+###########
 
-function(libclod_test name)
-    string(REPLACE "/src" "/test" test_dir ${CMAKE_CURRENT_SOURCE_DIR})
-    file(RELATIVE_PATH rel_path "${CMAKE_CURRENT_FUNCTION_LIST_DIR}/src" "${CMAKE_CURRENT_SOURCE_DIR}")
-    if(rel_path STREQUAL "." OR rel_path STREQUAL "")
-        set(test_name "${name}")
-    else()
-        string(REPLACE "/" "_" path "${rel_path}")
-        set(test_name "${path}_${name}")
-    endif()
-
-    add_executable(test_${test_name} ${test_dir}/${name}.c)
-    target_include_directories(test_${test_name} PRIVATE ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/test include)
-    target_link_libraries(test_${test_name} PRIVATE clod)
-    add_test(NAME ${test_name} COMMAND test_${test_name})
-endfunction()
+# TODO
 
 add_subdirectory(src)
+add_subdirectory(test)

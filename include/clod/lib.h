@@ -9,21 +9,26 @@
 #ifndef LIBCLOD_LIB_H
 #define LIBCLOD_LIB_H
 
-#if defined(__GNUC__) // GCC and Clang
-	#if defined(_WIN32) // Windows - Clang
+#if defined(_WIN32)
+	#ifdef CLOD_BUILD
 		#define CLOD_API __declspec(dllexport)
-	#elif defined(__unix__) || defined(__APPLE__) // Unix - GCC/Clang
-		#define CLOD_API __attribute__((visibility("default")))
 	#else
-		#error "Unknown platform"
+		#define CLOD_API __declspec(dllimport)
 	#endif
+#elif defined(__unix__) || defined(__APPLE__)
+	#define CLOD_API __attribute__((visibility("default")))
+#endif
 
+#if defined(__GNUC__) // GCC and Clang
 	#define CLOD_NONNULL(...) __attribute__((nonnull(__VA_ARGS__)))
 	#define CLOD_USE_RETURN __attribute__((warn_unused_result))
 	#define CLOD_CONST __attribute__((const))
 	#define CLOD_PURE __attribute__((pure))
 #else
-	#error "Unknown toolchain"
+	#define CLOD_NONNULL(...)
+	#define CLOD_USE_RETURN
+	#define CLOD_CONST
+	#define CLOD_PURE
 #endif
 
 #endif

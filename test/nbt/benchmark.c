@@ -1,9 +1,9 @@
-#include "test.h"
 #include <clod/nbt.h>
 #include <time.h>
 #include <stdlib.h>
 #include <stdint.h>
 #include <inttypes.h>
+#include <stdio.h>
 
 const char level_data[] = {
 #embed "player.nbt"
@@ -13,7 +13,7 @@ const char level_data[] = {
 #define NS_IN_SEC 1000000000
 #define BYTE_IN_GB 1000000000
 
-int main() {
+int nbt_benchmark() {
 	struct timespec start;
 	clock_gettime(CLOCK_MONOTONIC, &start);
 
@@ -32,4 +32,5 @@ int main() {
 	printf("%"PRIu64" ns/parse\n", ns_diff / ITER_COUNT);
 	printf("%0.3f ns/byte\n", (double)ns_diff / (double)total);
 	printf("%0.3f GB/s\n", (double)total * NS_IN_SEC / BYTE_IN_GB / (double)ns_diff);
+	return 0;
 }

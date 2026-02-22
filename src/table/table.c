@@ -1,4 +1,5 @@
 #include <clod/table.h>
+#include <clod/hash.h>
 #include <assert.h>
 #include <stddef.h>
 #include <stdint.h>
@@ -75,11 +76,6 @@ static bool create(struct clod_table *t, const struct clod_table_opts *opts, con
 static void destroy(const struct clod_table *t) {
 	t->opts.free_func(t->elements, t->opts.user);
 }
-static bool key_equal(const struct clod_table *t, const size_t index, const void *key, const size_t key_size) {
-	auto const res = t->elements[index];
-	if (res.key_size != key_size) return false;
-	return t->opts.cmp_func(res.element, key, res.key_size, t->opts.user) == 0;
-}
 static struct probe {
 	size_t existing;
 	size_t available;
@@ -98,7 +94,16 @@ probe(const struct clod_table *t, const struct table_position pos, const void *k
 			};
 		}
 
-		if (t->control[index] == pos.ctl && key_equal(t, index, key, key_size)) {
+		if (
+			t->control[index] == pos.ctl &&
+			t->opts.cmp_func(
+				t->elements[index].element,
+				t->elements[index].key_size,
+				key,
+				key_size,
+				t->opts.user
+			) == 0
+		) {
 			return (struct probe){
 				.existing = index,
 				.available = INDEX_NIL
@@ -158,10 +163,24 @@ static bool rebuild(struct clod_table *t, const size_t new_table_size) {
 	memcpy(t, &new, sizeof(new));
 	return true;
 }
-static uint64_t default_hash(uint64_t seed, const void *data, size_t data_size, void*) { return clod_sip64(seed, data, data_size); }
-static void *default_malloc(size_t size, void*) { return malloc(size); }
+static uint64_t default_hash(const uint64_t seed, const void *data, const size_t data_size, void*) { return clod_sip64(seed, data, data_size); }
+static int default_cmp(const void *key1, size_t key1_size, const void *key2, const size_t key2_size, void *) {
+	if (key1_size > key2_size) return 1;
+	if (key1_size < key2_size) return -1;
+	return memcmp(key1, key2, key1_size);
+}
+uint64_t clod_table_hash_ptr(const uint64_t seed, const void *key, size_t, void *) {
+	uint8_t data[sizeof(void*)];
+	memcpy(data, &key, sizeof(void*));
+	return clod_sip64(seed, data, sizeof(void*));
+}
+int clod_table_cmp_ptr(const void *key1, size_t, const void *key2, size_t, void *) {
+	if (key1 > key2) return 1;
+	if (key1 < key2) return -1;
+	return 0;
+}
+static void *default_malloc(const size_t size, void*) { return malloc(size); }
 static void default_free(void *ptr, void*) { free(ptr); }
-static int default_cmp(const void *key1, const void *key2, size_t key_size, void *) { return memcmp(key1, key2, key_size); }
 static void apply_default_opts(struct clod_table_opts *opts) {
 	if (!opts->hash_func) opts->hash_func = default_hash;
 	if (!opts->cmp_func) opts->cmp_func = default_cmp;

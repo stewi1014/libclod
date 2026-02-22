@@ -3,11 +3,12 @@
 #include "test.h"
 #include <clod/nbt.h>
 
-const char level_data[] = {
+const char parse_level_data[] = {
 #embed "level.nbt"
 };
 
-int main() {
-	const size_t res = clod_nbt_tag_size((void*)level_data, level_data + sizeof(level_data));
-	check("correct NBT size", res == sizeof(level_data));
+int nbt_parse_level() {
+	const size_t res = clod_nbt_tag_size((void*)parse_level_data, parse_level_data + sizeof(parse_level_data));
+	check("correct NBT size", res == sizeof(parse_level_data));
+	return 0;
 }

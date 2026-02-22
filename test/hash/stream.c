@@ -1,10 +1,8 @@
 #include "test.h"
 #include <clod/hash.h>
-#include <stdlib.h>
 #include <string.h>
 
-
-int main() {
+int hash_stream() {
 	clod_sip64_state sip64 = clod_sip64_init(0);
 	sip64 = clod_sip64_add(sip64, "abcd", 4);
 	sip64 = clod_sip64_add(sip64, "efg", 3);
@@ -48,5 +46,5 @@ int main() {
 	crc8 = clod_crc8_add(crc8, "efg", 3);
 	check("streamed and one-shot crc8 agrees", clod_crc8_finalise(crc8) == clod_crc8("abcdefg", 7));
 
-	return EXIT_SUCCESS;
+	return 0;
 }

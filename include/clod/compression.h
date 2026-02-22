@@ -130,7 +130,7 @@ struct clod_compressor;
 
 /**
  * @struct clod_decompressor
- * Memory and tables reusable across invoations of clod_decompress.
+ * Memory and tables reusable across invocations of clod_decompress.
  */
 struct clod_decompressor;
 

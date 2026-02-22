@@ -5,7 +5,7 @@
 #include "crc_tables.h"
 
 CLOD_CONST
-static uint64_t gf2_mul_mod(uint64_t a, uint64_t b, uint64_t polynomial, uint8_t bits) {
+static uint64_t gf2_mul_mod(uint64_t a, const uint64_t b, const uint64_t polynomial, const uint8_t bits) {
 	uint64_t res = 0;
 	for (uint8_t i = 0; i < bits; i++) {
 		if (b & UINT64_C(1) << i)
@@ -19,7 +19,7 @@ static uint64_t gf2_mul_mod(uint64_t a, uint64_t b, uint64_t polynomial, uint8_t
 }
 
 CLOD_CONST
-static uint64_t gf2_mul_mod_reflected(uint64_t a, uint64_t b, uint64_t polynomial, uint8_t bits) {
+static uint64_t gf2_mul_mod_reflected(uint64_t a, const uint64_t b, const uint64_t polynomial, const uint8_t bits) {
 	uint64_t res = 0;
 	for (uint8_t i = 0; i < bits; i++) {
 		if (b & UINT64_C(1) << i)
@@ -32,10 +32,11 @@ static uint64_t gf2_mul_mod_reflected(uint64_t a, uint64_t b, uint64_t polynomia
 	return res;
 }
 
-uint64_t clod_crc64_add(uint64_t crc, const uint8_t *restrict data, size_t data_len) {
-	if (data)
+uint64_t clod_crc64_add(uint64_t crc, const void *restrict data, size_t data_len) {
+	const uint8_t *restrict bytes = data;
+	if (bytes)
 		for (size_t i = 0; i < data_len; i++)
-			crc = crc64_table[(crc >> 56) ^ data[i]] ^ crc << 8;
+			crc = crc64_table[(crc >> 56) ^ bytes[i]] ^ crc << 8;
 	else
 		for (uint8_t b = 0; data_len > 0; b++, data_len >>= 1)
 			if (data_len & 1)
@@ -43,10 +44,11 @@ uint64_t clod_crc64_add(uint64_t crc, const uint8_t *restrict data, size_t data_
 	return crc;
 }
 
-uint32_t clod_crc32_add(uint32_t crc, const uint8_t *restrict data, size_t data_len) {
-	if (data)
+uint32_t clod_crc32_add(uint32_t crc, const void *restrict data, size_t data_len) {
+	const uint8_t *restrict bytes = data;
+	if (bytes)
 		for (size_t i = 0; i < data_len; i++)
-			crc = crc32_table[(crc & 0xff) ^ data[i]] ^ crc >> 8;
+			crc = crc32_table[(crc & 0xff) ^ bytes[i]] ^ crc >> 8;
 	else
 		for (uint8_t b = 0; data_len > 0; b++, data_len >>= 1)
 			if (data_len & 1)
@@ -54,11 +56,12 @@ uint32_t clod_crc32_add(uint32_t crc, const uint8_t *restrict data, size_t data_
 	return crc;
 }
 
-uint32_t clod_crc24_add(uint32_t crc, const uint8_t *restrict data, size_t data_len) {
+uint32_t clod_crc24_add(uint32_t crc, const void *restrict data, size_t data_len) {
+	const uint8_t *restrict bytes = data;
 	crc = crc & 0x00FFFFFF;
-	if (data)
+	if (bytes)
 		for (size_t i = 0; i < data_len; i++)
-			crc = (crc24_table[(crc >> 16) ^ data[i]] ^ crc << 8) & 0x00FFFFFF;
+			crc = (crc24_table[(crc >> 16) ^ bytes[i]] ^ crc << 8) & 0x00FFFFFF;
 	else
 		for (uint8_t b = 0; data_len > 0; b++, data_len >>= 1)
 			if (data_len & 1)
@@ -66,10 +69,11 @@ uint32_t clod_crc24_add(uint32_t crc, const uint8_t *restrict data, size_t data_
 	return crc;
 }
 
-uint16_t clod_crc16_add(uint16_t crc, const uint8_t *restrict data, size_t data_len) {
-	if (data)
+uint16_t clod_crc16_add(uint16_t crc, const void *restrict data, size_t data_len) {
+	const uint8_t *restrict bytes = data;
+	if (bytes)
 		for (size_t i = 0; i < data_len; i++)
-			crc = crc16_table[(crc & 0xff) ^ data[i]] ^ (uint16_t)(crc >> 8);
+			crc = crc16_table[(crc & 0xff) ^ bytes[i]] ^ (uint16_t)(crc >> 8);
 	else
 		for (uint8_t b = 0; data_len > 0; b++, data_len >>= 1)
 			if (data_len & 1)
@@ -77,10 +81,11 @@ uint16_t clod_crc16_add(uint16_t crc, const uint8_t *restrict data, size_t data_
 	return crc;
 }
 
-uint8_t clod_crc8_add(uint8_t crc, const uint8_t *restrict data, size_t data_len) {
-	if (data)
+uint8_t clod_crc8_add(uint8_t crc, const void *restrict data, size_t data_len) {
+	const uint8_t *restrict bytes = data;
+	if (bytes)
 		for (size_t i = 0; i < data_len; i++)
-			crc = crc8_table[(crc & 0xff) ^ data[i]] ^ (uint8_t)(crc >> 8);
+			crc = crc8_table[(crc & 0xff) ^ bytes[i]] ^ (uint8_t)(crc >> 8);
 	else
 		for (uint8_t b = 0; data_len > 0; b++, data_len >>= 1)
 			if (data_len & 1)

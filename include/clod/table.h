@@ -18,7 +18,6 @@
 #define LIBCLOD_TABLE_H
 
 #include <clod/lib.h>
-#include <clod/hash.h>
 #include <stddef.h>
 #include <stdint.h>
 
@@ -36,15 +35,15 @@ struct clod_table_opts {
 	/** Minimum number of elements to support without further allocation.
 	 * The table will never shrink to a capacity below this. */
 	size_t min_capacity;
-	/** Custom hash function.
+	/** Custom hash function. Defaults to clod_sip64.
 	 * This map implementation demands a uniform spread of entropy across _all_ bits in uint64,
 	 * and that two keys with nonequal hashes are also not equal when using the cmp_func method.*/
 	uint64_t (*hash_func)(uint64_t seed, const void *key, size_t key_size, void *user);
-	/** Custom equality function.
+	/** Custom equality function. Defaults to memcmp.
 	 * The required behaviour for the hash_func and cmp_func relationship is;
 	 * assert(cmp_func(a, b) != 0 || hash_func(a) == hash_func(b));
 	 * In other words, if cmp_func thinks two elements are equal, hash_func must agree.*/
-	int (*cmp_func)(const void *key1, const void *key2, size_t key_size, void *user);
+	int (*cmp_func)(const void *key1, size_t key1_size, const void *key2, size_t key2_size, void *user);
 	/** Custom memory allocation function. */
 	void *(*malloc_func)(size_t, void *user);
 	/** Custom memory freeing function. */
@@ -143,8 +142,8 @@ struct clod_table_iter {
 
 /**
  * Get the next element in, or start, an iteration over table elements.
- * Mutating the table during iteration can result in existing
- * elements being iterated more than once or not at all.
+ * Mutating the table, except deleting elements, during iteration can
+ * result in existing elements being iterated more than once or not at all.
  *
  * The iterator should be zero initialised to start an iteration.
  * The iterator is zeroed at the end of the iteration.
@@ -156,6 +155,22 @@ struct clod_table_iter {
 CLOD_API CLOD_NONNULL(1, 2)
 bool
 clod_table_iter(const struct clod_table *t, struct clod_table_iter *iter);
+
+/**
+ * A hash method that hashes the pointer value itself instead of the data it references.
+ * Provided here as a helper for using the table as a pointer set.
+ */
+CLOD_API
+uint64_t
+clod_table_hash_ptr(uint64_t seed, const void *key, size_t key_size, void *user);
+
+/**
+ * A comparison method that compares the pointer values themselves instead of the data they reference.
+ * Provided here as a helper for using the table as a pointer set.
+ */
+CLOD_API
+int
+clod_table_cmp_ptr(const void *key1, size_t key1_size, const void *key2, size_t key2_size, void *user);
 
 /** @} */
 #endif

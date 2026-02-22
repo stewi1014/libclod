@@ -1,9 +1,8 @@
 #include "test.h"
 #include <clod/hash.h>
-#include <stdlib.h>
 #include <string.h>
 
-int main() {
+int hash_replace() {
 	uint64_t crc64 = clod_crc64("abcdefg", 7);
 	uint64_t state64 = clod_crc64_finalise(crc64);
 	state64 = clod_crc64_add_at(state64, "cd", 2, 3);
@@ -33,5 +32,5 @@ int main() {
 	state8 = clod_crc8_add_at(state8, "cd", 2, 3);
 	state8 = clod_crc8_add_at(state8, "hi", 2, 3);
 	check("Replacing section of crc8 is correct", clod_crc8("abhiefg", 7) == clod_crc8_finalise(state8));
-	return EXIT_SUCCESS;
+	return 0;
 }

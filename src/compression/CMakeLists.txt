@@ -3,5 +3,3 @@ target_sources(clod PRIVATE
         compression.c
         decompress.c
 )
-
-libclod_test(uniform_behavior)

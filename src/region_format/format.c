@@ -1,4 +1,5 @@
 #include "format.h"
+#include "clod_config.h"
 #include <clod/region_format.h>
 #include <assert.h>
 #include <stdlib.h>
@@ -21,43 +22,58 @@ struct clod_rfmt *rfmt_new(struct clod_rfmt_opts *opts) {
 	rfmt->data = nullptr;
 	rfmt->data_size = 0;
 
-#ifndef NDEBUG
+#if CLOD_REGION_DEBUG
+	rfmt->file_locked = false;
 	bitarray_unset_all(rfmt->held_locks);
 	bitarray_unset_all(rfmt->observing_locks);
 #endif
 
 	return rfmt;
 }
-void rfmt_free(struct clod_rfmt *rfmt) {
-#ifndef NDEBUG
-	clod_table_destroy(rfmt->held_locks);
+enum clod_rfmt_result clod_rfmt_free(struct clod_rfmt *rfmt) {
+#if CLOD_REGION_DEBUG
+	if (
+		rfmt->file_locked ||
+		!bitarray_all_unset(rfmt->held_locks) ||
+		!bitarray_all_unset(rfmt->observing_locks)
+	) {
+		rfmt->opts.free_func(rfmt, rfmt->opts.user);
+		return CLOD_RFMT_MISUSE;
+	}
 #endif
 	rfmt->opts.free_func(rfmt, rfmt->opts.user);
+	return CLOD_RFMT_OK;
 }
 
-struct clod_rfmt *clod_rfmt_init_new(
+enum clod_rfmt_result clod_rfmt_init_new(
+	struct clod_rfmt **rfmt_out,
 	struct clod_rfmt_opts *opts,
 	char *chunk_filename_prefix,
 	char *chunk_filename_extension,
 	uint32_t sector_size
 ) {
 	struct clod_rfmt *rfmt = rfmt_new(opts);
-	if (!rfmt) return nullptr;
+	if (!rfmt) return CLOD_RFMT_ALLOCATION_FAILURE;
 	if (!rfmt->opts.file_manage(&rfmt->data, &rfmt->data_size, &HEADER_SIZE, rfmt->opts.user)) {
-		rfmt_free(rfmt);
-		return nullptr;
+		clod_rfmt_free(rfmt);
+		return CLOD_RFMT_FILE_MANAGE_ERROR;
 	}
 
-	assert(rfmt->data_size >= HEADER_SIZE);
+	if (!rfmt->data || rfmt->data_size < HEADER_SIZE) {
+		clod_rfmt_free(rfmt);
+		return CLOD_RFMT_FILE_MANAGE_ERROR;
+	}
 
+	memset(rfmt->data, 0, HEADER_SIZE);
+	memset(rfmt->data + LIBCLOD_MAG)
 }
 
-struct clod_rfmt *clod_rfmt_init_rw(struct clod_rfmt_opts *opts) {
+enum clod_rfmt_result clod_rfmt_init_rw(struct clod_rfmt **rfmt_out, struct clod_rfmt_opts *opts) {
 	struct clod_rfmt *rfmt = rfmt_new(opts);
 	if (!rfmt) return nullptr;
 }
 
-struct clod_rfmt *clod_rfmt_init_ro(struct clod_rfmt_opts *opts) {
+enum clod_rfmt_result clod_rfmt_init_ro(struct clod_rfmt **rfmt_out, struct clod_rfmt_opts *opts) {
 	struct clod_rfmt *rfmt = rfmt_new(opts);
 	if (!rfmt) return nullptr;
 

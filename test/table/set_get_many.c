@@ -1,11 +1,10 @@
 #include "../test.h"
 #include <clod/table.h>
-#include <stdlib.h>
 #include <string.h>
 
 #define NUM_ELEMS 100000
 
-int main() {
+int table_set_get_many() {
 	int elems[NUM_ELEMS];
 	int elems2[NUM_ELEMS];
 	for (int i = 0; i < NUM_ELEMS; i++) {
@@ -64,5 +63,5 @@ int main() {
 	}
 	clod_table_destroy(t);
 
-	return EXIT_SUCCESS;
+	return 0;
 }

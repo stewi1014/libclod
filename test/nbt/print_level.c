@@ -3,11 +3,11 @@
 #include "test.h"
 #include <clod/nbt.h>
 
-const char level_data[] = {
+const uint8_t print_level_data[] = {
 #embed "level.nbt"
 };
 
-void print_recursive(const char *payload, void *end, const char type, const int indent) {
+void print_recursive(const uint8_t *payload, void *end, const char type, const int indent) {
 	if (type == CLOD_NBT_COMPOUND || type == CLOD_NBT_LIST) {
 		struct clod_nbt_iter iter = CLOD_NBT_ITER_ZERO;
 		while (clod_nbt_iter_next(payload, end, type, &iter)) {
@@ -24,9 +24,10 @@ void print_recursive(const char *payload, void *end, const char type, const int 
 	}
 }
 
-int main() {
-	const size_t res = clod_nbt_tag_size((void*)level_data, level_data + sizeof(level_data));
-	check("correct NBT size", res == sizeof(level_data));
+int nbt_print_level() {
+	const size_t res = clod_nbt_tag_size((void*)print_level_data, print_level_data + sizeof(print_level_data));
+	check("correct NBT size", res == sizeof(print_level_data));
 
-	print_recursive(level_data, (void*)(level_data + sizeof(level_data)), CLOD_NBT_COMPOUND, 0);
+	print_recursive(print_level_data, (void*)(print_level_data + sizeof(print_level_data)), CLOD_NBT_COMPOUND, 0);
+	return 0;
 }

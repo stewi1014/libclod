@@ -6,7 +6,7 @@
 #define STR "abcd"
 #define LEN strlen(STR)
 
-int main() {
+int table_simple_all_methods() {
 	const char *val = STR;
 	const char *val2 = STR;
 	struct clod_table_iter iter;

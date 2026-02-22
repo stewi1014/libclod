@@ -98,7 +98,7 @@ typedef struct {
  * @return Updated state
  */
 CLOD_API CLOD_USE_RETURN CLOD_PURE CLOD_NONNULL(2)
-clod_sip64_state clod_sip64_add(clod_sip64_state state, const uint8_t *data, size_t size);
+clod_sip64_state clod_sip64_add(clod_sip64_state state, const void *data, size_t size);
 
 /**
  * Finalise a SipHash state.
@@ -144,7 +144,7 @@ uint64_t clod_sip64_finalise(clod_sip64_state state);
  * @return Updated hash state
  */
 CLOD_API CLOD_USE_RETURN CLOD_PURE
-uint64_t clod_crc64_add(uint64_t crc, const uint8_t *data, size_t data_len);
+uint64_t clod_crc64_add(uint64_t crc, const void *data, size_t data_len);
 
 /**
  * Add data to the hash state at an offset.
@@ -195,7 +195,7 @@ uint64_t clod_crc64_add(uint64_t crc, const uint8_t *data, size_t data_len);
  * @return Updated hash state
  */
 CLOD_API CLOD_USE_RETURN CLOD_PURE
-uint32_t clod_crc32_add(uint32_t crc, const uint8_t *data, size_t data_len);
+uint32_t clod_crc32_add(uint32_t crc, const void *data, size_t data_len);
 
 /**
  * Add data to the hash state at an offset.
@@ -246,7 +246,7 @@ uint32_t clod_crc32_add(uint32_t crc, const uint8_t *data, size_t data_len);
  * @return Updated hash state
  */
 CLOD_API CLOD_USE_RETURN CLOD_PURE
-uint32_t clod_crc24_add(uint32_t crc, const uint8_t *data, size_t data_len);
+uint32_t clod_crc24_add(uint32_t crc, const void *data, size_t data_len);
 
 /**
  * Add data to the hash state at an offset.
@@ -297,7 +297,7 @@ uint32_t clod_crc24_add(uint32_t crc, const uint8_t *data, size_t data_len);
  * @return Updated hash state
  */
 CLOD_API CLOD_USE_RETURN CLOD_PURE
-uint16_t clod_crc16_add(uint16_t crc, const uint8_t *data, size_t data_len);
+uint16_t clod_crc16_add(uint16_t crc, const void *data, size_t data_len);
 
 /**
  * Add data to the hash state at an offset.
@@ -348,7 +348,7 @@ uint16_t clod_crc16_add(uint16_t crc, const uint8_t *data, size_t data_len);
  * @return Updated hash state
  */
 CLOD_API CLOD_USE_RETURN CLOD_PURE
-uint8_t clod_crc8_add(uint8_t crc, const uint8_t *data, size_t data_len);
+uint8_t clod_crc8_add(uint8_t crc, const void *data, size_t data_len);
 
 /**
  * Add data to the hash state at an offset.

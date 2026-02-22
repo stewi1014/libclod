@@ -1,17 +1,41 @@
 #ifndef CLOD_CONFIG_H
 #define CLOD_CONFIG_H
 
-#define CLOD_COMMIT_HASH "@COMMIT_HASH@"
+#define CLOD_COMMIT_HASH "@CLOD_COMMIT_HASH@"
 
-#cmakedefine01 HAVE_MREMAP
-#cmakedefine01 HAVE_STATX
-#cmakedefine01 HAVE_PTHREAD
+#cmakedefine01 CLOD_RWSEQ_DEBUG
+#cmakedefine01 CLOD_REGION_DEBUG
+
+#cmakedefine01 CLOD_HAVE_MREMAP
+#cmakedefine01 CLOD_HAVE_STATX
+#cmakedefine01 CLOD_HAVE_PTHREAD_H
+#cmakedefine01 CLOD_HAVE_PTHREAD_SETNAME
+#cmakedefine01 CLOD_HAVE_PTHREAD_RWLOCKATTR_SETKIND
+#cmakedefine01 CLOD_HAVE_THREADS_H
+#cmakedefine01 CLOD_HAVE_SCHED_YIELD
+
+#cmakedefine01 CLOD_HAVE_CLOCK_MONOTONIC
+#cmakedefine01 CLOD_HAVE_CLOCK_MONOTONIC_RAW
+#cmakedefine01 CLOD_HAVE_CLOCK_GETTIME
+#cmakedefine01 CLOD_HAVE_NANOSLEEP
+#cmakedefine01 CLOD_HAVE_CLOCK_NANOSLEEP
 
 #cmakedefine01 CLOD_USE_LIBDEFLATE
 #cmakedefine01 CLOD_USE_LIBLZ4
 #cmakedefine01 CLOD_USE_LIBLZMA
 #cmakedefine01 CLOD_USE_LIBZSTD
 #cmakedefine01 CLOD_USE_LIBBZ2
-#cmakedefine01 CLOD_USE_LIBLZO2
+
+#if defined(__aarch64__) || defined(__ARM64__) || defined(_M_ARM64)
+    #define CLOD_HAVE_ARM 1
+#else
+    #define CLOD_HAVE_ARM 0
+#endif
+
+#if defined(__x86_64__) || defined(_M_X64)
+    #define CLOD_HAVE_X86 1
+#else
+    #define CLOD_HAVE_X86 0
+#endif
 
 #endif

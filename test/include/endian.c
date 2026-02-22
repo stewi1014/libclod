@@ -1,4 +1,4 @@
-#include "test.h"
+#include "../test.h"
 #include <stdint.h>
 #include <string.h>
 #include "endian_big.h"
@@ -66,7 +66,7 @@ static bool is_empty(const uint8_t *ptr, size_t size) {
 	return true;
 }
 
-int main() {
+int include_endian() {
 	uint8_t buff[10];
 
 	for (uint64_t i = 0; i < NUM_TEST; i++) {
@@ -152,4 +152,6 @@ int main() {
 		check("Varint reports correct number of bytes",
 			beiv_size(be_signed_tests[i].n) == be_signed_tests[i].data_size);
 	}
+
+	return 0;
 }
