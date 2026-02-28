@@ -13,7 +13,7 @@ const char level_data[] = {
 #define NS_IN_SEC 1000000000
 #define BYTE_IN_GB 1000000000
 
-int nbt_benchmark() {
+int nbt_benchmark(int, char[]) {
 	struct timespec start;
 	clock_gettime(CLOCK_MONOTONIC, &start);
 

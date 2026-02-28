@@ -2,7 +2,7 @@
 #include <clod/hash.h>
 #include <string.h>
 
-int hash_stream() {
+int hash_stream(int, char[]) {
 	clod_sip64_state sip64 = clod_sip64_init(0);
 	sip64 = clod_sip64_add(sip64, "abcd", 4);
 	sip64 = clod_sip64_add(sip64, "efg", 3);

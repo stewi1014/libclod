@@ -1,10 +1,10 @@
-#include "../include/clod/futex.h"
 #include "clod_config.h"
-#include "clod/daemon.h"
 #include <clod/thread.h>
 #include <clod/rwseq.h>
 #include <stdlib.h>
 #include <time.h>
+
+#include "keepalive.h"
 
 #if CLOD_RWSEQ_DEBUG
 #include <stdio.h>
@@ -100,7 +100,7 @@ static struct lock wait(const uint32_t *ptr, const struct lock expected, int *ti
 			return lock;
 
 		[[maybe_unused]]
-		bool timed_out = ftx_wait(ptr, encode(expected), *timeout < MAX_FUTEX_WAIT_MS ? *timeout : MAX_FUTEX_WAIT_MS);
+		bool timed_out = clod_futex_wait((int*)ptr, (int)encode(expected), *timeout < MAX_FUTEX_WAIT_MS ? *timeout : MAX_FUTEX_WAIT_MS);
 
 		*timeout -= time_delta(&time);
 		lock = load(ptr);
@@ -121,7 +121,7 @@ static struct lock wait(const uint32_t *ptr, const struct lock expected, int *ti
 	}
 	return lock;
 }
-static void wake(const uint32_t *ptr) { ftx_wake_all(ptr); }
+static void wake(const uint32_t *ptr) { clod_futex_wake_all((int*)ptr); }
 
 enum clod_rwseq_result clod_rwseq_ro_lock(const uint32_t *ptr, uint32_t *seq_out) {
 	int timeout = DEAD_LOCK_TIMEOUT_MS;
@@ -185,11 +185,11 @@ enum clod_rwseq_result clod_rwseq_rd_lock(uint32_t *ptr) {
 		want.read_locks++;
 	} while (!cas(ptr, &lock, want));
 
-	daemon_add((uintptr_t)ptr, clod_rwseq_rd_heartbeat, ptr);
+	clod_rwseq_rd_keepalive_start((int*)ptr);
 	return CLOD_RWSEQ_OK;
 }
 enum clod_rwseq_result clod_rwseq_rd_unlock(uint32_t *ptr) {
-	daemon_del((uintptr_t)ptr);
+	clod_rwseq_rd_keepalive_end((int*)ptr);
 	struct lock lock = load(ptr);
 	struct lock want;
 	do {

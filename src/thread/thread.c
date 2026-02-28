@@ -1,104 +1,122 @@
-#include <clod/thread.h>
-#include "clod_config.h"
-
-#if CLOD_HAVE_PTHREAD_H
-#include <pthread.h>
-#include <alloca.h>
+#include <assert.h>
 #include <string.h>
 
-clod_spinlock thread_lock = CLOD_SPINLOCK_INIT;
-clod_thread_func *thread_func;
+#include "clod_thread_config.h"
+#include <clod/thread.h>
 
-size_t buffer_size;
-bool buffer_exists;
-char buffer[CLOD_THREAD_BUFFER_MAX];
+#include "thread_impl.h"
 
-void *clod_pthread_h_func(void *) {
-	clod_thread_func *func = thread_func;
+enum clod_process_result
+clod_process_start(struct clod_process_opts *opts, clod_process *process_out) {
+	struct clod_process_common **common = (struct clod_process_common**)process_out;
 
-	size_t data_size = buffer_size;
-	void *data = buffer_exists ? alloca(buffer_size) : nullptr;
-	if (buffer_exists) memcpy(data, buffer, buffer_size);
-
-	clod_spinlock_unlock(&thread_lock);
-
-	func(data, data_size);
-	return nullptr;
-}
-
-bool clod_thread(clod_thread_func *func, [[maybe_unused]] const char *name, const void *data, size_t data_size) {
-	if (data_size > CLOD_THREAD_BUFFER_MAX)
-		data_size = CLOD_THREAD_BUFFER_MAX;
-
-	clod_spinlock_lock(&thread_lock);
-	thread_func = func;
-
-	buffer_size = data_size;
-	buffer_exists = data;
-	if (data) memcpy(buffer, data, data_size);
-
-	pthread_t thread;
-	int res = pthread_create(&thread, nullptr, clod_pthread_h_func, nullptr);
-	if (res != 0) {
-		clod_spinlock_unlock(&thread_lock);
-		return false;
+	#if CLOD_HAVE_PTHREAD
+	if (opts->type == CLOD_THREAD) {
+		auto res = clod_process_start_pthread(opts, common);
+		if (res == CLOD_PROCESS_OK && common) (*common)->type = CLOD_THREAD;
+		return res;
 	}
-
-	#if CLOD_HAVE_PTHREAD_SETNAME
-		pthread_setname_np(thread, name);
+	#elif CLOD_HAVE_STDTHREADS
+	if (opts->type == CLOD_THREAD) {
+		auto res = clod_process_start_stdthreads(opts, common);
+		if (res == CLOD_PROCESS_OK && common) (*common)->type = CLOD_THREAD;
+		return res;
+	}
 	#endif
 
-	return true;
+	#if CLOD_HAVE_LINUX_SCHED
+	if (opts->type == CLOD_DAEMON || opts->type == CLOD_THREAD_BACKGROUND) {
+		auto res = clod_process_start_linux(opts, common);
+		if (res == CLOD_PROCESS_OK && common) (*common)->type = opts->type;
+		return res;
+	}
+	#endif
+
+	return CLOD_PROCESS_UNSUPPORTED;
 }
 
-#elif CLOD_HAVE_THREADS_H
-#include <threads.h>
-#include <alloca.h>
-#include <string.h>
+enum clod_process_result
+clod_process_join(const clod_process process) {
+	struct clod_process_common *common = (struct clod_process_common*)process;
 
-clod_spinlock thread_lock = CLOD_SPINLOCK_INIT;
-clod_thread_func *thread_func;
+	#if CLOD_HAVE_PTHREAD
+	if (common->type == CLOD_THREAD)
+		return clod_process_join_pthread(common);
+	#elif CLOD_HAVE_STDTHREADS
+	if (common->type == CLOD_THREAD)
+		return clod_process_join_stdthreads(common);
+	#endif
 
-mtx_t mtx;
+	#if CLOD_HAVE_LINUX_SCHED
+	if (common->type == CLOD_DAEMON || common->type == CLOD_THREAD_BACKGROUND)
+		return clod_process_join_linux(common);
+	#endif
 
-size_t buffer_size;
-bool buffer_exists;
-char buffer[CLOD_THREAD_BUFFER_MAX];
-
-int clod_threads_h_func(void *) {
-	clod_thread_func *func = thread_func;
-
-	size_t data_size = buffer_size;
-	void *data = buffer_exists ? alloca(buffer_size) : nullptr;
-	if (buffer_exists) memcpy(data, buffer, buffer_size);
-
-	clod_spinlock_unlock(&thread_lock);
-
-	func(data, data_size);
-	return 0;
+	return CLOD_PROCESS_INVALID;
 }
 
-bool clod_thread(clod_thread_func *func, const char *, const void *data, size_t data_size) {
-	if (data_size > CLOD_THREAD_BUFFER_MAX)
-		data_size = CLOD_THREAD_BUFFER_MAX;
+size_t args_size(const struct clod_process_args *args) {
+	const size_t head_size = sizeof(struct clod_process_args);
+	const size_t sizes_size = sizeof(args->arg_sizes[0]) * (size_t)args->arg_count;
+	const size_t vector_size = sizeof(args->arg_vector[0]) * ((size_t)args->arg_count + 1);
 
-	clod_spinlock_lock(&thread_lock);
-	thread_func = func;
+	const size_t sizes_offset = ALIGN(head_size, alignof(typeof(args->arg_sizes[0])));
+	const size_t vector_offset = ALIGN(sizes_offset + sizes_size, alignof(typeof(args->arg_vector[0])));
+	const size_t arg_offset = ALIGN(vector_offset + vector_size, 16);
 
-	buffer_size = data_size;
-	buffer_exists = data;
-	if (data) memcpy(buffer, data, data_size);
+	size_t size = arg_offset;
+	for (int i = 0; i < args->arg_count; i++) {
+		if (args->arg_vector[i] == nullptr)
+			continue;
 
-	thrd_t thread;
-	const int res = thrd_create(&thread, clod_threads_h_func, nullptr);
-	if (res != thrd_success) {
-		clod_spinlock_unlock(&thread_lock);
-		return false;
+		if (args->arg_sizes) {
+			size += ALIGN(args->arg_sizes[i] + 1, 16);
+		} else {
+			size += ALIGN(strlen(args->arg_vector[i]) + 1, 16);
+		}
 	}
 
-	return true;
+	assert(size % 16 == 0);
+	return size;
 }
+void args_copy(struct clod_process_args *dst, const struct clod_process_args *src) {
+	assert((uintptr_t)dst % 16 == 0);
 
-#else
-#error "No threading implementation found"
-#endif
+	const size_t head_size = sizeof(struct clod_process_args);
+	const size_t sizes_size = sizeof(src->arg_sizes[0]) * (size_t)src->arg_count;
+	const size_t vector_size = sizeof(src->arg_vector[0]) * ((size_t)src->arg_count + 1);
+
+	const size_t sizes_offset = ALIGN(head_size, alignof(typeof(src->arg_sizes[0])));
+	const size_t vector_offset = ALIGN(sizes_offset + sizes_size, alignof(typeof(src->arg_vector[0])));
+	const size_t arg_offset = ALIGN(vector_offset + vector_size, 16);
+
+	dst->arg_count = src->arg_count;
+	dst->arg_sizes = (size_t*)((char*)dst + sizes_offset);
+	dst->arg_vector = (char**)((char*)dst + vector_offset);
+
+	size_t size = arg_offset;
+	for (int i = 0; i < src->arg_count; i++) {
+		size_t arg_size;
+		if (src->arg_sizes)
+			arg_size = src->arg_sizes[i];
+		else if (src->arg_vector[i])
+			arg_size = strlen(src->arg_vector[i]);
+		else
+			arg_size = 0;
+
+		dst->arg_sizes[i] = arg_size;
+		if (src->arg_vector[i]) {
+			dst->arg_vector[i] = (char*)dst + size;
+			memcpy(dst->arg_vector[i], src->arg_vector[i], arg_size);
+			dst->arg_vector[i][arg_size] = '\0';
+			size += ALIGN(arg_size + 1, 16);
+		} else {
+			dst->arg_vector[i] = nullptr;
+		}
+	}
+
+	if (!src->arg_vector)
+		dst->arg_vector = nullptr;
+	else
+		dst->arg_vector[src->arg_count] = nullptr;
+}

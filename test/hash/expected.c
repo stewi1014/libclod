@@ -1,7 +1,7 @@
 #include "test.h"
 #include <clod/hash.h>
 
-int hash_expected() {
+int hash_expected(int, char[]) {
 	check("clod_crc64 matches expected output", clod_crc64((uint8_t*)"abcdefg", 7) == 0xe94be4086bedae1d);
 	check("clod_crc32 matches expected output", clod_crc32((uint8_t*)"abcdefg", 7) == 0x312a6aa6);
 	check("clod_crc24 matches expected output", clod_crc24((uint8_t*)"abcdefg", 7) == 0x7d29d5);

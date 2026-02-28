@@ -26,8 +26,9 @@ target_compile_definitions(clod PRIVATE CLOD_BUILD)
 # Configuration Options #
 #########################
 
-option(CLOD_RWSEQ_DEBUG "Enables extra checks to ensure rwseq usage is normal" ON)
-option(CLOD_REGION_DEBUG "Enables extra checks to ensure region file interaction follows spec" ON)
+option(CLOD_DEBUG "Enable or disable all otherwise unspecified debug options" ON)
+option(CLOD_RWSEQ_DEBUG "Enables extra checks to ensure rwseq usage is normal" ${CLOD_DEBUG})
+option(CLOD_REGION_DEBUG "Enables extra checks to ensure region file interaction follows spec" ${CLOD_DEBUG})
 
 option(CLOD_NATIVE "Optimise for host architecture and use nonportable platform features" ON)
 if(CLOD_NATIVE)

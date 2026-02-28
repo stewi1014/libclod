@@ -174,7 +174,7 @@ void compression_test(struct clod_compressor *compressor, struct clod_decompress
 	}
 }
 
-int compression_uniform_behavior() {
+int compression_uniform_behavior(int, char[]) {
 	struct clod_compressor *compressor = clod_compressor_init();
 	struct clod_decompressor *decompressor = clod_decompressor_init();
 

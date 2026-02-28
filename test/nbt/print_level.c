@@ -16,15 +16,15 @@ void print_recursive(const uint8_t *payload, void *end, const char type, const i
 				printf("[%d]\n", iter.index);
 				print_recursive(iter.payload, end, iter.type, indent + 1);
 			} else {
-				const clod_sstr name = clod_nbt_tag_name(iter.tag, end);
-				printf("%.*s\n", (int)name.size, name.ptr);
+				const clod_string name = clod_nbt_tag_name(iter.tag, end);
+				printf("%.*s\n", (int)name.length, name.pointer);
 				print_recursive(iter.payload, end, iter.type, indent + 1);
 			}
 		}
 	}
 }
 
-int nbt_print_level() {
+int nbt_print_level(int, char[]) {
 	const size_t res = clod_nbt_tag_size((void*)print_level_data, print_level_data + sizeof(print_level_data));
 	check("correct NBT size", res == sizeof(print_level_data));
 

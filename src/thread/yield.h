@@ -1,7 +1,7 @@
 #ifndef LIBCLOD_YIELD_H
 #define LIBCLOD_YIELD_H
 
-#include "clod_config.h"
+#include "clod_thread_config.h"
 
 #if CLOD_HAVE_SCHED_YIELD
 	#include <sched.h>
@@ -10,10 +10,10 @@
 	#error "Yield not implemented on this platform"
 #endif
 
-#if CLOD_HAVE_X86
+#if CLOD_HAVE_X86_64
 	#include <immintrin.h>
 	#define clod_pause _mm_pause
-#elif CLOD_HAVE_ARM
+#elif CLOD_HAVE_ARM64
 	#include <arm_acle.h>
 	#define clod_pause __yield()
 #elif

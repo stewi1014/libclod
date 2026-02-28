@@ -9,6 +9,10 @@
 #ifndef LIBCLOD_LIB_H
 #define LIBCLOD_LIB_H
 
+#include <stddef.h>
+#include <stdint.h>
+#include <limits.h>
+
 #if defined(_WIN32)
 	#ifdef CLOD_BUILD
 		#define CLOD_API __declspec(dllexport)
@@ -21,11 +25,13 @@
 
 #if defined(__GNUC__) // GCC and Clang
 	#define CLOD_NONNULL(...) __attribute__((nonnull(__VA_ARGS__)))
+	#define CLOD_PRINTF(fmt_arg, var_args) __attribute__((format(printf, fmt_arg, var_args)))
 	#define CLOD_USE_RETURN __attribute__((warn_unused_result))
 	#define CLOD_CONST __attribute__((const))
 	#define CLOD_PURE __attribute__((pure))
 #else
 	#define CLOD_NONNULL(...)
+	#define CLOD_PRINTF(fmt_arg, var_args)
 	#define CLOD_USE_RETURN
 	#define CLOD_CONST
 	#define CLOD_PURE

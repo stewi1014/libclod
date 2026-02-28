@@ -1,5 +1,4 @@
 #include "clod/daemon.h"
-
 #include <assert.h>
 #include <stdio.h>
 #include <clod/table.h>
@@ -18,7 +17,7 @@ struct task {
 
 #define PERIOD_US (200 * 1000)
 
-void daemon_run(void *, size_t) {
+int daemon_run(int, char **) {
 	// inherit the lock.
 	assert(!daemon_table);
 	daemon_table = clod_table_create(nullptr);
@@ -50,13 +49,19 @@ void daemon_run(void *, size_t) {
 	clod_table_destroy(daemon_table);
 	daemon_table = nullptr;
 	clod_spinlock_unlock(&daemon_lock);
+	return 0;
 }
 
-void daemon_add(const uintptr_t id, bool (*task_func)(void *user), void *user) {
+void clod_daemon_add(const uintptr_t id, bool (*task_func)(void *user), void *user) {
 	clod_spinlock_lock(&daemon_lock);
 
 	if (!daemon_table) {
-		bool res = clod_thread(daemon_run, "libclod daemon", nullptr, 0);
+		struct clod_process_opts proc_opts = {
+			.type = CLOD_DAEMON,
+			.main = daemon_run
+		};
+
+		bool res = clod_process_start(&proc_opts, nullptr);
 		if (!res) {
 			fprintf(stderr, "Failed to start libclod daemon");
 			clod_spinlock_unlock(&daemon_lock);
@@ -72,6 +77,8 @@ void daemon_add(const uintptr_t id, bool (*task_func)(void *user), void *user) {
 	struct task *task = clod_table_get(daemon_table, &id, sizeof(id));
 	if (task) {
 		task->counter++;
+		task->task_func = task_func;
+		task->user = user;
 	} else {
 		task = malloc(sizeof(struct task));
 		task->id = id;
@@ -84,7 +91,7 @@ void daemon_add(const uintptr_t id, bool (*task_func)(void *user), void *user) {
 	clod_spinlock_unlock(&daemon_lock);
 }
 
-void daemon_del(const uintptr_t id) {
+void clod_daemon_del(const uintptr_t id) {
 	clod_spinlock_lock(&daemon_lock);
 
 	if (daemon_table != nullptr) {

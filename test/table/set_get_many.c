@@ -4,7 +4,7 @@
 
 #define NUM_ELEMS 100000
 
-int table_set_get_many() {
+int table_set_get_many(int, char[]) {
 	int elems[NUM_ELEMS];
 	int elems2[NUM_ELEMS];
 	for (int i = 0; i < NUM_ELEMS; i++) {

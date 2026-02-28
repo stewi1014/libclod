@@ -4,18 +4,25 @@
 clod_mutex mutex = CLOD_MUTEX_INIT;
 volatile bool has_mutex;
 
-void try_lock_mutex(void *, size_t) {
+int try_lock_mutex(int argc, char **argv) {
 	clod_mutex_lock(&mutex);
 	has_mutex = true;
 	clod_mutex_unlock(&mutex);
+	return 0;
 }
 
-int thread_mutex() {
+int thread_mutex(int, char[]) {
 	has_mutex = false;
 	clod_mutex_lock(&mutex);
 
-	for (int i = 0; i < 32; i++)
-		clod_thread(try_lock_mutex, "Test thread", nullptr, 0);
+	struct clod_process_opts proc_opts = {
+		.type = CLOD_THREAD,
+		.main = try_lock_mutex
+	};
+
+	auto res = clod_process_start(&proc_opts, nullptr);
+	test_check(res == CLOD_PROCESS_OK, "Should be able to create thread")
+		return 1;
 	clod_timer(nullptr, 100 * 1000);
 
 	test_check(!has_mutex, "Other thread should not acquire our locked mutex")
@@ -27,6 +34,5 @@ int thread_mutex() {
 	test_check(has_mutex, "Other thread should acquire our unlocked mutex")
 		return 1;
 
-	clod_mutex_destroy(&mutex);
 	return 0;
 }

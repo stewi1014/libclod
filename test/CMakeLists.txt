@@ -1,5 +1,6 @@
 set(CLOD_TEST_SOURCES
     compression/uniform_behavior.c
+    #daemon/task.c
     hash/expected.c
     hash/replace.c
     hash/stream.c
@@ -9,8 +10,9 @@ set(CLOD_TEST_SOURCES
     nbt/print_level.c
     table/set_get_many.c
     table/simple_all_methods.c
+    thread/background.c
+    thread/benchmark.c
     thread/mutex.c
-    thread/rwmutex.c
     thread/spinlock.c
 )
 

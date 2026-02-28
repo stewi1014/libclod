@@ -2,7 +2,7 @@
 #include <clod/hash.h>
 #include <string.h>
 
-int hash_replace() {
+int hash_replace(int, char[]) {
 	uint64_t crc64 = clod_crc64("abcdefg", 7);
 	uint64_t state64 = clod_crc64_finalise(crc64);
 	state64 = clod_crc64_add_at(state64, "cd", 2, 3);
