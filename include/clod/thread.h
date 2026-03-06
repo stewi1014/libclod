@@ -176,7 +176,7 @@ void clod_once_done(clod_once *once);
  * by a signal or an error occurs, in which case time is not updated.
  * If time is null it does not return when interrupted by a signal.
  * @param[in] duration_us Duration after \p time to wait for.
- * If \p duration_ns is <= 0, it simply returns the current time.
+ * If \p duration_us is <= 0, it simply returns the current time.
  * @return The time at which the method was entered.
  */
 CLOD_API

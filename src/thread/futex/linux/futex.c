@@ -11,11 +11,14 @@
 
 #if CLOD_HAVE_X86_64 && CLOD_NATIVE
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wlanguage-extension-token"
+
 static long wait(const int *ptr, const int expected, const struct timespec *timeout) {
 	register long rax asm("rax") = SYS_futex;
 	register long rdi asm("rdi") = (long)ptr;
 	register long rsi asm("rsi") = FUTEX_WAIT;
-	register long rdx asm("rdx") = (long)expected;
+	register long rdx asm("rdx") = expected;
 	register long r10 asm("r10") = (long)timeout;
 	asm volatile(
 		"syscall"
@@ -41,6 +44,8 @@ static long wake(const int *ptr, const int count) {
 	if (rax < 0) return -rax;
 	return 0;
 }
+
+#pragma GCC diagnostic pop
 
 #else
 

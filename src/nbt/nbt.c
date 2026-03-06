@@ -112,7 +112,7 @@ clod_string clod_nbt_tag_name(const uint8_t *restrict tag, const void *end) {
 	if (!type_valid(tag[0])) return CLOD_STRING_NULL;
 	const uint16_t name_size = beu16_dec(tag + 1);
 	if (available(tag, end) < 3u + name_size) return CLOD_STRING_NULL;
-	return clod_string((char*)tag + 3, name_size, 0);
+	return (clod_string){(char*)tag + 3, name_size, 0};
 }
 
 bool clod_nbt_iter_next(
@@ -308,7 +308,7 @@ uint8_t *clod_nbt_compound_add(
 
 	iter.tag[0] = type;
 	beu16_enc(iter.tag + 1, (uint16_t)name.length);
-	memcpy(iter.tag + 3, name.pointer, (size_t)name.length);
+	memcpy(iter.tag + 3, name.array, (size_t)name.length);
 	memset(iter.tag + 3 + name.length, 0, type_zero_size(type));
 
 	*end = *(uint8_t**)end + elem_size;

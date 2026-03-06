@@ -17,7 +17,7 @@ void print_recursive(const uint8_t *payload, void *end, const char type, const i
 				print_recursive(iter.payload, end, iter.type, indent + 1);
 			} else {
 				const clod_string name = clod_nbt_tag_name(iter.tag, end);
-				printf("%.*s\n", (int)name.length, name.pointer);
+				printf("%.*s\n", (int)name.length, name.array);
 				print_recursive(iter.payload, end, iter.type, indent + 1);
 			}
 		}

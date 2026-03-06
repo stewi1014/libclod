@@ -50,9 +50,11 @@ struct stack_header {
 static_assert(offsetof(struct stack_header, stack_guard) == 0x28);
 static_assert(offsetof(struct stack_header, errno_location) == 0x10);
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wlanguage-extension-token"
 long clod_execution_bootstrap(const struct clone_args *args, struct stack_header *stack) {
 	long result;
-	__asm volatile(
+	asm volatile(
 		"mov %[args], %%rdi\n"
 		"mov %[args_size], %%rsi\n"
 		"mov %[clone3], %%eax\n"
@@ -103,6 +105,7 @@ long clod_execution_bootstrap(const struct clone_args *args, struct stack_header
 	);
 	return result;
 }
+#pragma GCC diagnostic pop
 
 #else
 #error "Process bootstrap method not implemented for this architecture"
