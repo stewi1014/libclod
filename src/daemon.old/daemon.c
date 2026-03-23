@@ -1,7 +1,7 @@
 #include "clod/daemon.h"
 #include <assert.h>
 #include <stdio.h>
-#include <clod/table.h>
+#include <../../include/clod/data_structures/table.h>
 #include <clod/thread.h>
 #include <stdlib.h>
 

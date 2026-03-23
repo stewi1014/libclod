@@ -39,7 +39,7 @@ void clod_once_done(clod_once *once) {
 	#if CLOD_DEBUG_THREAD
 	clod_once expected = BUSY;
 	if (!clod_atomic_cas(once, &expected, DONE)) {
-		debug(CLOD_DEBUG_THREAD, "libclod: called clod_once_done with an invalid value.");
+		debug(CLOD_DEBUG_THREAD, "called clod_once_done with an invalid value.");
 	}
 	#else
 	clod_atomic_store(once, DONE);

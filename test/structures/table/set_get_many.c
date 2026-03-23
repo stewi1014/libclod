@@ -1,10 +1,10 @@
-#include "../test.h"
-#include <clod/table.h>
+#include "test.h"
+#include <clod/structures/table.h>
 #include <string.h>
 
 #define NUM_ELEMS 100000
 
-int table_set_get_many(int, char[]) {
+int structures_table_set_get_many(int, char[]) {
 	int elems[NUM_ELEMS];
 	int elems2[NUM_ELEMS];
 	for (int i = 0; i < NUM_ELEMS; i++) {

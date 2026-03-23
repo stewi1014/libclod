@@ -51,7 +51,6 @@ static_assert(offsetof(struct stack_header, stack_guard) == 0x28);
 static_assert(offsetof(struct stack_header, errno_location) == 0x10);
 
 #pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wlanguage-extension-token"
 long clod_execution_bootstrap(const struct clone_args *args, struct stack_header *stack) {
 	long result;
 	asm volatile(

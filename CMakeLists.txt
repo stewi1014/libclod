@@ -8,7 +8,6 @@ set(
 
 project(libclod LANGUAGES C)
 
-include(CMakePackageConfigHelpers)
 include(CTest)
 enable_testing()
 
@@ -18,21 +17,27 @@ enable_testing()
 
 add_library(clod SHARED)
 set_target_properties(clod PROPERTIES SOVERSION 1)
-target_include_directories(clod PUBLIC include)
+target_include_directories(clod PUBLIC
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+    $<INSTALL_INTERFACE:include>
+)
 set_target_properties(clod PROPERTIES C_VISIBILITY_PRESET hidden)
 target_compile_definitions(clod PRIVATE CLOD_BUILD)
+add_library(clod::clod ALIAS clod)
 
 #########################
 # Configuration Options #
 #########################
 
-option(CLOD_DEBUG "Enable or disable all otherwise unspecified debug options" ON)
-option(CLOD_RWSEQ_DEBUG "Enables extra checks to ensure rwseq usage is normal" ${CLOD_DEBUG})
-option(CLOD_REGION_DEBUG "Enables extra checks to ensure region file interaction follows spec" ${CLOD_DEBUG})
+option(CLOD_DEBUG "Enables extra checks aimed at debugging. Unspecified debug options inherit this setting." ON)
+option(CLOD_RWSEQ_DEBUG "Enables extra checks to ensure rwseq usage is normal." ${CLOD_DEBUG})
+option(CLOD_REGION_DEBUG "Enables extra checks to ensure region file interaction follows spec." ${CLOD_DEBUG})
+option(CLOD_MEMORY_DEBUG "Enables extra memory consistency checks aimed at debugging." ${CLOD_DEBUG})
+option(CLOD_MEMORY_CHECK "Enables memory consistency checks aimed at release builds." ON)
 
 option(CLOD_NATIVE "Optimise for host architecture and use nonportable platform features" ON)
 if(CLOD_NATIVE)
-    add_compile_options(-march=native)
+    target_compile_options(clod PRIVATE -march=native)
     set(CMAKE_REQUIRED_DEFINITIONS -D_GNU_SOURCE)
     target_compile_definitions(clod PRIVATE _GNU_SOURCE)
 endif()
@@ -82,11 +87,31 @@ if (CLOD_USE_LIBBZ2)
     target_link_libraries(clod PRIVATE BZip2::BZip2)
 endif ()
 
+option(CLOD_USE_ALSA "Use alsa to enable audio features" ON)
+if (CLOD_USE_ALSA)
+    find_package(ALSA REQUIRED)
+    target_link_libraries(clod PRIVATE ALSA::ALSA)
+endif ()
+
 ###########
 # Install #
 ###########
 
-# TODO
+install(TARGETS clod
+        EXPORT clod-targets
+        LIBRARY DESTINATION lib
+        ARCHIVE DESTINATION lib
+        INCLUDES DESTINATION include)
 
+install(DIRECTORY include/ DESTINATION include)
+
+install(EXPORT clod-targets
+        FILE clod-targets.cmake
+        NAMESPACE clod::
+        DESTINATION lib/cmake/clod
+)
+
+#add_subdirectory(examples)
 add_subdirectory(src)
 add_subdirectory(test)
+

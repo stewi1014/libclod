@@ -45,5 +45,3 @@ if (CLOD_HAVE_LINUX_SCHED)
         thread_linux.c
     )
 endif ()
-
-add_subdirectory(futex)

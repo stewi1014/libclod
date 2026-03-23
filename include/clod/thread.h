@@ -201,15 +201,5 @@ void clod_mutex_lock(clod_mutex *mutex);
 CLOD_API CLOD_NONNULL(1)
 void clod_mutex_unlock(clod_mutex *mutex);
 
-/** @return true if the timeout was reached, false on normal wakeup. */
-CLOD_API CLOD_NONNULL(1)
-bool clod_futex_wait(const int *ptr, int expected, int64_t timeout_us);
-
-CLOD_API CLOD_NONNULL(1)
-void clod_futex_wake_one(const int *ptr);
-
-CLOD_API CLOD_NONNULL(1)
-void clod_futex_wake_all(const int *ptr);
-
 /** @} */
 #endif

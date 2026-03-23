@@ -186,7 +186,9 @@ uint64_t clod_crc64_add(uint64_t crc, const void *data, size_t data_len);
  * If data is null it functions as if data was zeroed,
  * but can skip almost all the work.
  *
- * Polynomial: 0x4C11DB7
+ * This method uses CPU intrinsics for CRC generation when possible.
+ *
+ * Polynomial: 0x1EDC6F41
  * Reflected: true
  *
  * @param[in] crc Hash state

@@ -2,7 +2,7 @@
 #define LIBCLOD_FORMAT_H
 
 #include <clod/region_format.h>
-#include <clod/table.h>
+#include <../../include/clod/data_structures/table.h>
 #include "bitarray.h"
 #include <stdint.h>
 

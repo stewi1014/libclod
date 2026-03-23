@@ -1,8 +1,19 @@
+#include "clod_config.h"
 #include <clod/hash.h>
 #include <stddef.h>
 #include <stdint.h>
 
 #include "crc_tables.h"
+
+#if CLOD_HAVE_X86_64
+#include <immintrin.h>
+#endif
+
+#ifdef __GNUC__
+#define HAVE_CRC32_INTRINSIC __builtin_cpu_supports("sse4.2")
+#else
+#define HAVE_CRC32_INTRINSIC 0
+#endif
 
 CLOD_CONST
 static uint64_t gf2_mul_mod(uint64_t a, const uint64_t b, const uint64_t polynomial, const uint8_t bits) {
@@ -46,10 +57,27 @@ uint64_t clod_crc64_add(uint64_t crc, const void *restrict data, size_t data_len
 
 uint32_t clod_crc32_add(uint32_t crc, const void *restrict data, size_t data_len) {
 	const uint8_t *restrict bytes = data;
-	if (bytes)
+	if (bytes) {
+		#if CLOD_HAVE_X86_64
+			if (HAVE_CRC32_INTRINSIC) {
+				size_t i = 0;
+				while (((uintptr_t)data + i ) % 8 != 0 && i < data_len)
+					crc = _mm_crc32_u8(crc, bytes[i++]);
+
+				uint64_t crc64 = crc;
+				for (; i + 8 <= data_len; i += 8)
+					crc64 = _mm_crc32_u64(crc64, *(uint64_t*)((char*)data + i));
+
+				crc = (uint32_t)crc64;
+				while (i < data_len)
+					crc = _mm_crc32_u8(crc, bytes[i++]);
+
+				return crc;
+			}
+		#endif
 		for (size_t i = 0; i < data_len; i++)
 			crc = crc32_table[(crc & 0xff) ^ bytes[i]] ^ crc >> 8;
-	else
+	} else
 		for (uint8_t b = 0; data_len > 0; b++, data_len >>= 1)
 			if (data_len & 1)
 				crc = (uint32_t)gf2_mul_mod_reflected(crc, crc32_power_table[b], CRC32_NORMALISED_POLYNOMIAL, 32);

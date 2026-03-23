@@ -1,5 +1,5 @@
 target_sources(clod PRIVATE
     format.c
-    #serialise.c
+    serialise.c
     string.c
 )

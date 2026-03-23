@@ -3,17 +3,23 @@
 
 #define CLOD_COMMIT_HASH "@CLOD_COMMIT_HASH@"
 
-#cmakedefine01 CLOD_NATIVE
-
+/// CLOD_DEBUG shall be used for debug checks that are unlikely to ever
+/// be wanted in a release build. Checks that may be desirable outside
+/// of a libclod development environment shall have their own context.
+#cmakedefine01 CLOD_DEBUG
 #cmakedefine01 CLOD_RWSEQ_DEBUG
 #cmakedefine01 CLOD_REGION_DEBUG
+#cmakedefine01 CLOD_MEMORY_DEBUG
+#cmakedefine01 CLOD_MEMORY_CHECK
 
+#cmakedefine01 CLOD_NATIVE
 #cmakedefine01 CLOD_HAVE_ARM64
 #cmakedefine01 CLOD_HAVE_X86_64
 
 #cmakedefine01 CLOD_HAVE_MREMAP
 #cmakedefine01 CLOD_HAVE_STATX
 
+#cmakedefine01 CLOD_USE_ALSA
 #cmakedefine01 CLOD_USE_LIBDEFLATE
 #cmakedefine01 CLOD_USE_LIBLZ4
 #cmakedefine01 CLOD_USE_LIBLZMA

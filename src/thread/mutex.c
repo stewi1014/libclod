@@ -1,4 +1,5 @@
 #include <clod/thread.h>
+#include <clod/sys/futex.h>
 #include "clod/debug.h"
 #include "yield.h"
 

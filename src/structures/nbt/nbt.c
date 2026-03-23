@@ -1,6 +1,6 @@
 #include <clod/string.h>
 #include <string.h>
-#include <clod/nbt.h>
+#include <clod/structures/nbt.h>
 #include "endian_big.h"
 
 constexpr size_t payload_zero_sizes[] = {
@@ -107,12 +107,12 @@ uint8_t *clod_nbt_tag_payload(const uint8_t *restrict tag, const void *end) {
 	return (uint8_t*)tag + 3 + name_size;
 }
 
-clod_string clod_nbt_tag_name(const uint8_t *restrict tag, const void *end) {
+struct clod_string clod_nbt_tag_name(const uint8_t *restrict tag, const void *end) {
 	if (available(tag, end) < 3) return CLOD_STRING_NULL;
 	if (!type_valid(tag[0])) return CLOD_STRING_NULL;
 	const uint16_t name_size = beu16_dec(tag + 1);
 	if (available(tag, end) < 3u + name_size) return CLOD_STRING_NULL;
-	return (clod_string){(char*)tag + 3, name_size, 0};
+	return (struct clod_string){(char*)tag + 3, name_size, 0};
 }
 
 bool clod_nbt_iter_next(
@@ -269,7 +269,7 @@ iter_fail:
 uint8_t *clod_nbt_compound_get(
 	const uint8_t *restrict compound,
 	const void *end,
-	const clod_string name
+	const struct clod_string name
 ) {
 	struct clod_nbt_iter iter = CLOD_NBT_ITER_ZERO;
 	while (clod_nbt_iter_next(compound, end, CLOD_NBT_COMPOUND, &iter)) {
@@ -282,11 +282,11 @@ uint8_t *clod_nbt_compound_add(
 	uint8_t *restrict compound,
 	const void **end,
 	ptrdiff_t *free,
-	const clod_string name,
+	const struct clod_string name,
 	const uint8_t type
 ) {
 	if (!type_valid(type)) return nullptr;
-	const size_t elem_size = 3 + (size_t)name.length + type_zero_size(type);
+	const size_t elem_size = 3 + (size_t)name.len + type_zero_size(type);
 	if (!compound) {
 		*free -= (ptrdiff_t)elem_size;
 		return nullptr;
@@ -307,9 +307,9 @@ uint8_t *clod_nbt_compound_add(
 	memmove(iter.tag + elem_size, iter.tag, available(iter.tag, *end) - elem_size);
 
 	iter.tag[0] = type;
-	beu16_enc(iter.tag + 1, (uint16_t)name.length);
-	memcpy(iter.tag + 3, name.array, (size_t)name.length);
-	memset(iter.tag + 3 + name.length, 0, type_zero_size(type));
+	beu16_enc(iter.tag + 1, (uint16_t)name.len);
+	memcpy(iter.tag + 3, name.ptr, (size_t)name.len);
+	memset(iter.tag + 3 + name.len, 0, type_zero_size(type));
 
 	*end = *(uint8_t**)end + elem_size;
 	return iter.tag;
@@ -319,7 +319,7 @@ bool clod_nbt_compound_del(
 	uint8_t *restrict compound,
 	const void **end,
 	ptrdiff_t *free,
-	const clod_string name
+	const struct clod_string name
 ) {
 	struct clod_nbt_iter iter = CLOD_NBT_ITER_ZERO;
 	while (clod_nbt_iter_next(compound, *end, CLOD_NBT_COMPOUND, &iter)) {

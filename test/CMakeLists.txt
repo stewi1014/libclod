@@ -5,11 +5,12 @@ set(CLOD_TEST_SOURCES
     hash/replace.c
     hash/stream.c
     include/endian.c
-    nbt/benchmark.c
-    nbt/parse_level.c
-    nbt/print_level.c
-    table/set_get_many.c
-    table/simple_all_methods.c
+    string/basic_format.c
+    structures/nbt/benchmark.c
+    structures/nbt/parse_level.c
+    structures/nbt/print_level.c
+    structures/table/set_get_many.c
+    structures/table/simple_all_methods.c
     thread/background.c
     thread/benchmark.c
     thread/mutex.c

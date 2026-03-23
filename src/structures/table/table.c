@@ -1,4 +1,4 @@
-#include <clod/table.h>
+#include <clod/structures/table.h>
 #include <clod/hash.h>
 #include <assert.h>
 #include <stddef.h>

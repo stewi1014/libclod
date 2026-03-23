@@ -84,7 +84,7 @@ uint8_t *clod_nbt_tag_payload(const uint8_t *restrict tag, const void *end);
  * @return The tag's name.
  */
 CLOD_API CLOD_PURE CLOD_NONNULL(1, 2)
-clod_string clod_nbt_tag_name(const uint8_t *tag, const void *end);
+struct clod_string clod_nbt_tag_name(const uint8_t *tag, const void *end);
 
 /**
  * Iterator.
@@ -139,7 +139,7 @@ CLOD_API CLOD_NONNULL(1, 2)
 uint8_t *clod_nbt_compound_get(
 	const uint8_t *restrict compound,
 	const void *end,
-	clod_string name
+	struct clod_string name
 );
 
 /**
@@ -162,7 +162,7 @@ uint8_t *clod_nbt_compound_add(
 	uint8_t *restrict compound,
 	const void **end,
 	ptrdiff_t *free,
-	clod_string name,
+	struct clod_string name,
 	uint8_t type
 );
 
@@ -180,7 +180,7 @@ bool clod_nbt_compound_del(
 	uint8_t *restrict compound,
 	const void **end,
 	ptrdiff_t *free,
-	clod_string name
+	struct clod_string name
 );
 
 /**

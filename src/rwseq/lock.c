@@ -1,15 +1,11 @@
 #include "clod_config.h"
 #include <clod/thread.h>
 #include <clod/rwseq.h>
-#include <stdlib.h>
+#include <clod/sys/futex.h>
+#include "clod/debug.h"
 #include <time.h>
 
 #include "keepalive.h"
-
-#if CLOD_RWSEQ_DEBUG
-#include <stdio.h>
-#define debug(fmt, ...) fprintf(stderr, "CLOD_RWSEQ: " fmt __VA_OPT__(,) __VA_ARGS__)
-#endif
 
 /// Maximum number of read locks that can be held.
 #define READ_LOCKS_MAX 63
@@ -71,9 +67,7 @@ static bool cas(uint32_t *ptr, struct lock *expected, const struct lock desired)
 static struct timespec now() {
 	struct timespec now;
 	if (timespec_get(&now, CLOCK_MONOTONIC) == 0) {
-#if CLOD_RWSEQ_DEBUG
-		debug("System clock doesn't support monotonic time.\n");
-#endif
+		debug(CLOD_RWSEQ_DEBUG, "System clock doesn't support monotonic time.");
 		return (struct timespec){0};
 	}
 	return now;
@@ -105,19 +99,17 @@ static struct lock wait(const uint32_t *ptr, const struct lock expected, int *ti
 		*timeout -= time_delta(&time);
 		lock = load(ptr);
 
-#if CLOD_RWSEQ_DEBUG
 		if (timed_out) {
 			// These checks are possibly spurious,
 			// as the other thread may have changed the value in the time between us waking up due to timeout
 			// and us actually checking the value.
 			if (lock.blocked == 0 && expected.blocked)
-				debug("%p Blocked flag was unset, but we weren't woken up. Possible bug in other thread.\n", (void*)ptr);
+				debug(CLOD_RWSEQ_DEBUG, "%ptr Blocked flag was unset, but we weren't woken up. Possible bug in other thread.\n", (void*)ptr);
 			if (lock.write_lock == 0 && expected.write_lock)
-				debug("%p Write lock released, but we weren't woken up. Possible bug in other thread.\n", (void*)ptr);
+				debug(CLOD_RWSEQ_DEBUG, "%ptr Write lock released, but we weren't woken up. Possible bug in other thread.\n", (void*)ptr);
 			if (lock.read_locks == 0 && expected.read_locks)
-				debug("%p Read locks released, but we weren't woken up. Possible bug in other thread.\n", (void*)ptr);
+				debug(CLOD_RWSEQ_DEBUG, "%ptr Read locks released, but we weren't woken up. Possible bug in other thread.\n", (void*)ptr);
 		}
-#endif
 	}
 	return lock;
 }
@@ -155,9 +147,7 @@ bool clod_rwseq_rd_heartbeat(void *ptr) {
 	struct lock want;
 	do {
 		if (lock.read_locks == 0) {
-#if CLOD_RWSEQ_DEBUG
-			debug("%p Possible failure to unlock read lock. Read sequence heartbeat task left running on lock with no read locks.", ptr);
-#endif
+			debug(CLOD_RWSEQ_DEBUG, "%ptr Possible failure to unlock read lock. Read sequence heartbeat task left running on lock with no read locks.", ptr);
 			return true;
 		}
 
@@ -194,9 +184,7 @@ enum clod_rwseq_result clod_rwseq_rd_unlock(uint32_t *ptr) {
 	struct lock want;
 	do {
 		if (lock.read_locks == 0) {
-#if CLOD_RWSEQ_DEBUG
-			debug("%p Attempted to unlock already unlocked read lock.", (void*)ptr);
-#endif
+			debug(CLOD_RWSEQ_DEBUG, "%ptr Attempted to unlock already unlocked read lock.", (void*)ptr);
 			return CLOD_RWSEQ_MISUSE;
 		}
 

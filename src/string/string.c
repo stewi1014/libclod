@@ -1,107 +1,162 @@
+#include "clod_config.h"
+#include "clod/debug.h"
 #include <clod/string.h>
 
-void clod_string_put_char(clod_string *str, const char c) {
-	if (str->capacity > str->length) {
-		str->array[str->length] = c;
-		str->length++;
+struct clod_string clod_string_from_cstr(const char *cstr) {
+	if (!cstr) return CLOD_STRING_NULL;
+
+	struct clod_string str = {
+		.ptr = (char*)cstr,
+		.len = 0,
+		.cap = 0
+	};
+
+	while (cstr[str.len] != '\0') str.len++;
+	return str;
+}
+size_t clod_string_cat(struct clod_string *dst, const struct clod_string src) {
+	if (dst->ptr == nullptr || dst->cap == 0 || src.ptr == nullptr) {
+		return 0;
+	}
+
+	ptrdiff_t size = dst->cap - dst->len;
+	if (size > src.len) {
+		size = src.len;
+	}
+
+	if (size < 0) {
+		return 0;
+	}
+
+	if (src.ptr > dst->ptr && src.ptr < dst->ptr + size) {
+		for (ptrdiff_t i = size - 1; i >= 0; i--) {
+			dst->ptr[i + dst->len] = src.ptr[i];
+		}
+	} else {
+		for (ptrdiff_t i = 0; i < size; i++) {
+			dst->ptr[i + dst->len] = src.ptr[i];
+		}
+	}
+
+	dst->len += size;
+	return (size_t)size;
+}
+size_t clod_string_insert(struct clod_string *dst, struct clod_string src) {
+	if (dst->ptr == nullptr || dst->cap == 0 || src.ptr == nullptr) {
+		return 0;
+	}
+
+	ptrdiff_t size = src.len < dst->cap ? src.len : dst->cap;
+
+	if (size < 0) {
+		return 0;
+	}
+
+	clod_string_cat(
+		&(struct clod_string){
+			.ptr = dst->ptr,
+			.len = size,
+			.cap = dst->cap
+		},
+		*dst
+	);
+
+	dst->len += (ptrdiff_t)clod_string_cat(
+		&(struct clod_string){
+			.ptr = dst->ptr,
+			.len = 0,
+			.cap = size
+		},
+		src
+	);
+
+	return (size_t)size;
+}
+int clod_string_cmp(const struct clod_string str1, const struct clod_string str2) {
+	if (str1.len > str2.len) return 1;
+	if (str2.len > str1.len) return -1;
+	if (str1.ptr == str2.ptr) return 0;
+
+	for (ptrdiff_t i = 0; i < str1.len; i++) {
+		if (str1.ptr[i] > str2.ptr[i]) return 1;
+		if (str2.ptr[i] > str1.ptr[i]) return -1;
+	}
+
+	return 0;
+}
+void clod_string_put_char(struct clod_string *str, const char c) {
+	if (str->ptr && str->cap > str->len) {
+		str->ptr[str->len] = c;
+		str->len++;
 	}
 }
-char clod_string_get_char(clod_string *str) {
-	if (str->length && str->array) {
-		char c = str->array[0];
-		str->array++;
-		str->length--;
-		if (str->capacity) str->capacity--;
+char clod_string_get_char(struct clod_string *str) {
+	if (str->ptr && str->len > 0) {
+		char c = str->ptr[0];
+		str->ptr++;
+		str->len--;
+		if (str->cap > 0) str->cap--;
 		return c;
 	}
 	return 0;
 }
-char clod_string_peek_char(const clod_string str) {
-	if (str.length && str.array) {
-		return str.array[0];
+char clod_string_peek_char(const struct clod_string str) {
+	if (str.ptr && str.len > 0) {
+		return str.ptr[0];
 	}
 	return 0;
 }
-clod_string clod_string_from_cstr(const char *cstr) {
-	if (!cstr) return CLOD_STRING_NULL;
+bool clod_string_remove_prefix(struct clod_string *str, const struct clod_string prefix) {
+	if (!str->ptr) return false;
+	if (!prefix.ptr) return true;
 
-	clod_string str = {
-		.array = (char*)cstr,
-		.length = 0,
-		.capacity = 0
-	};
-
-	while (str.array[str.length] != '\0') str.length++;
-	return str;
-}
-int clod_string_cmp(const clod_string str1, const clod_string str2) {
-	if (str1.length > str2.length) return 1;
-	if (str2.length > str1.length) return -1;
-	if (str1.array == str2.array) return 0;
-
-	for (size_t i = 0; i < str1.length; i++) {
-		if (str1.array[i] > str2.array[i]) return 1;
-		if (str2.array[i] > str1.array[i]) return -1;
-	}
-
-	return 0;
-}
-bool clod_string_has_prefix(clod_string *str, const clod_string prefix) {
-	if (str->length < prefix.length) return false;
-	for (size_t i = 0; i < prefix.length; i++)
-		if (str->array[i] != prefix.array[i])
+	if (str->len < prefix.len) return false;
+	for (ptrdiff_t i = 0; i < prefix.len; i++)
+		if (str->ptr[i] != prefix.ptr[i])
 			return false;
 
-	str->array += prefix.length;
-	str->length -= prefix.length;
-	str->capacity = str->capacity > prefix.length ? str->capacity - prefix.length : 0;
+	str->ptr += prefix.len;
+	str->len -= prefix.len;
+	str->cap -= prefix.len;
 	return true;
 }
-size_t clod_string_cat(clod_string *str, clod_string append) {
-	while (str->length < str->capacity && append.length > 0) {
-		str->array[str->length] = *append.array++;
-		append.length--;
-		str->length++;
-	}
-	return append.length;
-}
-clod_string clod_string_contains(clod_string str, const clod_string elem) {
-	if (str.array == nullptr) return CLOD_STRING_NULL;
-	if (elem.length == 0) {
-		return (clod_string){
-			.array = str.array,
-			.length = 0,
-			.capacity = str.capacity
+struct clod_string clod_string_contains(struct clod_string str, const struct clod_string elem) {
+	if (str.ptr == nullptr) return CLOD_STRING_NULL;
+	if (elem.len == 0) {
+		return (struct clod_string){
+			.ptr = str.ptr,
+			.len = 0,
+			.cap = str.cap
 		};
 	}
 
-	while (str.length >= elem.length) {
-		size_t i = 0;
-		while (i < elem.length && str.array[i] == elem.array[i]) i++;
-		if (i == elem.length) {
+	while (str.len >= elem.len) {
+		ptrdiff_t i = 0;
+		while (i < elem.len && str.ptr[i] == elem.ptr[i]) i++;
+		if (i == elem.len) {
 			return str;
 		}
 
-		str.array++;
-		str.length--;
-		str.capacity--;
+		str.ptr++;
+		str.len--;
+		str.cap--;
 	}
 
 	return CLOD_STRING_NULL;
 }
-clod_string clod_string_find(const clod_string str, const char elem, int occurrence) {
+struct clod_string clod_string_find(const struct clod_string str, const char elem, int occurrence) {
 	if (occurrence > 0) {
-		for (size_t i = 0; i < str.length; i++) {
-			if (str.array[i] == elem) occurrence--;
-			if (occurrence == 0) return (clod_string){str.array + i, str.length - i, str.capacity - i};
+		for (ptrdiff_t i = 0; i < str.len; i++) {
+			if (str.ptr[i] == elem) occurrence--;
+			if (occurrence == 0) return (struct clod_string){str.ptr + i, str.len - i, str.cap - i};
 		}
 		return CLOD_STRING_NULL;
 	}
 
 	if (occurrence < 0) {
-		for (size_t i = str.length; i > 0; i--) {
-			if (str.array[i - 1] == elem) occurrence++;
-			if (occurrence == 0) return (clod_string){str.array + i - 1, str.length - i + 1, str.capacity - i + 1};
+		for (ptrdiff_t i = str.len; i > 0; i--) {
+			if (str.ptr[i - 1] == elem) occurrence++;
+			if (occurrence == 0) return (struct clod_string){str.ptr + i - 1, str.len - i + 1, str.cap - i + 1};
 		}
 		return CLOD_STRING_NULL;
 	}

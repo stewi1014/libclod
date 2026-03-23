@@ -133,7 +133,7 @@ int main() {
 		{
 			.name = "crc32",
 			.bits = 32,
-			.polynomial = UINT64_C(0x04C11DB7),
+			.polynomial = UINT64_C(0x1EDC6F41),
 			.reflect = true
 		},
 		{
