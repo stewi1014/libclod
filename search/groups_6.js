@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['table_0',['Hash table',['../group__table.html',1,'']]]
+  ['region_20format_0',['Region Format',['../group__region__format.html',1,'']]],
+  ['region_20storage_1',['Region Storage',['../group__region.html',1,'']]]
 ];

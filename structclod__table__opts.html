@@ -98,13 +98,16 @@ $(function(){initNavTree('structclod__table__opts.html','','structclod__table__o
 <tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:a43e5fd77a335eee620c7092e8ccecfea" id="r_a43e5fd77a335eee620c7092e8ccecfea"><td class="memItemLeft">size_t&#160;</td><td class="memItemRight"><a class="el" href="#a43e5fd77a335eee620c7092e8ccecfea">min_capacity</a></td></tr>
-<tr class="memitem:a9bf67621f2258892b570834e3464555f" id="r_a9bf67621f2258892b570834e3464555f"><td class="memItemLeft">uint64_t(*&#160;</td><td class="memItemRight"><a class="el" href="#a9bf67621f2258892b570834e3464555f">hash_func</a> )(uint64_t seed, const void *key, size_t key_size)</td></tr>
-<tr class="memitem:a1747b1fe62c2ed27960d43dd213bff60" id="r_a1747b1fe62c2ed27960d43dd213bff60"><td class="memItemLeft">int(*&#160;</td><td class="memItemRight"><a class="el" href="#a1747b1fe62c2ed27960d43dd213bff60">cmp_func</a> )(const void *key1, const void *key2, size_t key_size)</td></tr>
+<tr class="memitem:a682adc4cf4904e65b56cca7c563dc94e" id="r_a682adc4cf4904e65b56cca7c563dc94e"><td class="memItemLeft">uint64_t(*&#160;</td><td class="memItemRight"><a class="el" href="#a682adc4cf4904e65b56cca7c563dc94e">hash_func</a> )(uint64_t seed, const void *key, size_t key_size, void *<a class="el" href="#a4223d472ba3cc1e3edaa788b7239acb0">user</a>)</td></tr>
+<tr class="memitem:a4fdf18fcec39ddde97b3ec0026da98c3" id="r_a4fdf18fcec39ddde97b3ec0026da98c3"><td class="memItemLeft">int(*&#160;</td><td class="memItemRight"><a class="el" href="#a4fdf18fcec39ddde97b3ec0026da98c3">cmp_func</a> )(const void *key1, size_t key1_size, const void *key2, size_t key2_size, void *<a class="el" href="#a4223d472ba3cc1e3edaa788b7239acb0">user</a>)</td></tr>
+<tr class="memitem:a69dab072af6c0d8244d200cbde9283db" id="r_a69dab072af6c0d8244d200cbde9283db"><td class="memItemLeft">void *(*&#160;</td><td class="memItemRight"><a class="el" href="#a69dab072af6c0d8244d200cbde9283db">malloc_func</a> )(size_t, void *<a class="el" href="#a4223d472ba3cc1e3edaa788b7239acb0">user</a>)</td></tr>
+<tr class="memitem:abc9b5288c82565692d51c7550b1c50af" id="r_abc9b5288c82565692d51c7550b1c50af"><td class="memItemLeft">void(*&#160;</td><td class="memItemRight"><a class="el" href="#abc9b5288c82565692d51c7550b1c50af">free_func</a> )(void *, void *<a class="el" href="#a4223d472ba3cc1e3edaa788b7239acb0">user</a>)</td></tr>
+<tr class="memitem:a4223d472ba3cc1e3edaa788b7239acb0" id="r_a4223d472ba3cc1e3edaa788b7239acb0"><td class="memItemLeft">void *&#160;</td><td class="memItemRight"><a class="el" href="#a4223d472ba3cc1e3edaa788b7239acb0">user</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Configuration options passed to clod_table_create. Zero values imply defaults. </p>
 
-<p class="definition">Definition at line <a class="el" href="table_8h_source.html#l00035">35</a> of file <a class="el" href="table_8h_source.html">table.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="table_8h_source.html#l00034">34</a> of file <a class="el" href="table_8h_source.html">table.h</a>.</p>
 </div><a name="doc-variable-members" id="doc-variable-members"></a><h2 id="header-doc-variable-members" class="groupheader">Member Data Documentation</h2>
 <a id="a43e5fd77a335eee620c7092e8ccecfea" name="a43e5fd77a335eee620c7092e8ccecfea"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a43e5fd77a335eee620c7092e8ccecfea">&#9670;&#160;</a></span>min_capacity</h2>
@@ -119,46 +122,97 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Minimum number of elements to support without further allocation. The table will never shrink to a capacity below this. </p>
 
-<p class="definition">Definition at line <a class="el" href="table_8h_source.html#l00038">38</a> of file <a class="el" href="table_8h_source.html">table.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="table_8h_source.html#l00037">37</a> of file <a class="el" href="table_8h_source.html">table.h</a>.</p>
 
 </div>
 </div>
-<a id="a9bf67621f2258892b570834e3464555f" name="a9bf67621f2258892b570834e3464555f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9bf67621f2258892b570834e3464555f">&#9670;&#160;</a></span>hash_func</h2>
+<a id="a682adc4cf4904e65b56cca7c563dc94e" name="a682adc4cf4904e65b56cca7c563dc94e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a682adc4cf4904e65b56cca7c563dc94e">&#9670;&#160;</a></span>hash_func</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint64_t(* clod_table_opts::hash_func) (uint64_t seed, const void *key, size_t key_size)</td>
+          <td class="memname">uint64_t(* clod_table_opts::hash_func) (uint64_t seed, const void *key, size_t key_size, void *<a class="el" href="#a4223d472ba3cc1e3edaa788b7239acb0">user</a>)</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Custom hash function. This map implementation demands a uniform spread of entropy across <em>all</em> bits in uint64, and that two keys with nonequal hashes are also not equal when using the cmp_func method. </p>
+<p>Custom hash function. Defaults to clod_sip64. This map implementation demands a uniform spread of entropy across <em>all</em> bits in uint64, and that two keys with nonequal hashes are also not equal when using the cmp_func method. </p>
 
-<p class="definition">Definition at line <a class="el" href="table_8h_source.html#l00042">42</a> of file <a class="el" href="table_8h_source.html">table.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="table_8h_source.html#l00041">41</a> of file <a class="el" href="table_8h_source.html">table.h</a>.</p>
 
 </div>
 </div>
-<a id="a1747b1fe62c2ed27960d43dd213bff60" name="a1747b1fe62c2ed27960d43dd213bff60"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1747b1fe62c2ed27960d43dd213bff60">&#9670;&#160;</a></span>cmp_func</h2>
+<a id="a4fdf18fcec39ddde97b3ec0026da98c3" name="a4fdf18fcec39ddde97b3ec0026da98c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4fdf18fcec39ddde97b3ec0026da98c3">&#9670;&#160;</a></span>cmp_func</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int(* clod_table_opts::cmp_func) (const void *key1, const void *key2, size_t key_size)</td>
+          <td class="memname">int(* clod_table_opts::cmp_func) (const void *key1, size_t key1_size, const void *key2, size_t key2_size, void *<a class="el" href="#a4223d472ba3cc1e3edaa788b7239acb0">user</a>)</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Custom equality function. The required behaviour for the hash_func and cmp_func relationship is; assert(<a class="el" href="#a1747b1fe62c2ed27960d43dd213bff60">cmp_func(a, b)</a> != 0 || <a class="el" href="#a9bf67621f2258892b570834e3464555f">hash_func(a)</a> == <a class="el" href="#a9bf67621f2258892b570834e3464555f">hash_func(b)</a>); In other words, if cmp_func thinks two elements are equal, hash_func must agree. </p>
+<p>Custom equality function. Defaults to memcmp. The required behaviour for the hash_func and cmp_func relationship is; assert(<a class="el" href="#a4fdf18fcec39ddde97b3ec0026da98c3">cmp_func(a, b)</a> != 0 || <a class="el" href="#a682adc4cf4904e65b56cca7c563dc94e">hash_func(a)</a> == <a class="el" href="#a682adc4cf4904e65b56cca7c563dc94e">hash_func(b)</a>); In other words, if cmp_func thinks two elements are equal, hash_func must agree. </p>
 
-<p class="definition">Definition at line <a class="el" href="table_8h_source.html#l00047">47</a> of file <a class="el" href="table_8h_source.html">table.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="table_8h_source.html#l00046">46</a> of file <a class="el" href="table_8h_source.html">table.h</a>.</p>
+
+</div>
+</div>
+<a id="a69dab072af6c0d8244d200cbde9283db" name="a69dab072af6c0d8244d200cbde9283db"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a69dab072af6c0d8244d200cbde9283db">&#9670;&#160;</a></span>malloc_func</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void *(* clod_table_opts::malloc_func) (size_t, void *<a class="el" href="#a4223d472ba3cc1e3edaa788b7239acb0">user</a>)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Custom memory allocation function. </p>
+
+<p class="definition">Definition at line <a class="el" href="table_8h_source.html#l00048">48</a> of file <a class="el" href="table_8h_source.html">table.h</a>.</p>
+
+</div>
+</div>
+<a id="abc9b5288c82565692d51c7550b1c50af" name="abc9b5288c82565692d51c7550b1c50af"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abc9b5288c82565692d51c7550b1c50af">&#9670;&#160;</a></span>free_func</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void(* clod_table_opts::free_func) (void *, void *<a class="el" href="#a4223d472ba3cc1e3edaa788b7239acb0">user</a>)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Custom memory freeing function. </p>
+
+<p class="definition">Definition at line <a class="el" href="table_8h_source.html#l00050">50</a> of file <a class="el" href="table_8h_source.html">table.h</a>.</p>
+
+</div>
+</div>
+<a id="a4223d472ba3cc1e3edaa788b7239acb0" name="a4223d472ba3cc1e3edaa788b7239acb0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4223d472ba3cc1e3edaa788b7239acb0">&#9670;&#160;</a></span>user</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void* clod_table_opts::user</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Value passed to callbacks. </p>
+
+<p class="definition">Definition at line <a class="el" href="table_8h_source.html#l00052">52</a> of file <a class="el" href="table_8h_source.html">table.h</a>.</p>
 
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
-<li>include/clod/<a class="el" href="table_8h_source.html">table.h</a></li>
+<li>include/clod/structures/<a class="el" href="table_8h_source.html">table.h</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

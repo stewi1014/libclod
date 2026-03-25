@@ -89,7 +89,7 @@ $(function(){initNavTree('structclod__region__opts.html','','structclod__region_
 </div>
 
 <div class="header">
-  <div class="headertitle"><div class="title">clod_region_opts Struct Reference<div class="ingroups"><a class="el" href="group__region.html">Region storage</a></div></div></div>
+  <div class="headertitle"><div class="title">clod_region_opts Struct Reference<div class="ingroups"><a class="el" href="group__region.html">Region Storage</a></div></div></div>
 </div><!--header-->
 <div class="contents">
 
@@ -97,7 +97,6 @@ $(function(){initNavTree('structclod__region__opts.html','','structclod__region_
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a8e3848add68049336def75a0eda6716d" id="r_a8e3848add68049336def75a0eda6716d"><td class="memItemLeft">uint8_t&#160;</td><td class="memItemRight"><a class="el" href="#a8e3848add68049336def75a0eda6716d">version</a></td></tr>
 <tr class="memitem:a24ca3ee90d0982a7858b429c2ba448e7" id="r_a24ca3ee90d0982a7858b429c2ba448e7"><td class="memItemLeft">uint8_t&#160;</td><td class="memItemRight"><a class="el" href="#a24ca3ee90d0982a7858b429c2ba448e7">dims</a></td></tr>
 <tr class="memitem:a28035120dc32ffc93355cf4223027a67" id="r_a28035120dc32ffc93355cf4223027a67"><td class="memItemLeft">uint8_t&#160;</td><td class="memItemRight"><a class="el" href="#a28035120dc32ffc93355cf4223027a67">mode</a></td></tr>
 <tr class="memitem:a62e0f9b28a6100d94a450a739d0d14d6" id="r_a62e0f9b28a6100d94a450a739d0d14d6"><td class="memItemLeft">enum <a class="el" href="group__compression.html#gaa25ec6fcc462b88c783f626e4f0dcaf1">clod_compression_method</a>&#160;</td><td class="memItemRight"><a class="el" href="#a62e0f9b28a6100d94a450a739d0d14d6">compression</a></td></tr>
@@ -111,25 +110,8 @@ Public Attributes</h2></td></tr>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Configuration options passed to region_open. Zero values imply defaults. </p>
 
-<p class="definition">Definition at line <a class="el" href="region_8h_source.html#l00168">168</a> of file <a class="el" href="region_8h_source.html">region.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="region_8h_source.html#l00158">158</a> of file <a class="el" href="region_8h_source.html">region.h</a>.</p>
 </div><a name="doc-variable-members" id="doc-variable-members"></a><h2 id="header-doc-variable-members" class="groupheader">Member Data Documentation</h2>
-<a id="a8e3848add68049336def75a0eda6716d" name="a8e3848add68049336def75a0eda6716d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8e3848add68049336def75a0eda6716d">&#9670;&#160;</a></span>version</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint8_t clod_region_opts::version</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Must be the value of the CLOD_REGION_VERSION macro. Used to ensure backwards compatability. </p>
-
-<p class="definition">Definition at line <a class="el" href="region_8h_source.html#l00170">170</a> of file <a class="el" href="region_8h_source.html">region.h</a>.</p>
-
-</div>
-</div>
 <a id="a24ca3ee90d0982a7858b429c2ba448e7" name="a24ca3ee90d0982a7858b429c2ba448e7"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a24ca3ee90d0982a7858b429c2ba448e7">&#9670;&#160;</a></span>dims</h2>
 
@@ -143,7 +125,7 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Number of dimensions. Min 1, Max 10. Defaults to 2. </p>
 
-<p class="definition">Definition at line <a class="el" href="region_8h_source.html#l00173">173</a> of file <a class="el" href="region_8h_source.html">region.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="region_8h_source.html#l00160">160</a> of file <a class="el" href="region_8h_source.html">region.h</a>.</p>
 
 </div>
 </div>
@@ -160,7 +142,7 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Open mode. Defaults to CLOD_REGION_MODE_RDWR. </p>
 
-<p class="definition">Definition at line <a class="el" href="region_8h_source.html#l00176">176</a> of file <a class="el" href="region_8h_source.html">region.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="region_8h_source.html#l00163">163</a> of file <a class="el" href="region_8h_source.html">region.h</a>.</p>
 
 </div>
 </div>
@@ -177,7 +159,7 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Compression used for new chunks. Defaults to CLOD_ZLIB if <code class="param">dims</code> is 2, <code class="param">prefix</code> is "region" and <code class="param">region_ext</code> is "mca" or "mcr". Otherwise, defaults to CLOD_LZ4F or CLOD_UNCOMPRESSED. </p>
 
-<p class="definition">Definition at line <a class="el" href="region_8h_source.html#l00181">181</a> of file <a class="el" href="region_8h_source.html">region.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="region_8h_source.html#l00168">168</a> of file <a class="el" href="region_8h_source.html">region.h</a>.</p>
 
 </div>
 </div>
@@ -194,7 +176,7 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Size of region file sectors. This should be sized so that 255 * sector_size is large enough to hold almost all chunks. Chunks greater than this size are supported, but do so using dedicated files for each chunk, which is significantly slower. </p>
 
-<p class="definition">Definition at line <a class="el" href="region_8h_source.html#l00186">186</a> of file <a class="el" href="region_8h_source.html">region.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="region_8h_source.html#l00173">173</a> of file <a class="el" href="region_8h_source.html">region.h</a>.</p>
 
 </div>
 </div>
@@ -211,7 +193,7 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>File descriptor for the directory relative to which path is resolved. Allows openat to be used. Can be closed after open. 0 is reserved as the sentinel nonexistent value. </p>
 
-<p class="definition">Definition at line <a class="el" href="region_8h_source.html#l00191">191</a> of file <a class="el" href="region_8h_source.html">region.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="region_8h_source.html#l00178">178</a> of file <a class="el" href="region_8h_source.html">region.h</a>.</p>
 
 </div>
 </div>
@@ -228,7 +210,7 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>File permissions to be applied to newly created files. Again, 0 is reserved as the sentinel nonexistent value. </p>
 
-<p class="definition">Definition at line <a class="el" href="region_8h_source.html#l00195">195</a> of file <a class="el" href="region_8h_source.html">region.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="region_8h_source.html#l00182">182</a> of file <a class="el" href="region_8h_source.html">region.h</a>.</p>
 
 </div>
 </div>
@@ -245,7 +227,7 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Prefix to filename. Defaults to "region". Max CLOD_REGION_PREFIX_MAX characters. Must be valid in a filename and cannot contain '.'. </p>
 
-<p class="definition">Definition at line <a class="el" href="region_8h_source.html#l00199">199</a> of file <a class="el" href="region_8h_source.html">region.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="region_8h_source.html#l00186">186</a> of file <a class="el" href="region_8h_source.html">region.h</a>.</p>
 
 </div>
 </div>
@@ -262,7 +244,7 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>File extension for region files. Defaults to "mca". Max CLOD_REGION_EXTENSION_MAX characters. Must be valid in a filename. </p>
 
-<p class="definition">Definition at line <a class="el" href="region_8h_source.html#l00203">203</a> of file <a class="el" href="region_8h_source.html">region.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="region_8h_source.html#l00190">190</a> of file <a class="el" href="region_8h_source.html">region.h</a>.</p>
 
 </div>
 </div>
@@ -279,7 +261,7 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>File extension for chunk files. Defaults to "mcc". Max CLOD_REGION_EXTENSION_MAX characters. Must be valid in a filename. </p>
 
-<p class="definition">Definition at line <a class="el" href="region_8h_source.html#l00207">207</a> of file <a class="el" href="region_8h_source.html">region.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="region_8h_source.html#l00194">194</a> of file <a class="el" href="region_8h_source.html">region.h</a>.</p>
 
 </div>
 </div>

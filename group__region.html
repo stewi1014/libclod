@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.16.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>libclod: Region storage</title>
+<title>libclod: Region Storage</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -89,17 +89,13 @@ $(function(){initNavTree('group__region.html','',''); });
 </div>
 
 <div class="header">
-  <div class="headertitle"><div class="title">Region storage </div></div>
+  <div class="headertitle"><div class="title">Region Storage </div></div>
 </div><!--header-->
 <div class="contents">
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:clod_5Fregion_5Fopts" id="r_clod_5Fregion_5Fopts"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structclod__region__opts.html">clod_region_opts</a></td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 id="header-define-members" class="groupheader"><a id="define-members" name="define-members"></a>
-Macros</h2></td></tr>
-<tr class="memitem:ga66208641dc846d8ad041b018369e0598" id="r_ga66208641dc846d8ad041b018369e0598"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#ga66208641dc846d8ad041b018369e0598">CLOD_REGION_VERSION</a>&#160;&#160;&#160;1</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-enum-members" class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
@@ -134,153 +130,8 @@ Limits</h2></td></tr>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="region_8h.html">region.h</a> defines the public interface libclod exposes for interacting with a gentrified and extended version of the minecraft region file format that retains compatibility with minecraft.</p>
 <p><a href="https://minecraft.wiki/w/Region_file_format">https://minecraft.wiki/w/Region_file_format</a></p>
-<p>libclod extends the region file format with a header supporting dynamic features and uses that support to add checksums and uncompressed chunk size to</p>
 <p>Thanks to <a href="https://github.com/ishland">ishland</a> for his insights while brainstorming approaches to this. </p>
-</div>
-
-<h3 class="doxsection"><a id="region_format" name="region_format"></a>Region File Format</h3><div class="textblock"><h1 class="doxsection"><a class="anchor" id="autotoc_md0"></a>
-Region file format</h1>
-<p>Libclod supports 3 region file header variants. The vanilla header, the libclod header, and a backwards compatible combination of both. The vanilla header is only supported for reading with reduced functionality, due to limitations with the format itself, e.g. no data validation or crash recovery. The libclod header is not backwards compatible. The compound header is backwards compatible and includes both headers.</p>
-<h2 class="doxsection"><a class="anchor" id="autotoc_md1"></a>
-Vanilla</h2>
-<p>The vanilla header does not have any dynamic storage capability. It is a fixed size header and chunk data begins directly after.</p>
-<h3 class="doxsection"><a class="anchor" id="autotoc_md2"></a>
-Header</h3>
-<table class="markdownTable">
-<tr class="markdownTableHead">
-<th class="markdownTableHeadNone">Offset  </th><th class="markdownTableHeadNone">Size  </th><th class="markdownTableHeadNone">Description  </th></tr>
-<tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">0  </td><td class="markdownTableBodyNone">4096  </td><td class="markdownTableBodyNone">Chunk locations [1024]  </td></tr>
-<tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">4096  </td><td class="markdownTableBodyNone">4096  </td><td class="markdownTableBodyNone">Modification time in unix epoch seconds [1024]  </td></tr>
-<tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">8192  </td><td class="markdownTableBodyNone">...  </td><td class="markdownTableBodyNone">Chunk data  </td></tr>
-</table>
-<h4 class="doxsection"><a class="anchor" id="autotoc_md3"></a>
-Chunk location</h4>
-<table class="markdownTable">
-<tr class="markdownTableHead">
-<th class="markdownTableHeadNone">Offset  </th><th class="markdownTableHeadNone">Size  </th><th class="markdownTableHeadNone">Type  </th></tr>
-<tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">0  </td><td class="markdownTableBodyNone">3  </td><td class="markdownTableBodyNone">Offset in sectors  </td></tr>
-<tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">3  </td><td class="markdownTableBodyNone">1  </td><td class="markdownTableBodyNone">Size in sectors  </td></tr>
-</table>
-<h4 class="doxsection"><a class="anchor" id="autotoc_md4"></a>
-Chunk data</h4>
-<table class="markdownTable">
-<tr class="markdownTableHead">
-<th class="markdownTableHeadNone">Offset  </th><th class="markdownTableHeadNone">Size  </th><th class="markdownTableHeadNone">Type  </th></tr>
-<tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">0  </td><td class="markdownTableBodyNone">4  </td><td class="markdownTableBodyNone">Compressed chunk size in bytes  </td></tr>
-<tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">4  </td><td class="markdownTableBodyNone">1  </td><td class="markdownTableBodyNone">Chunk compression type  </td></tr>
-<tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">5  </td><td class="markdownTableBodyNone">...  </td><td class="markdownTableBodyNone">Compressed chunk data  </td></tr>
-</table>
-<h2 class="doxsection"><a class="anchor" id="autotoc_md5"></a>
-Libclod</h2>
-<p>The libclod region file format uses NBTs to store header data; as such, the static header is smaller, although intentionally oversized, and only stores some metadata and other things that need static storage.</p>
-<p>The static header is padded to 256 bytes, leaving some space for any future extensions that might need static storage such as shared mutexes.</p>
-<p>All CRC-32 values use the polynomial <span class="tt">0x04C11DB7</span>, reflect input and output, use <span class="tt">0xFFFFFFFF</span> as the initial value, and xor with <span class="tt">0xFFFFFFFF</span> to finalise. AFAICT this is the most common CRC-32 variant, so an implementation should always be close at hand.</p>
-<h3 class="doxsection"><a class="anchor" id="autotoc_md6"></a>
-Header</h3>
-<table class="markdownTable">
-<tr class="markdownTableHead">
-<th class="markdownTableHeadNone">Offset  </th><th class="markdownTableHeadNone">Size  </th><th class="markdownTableHeadNone">Type  </th></tr>
-<tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">0  </td><td class="markdownTableBodyNone">128  </td><td class="markdownTableBodyNone">Human readable magic used to identify the file  </td></tr>
-<tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">128  </td><td class="markdownTableBodyNone">4  </td><td class="markdownTableBodyNone">CRC-32 checksum of NBT data  </td></tr>
-<tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">132  </td><td class="markdownTableBodyNone">4  </td><td class="markdownTableBodyNone">Size of NBT data in bytes  </td></tr>
-<tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">136  </td><td class="markdownTableBodyNone">4  </td><td class="markdownTableBodyNone">Generation number incremented at the start and end of every write  </td></tr>
-<tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">256  </td><td class="markdownTableBodyNone">...  </td><td class="markdownTableBodyNone">NBT data  </td></tr>
-<tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">...  </td><td class="markdownTableBodyNone">...  </td><td class="markdownTableBodyNone">Chunk data  </td></tr>
-</table>
-<h3 class="doxsection"><a class="anchor" id="autotoc_md7"></a>
-NBT data</h3>
-<p>The idea behind the NBT structure is that implementations can store whatever they need to. Data not relevant to a given implementation is simply ignored by it, and there's backwards compatible extensibility for new features.</p>
-<p>There are a couple limitations to NBT data, most of which stem from the fact that writes can cause other tags to move memory locations. Since dynamic storage is the goal, the alternative to copying is some kind of memory allocation scheme that will have to deal with issues like fragmentation, backwards compatability and require a complex structure to organise it all. By the end of all that you probably won't even be any faster than NBT's dumb copying anyways. Modern CPUs copy at tens of GB/s on a bad day. You'll just have an overengineered file format for the sake of being able to cache pointers a little easier.</p>
-<p>Besides, when it comes to dynamic storage formats, we already have a reliable and well-understood in-domain format. It doesn't make sense to use something else without a concrete reason.</p>
-<h4 class="doxsection"><a class="anchor" id="autotoc_md8"></a>
-Root Tag</h4>
-<table class="markdownTable">
-<tr class="markdownTableHead">
-<th class="markdownTableHeadNone">Key  </th><th class="markdownTableHeadNone">Type  </th><th class="markdownTableHeadNone">Description  </th></tr>
-<tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">ChunkFilePrefix  </td><td class="markdownTableBodyNone">String  </td><td class="markdownTableBodyNone">Prefix chunk filenames have (e.g. "c")  </td></tr>
-<tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">ChunkFileExtension  </td><td class="markdownTableBodyNone">String  </td><td class="markdownTableBodyNone">Extension chunk filenames have (e.g. "mcc")  </td></tr>
-<tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">Dimensions  </td><td class="markdownTableBodyNone">Byte  </td><td class="markdownTableBodyNone">Number of dimensions in the region file  </td></tr>
-<tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">SectorSize  </td><td class="markdownTableBodyNone">Int  </td><td class="markdownTableBodyNone">Sector size  </td></tr>
-<tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">Chunks  </td><td class="markdownTableBodyNone">Compound  </td><td class="markdownTableBodyNone">Chunk metadata  </td></tr>
-</table>
-<h4 class="doxsection"><a class="anchor" id="autotoc_md9"></a>
-Chunks Tag</h4>
-<table class="markdownTable">
-<tr class="markdownTableHead">
-<th class="markdownTableHeadNone">Key  </th><th class="markdownTableHeadNone">Type  </th><th class="markdownTableHeadNone">Description  </th></tr>
-<tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">ModificationTime  </td><td class="markdownTableBodyNone">Int Array [1024]  </td><td class="markdownTableBodyNone">Chunk last modification time in unix epoch seconds  </td></tr>
-<tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">FileOffset  </td><td class="markdownTableBodyNone">Int Array [1024]  </td><td class="markdownTableBodyNone">Location of the chunk data in the file  </td></tr>
-<tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">FileSectors  </td><td class="markdownTableBodyNone">Byte Array [1024]  </td><td class="markdownTableBodyNone">Chunk size in sectors  </td></tr>
-<tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">Checksum  </td><td class="markdownTableBodyNone">Int Array [1024]  </td><td class="markdownTableBodyNone">Checksum of chunk data  </td></tr>
-<tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">UncompressedSize  </td><td class="markdownTableBodyNone">Int Array [1024]  </td><td class="markdownTableBodyNone">Chunk size in bytes  </td></tr>
-</table>
-<h2 class="doxsection"><a class="anchor" id="autotoc_md10"></a>
-Compound</h2>
-<p>The compound format aims to provide backwards compatibility with the vanilla format. It is simply both the vanilla and libclod header concatenated together, with the <em>Chunk/ModificationTime</em>, <em>Chunk/FileOffset</em> and <em>Chunk/FileSectors</em> arrays missing from the libclod header and chunks being stored at a larger offset to make space.</p>
-<table class="markdownTable">
-<tr class="markdownTableHead">
-<th class="markdownTableHeadNone">Offset  </th><th class="markdownTableHeadNone">Size  </th><th class="markdownTableHeadNone">Type  </th><th class="markdownTableHeadNone">Description  </th></tr>
-<tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">0  </td><td class="markdownTableBodyNone">8192  </td><td class="markdownTableBodyNone">Vanilla header  </td><td class="markdownTableBodyNone">The vanilla header  </td></tr>
-<tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">8192  </td><td class="markdownTableBodyNone">...  </td><td class="markdownTableBodyNone">Libclod header  </td><td class="markdownTableBodyNone">The libclod header  </td></tr>
-</table>
-<p>Implementations that don't support the libclod format will see a perfectly valid and correct vanilla header and function normally; however, it's likely they will overwrite the libclod header with chunk data when writing. Libclod will see a failing magic or checksum and fall back to treating the file as a pure vanilla region file, and information in the libclod header is lost.</p>
-<p>Notably, to facilitate backwards compatibility, some attributes must be fixed. When opening a compound header, libclod will ignore existing values and set them to the following. If the implementation uses different values for these, then backwards compatibility is broken, and the libclod header should be used instead.</p>
-<table class="markdownTable">
-<tr class="markdownTableHead">
-<th class="markdownTableHeadNone">Key  </th><th class="markdownTableHeadNone">Value  </th></tr>
-<tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">ChunkFilePrefix  </td><td class="markdownTableBodyNone">"c"  </td></tr>
-<tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">ChunkFileExtension  </td><td class="markdownTableBodyNone">"mcc"  </td></tr>
-<tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">Dimensions  </td><td class="markdownTableBodyNone">2  </td></tr>
-<tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">SectorSize  </td><td class="markdownTableBodyNone">4096  </td></tr>
-</table>
 </div><a name="doc-define-members" id="doc-define-members"></a><h2 id="header-doc-define-members" class="groupheader">Macro Definition Documentation</h2>
-<a id="ga66208641dc846d8ad041b018369e0598" name="ga66208641dc846d8ad041b018369e0598"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga66208641dc846d8ad041b018369e0598">&#9670;&#160;</a></span>CLOD_REGION_VERSION</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define CLOD_REGION_VERSION&#160;&#160;&#160;1</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Library ABI version. Backwards compatability with old ABI versions/behaviours will be ensured, at least until a major SO version bump, this identifies which ABI version the program is expecting. </p>
-
-<p class="definition">Definition at line <a class="el" href="region_8h_source.html#l00030">30</a> of file <a class="el" href="region_8h_source.html">region.h</a>.</p>
-
-</div>
-</div>
 <a id="gaf4e2710e0ea1e462aa5c6806a4c69fd7" name="gaf4e2710e0ea1e462aa5c6806a4c69fd7"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#gaf4e2710e0ea1e462aa5c6806a4c69fd7">&#9670;&#160;</a></span>CLOD_REGION_MODE_RDONLY</h2>
 
@@ -293,7 +144,7 @@ Compound</h2>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="region_8h_source.html#l00153">153</a> of file <a class="el" href="region_8h_source.html">region.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="region_8h_source.html#l00143">143</a> of file <a class="el" href="region_8h_source.html">region.h</a>.</p>
 
 </div>
 </div>
@@ -309,7 +160,7 @@ Compound</h2>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="region_8h_source.html#l00154">154</a> of file <a class="el" href="region_8h_source.html">region.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="region_8h_source.html#l00144">144</a> of file <a class="el" href="region_8h_source.html">region.h</a>.</p>
 
 </div>
 </div>
@@ -325,7 +176,7 @@ Compound</h2>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="region_8h_source.html#l00159">159</a> of file <a class="el" href="region_8h_source.html">region.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="region_8h_source.html#l00149">149</a> of file <a class="el" href="region_8h_source.html">region.h</a>.</p>
 
 </div>
 </div>
@@ -341,7 +192,7 @@ Compound</h2>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="region_8h_source.html#l00160">160</a> of file <a class="el" href="region_8h_source.html">region.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="region_8h_source.html#l00150">150</a> of file <a class="el" href="region_8h_source.html">region.h</a>.</p>
 
 </div>
 </div>
@@ -357,7 +208,7 @@ Compound</h2>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="region_8h_source.html#l00161">161</a> of file <a class="el" href="region_8h_source.html">region.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="region_8h_source.html#l00151">151</a> of file <a class="el" href="region_8h_source.html">region.h</a>.</p>
 
 </div>
 </div>
@@ -385,7 +236,7 @@ Compound</h2>
 </td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="region_8h_source.html#l00043">43</a> of file <a class="el" href="region_8h_source.html">region.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="region_8h_source.html#l00033">33</a> of file <a class="el" href="region_8h_source.html">region.h</a>.</p>
 
 </div>
 </div>
@@ -417,7 +268,7 @@ Compound</h2>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Handle to the directory and configuration, or nullptr on error. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="region__open_8c_source.html#l00098">98</a> of file <a class="el" href="region__open_8c_source.html">region_open.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="region__open_8c_source.html#l00008">8</a> of file <a class="el" href="region__open_8c_source.html">region_open.c</a>.</p>
 
 </div>
 </div>
@@ -456,7 +307,7 @@ Compound</h2>
 </div><div class="memdoc">
 <p>Read chunk data. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname"><a class="el" href="group__region.html">Region storage</a></td><td>Region handle. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname"><a class="el" href="group__region.html">Region Storage</a></td><td>Region handle. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">pos</td><td>Chunk position. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">buff</td><td>The buffer where data is written to. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">buff_size</td><td>Size of dst. </td></tr>
@@ -508,7 +359,7 @@ Compound</h2>
 </div><div class="memdoc">
 <p>Write chunk data or delete a chunk. Delete a chunk by passing a null buffer. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname"><a class="el" href="group__region.html">Region storage</a></td><td>Region handle. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname"><a class="el" href="group__region.html">Region Storage</a></td><td>Region handle. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">pos</td><td>Chunk position. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">buff</td><td>Buffer containing chunk data to write. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">buff_size</td><td>Size of the chunk data to write. </td></tr>
@@ -551,7 +402,7 @@ Compound</h2>
 </div><div class="memdoc">
 <p>Get the last modification time of the chunk. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname"><a class="el" href="group__region.html">Region storage</a></td><td>Region handle. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname"><a class="el" href="group__region.html">Region Storage</a></td><td>Region handle. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">pos</td><td>Chunk position. </td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">mtime</td><td>Last modification time. </td></tr>
   </table>
@@ -585,7 +436,7 @@ Compound</h2>
 </div><div class="memdoc">
 <p>Start iterating over chunks. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname"><a class="el" href="group__region.html">Region storage</a></td><td>Region handle. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname"><a class="el" href="group__region.html">Region Storage</a></td><td>Region handle. </td></tr>
   </table>
   </dd>
 </dl>
@@ -661,12 +512,12 @@ Compound</h2>
 </div><div class="memdoc">
 <p>Release resources associated with the region handle. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname"><a class="el" href="group__region.html">Region storage</a></td><td>The handle to free. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname"><a class="el" href="group__region.html">Region Storage</a></td><td>The handle to free. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="region__open_8c_source.html#l00121">121</a> of file <a class="el" href="region__open_8c_source.html">region_open.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="region__open_8c_source.html#l00031">31</a> of file <a class="el" href="region__open_8c_source.html">region_open.c</a>.</p>
 
 </div>
 </div>

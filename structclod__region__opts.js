@@ -1,6 +1,5 @@
 var structclod__region__opts =
 [
-    [ "version", "structclod__region__opts.html#a8e3848add68049336def75a0eda6716d", null ],
     [ "dims", "structclod__region__opts.html#a24ca3ee90d0982a7858b429c2ba448e7", null ],
     [ "mode", "structclod__region__opts.html#a28035120dc32ffc93355cf4223027a67", null ],
     [ "compression", "structclod__region__opts.html#a62e0f9b28a6100d94a450a739d0d14d6", null ],

@@ -1,6 +1,5 @@
 var region_8h =
 [
-    [ "CLOD_REGION_VERSION", "group__region.html#ga66208641dc846d8ad041b018369e0598", null ],
     [ "clod_region_result", "group__region.html#ga9e5053f4d6bd4efc2f4ba2352276e4d5", [
       [ "CLOD_REGION_OK", "group__region.html#gga9e5053f4d6bd4efc2f4ba2352276e4d5ae12bb61e00ea4eb8ffe1856fe1065a45", null ],
       [ "CLOD_REGION_INVALID_USAGE", "group__region.html#gga9e5053f4d6bd4efc2f4ba2352276e4d5ac37f4ae63905afb5ef5099a1825fe271", null ],

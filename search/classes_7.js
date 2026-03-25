@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['vanilla_5fheader_0',['vanilla_header',['../structvanilla__header.html',1,'']]]
+  ['region_5ffile_0',['region_file',['../structregion__file.html',1,'']]]
 ];

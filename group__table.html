@@ -108,11 +108,13 @@ Functions</h2></td></tr>
 <tr class="memitem:gaaa4f82888b60e6a15ad73726a81c835a" id="r_gaaa4f82888b60e6a15ad73726a81c835a"><td class="memItemLeft">struct <a class="el" href="structclod__table.html">clod_table</a> *&#160;</td><td class="memItemRight"><a class="el" href="#gaaa4f82888b60e6a15ad73726a81c835a">clod_table_create</a> (const struct <a class="el" href="structclod__table__opts.html">clod_table_opts</a> *opts)</td></tr>
 <tr class="memitem:ga239b3e23b7e9a91d1e32014257e8ee5a" id="r_ga239b3e23b7e9a91d1e32014257e8ee5a"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#ga239b3e23b7e9a91d1e32014257e8ee5a">clod_table_destroy</a> (struct <a class="el" href="structclod__table.html">clod_table</a> *t)</td></tr>
 <tr class="memitem:ga1b3e25a7596146eba0a019e5eb95900a" id="r_ga1b3e25a7596146eba0a019e5eb95900a"><td class="memItemLeft">size_t&#160;</td><td class="memItemRight"><a class="el" href="#ga1b3e25a7596146eba0a019e5eb95900a">clod_table_len</a> (const struct <a class="el" href="structclod__table.html">clod_table</a> *t)</td></tr>
-<tr class="memitem:ga0461d4310832868c49bc80d92ae97380" id="r_ga0461d4310832868c49bc80d92ae97380"><td class="memItemLeft">void *&#160;</td><td class="memItemRight"><a class="el" href="#ga0461d4310832868c49bc80d92ae97380">clod_table_add</a> (struct <a class="el" href="structclod__table.html">clod_table</a> *t, const void *<a class="el" href="structelement.html">element</a>, size_t key_size)</td></tr>
-<tr class="memitem:ga9e9bc355477840c482ea564f31b39239" id="r_ga9e9bc355477840c482ea564f31b39239"><td class="memItemLeft">void *&#160;</td><td class="memItemRight"><a class="el" href="#ga9e9bc355477840c482ea564f31b39239">clod_table_set</a> (struct <a class="el" href="structclod__table.html">clod_table</a> *t, const void *<a class="el" href="structelement.html">element</a>, size_t key_size)</td></tr>
+<tr class="memitem:gaae28b300645e2ac14f2bd1eea54bd22a" id="r_gaae28b300645e2ac14f2bd1eea54bd22a"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#gaae28b300645e2ac14f2bd1eea54bd22a">clod_table_add</a> (struct <a class="el" href="structclod__table.html">clod_table</a> *t, const void *<a class="el" href="structelement.html">element</a>, size_t key_size, void **existing_out)</td></tr>
+<tr class="memitem:ga725352988eb751c6ca3fc7da407a70f6" id="r_ga725352988eb751c6ca3fc7da407a70f6"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#ga725352988eb751c6ca3fc7da407a70f6">clod_table_set</a> (struct <a class="el" href="structclod__table.html">clod_table</a> *t, const void *<a class="el" href="structelement.html">element</a>, size_t key_size, void **existing_out)</td></tr>
 <tr class="memitem:gacca658a9b075d4f6d5b551d637f14290" id="r_gacca658a9b075d4f6d5b551d637f14290"><td class="memItemLeft">void *&#160;</td><td class="memItemRight"><a class="el" href="#gacca658a9b075d4f6d5b551d637f14290">clod_table_get</a> (const struct <a class="el" href="structclod__table.html">clod_table</a> *t, const void *key, size_t key_size)</td></tr>
 <tr class="memitem:gae007e3135fdf976ccd71b3b2f485c441" id="r_gae007e3135fdf976ccd71b3b2f485c441"><td class="memItemLeft">void *&#160;</td><td class="memItemRight"><a class="el" href="#gae007e3135fdf976ccd71b3b2f485c441">clod_table_del</a> (struct <a class="el" href="structclod__table.html">clod_table</a> *t, const void *key, size_t key_size)</td></tr>
 <tr class="memitem:ga4782517629528b5c714af9d132082364" id="r_ga4782517629528b5c714af9d132082364"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#ga4782517629528b5c714af9d132082364">clod_table_iter</a> (const struct <a class="el" href="structclod__table.html">clod_table</a> *t, struct clod_table_iter *iter)</td></tr>
+<tr class="memitem:ga8649b88bf9d4db31220448326554cd04" id="r_ga8649b88bf9d4db31220448326554cd04"><td class="memItemLeft">uint64_t&#160;</td><td class="memItemRight"><a class="el" href="#ga8649b88bf9d4db31220448326554cd04">clod_table_hash_ptr</a> (uint64_t seed, const void *key, size_t key_size, void *user)</td></tr>
+<tr class="memitem:ga1a58836835f26bf3235c2cd647175a98" id="r_ga1a58836835f26bf3235c2cd647175a98"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#ga1a58836835f26bf3235c2cd647175a98">clod_table_cmp_ptr</a> (const void *key1, size_t key1_size, const void *key2, size_t key2_size, void *user)</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A hash table implementation. It's a pure set at heart, but since methods never return a pointer not supplied by the user, it can be trivially extended to a key-&gt;value map by storing the value after the key. The difference in wording between 'element' and 'key' reflects this. If implementing a map, 'element' implies the key and trailing value data associated with it, while 'key' simply implies the key value. If instead a pure set is required - 'element' and 'key' become interchangeable. I would recommend using a struct with the first field being the key and subsequent fields being the value, although for maps with variable-length keys more manual intervention may be required. </p>
@@ -129,7 +131,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="table_8h_source.html#l00132">132</a> of file <a class="el" href="table_8h_source.html">table.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="table_8h_source.html#l00141">141</a> of file <a class="el" href="table_8h_source.html">table.h</a>.</p>
 
 </div>
 </div>
@@ -156,7 +158,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Initialised table. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="table_8c_source.html#l00172">172</a> of file <a class="el" href="table_8c_source.html">table.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="table_8c_source.html#l00190">190</a> of file <a class="el" href="table_8c_source.html">table.c</a>.</p>
 
 </div>
 </div>
@@ -181,7 +183,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="table_8c_source.html#l00187">187</a> of file <a class="el" href="table_8c_source.html">table.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="table_8c_source.html#l00205">205</a> of file <a class="el" href="table_8c_source.html">table.c</a>.</p>
 
 </div>
 </div>
@@ -207,18 +209,18 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Number of elements currently in the table. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="table_8c_source.html#l00191">191</a> of file <a class="el" href="table_8c_source.html">table.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="table_8c_source.html#l00209">209</a> of file <a class="el" href="table_8c_source.html">table.c</a>.</p>
 
 </div>
 </div>
-<a id="ga0461d4310832868c49bc80d92ae97380" name="ga0461d4310832868c49bc80d92ae97380"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga0461d4310832868c49bc80d92ae97380">&#9670;&#160;</a></span>clod_table_add()</h2>
+<a id="gaae28b300645e2ac14f2bd1eea54bd22a" name="gaae28b300645e2ac14f2bd1eea54bd22a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaae28b300645e2ac14f2bd1eea54bd22a">&#9670;&#160;</a></span>clod_table_add()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void * clod_table_add </td>
+          <td class="memname">bool clod_table_add </td>
           <td>(</td>
           <td class="paramtype">struct <a class="el" href="structclod__table.html">clod_table</a> *</td>          <td class="paramname"><span class="paramname"><em>t</em></span>, </td>
         </tr>
@@ -230,60 +232,72 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>key_size</em></span>&#160;)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Add an element. If the key already exists, the operation will fail and return the existing key.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">t</td><td>Handle to the table. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname"><a class="el" href="structelement.html">element</a></td><td>Element to add. The table takes ownership on success. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">key_size</td><td>Size of the key. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Nullptr on success, the existing element if the key exists, or the provided element on allocation failure. The table retains ownership of an existing element. </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="table_8c_source.html#l00194">194</a> of file <a class="el" href="table_8c_source.html">table.c</a>.</p>
-
-</div>
-</div>
-<a id="ga9e9bc355477840c482ea564f31b39239" name="ga9e9bc355477840c482ea564f31b39239"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga9e9bc355477840c482ea564f31b39239">&#9670;&#160;</a></span>clod_table_set()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void * clod_table_set </td>
-          <td>(</td>
-          <td class="paramtype">struct <a class="el" href="structclod__table.html">clod_table</a> *</td>          <td class="paramname"><span class="paramname"><em>t</em></span>, </td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>key_size</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const void *</td>          <td class="paramname"><span class="paramname"><em>element</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>key_size</em></span>&#160;)</td>
+          <td class="paramtype">void **</td>          <td class="paramname"><span class="paramname"><em>existing_out</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Add or replace an element. If the key already exists, it is replaced.</p>
+<p>Add an element. If the key already exists the operation fails. A false return and null <code class="param">existing_out</code> indicates an allocation failure.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">t</td><td>Handle to the table. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname"><a class="el" href="structelement.html">element</a></td><td>Element to insert. The table takes ownership on success. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">key_size</td><td>Size of the key. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">existing_out</td><td>(nullable) Returns the existing element if the key already existed. The table retains ownership. Returns null on allocation failure. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Previous element if the key existed, nullptr if it didn't, or the provided element on allocation failure. The caller takes ownership of the previous element. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>True on success. False if the key already existed, or on allocation failure. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="table_8c_source.html#l00203">203</a> of file <a class="el" href="table_8c_source.html">table.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="table_8c_source.html#l00212">212</a> of file <a class="el" href="table_8c_source.html">table.c</a>.</p>
+
+</div>
+</div>
+<a id="ga725352988eb751c6ca3fc7da407a70f6" name="ga725352988eb751c6ca3fc7da407a70f6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga725352988eb751c6ca3fc7da407a70f6">&#9670;&#160;</a></span>clod_table_set()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool clod_table_set </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structclod__table.html">clod_table</a> *</td>          <td class="paramname"><span class="paramname"><em>t</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const void *</td>          <td class="paramname"><span class="paramname"><em>element</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>key_size</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void **</td>          <td class="paramname"><span class="paramname"><em>existing_out</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Add or replace an element. If the key already exists, it is replaced. A false return and null <code class="param">existing_out</code> indicates allocation failure.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">t</td><td>Handle to the table. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname"><a class="el" href="structelement.html">element</a></td><td>Element to insert. The table takes ownership on success. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">key_size</td><td>Size of the key. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">existing_out</td><td>Returns the existing element if the key already existed. The caller takes ownership on success. Returns null on allocation failure. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True on success. False on allocation failure. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="table_8c_source.html#l00224">224</a> of file <a class="el" href="table_8c_source.html">table.c</a>.</p>
 
 </div>
 </div>
@@ -320,7 +334,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Found element or null. The table retains ownership of the element. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="table_8c_source.html#l00212">212</a> of file <a class="el" href="table_8c_source.html">table.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="table_8c_source.html#l00236">236</a> of file <a class="el" href="table_8c_source.html">table.c</a>.</p>
 
 </div>
 </div>
@@ -355,9 +369,9 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Pointer to the removed element, or nullptr if the key doesn't exist. The caller takes ownership of the element. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The removed element, or nullptr if the key doesn't exist. The caller takes ownership of the element. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="table_8c_source.html#l00221">221</a> of file <a class="el" href="table_8c_source.html">table.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="table_8c_source.html#l00245">245</a> of file <a class="el" href="table_8c_source.html">table.c</a>.</p>
 
 </div>
 </div>
@@ -379,7 +393,7 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Get the next element in, or start, an iteration over table elements. Mutating the table during iteration can result in existing elements being iterated more than once or not at all.</p>
+<p>Get the next element in, or start, an iteration over table elements. Mutating the table, except deleting elements, during iteration can result in existing elements being iterated more than once or not at all.</p>
 <p>The iterator should be zero initialised to start an iteration. The iterator is zeroed at the end of the iteration.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -390,7 +404,80 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>If the next element was found. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="table_8c_source.html#l00234">234</a> of file <a class="el" href="table_8c_source.html">table.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="table_8c_source.html#l00258">258</a> of file <a class="el" href="table_8c_source.html">table.c</a>.</p>
+
+</div>
+</div>
+<a id="ga8649b88bf9d4db31220448326554cd04" name="ga8649b88bf9d4db31220448326554cd04"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga8649b88bf9d4db31220448326554cd04">&#9670;&#160;</a></span>clod_table_hash_ptr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint64_t clod_table_hash_ptr </td>
+          <td>(</td>
+          <td class="paramtype">uint64_t</td>          <td class="paramname"><span class="paramname"><em>seed</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const void *</td>          <td class="paramname"><span class="paramname"><em>key</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>key_size</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>user</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>A hash method that hashes the pointer value itself instead of the data it references. Provided here as a helper for using the table as a pointer set. </p>
+
+<p class="definition">Definition at line <a class="el" href="table_8c_source.html#l00172">172</a> of file <a class="el" href="table_8c_source.html">table.c</a>.</p>
+
+</div>
+</div>
+<a id="ga1a58836835f26bf3235c2cd647175a98" name="ga1a58836835f26bf3235c2cd647175a98"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga1a58836835f26bf3235c2cd647175a98">&#9670;&#160;</a></span>clod_table_cmp_ptr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int clod_table_cmp_ptr </td>
+          <td>(</td>
+          <td class="paramtype">const void *</td>          <td class="paramname"><span class="paramname"><em>key1</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>key1_size</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const void *</td>          <td class="paramname"><span class="paramname"><em>key2</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>key2_size</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>user</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>A comparison method that compares the pointer values themselves instead of the data they reference. Provided here as a helper for using the table as a pointer set. </p>
+
+<p class="definition">Definition at line <a class="el" href="table_8c_source.html#l00177">177</a> of file <a class="el" href="table_8c_source.html">table.c</a>.</p>
 
 </div>
 </div>

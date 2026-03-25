@@ -1,10 +1,14 @@
 var searchData=
 [
-  ['parsing_0',['&lt;a href=&quot;https://stewi1014.github.io/libclod/group__nbt.html&quot;&gt;NBT parsing&lt;/a&gt;',['../index.html#autotoc_md22',1,'']]],
-  ['payload_1',['payload',['../structclod__nbt__iter.html#a66031560942b12d2f97e6a957ff60bba',1,'clod_nbt_iter']]],
-  ['platforms_2',['Platforms',['../index.html#autotoc_md13',1,'']]],
-  ['prefix_3',['prefix',['../structclod__region__opts.html#abaceb9aa2a1f50b1ced8783d3daa875d',1,'clod_region_opts']]],
-  ['probe_4',['probe',['../structprobe.html',1,'']]],
-  ['ptr_5',['ptr',['../structclod__sstr.html#a1ff3487aa9f48135d356c1ac16dc94d4',1,'clod_sstr']]],
-  ['public_20headers_6',['Public headers',['../index.html#autotoc_md19',1,'']]]
+  ['macos_0',['macOS',['../index.html#autotoc_md45',1,'']]],
+  ['main_1',['main',['../structclod__process__opts.html#a45f9f50c437bf7f443ae3052c02161f5',1,'clod_process_opts']]],
+  ['maintenance_20operations_2',['Maintenance Operations',['../region_format.html#autotoc_md20',1,'']]],
+  ['malloc_5ffunc_3',['malloc_func',['../structclod__rfmt__opts.html#a21d0511ba90f5cbb4b05ba0d8b68305d',1,'clod_rfmt_opts::malloc_func'],['../structclod__table__opts.html#a69dab072af6c0d8244d200cbde9283db',1,'clod_table_opts::malloc_func']]],
+  ['memory_20allocator_4',['&lt;a href=&quot;https://stewi1014.github.io/libclod/group__memory.html&quot;&gt;Memory Allocator&lt;/a&gt;',['../index.html#autotoc_md39',1,'']]],
+  ['memory_20allocator_5',['libclod memory allocator',['../md_src_2memory_2allocator.html',1,'']]],
+  ['memory_2eh_6',['memory.h',['../memory_8h.html',1,'']]],
+  ['methods_7',['System Methods',['../group__sys.html',1,'']]],
+  ['methods_8',['Hash methods',['../group__hash.html',1,'']]],
+  ['min_5fcapacity_9',['min_capacity',['../structclod__table__opts.html#a43e5fd77a335eee620c7092e8ccecfea',1,'clod_table_opts']]],
+  ['mode_10',['mode',['../structclod__region__opts.html#a28035120dc32ffc93355cf4223027a67',1,'clod_region_opts']]]
 ];

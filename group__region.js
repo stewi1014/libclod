@@ -1,7 +1,6 @@
 var group__region =
 [
     [ "clod_region_opts", "structclod__region__opts.html", [
-      [ "version", "structclod__region__opts.html#a8e3848add68049336def75a0eda6716d", null ],
       [ "dims", "structclod__region__opts.html#a24ca3ee90d0982a7858b429c2ba448e7", null ],
       [ "mode", "structclod__region__opts.html#a28035120dc32ffc93355cf4223027a67", null ],
       [ "compression", "structclod__region__opts.html#a62e0f9b28a6100d94a450a739d0d14d6", null ],
@@ -12,8 +11,6 @@ var group__region =
       [ "region_ext", "structclod__region__opts.html#a9db86be91ea361acfc5ee7784c7efe6f", null ],
       [ "chunk_ext", "structclod__region__opts.html#a64620cdfa721af5ac0d984a0783531da", null ]
     ] ],
-    [ "Region File Format", "group__region.html#region_format", "group__region_region_format_dup" ],
-    [ "CLOD_REGION_VERSION", "group__region.html#ga66208641dc846d8ad041b018369e0598", null ],
     [ "clod_region_result", "group__region.html#ga9e5053f4d6bd4efc2f4ba2352276e4d5", [
       [ "CLOD_REGION_OK", "group__region.html#gga9e5053f4d6bd4efc2f4ba2352276e4d5ae12bb61e00ea4eb8ffe1856fe1065a45", null ],
       [ "CLOD_REGION_INVALID_USAGE", "group__region.html#gga9e5053f4d6bd4efc2f4ba2352276e4d5ac37f4ae63905afb5ef5099a1825fe271", null ],

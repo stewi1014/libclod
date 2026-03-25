@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['sector_5fsize_0',['sector_size',['../structclod__region__opts.html#ae0f50676a3a0357aee7f5f8e604feb92',1,'clod_region_opts']]],
-  ['size_1',['size',['../structclod__nbt__iter.html#a598e1d583b0d6ad771c0137bcc58aafc',1,'clod_nbt_iter::size'],['../structclod__sstr.html#a96ff1b0626d93b614cbf0bb6175a1452',1,'clod_sstr::size']]]
+  ['last_5fslab_5fbranch_0',['last_slab_branch',['../structclod__allocator.html#a68979dc2eaae1147127f0e526e2f9ad2',1,'clod_allocator']]],
+  ['len_1',['len',['../structclod__string.html#ab729e7d1c2a02c4fcad1d9dfa384e895',1,'clod_string']]],
+  ['local_5faddr_2',['local_addr',['../structclod__socket.html#a8a9f04fe287b73074fa572ba5126b468',1,'clod_socket']]]
 ];

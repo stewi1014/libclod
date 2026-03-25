@@ -141,18 +141,10 @@ $(function(){initNavTree('platform_8h_source.html','',''); });
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="preprocessor">    #error &quot;Mutex implementation for this platform has not been added&quot;</span></div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="preprocessor">#if defined(TIME_MONOTONIC)</span></div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="preprocessor">    #define monotonic_now(timespec) (timespec_get((timespec), TIME_MONOTONIC) == TIME_MONOTONIC)</span></div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="preprocessor">#elif HAVE_CLOCK_GETTIME</span></div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="preprocessor">    #define monotonic_now(timespec) (clock_gettime(CLOCK_MONOTONIC, (timespec)) == 0)</span></div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="preprocessor">#else</span></div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="preprocessor">    #error &quot;Monotonic time for this platform has not been implemented&quot;</span></div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="preprocessor">#endif</span></div>
-<div class="ttc" id="agroup__region_html_ga9e5053f4d6bd4efc2f4ba2352276e4d5"><div class="ttname"><a href="group__region.html#ga9e5053f4d6bd4efc2f4ba2352276e4d5">clod_region_result</a></div><div class="ttdeci">clod_region_result</div><div class="ttdef"><b>Definition</b> <a href="region_8h_source.html#l00043">region.h:43</a></div></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="agroup__region_html_ga9e5053f4d6bd4efc2f4ba2352276e4d5"><div class="ttname"><a href="group__region.html#ga9e5053f4d6bd4efc2f4ba2352276e4d5">clod_region_result</a></div><div class="ttdeci">clod_region_result</div><div class="ttdef"><b>Definition</b> <a href="region_8h_source.html#l00033">region.h:33</a></div></div>
 <div class="ttc" id="aregion_8h_html"><div class="ttname"><a href="region_8h.html">region.h</a></div></div>
-<div class="ttc" id="astructclod__region__opts_html"><div class="ttname"><a href="structclod__region__opts.html">clod_region_opts</a></div><div class="ttdef"><b>Definition</b> <a href="region_8h_source.html#l00168">region.h:168</a></div></div>
+<div class="ttc" id="astructclod__region__opts_html"><div class="ttname"><a href="structclod__region__opts.html">clod_region_opts</a></div><div class="ttdef"><b>Definition</b> <a href="region_8h_source.html#l00158">region.h:158</a></div></div>
 <div class="ttc" id="astructfile_html"><div class="ttname"><a href="structfile.html">file</a></div><div class="ttdef"><b>Definition</b> <a href="file_8c_source.html#l00013">file.c:13</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

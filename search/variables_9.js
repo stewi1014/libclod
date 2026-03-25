@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['unix_5ffd_0',['unix_fd',['../structclod__region__opts.html#a50fa8c75fe1eb9526b1e9f367160842c',1,'clod_region_opts']]],
-  ['unix_5ffile_5fperms_1',['unix_file_perms',['../structclod__region__opts.html#ab90dfb75626c0a15366333ca9399df83',1,'clod_region_opts']]]
+  ['name_0',['name',['../structclod__process__opts.html#aace5b0a885df90f7b76e9bf9b3d21f6b',1,'clod_process_opts']]],
+  ['next_1',['next',['../structclod__allocator.html#a239c9f5a8d4679ae1199ab534d6546bc',1,'clod_allocator']]],
+  ['no_5fgrow_2',['no_grow',['../structclod__allocator__opts.html#a23400d1d94c2fdc4cc2dee03ca79d907',1,'clod_allocator_opts']]],
+  ['node_5fsize_3',['node_size',['../structclod__tree.html#a9e509396444b619ec620250d9c967745',1,'clod_tree']]]
 ];
