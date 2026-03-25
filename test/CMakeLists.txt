@@ -21,10 +21,14 @@ create_test_sourcelist(CLOD_TEST_MAIN_SOURCES test_main.c ${CLOD_TEST_SOURCES})
 
 add_executable(clod_test_main ${CLOD_TEST_MAIN_SOURCES})
 target_include_directories(clod_test_main PRIVATE . ../src/include)
-target_link_libraries(clod_test_main PRIVATE clod)
+
+if (BUILD_SHARED_LIBS)
+    target_link_libraries(clod_test_main PRIVATE clod_shared)
+elseif (BUILD_STATIC_LIBS)
+    target_link_libraries(clod_test_main PRIVATE clod_static)
+endif()
 
 foreach(test ${CLOD_TEST_SOURCES})
     cmake_path(REMOVE_EXTENSION test)
     add_test (NAME ${test} COMMAND clod_test_main ${test})
 endforeach ()
-add_test(NAME all COMMAND clod_test_main -A)

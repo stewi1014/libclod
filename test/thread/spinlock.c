@@ -4,7 +4,7 @@
 clod_spinlock spinlock = CLOD_SPINLOCK_INIT;
 bool has_spinlock;
 
-int try_lock_spinlock(int argc, char **argv) {
+int try_lock_spinlock(int, char **) {
 	clod_spinlock_lock(&spinlock);
 	has_spinlock = true;
 	clod_spinlock_unlock(&spinlock);

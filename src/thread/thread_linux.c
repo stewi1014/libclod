@@ -51,6 +51,10 @@ static_assert(offsetof(struct stack_header, stack_guard) == 0x28);
 static_assert(offsetof(struct stack_header, errno_location) == 0x10);
 
 #pragma GCC diagnostic push
+#if __clang__
+#pragma GCC diagnostic ignored "-Wlanguage-extension-token"
+#endif
+
 long clod_execution_bootstrap(const struct clone_args *args, struct stack_header *stack) {
 	long result;
 	asm volatile(
@@ -59,7 +63,7 @@ long clod_execution_bootstrap(const struct clone_args *args, struct stack_header
 		"mov %[clone3], %%eax\n"
 		"syscall\n"
 		"cmp $0, %%rax\n"
-		"jne parent\n"
+		"jne 0f\n"
 
 		// We are the new process.
 		"push %[stack_ptr]\n"
@@ -82,7 +86,7 @@ long clod_execution_bootstrap(const struct clone_args *args, struct stack_header
 		"syscall\n"
 		"ud2\n"
 
-	"parent:\n"
+	"0:\n"
 		"mov %%rax, %[result]\n"
 		:
 			[result] "=r" (result)

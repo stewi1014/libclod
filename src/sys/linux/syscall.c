@@ -7,6 +7,9 @@
 #ifdef CLOD_HAVE_X86_64
 
 #pragma GCC diagnostic push
+#if __clang__
+#pragma GCC diagnostic ignored "-Wlanguage-extension-token"
+#endif
 #pragma GCC diagnostic ignored "-Wunused-parameter"
 
 __attribute__((naked))

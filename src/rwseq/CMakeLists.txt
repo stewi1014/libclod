@@ -1,4 +1,4 @@
-target_sources(clod PRIVATE
+clod_sources(
     keepalive.c
     keepalive.h
     keepalive_daemon.c

@@ -37,7 +37,6 @@ void compression_test_level(
 		case CLOD_LZ4F: printf("Testing compression method CLOD_LZ4F level %d\n", level); break;
 		case CLOD_XZ: printf("Testing compression method CLOD_XZ level %d\n", level); break;
 		case CLOD_ZSTD: printf("Testing compression method CLOD_ZSTD level %d\n", level); break;
-		case CLOD_BZIP2: printf("Testing compression method CLOD_BZIP2 level %d\n", level); break;
 		case CLOD_MINECRAFT_LZ4: printf("Testing compression method CLOD_MINECRAFT_LZ4 level %d\n", level); break;
 		default: printf("Compression method %d name hasn't been added to the test's logging\n", method); break;
 	}
@@ -200,10 +199,6 @@ int compression_uniform_behavior(int, char[]) {
 
 	if (clod_compression_support(CLOD_ZSTD)) {
 		compression_test(compressor, decompressor, CLOD_ZSTD);
-	}
-
-	if (clod_compression_support(CLOD_BZIP2)) {
-		compression_test(compressor, decompressor, CLOD_BZIP2);
 	}
 
 	if (clod_compression_support(CLOD_MINECRAFT_LZ4)) {

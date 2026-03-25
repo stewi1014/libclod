@@ -1,4 +1,4 @@
-target_sources(clod PRIVATE
+clod_sources(
     mutex.c
     once.c
     spinlock.c
@@ -26,22 +26,16 @@ if (CLOD_HAVE_PTHREAD)
 endif ()
 
 configure_file(clod_thread_config.h.in clod_thread_config.h)
-target_include_directories(clod PRIVATE "${CMAKE_CURRENT_BINARY_DIR}")
+target_include_directories(clod INTERFACE "${CMAKE_CURRENT_BINARY_DIR}")
 
 if (CLOD_HAVE_PTHREAD)
-    target_sources(clod PRIVATE
-        thread_pthread.c
-    )
+    clod_sources(thread_pthread.c)
 endif ()
 
 if (CLOD_HAVE_STDTHREADS)
-    target_sources(clod PRIVATE
-        thread_stdthreads.c
-    )
+    clod_sources(thread_stdthreads.c)
 endif ()
 
 if (CLOD_HAVE_LINUX_SCHED)
-    target_sources(clod PRIVATE
-        thread_linux.c
-    )
+    clod_sources(thread_linux.c)
 endif ()

@@ -6,66 +6,41 @@ Libclod is still a work in progress.
 Libclod is licenced under the [GNU Affero General Public License v3.0](./LICENCE.txt) or later.
 For alternate licencing contact me.
 
-Libclod is a smorgasbord of features, some quite powerful, that aim to be well-designed.
-Part of being well-designed means that methods never perform actions that don't clearly follow from their function.
-For example, C standard library functions often interact with hidden global states in ways that are not obvious.
-Libclod is entirely explicit about its state. For example, libclod's memory allocator requires a handle to a
-a memory arena from which it allocates memory instead of having a global memory allocation state. Another example
-is file IO streaming methods, which never perform any buffering unless explicitly added by the user.
+Libclod is a library aimed at data storage and manipulation. It aims to provide a high-performance
+and ergonomic API for the features it supports with minimal dependencies.
 
 #### [Documentation](https://stewi1014.github.io/libclod/)
 #### [Source](https://github.com/stewi1014/libclod)
 
- - [Standard Functionality](#standard-functionality) Libclod implements some libc-like functionality in lieu of using libc.
- - [Region Storage](#region-storage) Concurrent data storage system with exceptional performance.
+ - [Data Sturctures](#data-structures) A number of data structures useful for storing data in memory or storage.
  - [Compression API](#compression-api) Methods for compressing data with a uniform API across different compression methods.
+ - [File IO](#file-io) Streaming methods for file, network and other IO.
  - [Hash Functions](#hash-functions) Streamable hash methods.
- - [NBT](#nbt) Serialised dynamic data structure.
+ - [Memory Allocator](#memory-allocator) Libclod includes its own custom memory allocator.
+ - [Region Storage](#region-storage) Concurrent data storage system with exceptional performance.
+ - [Threading API](#threading) Libclod's own custom threading API built from scratch.
 
 ## Building
 
 Libclod is built using cmake.
-`cmake -B build .. && cmake --build build`
+`cmake -B build && cmake --build build -j 32 && ctest build && sudo cmake --install build`
 
 ## Features
 
-### [Standard Functionality](https://stewi1014.github.io/libclod/group__standard.html)
-Libclod provides a number of standard features that are useful for most projects, for example
-a memory allocator, a threading API and a hash table.
+### Data Structures
+#### [NBT](https://stewi1014.github.io/libclod/group__nbt.html)
+The NBT format is a depth-first serialised tree structure supporting various data types.
+The NBT parser is fast and doesn't use any memory.
+It doesn't provide an intermediate data structure; I don't believe the
+want for an intermediate data structure is borne out of sound reasoning.
+It recursively steps through NBT data at approx 6GB/s on my machine.
 
-These features are built from the ground up and depend on nothing.
-They are implemented by manually interacting with the operating system without the standard library.
-This makes libclod compatible with execution environments that don't have a C runtime.
+#### [Hash Table](https://stewi1014.github.io/libclod/group__table.html)
+The hash table has decent performance and uses SipHash by default.
+It supports keys and values of any size and custom hash and comparison functions.
 
-Unless explicitly stated, methods never store any global state or keep things hidden in e.g. thread-local storage
-or other opaque data structures.
-
-This has some notable consequences. One example is that almost all software uses the C runtime to create threads,
-and as such the assumption that the C runtime is available is built in to the majority of higher level languages.
-Libclod does not use libc, instead it manually implements threading and as such 
-Libclod does not re-implement the C runtime, and as such, threads created by libclod are incompatible with
-software that expects the C runtime to be available.
-
-For example, the threading API is built from scratch, bootstrapping
-the new execution environment in assembly manually. However, libc (and hence the C runtime) does not 
-
-### [Region Storage](https://stewi1014.github.io/libclod/group__region.html)
-Libclod's region storage is a high-performance N-dimension position->data storage system that supports
-data integrity through program and system crashes and massive concurrent access from both processes and threads.
-Multiple processes and threads can access the same storage simultaneously without any additional coordination with
-extremely high performance facilitated by custom-built synchronisation primitives that allow access, including
-concurrent writes, to be performed with almost no blocking at all. In addition, it uses almost no memory except
-for data compression buffers, and does not require a dedicated process like other database software.
-
-It borrows its name from Minecraft's region files, as part of the original inspiration for this project was
-to re-implement Minecraft's region file format in C. This project and its data structures are far removed
-from Minecraft's implementation and are more in line with modern database techniques despite backwards
-compatibility with minecraft being supported under specific configurations.
-
-#### [Region Storage Format](https://stewi1014.github.io/libclod/group__region_format.html)
-In theory, the region format can be re-implemented in other languages, instead of relying on libclod,
-allowing concurrent access to the same storage from different implementations.
-The structure of the format is described here [specification](https://stewi1014.github.io/libclod/group__region_format.html#region_format).
+#### [Tree](https://stewi1014.github.io/libclod/group__tree.html)
+A tree structure based on B-Trees that supports variable node, key and value sizes.
 
 ### [Compression API](https://stewi1014.github.io/libclod/group__compression.html)
 Libclod wraps some compression libraries to provide a single compress and decompress method
@@ -74,20 +49,35 @@ Most compression methods attempt to be compatible with some existing format.
 It is used internally and might be helpful for FFI users who have slow native compression libraries.
 Shoutout to libdeflate for being a work of art.
 
+### [File IO](https://stewi1014.github.io/libclod/group__file.html)
+Libclod provides a streaming interface, much like libc, but enables users to implement streams as well.
+Some things streams support are file IO, network IO and audio playback and recording.
+
 ### [Hash Functions](https://stewi1014.github.io/libclod/group__hash.html)
 Libclod provides a few high-performance hash functions for use with data.
 For CRC checksums, it provides a method to update checksums with arbitrary sections of previous data replaced
 by leveraging the math CRCs are built on. I.e. update a checksum of 1GB of data by only rehashing the modified section.
 
-### [NBT Parsing](https://stewi1014.github.io/libclod/group__nbt.html)
-The NBT parser is fast and doesn't use any memory.
-It doesn't provide an intermediate data structure; I don't believe the
-want for an intermediate data structure is borne out of sound reasoning.
-It recursively steps through NBT data at approx 6GB/s on my machine.
+### [Memory Allocator](https://stewi1014.github.io/libclod/group__memory.html)
+Libclod's memory allocator is designed to have good performance for general use, and operate
+with minimal overhead. It intentionally avoids support for concurrent usage, with the low overhead
+instead supporting each thread having its own dedicated memory allocator.
 
-### [Hash Table](https://stewi1014.github.io/libclod/group__table.html)
-The hash table is a SwissTable implementation that uses SipHash by default, but can be used
-with custom hash and comparison functions. It is fast, but doesn't actually use SIMD for probing.
+### [Region Storage](https://stewi1014.github.io/libclod/group__region.html)
+Libclod's region storage is a high-performance N-dimension position->data storage system that supports
+data integrity through program and system crashes and massive concurrent access from both processes and threads.
+Multiple processes and threads can access the same storage simultaneously without any additional coordination with
+extremely high performance facilitated by custom-built synchronisation primitives that allow access, including
+concurrent writes, with almost no blocking at all. In addition, it uses almost no memory except
+for data compression buffers, and does not require a dedicated process like other database software.
+
+It borrows its name from Minecraft's region files, as part of the original inspiration for this project was
+to re-implement Minecraft's region file format in C. This project and its data structures are far removed
+from Minecraft's implementation and are more in line with modern database techniques despite backwards
+compatibility with minecraft being supported under specific configurations.
+
+### [Threading API](https://stewi1014.github.io/libclod/group__threading.html)
+Libclod provides a threading API.
 
 ## Dependencies
 

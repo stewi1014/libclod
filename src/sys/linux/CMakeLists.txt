@@ -1,4 +1,4 @@
-target_sources(clod PRIVATE
+clod_sources(
     audio.c
     futex.c
     stream.c

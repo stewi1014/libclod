@@ -18,13 +18,15 @@ execute_process(COMMAND git rev-parse --short HEAD
         OUTPUT_STRIP_TRAILING_WHITESPACE
 )
 
-target_include_directories(clod
-    PRIVATE "${CMAKE_CURRENT_BINARY_DIR}"
-    PRIVATE include
+configure_file(clod_config.h.in clod_config.h)
+target_include_directories(clod INTERFACE
+    INCLUDE "${CMAKE_CURRENT_BINARY_DIR}"
+    INCLUDE include
 )
 
-configure_file(clod_config.h.in clod_config.h)
-target_include_directories(clod PRIVATE "${CMAKE_CURRENT_BINARY_DIR}")
+macro(clod_sources)
+    target_sources(clod INTERFACE ${ARGV})
+endmacro()
 
 add_subdirectory(compression)
 add_subdirectory(hash)

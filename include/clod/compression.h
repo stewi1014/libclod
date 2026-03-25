@@ -43,30 +43,30 @@ enum clod_compression_method {
 	/** No compression, provided by memcpy lol. */
 	CLOD_UNCOMPRESSED = 1,
 
-	/** GZip container with deflate compression, provided by libdeflate.
-	 * Uncompressed size is not known on failure. */
-	CLOD_GZIP = 2,
-
-	/** ZLib container with deflate compression, provided by libdeflate.
-	 * Uncompressed size is not known on failure. */
-	CLOD_ZLIB = 3,
-
-	/** Deflate compression, provided by libdeflate.
-	 * Uncompressed size is not known on failure. */
-	CLOD_DEFLATE = 4,
-
-	/** LZ4F container with LZ4 compression, provided by liblz4.
-	 * Uncompressed size might be known on failure. */
-	CLOD_LZ4F = 5,
-
-	/** XZ container with LZMA2 compression, provided by liblzma.
-	 * Uncompressed size is not known on failure. */
-	CLOD_XZ = 6,
-
 	/** ZSTD compression, provided by libzstd.
 	 * Uncompressed size might be known on failure.
 	 * This is probably a good balance of performance and compression ratio for most use cases. */
-	CLOD_ZSTD = 7,
+	CLOD_ZSTD = 2,
+
+	/** LZ4F container with LZ4 compression, provided by liblz4.
+	 * Uncompressed size might be known on failure. */
+	CLOD_LZ4F = 3,
+
+	/** XZ container with LZMA2 compression, provided by liblzma.
+	 * Uncompressed size is not known on failure. */
+	CLOD_XZ = 4,
+
+	/** Deflate compression, provided by libdeflate.
+	 * Uncompressed size is not known on failure. */
+	CLOD_DEFLATE = 5,
+
+	/** ZLib container with deflate compression, provided by libdeflate.
+	 * Uncompressed size is not known on failure. */
+	CLOD_ZLIB = 6,
+
+	/** GZip container with deflate compression, provided by libdeflate.
+	 * Uncompressed size is not known on failure. */
+	CLOD_GZIP = 7,
 
 	/** BZIP2 compression, provided by libbz2.
 	 * Uncompressed size is not known on failure. */
@@ -75,7 +75,7 @@ enum clod_compression_method {
 	/** Custom minecraft container with LZ4 compression.
 	 * Some very unfortunate design decisions must have been made to land us with this.
 	 * Uncompressed size might be known on failure. */
-	CLOD_MINECRAFT_LZ4 = 11
+	CLOD_MINECRAFT_LZ4 = 9
 };
 
 /** The compression level to use.

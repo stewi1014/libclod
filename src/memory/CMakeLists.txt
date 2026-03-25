@@ -1,2 +1,2 @@
-target_sources(clod PRIVATE
+clod_sources(
 )

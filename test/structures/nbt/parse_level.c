@@ -3,7 +3,7 @@
 #include "test.h"
 #include <clod/structures/nbt.h>
 
-const char parse_level_data[] = {
+const unsigned char parse_level_data[] = {
 #embed "level.nbt"
 };
 

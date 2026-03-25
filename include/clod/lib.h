@@ -14,13 +14,19 @@
 #include <limits.h>
 
 #if defined(_WIN32)
-	#ifdef CLOD_BUILD
+	#ifdef CLOD_BUILD_STATIC
+		#define CLOD_API
+	#elifdef CLOD_BUILD_SHARED
 		#define CLOD_API __declspec(dllexport)
 	#else
 		#define CLOD_API __declspec(dllimport)
 	#endif
 #elif defined(__unix__) || defined(__APPLE__)
-	#define CLOD_API __attribute__((visibility("default")))
+	#if CLOD_BUILD_STATIC
+		#define CLOD_API
+	#else
+		#define CLOD_API __attribute__((visibility("default")))
+	#endif
 #endif
 
 #if defined(__GNUC__) // GCC and Clang

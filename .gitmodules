@@ -1,0 +1,12 @@
+[submodule "vendor/libdeflate"]
+	path = vendor/libdeflate
+	url = https://github.com/ebiggers/libdeflate.git
+[submodule "vendor/lz4"]
+	path = vendor/lz4
+	url = https://github.com/lz4/lz4.git
+[submodule "vendor/xz"]
+	path = vendor/xz
+	url = https://github.com/tukaani-project/xz.git
+[submodule "vendor/zstd"]
+	path = vendor/zstd
+	url = https://github.com/facebook/zstd.git
