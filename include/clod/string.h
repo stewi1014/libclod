@@ -101,27 +101,23 @@ CLOD_API
 char clod_string_peek_char(struct clod_string str);
 
 /**
- * Format a string.
+ * Format a string similarly to snprintf.
+ * The format specification differs from the standard library in a few ways.
  *
- * %[flags][width][.precision]<type>
+ * ```%[flags][width][.precision]<type>```
  *
- * The format specifier differs from printf in a few ways.
+ * - **Flags** Options for changing formatting.
+ * - **Width** the minimum size of the number as formatted.
+ * - **Precision** the maximum size of the number as formatted.
+ * - **Type** the type of the value passed as argument.
  *
- * - Flags; Options for changing formatting.
- * - Width; the minimum size of the number as formatted.
- * - Precision; the maximum size of the number as formatted.
- * - Type; the type of the value passed as argument.
- *
- * Notably there is only one specific type for a given C type,
- * with the role of duplicate type specifiers (i.e. u, x or o in printf) switching formatting
- * instead being played by flags.
- *
- * I.e. printing an unsigned int in hexadecimal is %xu instead of %x,
- * and printing an unsigned int in octal is %ou instead of %o.
- *
- * In addition, sized integer types are supported as type specifiers.
- * For example, an int64_t can be printed with %i64, %xi64, %oi64 for decimal,
- * hexadecimal and octal notation respectively.
+ * | Flag | Description                        |
+ * | :--- | :--------------------------------- |
+ * | 0    | Pad with zeroes instead of spaces. |
+ * | X    | Base 16, uppercase.                |
+ * | x    | Base 16, lowercase.                |
+ * | o    | Base 8                             |
+ * | b    | Base 2                             |
  *
  * | Type                 | Specifier |
  * | :------------------- | --------: |
@@ -223,7 +219,8 @@ size_t clod_string_put_int(struct clod_string *dst, intmax_t val,
 /// Consumes an integer value in the string with the given base.
 /// If no value could be decoded, the string is not incremented.
 CLOD_API
-intmax_t clod_string_get_int(struct clod_string *str, unsigned char base, struct clod_string alphabet);
+intmax_t clod_string_get_int(struct clod_string *str,
+	struct clod_string alphabet, unsigned char base);
 
 /// Writes an unsigned integer value to the string.
 /// The value is truncated if the destination is not large enough.
@@ -236,7 +233,8 @@ size_t clod_string_put_uint(struct clod_string *dst, uintmax_t val,
 /// Consumes an unsigned integer value in the string with the given base.
 /// If no value could be decoded, the string is not incremented.
 CLOD_API
-uintmax_t clod_string_get_uint(struct clod_string *str, unsigned char base, struct clod_string alphabet);
+uintmax_t clod_string_get_uint(struct clod_string *str,
+	struct clod_string alphabet, unsigned char base);
 
 /// Writes a double value to the string.
 /// The value is truncated if the destination is not large enough.
@@ -249,6 +247,7 @@ size_t clod_string_put_double(struct clod_string *dst, double val,
 /// Consumes a double value in the string with the given base.
 /// If no value could be decoded, the string is not incremented.
 CLOD_API
-double clod_string_get_double(struct clod_string *str, unsigned char base, struct clod_string alphabet);
+double clod_string_get_double(struct clod_string *str,
+	struct clod_string alphabet, unsigned char base);
 
 #endif

@@ -1,8 +1,11 @@
-#include "test.h"
+#include "debug.h"
 #include <clod/structures/table.h>
 #include <string.h>
 
 #define NUM_ELEMS 100000
+
+// I can't be fucked with updating all the tests to use assert_fatal right now.
+#define check(a, b) assert_fatal(CLOD_TEST, b, a)
 
 int structures_table_set_get_many(int, char[]) {
 	int elems[NUM_ELEMS];
@@ -15,6 +18,8 @@ int structures_table_set_get_many(int, char[]) {
 	struct clod_table *t = clod_table_create(nullptr);
 	for (int i = 0; i < NUM_ELEMS; i++) {
 		void *existing;
+
+
 		check("success when adding a unique key", clod_table_add(t, &elems[i], 4, &existing));
 		check("no element was returned when adding a unique key", existing == nullptr);
 	}

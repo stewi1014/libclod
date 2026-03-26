@@ -1,7 +1,7 @@
 #ifndef LIBCLOD_THREAD_IMPL_H
 #define LIBCLOD_THREAD_IMPL_H
 
-#include "clod_config.h"
+#include "config.h"
 #include <clod/thread.h>
 
 #define ALIGN(size, alignment) (((size) + (alignment) - 1) &~ (typeof(size))((alignment) - 1))

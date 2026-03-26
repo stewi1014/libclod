@@ -1,6 +1,9 @@
-#include "test.h"
+#include "debug.h"
 #include <clod/hash.h>
 #include <string.h>
+
+// I can't be fucked with updating all the tests to use assert_fatal right now.
+#define check(a, b) assert_fatal(CLOD_TEST, b, a)
 
 int hash_replace(int, char[]) {
 	uint64_t crc64 = clod_crc64("abcdefg", 7);

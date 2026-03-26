@@ -1,4 +1,4 @@
-#include "test.h"
+#include "debug.h"
 #include <string.h>
 #include <clod/structures/table.h>
 
@@ -13,21 +13,21 @@ int structures_table_simple_all_methods(int, char[]) {
 	void *existing;
 
 	struct clod_table *t = clod_table_create(nullptr);
-	check("", clod_table_len(t) == 0);
-	check("", clod_table_get(t, val, LEN) == nullptr);
-	check("", clod_table_del(t, val, LEN) == nullptr);
-	check("", clod_table_add(t, val2, LEN, &existing) && existing == nullptr);
-	check("", !clod_table_add(t, val, LEN, &existing) && existing == val2);
-	check("", clod_table_set(t, val, LEN, &existing) && existing == val2);
+	assert_fatal(CLOD_TEST, clod_table_len(t) == 0, "Correct length.");
+	assert_fatal(CLOD_TEST, clod_table_get(t, val, strlen("abcd")) == nullptr,);
+	assert_fatal(CLOD_TEST, clod_table_del(t, val, strlen("abcd")) == nullptr, "");
+	assert_fatal(CLOD_TEST, clod_table_add(t, val2, strlen("abcd"), &existing) && existing == nullptr, "");
+	assert_fatal(CLOD_TEST, !clod_table_add(t, val, strlen("abcd"), &existing) && existing == val2, "");
+	assert_fatal(CLOD_TEST, clod_table_set(t, val, strlen("abcd"), &existing) && existing == val2, "");
 	iter = CLOD_TABLE_ITER_INIT;
-	check("", clod_table_iter(t, &iter));
-	check("", iter.element == val);
-	check("", iter.key_size == LEN);
-	check("", !clod_table_iter(t, &iter));
-	check("", clod_table_get(t, STR, LEN) == val);
-	check("", clod_table_del(t, STR, LEN) == val);
-	check("", clod_table_get(t, STR, LEN) == nullptr);
-	check("", clod_table_del(t, STR, LEN) == nullptr);
+	assert_fatal(CLOD_TEST, clod_table_iter(t, &iter), "");
+	assert_fatal(CLOD_TEST, iter.element == val, "");
+	assert_fatal(CLOD_TEST, iter.key_size == strlen("abcd"), "");
+	assert_fatal(CLOD_TEST, !clod_table_iter(t, &iter), "");
+	assert_fatal(CLOD_TEST, clod_table_get(t, "abcd", strlen("abcd")) == val, "");
+	assert_fatal(CLOD_TEST, clod_table_del(t, "abcd", strlen("abcd")) == val, "");
+	assert_fatal(CLOD_TEST, clod_table_get(t, "abcd", strlen("abcd")) == nullptr, "");
+	assert_fatal(CLOD_TEST, clod_table_del(t, "abcd", strlen("abcd")) == nullptr, "");
 	clod_table_destroy(t);
 
 	return 0;

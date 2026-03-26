@@ -1,4 +1,4 @@
-#include "clod/debug.h"
+#include "debug.h"
 #include <clod/thread.h>
 #include "yield.h"
 

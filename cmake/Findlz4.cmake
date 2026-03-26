@@ -2,7 +2,7 @@ include(FindPackageHandleStandardArgs)
 find_package(PkgConfig)
 
 if (PkgConfig_FOUND)
-    pkg_check_modules(PC_LZ4 QUIET liblz4)
+    pkg_check_modules(PC_LZ4d QUIET liblz4)
 endif ()
 
 find_path(LZ4_INCLUDE_DIR
@@ -17,8 +17,8 @@ find_library(LZ4_LIBRARY
 
 find_package_handle_standard_args(lz4
     REQUIRED_VARS
-        LZ4_INCLUDE_DIR
-        LZ4_LIBRARY
+    LZ4_INCLUDE_DIR
+    LZ4_LIBRARY
 )
 
 if (lz4_FOUND AND NOT TARGET lz4::lz4)

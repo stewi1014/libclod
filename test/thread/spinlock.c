@@ -1,4 +1,4 @@
-#include "test.h"
+#include "debug.h"
 #include <clod/thread.h>
 
 clod_spinlock spinlock = CLOD_SPINLOCK_INIT;
@@ -21,18 +21,15 @@ int thread_spinlock(int, char[]) {
 	};
 
 	auto res = clod_process_start(&proc_opts, nullptr);
-	test_check(res == CLOD_PROCESS_OK, "Should be able to create thread")
-		return 1;
+	assert_fatal(CLOD_TEST, res == CLOD_PROCESS_OK, "Should be able to create thread");
 
 	clod_timer(nullptr, 100 * 1000);
 
-	test_check(!has_spinlock, "Process should not have locked our locked spinlock")
-		return 1;
+	assert_fatal(CLOD_TEST, !has_spinlock, "Process should not have locked our locked spinlock");
 
 	clod_spinlock_unlock(&spinlock);
 	clod_timer(nullptr, 100 * 1000);
 
-	test_check(has_spinlock, "Process should have locked our unlocked spinlock")
-		return 1;
+	assert_fatal(CLOD_TEST, has_spinlock, "Process should have locked our unlocked spinlock");
 	return 0;
 }

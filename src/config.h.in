@@ -19,11 +19,10 @@
 #cmakedefine01 CLOD_HAVE_MREMAP
 #cmakedefine01 CLOD_HAVE_STATX
 
+#if CLOD_BUILD_SHARED
 #cmakedefine01 CLOD_USE_ALSA
-#cmakedefine01 CLOD_USE_LIBDEFLATE
-#cmakedefine01 CLOD_USE_LIBLZ4
-#cmakedefine01 CLOD_USE_LIBLZMA
-#cmakedefine01 CLOD_USE_LIBZSTD
-#cmakedefine01 CLOD_USE_LIBBZ2
+#else
+#define CLOD_USE_ALSA 0
+#endif
 
 #endif

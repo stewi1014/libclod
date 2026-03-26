@@ -1,7 +1,7 @@
 #ifndef LIBCLOD_THREAD_CONFIG_H_IN_H
 #define LIBCLOD_THREAD_CONFIG_H_IN_H
 
-#include "clod_config.h"
+#include "config.h"
 
 #cmakedefine01 CLOD_DEBUG_THREAD
 

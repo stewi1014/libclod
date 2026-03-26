@@ -1,4 +1,4 @@
-#include "clod_config.h"
+#include "config.h"
 #include "keepalive.h"
 
 #if defined(__linux__)

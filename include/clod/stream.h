@@ -125,10 +125,10 @@ int clod_stream_copy(clod_stream *dst, clod_stream *src, void *buffer, size_t bu
  * Data written to one stream is readable from the other and vice versa.
  * Each call to write blocks until the written data has been completely read from the other stream.
  * Both streams must be individually closed.
- * @param[out] stream1_out One half of the pipe.
- * @param[out] stream2_out Second half of the pipe.
+ * @param[out] pipe1_out One half of the pipe.
+ * @param[out] pipt2_out Second half of the pipe.
  */
 CLOD_API CLOD_NONNULL(1, 2)
-void clod_pipe(clod_stream **stream1_out, clod_stream **stream2_out);
+void clod_pipe(clod_stream **pipe1_out, clod_stream **pipt2_out);
 
 #endif

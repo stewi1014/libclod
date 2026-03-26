@@ -1,6 +1,6 @@
 #include <clod/thread.h>
 #include <clod/sys/futex.h>
-#include "clod/debug.h"
+#include "debug.h"
 #include "yield.h"
 
 #define FUTEX_TIMEOUT_US (1000 * 1000)

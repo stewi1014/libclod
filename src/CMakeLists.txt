@@ -18,10 +18,10 @@ execute_process(COMMAND git rev-parse --short HEAD
         OUTPUT_STRIP_TRAILING_WHITESPACE
 )
 
-configure_file(clod_config.h.in clod_config.h)
+configure_file(config.h.in config.h)
 target_include_directories(clod INTERFACE
     INCLUDE "${CMAKE_CURRENT_BINARY_DIR}"
-    INCLUDE include
+    INCLUDE .
 )
 
 macro(clod_sources)

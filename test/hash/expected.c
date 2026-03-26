@@ -1,4 +1,4 @@
-#include "clod/debug.h"
+#include "debug.h"
 #include <clod/hash.h>
 
 int hash_expected(int, char[]) {

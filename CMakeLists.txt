@@ -21,10 +21,17 @@ set_target_properties(clod PROPERTIES C_VISIBILITY_PRESET hidden)
 
 set(CLOD_INSTALL_TARGETS)
 
-option(BUILD_SHARED_LIBS "Build shared library" ON)
-if (BUILD_SHARED_LIBS)
+option(CLOD_BUILD_SHARED "Build shared library" ON)
+if (CLOD_BUILD_SHARED)
     add_library(clod_shared SHARED)
-    target_link_libraries(clod_shared PRIVATE clod)
+    add_library(clod::clod_shared ALIAS clod_shared)
+    target_link_libraries(clod_shared PRIVATE
+        $<BUILD_INTERFACE:clod>
+    )
+    target_include_directories(clod_shared PUBLIC
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+        $<INSTALL_INTERFACE:include>
+    )
     target_compile_definitions(clod_shared PRIVATE CLOD_BUILD_SHARED)
     set_target_properties(clod_shared PROPERTIES
         SOVERSION 1
@@ -33,10 +40,17 @@ if (BUILD_SHARED_LIBS)
     list(APPEND CLOD_INSTALL_TARGETS clod_shared)
 endif ()
 
-option(BUILD_STATIC_LIBS "Build static library" ON)
-if (BUILD_STATIC_LIBS)
+option(CLOD_BUILD_STATIC "Build static library" ON)
+if (CLOD_BUILD_STATIC)
     add_library(clod_static STATIC)
-    target_link_libraries(clod_static PRIVATE clod)
+    add_library(clod::clod_static ALIAS clod_static)
+    target_link_libraries(clod_static PRIVATE
+        $<BUILD_INTERFACE:clod>
+    )
+    target_include_directories(clod_shared PUBLIC
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+        $<INSTALL_INTERFACE:include>
+    )
     target_compile_definitions(clod_static PRIVATE CLOD_BUILD_STATIC)
     if (NOT WIN32)
         set_target_properties(clod_static PROPERTIES OUTPUT_NAME clod)
@@ -52,6 +66,8 @@ endif ()
 #########################
 # Configuration Options #
 #########################
+
+option(CLOD_USE_SYSTEM_LIBS "Prefer dynamically linking to system libraries over static linking to vendored libraries." ON)
 
 option(CLOD_DEBUG "Enables extra checks aimed at debugging. Unspecified debug options inherit this setting." ON)
 option(CLOD_RWSEQ_DEBUG "Enables extra checks to ensure rwseq usage is normal." ${CLOD_DEBUG})
@@ -80,91 +96,106 @@ endif()
 # Dependencies #
 ################
 
-option(CLOD_USE_LIBDEFLATE "Use libdeflate to enable CLOD_GZIP, CLOD_ZLIB and CLOD_DEFLATE support" ON)
-if (CLOD_USE_LIBDEFLATE)
-    find_package(clod_libdeflate REQUIRED)
-endif()
+if (TARGET clod_shared)
+    find_package(libdeflate QUIET)
+    if (CLOD_USE_SYSTEM_LIBS AND TARGET libdeflate::libdeflate_shared)
+        target_link_libraries(clod_shared PUBLIC $<BUILD_INTERFACE:libdeflate::libdeflate_shared>)
+    else ()
+        if (CLOD_USE_SYSTEM_LIBS)
+            message(NOTICE "Shared library statically linking vendored libdeflate.")
+        endif ()
+        include(libdeflate)
+        target_link_libraries(clod_shared PUBLIC $<BUILD_INTERFACE:libdeflate_static>)
+    endif ()
 
-option(CLOD_USE_LIBLZ4 "Use liblz4 to enable CLOD_LZ4F support" ON)
-if (CLOD_USE_LIBLZ4)
-    find_package(clod_lz4 REQUIRED)
-endif()
+    find_package(lz4 QUIET)
+    if (CLOD_USE_SYSTEM_LIBS AND TARGET lz4::lz4)
+        target_link_libraries(clod_shared PUBLIC $<BUILD_INTERFACE:lz4::lz4>)
+    else ()
+        if (CLOD_USE_SYSTEM_LIBS)
+            message(NOTICE "Shared library statically linking vendored liblz4.")
+        endif ()
+        include(lz4)
+        target_link_libraries(clod_shared PUBLIC $<BUILD_INTERFACE:lz4_static>)
+    endif ()
 
-option(CLOD_USE_LIBLZMA "Use liblzma to enable CLOD_XZ support" ON)
-if (CLOD_USE_LIBLZMA)
-    find_package(clod_lzma REQUIRED)
-endif()
+    find_package(LibLZMA QUIET)
+    if (CLOD_USE_SYSTEM_LIBS AND TARGET LibLZMA::LibLZMA)
+        target_link_libraries(clod_shared PUBLIC $<BUILD_INTERFACE:LibLZMA::LibLZMA>)
+    else ()
+        if (CLOD_USE_SYSTEM_LIBS)
+            message(NOTICE "Shared library statically linking vendored liblzma.")
+        endif ()
+        include(xz)
+        target_link_libraries(clod_shared PUBLIC $<BUILD_INTERFACE:liblzma>)
+    endif ()
 
-option(CLOD_USE_LIBZSTD "Use libzstd to enable CLOD_ZSTD support" ON)
-if (CLOD_USE_LIBZSTD)
-    find_package(clod_zstd REQUIRED)
+    find_package(zstd QUIET)
+    if (CLOD_USE_SYSTEM_LIBS AND TARGET zstd::libzstd_shared)
+        target_link_libraries(clod_shared PUBLIC $<BUILD_INTERFACE:zstd::libzstd_shared>)
+    else ()
+        if (CLOD_USE_SYSTEM_LIBS)
+            message(NOTICE "Shared library statically linking vendored libzstd.")
+        endif ()
+        include(zstd)
+        target_link_libraries(clod_shared PUBLIC $<BUILD_INTERFACE:libzstd_static>)
+    endif ()
+
+    if (UNIX)
+        option(CLOD_USE_ALSA "Use ALSA to enable audio features." ON)
+        if (CLOD_USE_ALSA)
+            find_package(ALSA REQUIRED)
+            target_link_libraries(clod_shared PUBLIC $<BUILD_INTERFACE:ALSA::ALSA>)
+        endif ()
+    endif ()
 endif ()
 
-if (UNIX)
-    option(CLOD_USE_ALSA "Use alsa to enable audio features" ON)
-    if (CLOD_USE_ALSA)
-        find_package(ALSA REQUIRED)
-    endif()
-endif ()
+if (TARGET clod_static)
+    include(libdeflate)
+    target_link_libraries(clod_static PUBLIC libdeflate_static)
+    set_target_properties(libdeflate_static PROPERTIES PUBLIC_HEADER "")
+    list(APPEND CLOD_INSTALL_TARGETS libdeflate_static)
 
-if (BUILD_SHARED_LIBS)
-    if (CLOD_USE_LIBDEFLATE)
-        target_include_directories(clod_shared PRIVATE )
-        target_link_libraries(clod_shared PRIVATE clod_libdeflate::libdeflate)
-    endif()
+    include(lz4)
+    target_link_libraries(clod_static PUBLIC lz4_static)
+    list(APPEND CLOD_INSTALL_TARGETS lz4_static)
 
-    if (CLOD_USE_LIBLZ4)
-        target_link_libraries(clod_shared PRIVATE clod_lz4::lz4)
-    endif()
+    include(xz)
+    target_link_libraries(clod_static PUBLIC liblzma)
+    list(APPEND CLOD_INSTALL_TARGETS liblzma)
 
-    if (CLOD_USE_LIBLZMA)
-        target_link_libraries(clod_shared PRIVATE clod_lzma::lzma)
-    endif()
-
-    if (CLOD_USE_LIBZSTD)
-        target_link_libraries(clod_shared PRIVATE clod_zstd::zstd)
-    endif ()
-
-    if (CLOD_USE_ALSA)
-        target_link_libraries(clod_shared PRIVATE ALSA::ALSA)
-    endif ()
-endif()
-
-if (BUILD_STATIC_LIBS)
-    if (CLOD_USE_LIBDEFLATE)
-        target_link_libraries(clod_static PUBLIC clod_libdeflate::libdeflate_static)
-    endif()
-
-    if (CLOD_USE_LIBLZ4)
-        target_link_libraries(clod_static PUBLIC clod_lz4::lz4_static)
-    endif()
-
-    if (CLOD_USE_LIBLZMA)
-        target_link_libraries(clod_static PUBLIC clod_lzma::lzma_static)
-    endif()
-
-    if (CLOD_USE_LIBZSTD)
-        target_link_libraries(clod_static PUBLIC clod_zstd::zstd_static)
-    endif ()
-
-    if (CLOD_USE_ALSA)
-        target_link_libraries(clod_static PUBLIC ALSA::ALSA)
-    endif ()
+    include(zstd)
+    target_link_libraries(clod_static PUBLIC libzstd_static)
+    list(APPEND CLOD_INSTALL_TARGETS libzstd_static)
 endif ()
 
 ###########
 # Install #
 ###########
 
-install(
-    TARGETS ${CLOD_INSTALL_TARGETS}
-    EXPORT clod-targets
-    LIBRARY DESTINATION lib/clod
-    ARCHIVE DESTINATION lib/clod
-    INCLUDES DESTINATION include
-)
-
 install(DIRECTORY include/ DESTINATION include)
 
-#add_subdirectory(examples)
+if (CLOD_INSTALL_TARGETS)
+    install(
+        TARGETS ${CLOD_INSTALL_TARGETS}
+        EXPORT clod-targets
+        INCLUDES DESTINATION include
+        LIBRARY DESTINATION lib/clod
+        ARCHIVE DESTINATION lib/clod
+    )
+
+    install(EXPORT clod-targets
+        FILE clod-targets.cmake
+        NAMESPACE clod::
+        DESTINATION lib/cmake/clod
+    )
+
+    list(GET CLOD_INSTALL_TARGETS 0 CLOD_DEFAULT_TARGET)
+    install(PACKAGE_INFO clod
+        EXPORT clod-targets
+        DEFAULT_TARGETS ${CLOD_DEFAULT_TARGET}
+    )
+endif ()
+
+add_subdirectory(examples)
 add_subdirectory(src)

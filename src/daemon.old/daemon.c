@@ -1,9 +1,7 @@
-#include "clod/daemon.h"
+#include "daemon.h"
 #include <assert.h>
-#include <stdio.h>
-#include <../../include/clod/data_structures/table.h>
+#include <clod/structures/table.h>
 #include <clod/thread.h>
-#include <stdlib.h>
 
 clod_spinlock daemon_lock = CLOD_SPINLOCK_INIT;
 struct clod_table *daemon_table = nullptr;

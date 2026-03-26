@@ -1,7 +1,7 @@
 #include <clod/string.h>
 #include <string.h>
 #include <clod/structures/nbt.h>
-#include "endian_big.h"
+#include "serialise/integer_be.h"
 
 constexpr size_t payload_zero_sizes[] = {
 	[CLOD_NBT_INT8] = 1,

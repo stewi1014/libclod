@@ -1,4 +1,4 @@
-set(CLOD_TEST_SOURCES
+set(CLOD_TESTS
     compression/uniform_behavior.c
     #daemon/task.c
     hash/expected.c
@@ -17,18 +17,26 @@ set(CLOD_TEST_SOURCES
     thread/spinlock.c
 )
 
-create_test_sourcelist(CLOD_TEST_MAIN_SOURCES test_main.c ${CLOD_TEST_SOURCES})
+create_test_sourcelist(CLOD_TEST_SOURCES test_main.c ${CLOD_TESTS})
 
-add_executable(clod_test_main ${CLOD_TEST_MAIN_SOURCES})
-target_include_directories(clod_test_main PRIVATE . ../src/include)
+if (TARGET clod_shared)
+    add_executable(clod_shared_test ${CLOD_TEST_SOURCES})
+    target_link_libraries(clod_shared_test PRIVATE clod)
+    target_link_libraries(clod_shared_test PRIVATE clod_shared)
 
-if (BUILD_SHARED_LIBS)
-    target_link_libraries(clod_test_main PRIVATE clod_shared)
-elseif (BUILD_STATIC_LIBS)
-    target_link_libraries(clod_test_main PRIVATE clod_static)
-endif()
+    foreach(test ${CLOD_TESTS})
+        cmake_path(REMOVE_EXTENSION test)
+        add_test (NAME "shared_${test}" COMMAND clod_shared_test ${test})
+    endforeach ()
+endif ()
 
-foreach(test ${CLOD_TEST_SOURCES})
-    cmake_path(REMOVE_EXTENSION test)
-    add_test (NAME ${test} COMMAND clod_test_main ${test})
-endforeach ()
+if (TARGET clod_static)
+    add_executable(clod_static_test ${CLOD_TEST_SOURCES})
+    target_link_libraries(clod_static_test PRIVATE clod)
+    target_link_libraries(clod_static_test PRIVATE clod_static)
+
+    foreach(test ${CLOD_TESTS})
+        cmake_path(REMOVE_EXTENSION test)
+        add_test (NAME "static_${test}" COMMAND clod_static_test ${test})
+    endforeach ()
+endif ()

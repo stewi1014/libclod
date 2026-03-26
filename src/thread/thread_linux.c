@@ -1,4 +1,4 @@
-#include "clod_config.h"
+#include "config.h"
 #include <clod/thread.h>
 #include "thread_impl.h"
 #include <assert.h>

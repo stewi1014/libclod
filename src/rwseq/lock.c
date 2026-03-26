@@ -1,8 +1,9 @@
-#include "clod_config.h"
+#include "config.h"
+#include "debug.h"
+
 #include <clod/thread.h>
 #include <clod/rwseq.h>
 #include <clod/sys/futex.h>
-#include "clod/debug.h"
 #include <time.h>
 
 #include "keepalive.h"

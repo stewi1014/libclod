@@ -5,7 +5,7 @@
 #include <inttypes.h>
 #include <stdio.h>
 
-const char level_data[] = {
+const unsigned char level_data[] = {
 #embed "player.nbt"
 };
 
@@ -26,8 +26,8 @@ int structures_nbt_benchmark(int, char[]) {
 	struct timespec end;
 	clock_gettime(CLOCK_MONOTONIC, &end);
 
-	const uint64_t ns_diff = end.tv_nsec - start.tv_nsec +
-		(end.tv_sec - start.tv_sec) * NS_IN_SEC;
+	const uint64_t ns_diff = (uint64_t)(end.tv_nsec - start.tv_nsec +
+		(end.tv_sec - start.tv_sec) * NS_IN_SEC);
 
 	printf("%"PRIu64" ns/parse\n", ns_diff / ITER_COUNT);
 	printf("%0.3f ns/byte\n", (double)ns_diff / (double)total);

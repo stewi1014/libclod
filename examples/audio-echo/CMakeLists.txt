@@ -1,6 +1,9 @@
 cmake_minimum_required(VERSION 4.0)
-project(audio-echo LANGUAGES C)
+project(example-audio-echo LANGUAGES C)
 
-add_executable(audio-echo main.c)
-find_package(clod REQUIRED)
-target_link_libraries(audio-echo PRIVATE clod::clod)
+add_executable(example-audio-echo main.c)
+
+if (NOT TARGET clod::clod_shared)
+    find_package(clod REQUIRED)
+endif ()
+target_link_libraries(example-audio-echo PRIVATE clod::clod_shared)

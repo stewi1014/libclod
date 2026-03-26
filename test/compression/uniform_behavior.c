@@ -1,6 +1,6 @@
-#include <stdint.h>
+#include "debug.h"
 
-#include "../test.h"
+#include <stdint.h>
 #include <stdlib.h>
 #include <string.h>
 #include <clod/compression.h>
@@ -12,6 +12,9 @@ const uint8_t good_compressibility[] = {
 const uint8_t poor_compressibility[] = {
 #embed "poor_compressibility.webp"
 };
+
+// I can't be fucked with updating all the tests to use assert_fatal right now.
+#define check(a, b) assert_fatal(CLOD_TEST, b, a)
 
 void compression_test_level(
 	const void *data, const size_t data_size,
@@ -30,15 +33,15 @@ void compression_test_level(
 	size_t dec_size;
 
 	switch (method) {
-		case CLOD_UNCOMPRESSED: printf("Testing compression method CLOD_UNCOMPRESSED level %d\n", level); break;
-		case CLOD_GZIP: printf("Testing compression method CLOD_GZIP level %d\n", level); break;
-		case CLOD_ZLIB: printf("Testing compression method CLOD_ZLIB level %d\n", level); break;
-		case CLOD_DEFLATE: printf("Testing compression method CLOD_DEFLATE level %d\n", level); break;
-		case CLOD_LZ4F: printf("Testing compression method CLOD_LZ4F level %d\n", level); break;
-		case CLOD_XZ: printf("Testing compression method CLOD_XZ level %d\n", level); break;
-		case CLOD_ZSTD: printf("Testing compression method CLOD_ZSTD level %d\n", level); break;
-		case CLOD_MINECRAFT_LZ4: printf("Testing compression method CLOD_MINECRAFT_LZ4 level %d\n", level); break;
-		default: printf("Compression method %d name hasn't been added to the test's logging\n", method); break;
+		case CLOD_UNCOMPRESSED: debug(CLOD_TEST, "Testing compression method CLOD_UNCOMPRESSED level %d\n", level); break;
+		case CLOD_GZIP: debug(CLOD_TEST, "Testing compression method CLOD_GZIP level %d\n", level); break;
+		case CLOD_ZLIB: debug(CLOD_TEST, "Testing compression method CLOD_ZLIB level %d\n", level); break;
+		case CLOD_DEFLATE: debug(CLOD_TEST, "Testing compression method CLOD_DEFLATE level %d\n", level); break;
+		case CLOD_LZ4F: debug(CLOD_TEST, "Testing compression method CLOD_LZ4F level %d\n", level); break;
+		case CLOD_XZ: debug(CLOD_TEST, "Testing compression method CLOD_XZ level %d\n", level); break;
+		case CLOD_ZSTD: debug(CLOD_TEST, "Testing compression method CLOD_ZSTD level %d\n", level); break;
+		case CLOD_MINECRAFT_LZ4: debug(CLOD_TEST, "Testing compression method CLOD_MINECRAFT_LZ4 level %d\n", level); break;
+		default: debug(CLOD_TEST, "Compression method %d name hasn't been added to the test's logging\n", method); break;
 	}
 
 	// Zero size payload
@@ -177,33 +180,12 @@ int compression_uniform_behavior(int, char[]) {
 	struct clod_compressor *compressor = clod_compressor_init();
 	struct clod_decompressor *decompressor = clod_decompressor_init();
 
-	if (clod_compression_support(CLOD_GZIP)) {
-		compression_test(compressor, decompressor, CLOD_GZIP);
-	}
-
-	if (clod_compression_support(CLOD_ZLIB)) {
-		compression_test(compressor, decompressor, CLOD_ZLIB);
-	}
-
-	if (clod_compression_support(CLOD_DEFLATE)) {
-		compression_test(compressor, decompressor, CLOD_DEFLATE);
-	}
-
-	if (clod_compression_support(CLOD_LZ4F)) {
-		compression_test(compressor, decompressor, CLOD_LZ4F);
-	}
-
-	if (clod_compression_support(CLOD_XZ)) {
-		compression_test(compressor, decompressor, CLOD_XZ);
-	}
-
-	if (clod_compression_support(CLOD_ZSTD)) {
-		compression_test(compressor, decompressor, CLOD_ZSTD);
-	}
-
-	if (clod_compression_support(CLOD_MINECRAFT_LZ4)) {
-		//compression_test(compressor, decompressor, CLOD_MINECRAFT_LZ4);
-	}
+	compression_test(compressor, decompressor, CLOD_ZSTD);
+	compression_test(compressor, decompressor, CLOD_LZ4F);
+	compression_test(compressor, decompressor, CLOD_XZ);
+	compression_test(compressor, decompressor, CLOD_DEFLATE);
+	compression_test(compressor, decompressor, CLOD_ZLIB);
+	compression_test(compressor, decompressor, CLOD_GZIP);
 
 	clod_compressor_free(compressor);
 	clod_decompressor_free(decompressor);

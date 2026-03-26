@@ -1,4 +1,4 @@
-#include "clod_config.h"
+#include "config.h"
 #include <clod/hash.h>
 #include <stddef.h>
 #include <stdint.h>

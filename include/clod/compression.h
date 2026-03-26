@@ -5,8 +5,6 @@
  *
  * compression.h describes libclod's public API for compressing and decompressing data using a variety of
  * compression formats and algorithms. It aims to provide a uniform API across compression methods.
- * Support for compression algorithms can be configured at compile time through enabling or disabling
- * the libraries that provide them.
  *
  * To be frank, I dislike this abstraction. The usability of any given compression algorithm is highly
  * coupled with the data it is compressing and the contexts in which it will be used. This fact is
@@ -31,10 +29,6 @@
 
 /**
  * Compression methods.
- *
- * Support for compression libraries and hence methods can be configured at compile time
- * and can be checked with clod_compression_support. Currently, the library
- * compiles with support for all compression methods by default.
  *
  * Naming follows CLOD_<CONTAINER>_<ALGORITHM>, with algorithm being omitted
  * if it is abundantly obvious (i.e. container only supports one compression algorithm).
@@ -68,10 +62,6 @@ enum clod_compression_method {
 	 * Uncompressed size is not known on failure. */
 	CLOD_GZIP = 7,
 
-	/** BZIP2 compression, provided by libbz2.
-	 * Uncompressed size is not known on failure. */
-	CLOD_BZIP2 = 8,
-
 	/** Custom minecraft container with LZ4 compression.
 	 * Some very unfortunate design decisions must have been made to land us with this.
 	 * Uncompressed size might be known on failure. */
@@ -97,21 +87,13 @@ enum clod_compression_level {
 };
 
 /**
- * Check if support for a given compression algorithm exists.
- * @param[in] method Compression algorithm to check.
- * @return True if the compression algorithm is supported.
- */
-CLOD_API CLOD_CONST
-bool clod_compression_support(enum clod_compression_method method);
-
-/**
  * Result of a compression operation.
  */
 enum clod_compression_result {
 	/** The operation was successful. */
 	CLOD_COMPRESSION_SUCCESS = 0,
-	/** The specified algorithm isn't supported. */
-	CLOD_COMPRESSION_UNSUPPORTED = 1,
+	/** Invalid arguments. */
+	CLOD_COMPRESSION_INVALID = 1,
 	/** The compressed data is malformed. */
 	CLOD_COMPRESSION_MALFORMED = 2,
 	/** The provided buffer is too short to hold the output. */
@@ -166,7 +148,7 @@ void clod_compressor_free(struct clod_compressor *ctx);
  *
  * @return Result of compression.
  * @throws CLOD_COMPRESSION_SUCCESS On successful compression.
- * @throws CLOD_COMPRESSION_UNSUPPORTED If the compression method is unsupported.
+ * @throws CLOD_COMPRESSION_INVALID Invalid arguments supplied.
  * @throws CLOD_COMPRESSION_SHORT_BUFFER If \p dst is too small to hold the compressed output.
  * @throws CLOD_COMPRESSION_ALLOC_FAILED If memory allocation failed.
  */
@@ -224,7 +206,7 @@ void clod_decompressor_free(struct clod_decompressor *ctx);
  *
  * @return The result of the decompression.
  * @throws CLOD_COMPRESSION_SUCCESS On successful decompression.
- * @throws CLOD_COMPRESSION_UNSUPPORTED If the compression method is unsupported.
+ * @throws CLOD_COMPRESSION_INVALID Invalid arguments supplied.
  * @throws CLOD_COMPRESSION_MALFORMED If the compressed data is malformed. *THIS IS NOT AN INTEGRITY CHECK.*
  * @throws CLOD_COMPRESSION_SHORT_BUFFER If \p dst is too small to hold the decompressed output.
  * @throws CLOD_COMPRESSION_SHORT_OUTPUT If \p dst is larger than the decompressed output and bytes_written is null.

@@ -1,4 +1,4 @@
-#include "clod_config.h"
+#include "config.h"
 #include "syscall.h"
 #include <clod/sys/sys.h>
 #include <linux/time.h>

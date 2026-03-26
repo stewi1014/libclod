@@ -1,5 +1,5 @@
 #include "clod_thread_config.h"
-#include "clod/debug.h"
+#include "debug.h"
 #include <clod/thread.h>
 #include "yield.h"
 

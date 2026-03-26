@@ -1,5 +1,5 @@
-#include "clod_config.h"
-#include "clod/debug.h"
+#include "config.h"
+#include "debug.h"
 #include <clod/string.h>
 
 struct clod_string clod_string_from_cstr(const char *cstr) {
@@ -163,4 +163,16 @@ struct clod_string clod_string_find(const struct clod_string str, const char ele
 
 	// occurrence == 0
 	return str;
+}
+
+size_t clod_string_put_double(struct clod_string *, double,
+	struct clod_string, unsigned char, unsigned char, unsigned char) {
+	debug(CLOD_TEST, "Not Implemented");
+	return 0;
+}
+
+double clod_string_get_double(struct clod_string *,
+	struct clod_string, unsigned char) {
+	debug(CLOD_TEST, "Not Implemented");
+	return 0;
 }

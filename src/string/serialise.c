@@ -28,7 +28,7 @@ size_t clod_string_put_int(struct clod_string *dst, intmax_t val,
 
 	return clod_string_put_uint(dst, (uintmax_t)val, alphabet, base, min_digits, max_digits) + 1;
 }
-intmax_t clod_string_get_int(struct clod_string *str, const unsigned char base, const struct clod_string alphabet) {
+intmax_t clod_string_get_int(struct clod_string *str, const struct clod_string alphabet, const unsigned char base) {
 	if (!str->ptr || str->len < 2 || !base_valid(base, alphabet)) {
 		return 0;
 	}
@@ -42,9 +42,9 @@ intmax_t clod_string_get_int(struct clod_string *str, const unsigned char base, 
 	}
 
 	if (str->ptr[0] == '+') {
-		return (intmax_t)clod_string_get_uint(str, base, alphabet);
+		return (intmax_t)clod_string_get_uint(str, alphabet, base);
 	} else {
-		return -(intmax_t)clod_string_get_uint(str, base, alphabet);
+		return -(intmax_t)clod_string_get_uint(str, alphabet, base);
 	}
 }
 size_t clod_string_put_uint(struct clod_string *dst, uintmax_t val,
@@ -67,7 +67,7 @@ size_t clod_string_put_uint(struct clod_string *dst, uintmax_t val,
 	dst->len += size;
 	return (size_t)size;
 }
-uintmax_t clod_string_get_uint(struct clod_string *str, const unsigned char base, const struct clod_string alphabet) {
+uintmax_t clod_string_get_uint(struct clod_string *str, const struct clod_string alphabet, const unsigned char base) {
 	if (!str->ptr || str->len < 1 || !base_valid(base, alphabet)) {
 		return 0;
 	}
@@ -84,11 +84,4 @@ uintmax_t clod_string_get_uint(struct clod_string *str, const unsigned char base
 	}
 
 	return result;
-}
-size_t clod_string_put_double(struct clod_string *dst, double,
-	const struct clod_string, unsigned char, unsigned char, unsigned char) {
-	return clod_string_cat(dst, CLOD_STRING_C("<DOUBLE NOT IMPLEMENTED>"));
-}
-double clod_string_get_double(struct clod_string *, unsigned char, const struct clod_string) {
-	return 0;
 }

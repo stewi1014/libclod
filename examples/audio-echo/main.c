@@ -22,8 +22,7 @@ int main() {
 		return res;
 	}
 
-	void *buffer = malloc(8192);
+	char buffer[8196];
 	res = clod_stream_copy(audio, audio, buffer, 8192, nullptr);
-	free(buffer);
 	return res;
 }

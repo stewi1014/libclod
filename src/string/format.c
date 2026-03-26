@@ -1,7 +1,6 @@
 #include <clod/string.h>
-#include "clod/debug.h"
+#include "debug.h"
 #include <stdarg.h>
-#include <assert.h>
 
 extern bool digit_valid(char digit, int base);
 
@@ -40,9 +39,8 @@ struct format_specifier parse_format(struct clod_string *fmt) {
 			case '0': specifier.zero_pad = true; break;
 			case 'X': specifier.base = 16; specifier.capitalise = true; break;
 			case 'x': specifier.base = 16; break;
-			case 'D': specifier.base = 10; break;
-			case 'O': specifier.base = 8; break;
-			case 'B': specifier.base = 2; break;
+			case 'o': specifier.base = 8; break;
+			case 'b': specifier.base = 2; break;
 			default: goto read_width;
 		}
 
@@ -51,11 +49,11 @@ struct format_specifier parse_format(struct clod_string *fmt) {
 
 read_width:
 	// Pad width
-	specifier.pad_width = clod_string_get_uint(&parse, 10, CLOD_STRING_DIGIT_ALPHABET) & 63;
+	specifier.pad_width = clod_string_get_uint(&parse, CLOD_STRING_DIGIT_ALPHABET, 10) & 63;
 
 	// Max precision
 	if (clod_string_peek_char(parse) == '.') {
-		specifier.max_precision = clod_string_get_uint(&parse, 10, CLOD_STRING_DIGIT_ALPHABET) & 4095;
+		specifier.max_precision = clod_string_get_uint(&parse, CLOD_STRING_DIGIT_ALPHABET, 10) & 4095;
 		specifier.have_precision = 1;
 	} else {
 		specifier.max_precision = 0;
@@ -114,7 +112,7 @@ size_t clod_string_vformat(struct clod_string *dst, struct clod_string fmt, va_l
 	size_t size = 0;
 
 	while (clod_string_peek_char(fmt)) {
-		char c = clod_string_get_char(&fmt);
+		const char c = clod_string_get_char(&fmt);
 		if (c != '%') {
 			clod_string_put_char(dst, c);
 			size++;
@@ -136,7 +134,7 @@ size_t clod_string_vformat(struct clod_string *dst, struct clod_string fmt, va_l
 			}
 		}
 
-		struct clod_string digit_alphabet = specifier.capitalise ? CLOD_STRING_DIGIT_ALPHABET_CAPS : CLOD_STRING_DIGIT_ALPHABET;
+		const struct clod_string digit_alphabet = specifier.capitalise ? CLOD_STRING_DIGIT_ALPHABET_CAPS : CLOD_STRING_DIGIT_ALPHABET;
 
 		switch (specifier.type) {
 			case type_signed_int:

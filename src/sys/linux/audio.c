@@ -1,6 +1,6 @@
 #include <clod/audio.h>
-#include "clod_config.h"
-#include "clod/debug.h"
+#include "config.h"
+#include "debug.h"
 
 #if CLOD_USE_ALSA
 #include <alsa/asoundlib.h>
@@ -90,7 +90,7 @@ int clod_audio(clod_stream **stream_out, int flags, clod_allocator *allocator) {
 	stream->out = nullptr;
 
 	int res;
-	#define check_error(expr) if((res = (expr))) {\
+	#define check_error(expr) if((res = (expr)) < 0) {\
 		debug(CLOD_DEBUG, "Failed to initialise audio. "#expr" returned %i: %s.", res, snd_strerror(res));\
 		goto error;\
 	};

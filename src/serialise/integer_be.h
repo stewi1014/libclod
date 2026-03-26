@@ -1,18 +1,8 @@
-/**
- * @file endian_big.h
- * @brief Methods for big-endian encoding numbers.
- */
-
-#ifndef LIBCLOD_BIG_ENDIAN_H
-#define LIBCLOD_BIG_ENDIAN_H
+#ifndef LIBCLOD_SERIALISE_INTEGER_BE_H
+#define LIBCLOD_SERIALISE_INTEGER_BE_H
 
 #include <clod/lib.h>
-#include <limits.h>
 #include <stdint.h>
-
-static_assert(__STDC_IEC_60559_BFP__, "bit representation of floats must be ICE 559");
-static_assert(sizeof(float) == 4);
-static_assert(sizeof(double) == 8);
 
 /// Maximum 8-bit unsigned value.
 #define BEU8_MAX   UINT8_C(0xFF)
@@ -133,19 +123,6 @@ CLOD_PURE static inline int64_t bei56_dec(const uint8_t ptr[7]) { return (int64_
 /// Decode a 64-bit signed integer in big-endian format.
 CLOD_PURE static inline int64_t bei64_dec(const uint8_t ptr[8]) { return (int64_t)(beu64_dec(ptr)); }
 
-/// Encode a float in big-endian format.
-static inline void bef32_enc(uint8_t ptr[4], const float  f) { const union { float  f; uint32_t i; } u = { f }; beu32_enc(ptr, u.i); }
-/// Encode a double in big-endian format.
-static inline void bef64_enc(uint8_t ptr[8], const double f) { const union { double f; uint64_t i; } u = { f }; beu64_enc(ptr, u.i); }
-
-/// Decode a float in big_endian format.
-CLOD_PURE static inline float  bef32_dec(const uint8_t ptr[4]) { const union { float  f; uint32_t i; } u = { .i = beu32_dec(ptr) }; return u.f; }
-/// Decode a double in big_endian format.
-CLOD_PURE static inline double bef64_dec(const uint8_t ptr[8]) { const union { double f; uint64_t i; } u = { .i = beu64_dec(ptr) }; return u.f; }
-
-/// Maximum varint unsigned value.
-#define BEUV_MAX UINT64_MAX
-
 /// Size of a variable length unsigned integer in big-endian format.
 CLOD_CONST static inline uint8_t beuv_size(uint64_t val) {
 	uint8_t ret = 1;
@@ -158,7 +135,7 @@ CLOD_CONST static inline uint8_t beuv_size(uint64_t val) {
 
 /// Encode a variable length unsigned integer in big-endian format.
 /// @return True if the buffer was large enough.
-static inline bool beuv_enc(uint8_t *ptr, const void *end, uint64_t val) {
+static inline bool beuv_enc(uint8_t *ptr, const void *end, const uint64_t val) {
 	const uint8_t size = beuv_size(val);
 	uint8_t i = 0;
 	while (i + 1 < size) {
@@ -188,11 +165,6 @@ static inline bool beuv_dec(const uint8_t *ptr, const void *end, uint64_t *val) 
 	return true;
 }
 
-/// Maximum variable length signed value.
-#define BEIV_MAX INT64_MAX
-/// Minimum variable length signed value.
-#define BEIV_MIN INT64_MIN
-
 /// Size of a variable length signed integer in big-endian format.
 CLOD_CONST static inline uint8_t beiv_size(int64_t val) {
 	uint8_t ret = 1;
@@ -205,7 +177,7 @@ CLOD_CONST static inline uint8_t beiv_size(int64_t val) {
 
 /// Encode a variable length signed integer in big-endian format.
 /// @return True if the buffer was large enough.
-static inline bool beiv_enc(uint8_t *ptr, const void *end, int64_t val) {
+static inline bool beiv_enc(uint8_t *ptr, const void *end, const int64_t val) {
 	const uint8_t size = beiv_size(val);
 	uint8_t i = 0;
 	while (i + 1 < size) {
