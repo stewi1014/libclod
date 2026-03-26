@@ -99,11 +99,13 @@ $(function(){initNavTree('structclod__compressor.html','','structclod__compresso
 Public Attributes</h2></td></tr>
 <tr class="memitem:ae86baa589762caf335c7f634c375636c" id="r_ae86baa589762caf335c7f634c375636c"><td class="memItemLeft">void *(*&#160;</td><td class="memItemRight"><a class="el" href="#ae86baa589762caf335c7f634c375636c">malloc_func</a> )(size_t)</td></tr>
 <tr class="memitem:ad9e5ab2c00c968bd6fab5edfa4921a13" id="r_ad9e5ab2c00c968bd6fab5edfa4921a13"><td class="memItemLeft">void(*&#160;</td><td class="memItemRight"><a class="el" href="#ad9e5ab2c00c968bd6fab5edfa4921a13">free_func</a> )(void *)</td></tr>
+<tr class="memitem:a1756a717b422b8bfa813dc7891ead8c9" id="r_a1756a717b422b8bfa813dc7891ead8c9"><td class="memItemLeft">struct libdeflate_compressor *&#160;</td><td class="memItemRight"><a class="el" href="#a1756a717b422b8bfa813dc7891ead8c9">libdeflate_compressor</a> [<a class="el" href="group__compression.html#gga3e5b6fd1deb15716507d0846b47d05beaca4d28f1b0366e14a4cc39813eea01e3">CLOD_COMPRESSION_LEVELS</a>]</td></tr>
+<tr class="memitem:adfc91259429a14d7007547ed98e74223" id="r_adfc91259429a14d7007547ed98e74223"><td class="memItemLeft">ZSTD_CCtx *&#160;</td><td class="memItemRight"><a class="el" href="#adfc91259429a14d7007547ed98e74223">zstd_cctx</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Memory and tables reusable across invocations of clod_compress. </p>
 
-<p class="definition">Definition at line <a class="el" href="compress_8c_source.html#l00029">29</a> of file <a class="el" href="compress_8c_source.html">compress.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="compress_8c_source.html#l00011">11</a> of file <a class="el" href="compress_8c_source.html">compress.c</a>.</p>
 </div><a name="doc-variable-members" id="doc-variable-members"></a><h2 id="header-doc-variable-members" class="groupheader">Member Data Documentation</h2>
 <a id="ae86baa589762caf335c7f634c375636c" name="ae86baa589762caf335c7f634c375636c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae86baa589762caf335c7f634c375636c">&#9670;&#160;</a></span>malloc_func</h2>
@@ -117,7 +119,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="compress_8c_source.html#l00030">30</a> of file <a class="el" href="compress_8c_source.html">compress.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="compress_8c_source.html#l00012">12</a> of file <a class="el" href="compress_8c_source.html">compress.c</a>.</p>
 
 </div>
 </div>
@@ -133,7 +135,39 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="compress_8c_source.html#l00031">31</a> of file <a class="el" href="compress_8c_source.html">compress.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="compress_8c_source.html#l00013">13</a> of file <a class="el" href="compress_8c_source.html">compress.c</a>.</p>
+
+</div>
+</div>
+<a id="a1756a717b422b8bfa813dc7891ead8c9" name="a1756a717b422b8bfa813dc7891ead8c9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1756a717b422b8bfa813dc7891ead8c9">&#9670;&#160;</a></span>libdeflate_compressor</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct libdeflate_compressor* clod_compressor::libdeflate_compressor[<a class="el" href="group__compression.html#gga3e5b6fd1deb15716507d0846b47d05beaca4d28f1b0366e14a4cc39813eea01e3">CLOD_COMPRESSION_LEVELS</a>]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="compress_8c_source.html#l00015">15</a> of file <a class="el" href="compress_8c_source.html">compress.c</a>.</p>
+
+</div>
+</div>
+<a id="adfc91259429a14d7007547ed98e74223" name="adfc91259429a14d7007547ed98e74223"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adfc91259429a14d7007547ed98e74223">&#9670;&#160;</a></span>zstd_cctx</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ZSTD_CCtx* clod_compressor::zstd_cctx</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="compress_8c_source.html#l00016">16</a> of file <a class="el" href="compress_8c_source.html">compress.c</a>.</p>
 
 </div>
 </div>

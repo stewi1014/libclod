@@ -99,11 +99,14 @@ $(function(){initNavTree('structclod__decompressor.html','','structclod__decompr
 Public Attributes</h2></td></tr>
 <tr class="memitem:acb4d46dadc8ce635e19c849d68ade99c" id="r_acb4d46dadc8ce635e19c849d68ade99c"><td class="memItemLeft">void *(*&#160;</td><td class="memItemRight"><a class="el" href="#acb4d46dadc8ce635e19c849d68ade99c">malloc_func</a> )(size_t)</td></tr>
 <tr class="memitem:ab5b4c4fc6191fa710282d85a14e1501e" id="r_ab5b4c4fc6191fa710282d85a14e1501e"><td class="memItemLeft">void(*&#160;</td><td class="memItemRight"><a class="el" href="#ab5b4c4fc6191fa710282d85a14e1501e">free_func</a> )(void *)</td></tr>
+<tr class="memitem:a74682c1005f20f7b6310a9c57fe54f43" id="r_a74682c1005f20f7b6310a9c57fe54f43"><td class="memItemLeft">struct libdeflate_decompressor *&#160;</td><td class="memItemRight"><a class="el" href="#a74682c1005f20f7b6310a9c57fe54f43">libdeflate_decompressor</a></td></tr>
+<tr class="memitem:af7e44ed510e38187314f16f22038ce4e" id="r_af7e44ed510e38187314f16f22038ce4e"><td class="memItemLeft">LZ4F_dctx *&#160;</td><td class="memItemRight"><a class="el" href="#af7e44ed510e38187314f16f22038ce4e">lz4_ctx</a></td></tr>
+<tr class="memitem:a9b7f96bbf0bc2f7ed5c994f50d0aa8e9" id="r_a9b7f96bbf0bc2f7ed5c994f50d0aa8e9"><td class="memItemLeft">ZSTD_DCtx *&#160;</td><td class="memItemRight"><a class="el" href="#a9b7f96bbf0bc2f7ed5c994f50d0aa8e9">zstd_dctx</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Memory and tables reusable across invocations of clod_decompress. </p>
 
-<p class="definition">Definition at line <a class="el" href="decompress_8c_source.html#l00026">26</a> of file <a class="el" href="decompress_8c_source.html">decompress.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="decompress_8c_source.html#l00010">10</a> of file <a class="el" href="decompress_8c_source.html">decompress.c</a>.</p>
 </div><a name="doc-variable-members" id="doc-variable-members"></a><h2 id="header-doc-variable-members" class="groupheader">Member Data Documentation</h2>
 <a id="acb4d46dadc8ce635e19c849d68ade99c" name="acb4d46dadc8ce635e19c849d68ade99c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#acb4d46dadc8ce635e19c849d68ade99c">&#9670;&#160;</a></span>malloc_func</h2>
@@ -117,7 +120,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="decompress_8c_source.html#l00027">27</a> of file <a class="el" href="decompress_8c_source.html">decompress.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="decompress_8c_source.html#l00011">11</a> of file <a class="el" href="decompress_8c_source.html">decompress.c</a>.</p>
 
 </div>
 </div>
@@ -133,7 +136,55 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="decompress_8c_source.html#l00028">28</a> of file <a class="el" href="decompress_8c_source.html">decompress.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="decompress_8c_source.html#l00012">12</a> of file <a class="el" href="decompress_8c_source.html">decompress.c</a>.</p>
+
+</div>
+</div>
+<a id="a74682c1005f20f7b6310a9c57fe54f43" name="a74682c1005f20f7b6310a9c57fe54f43"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a74682c1005f20f7b6310a9c57fe54f43">&#9670;&#160;</a></span>libdeflate_decompressor</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct libdeflate_decompressor* clod_decompressor::libdeflate_decompressor</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="decompress_8c_source.html#l00014">14</a> of file <a class="el" href="decompress_8c_source.html">decompress.c</a>.</p>
+
+</div>
+</div>
+<a id="af7e44ed510e38187314f16f22038ce4e" name="af7e44ed510e38187314f16f22038ce4e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af7e44ed510e38187314f16f22038ce4e">&#9670;&#160;</a></span>lz4_ctx</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">LZ4F_dctx* clod_decompressor::lz4_ctx</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="decompress_8c_source.html#l00015">15</a> of file <a class="el" href="decompress_8c_source.html">decompress.c</a>.</p>
+
+</div>
+</div>
+<a id="a9b7f96bbf0bc2f7ed5c994f50d0aa8e9" name="a9b7f96bbf0bc2f7ed5c994f50d0aa8e9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9b7f96bbf0bc2f7ed5c994f50d0aa8e9">&#9670;&#160;</a></span>zstd_dctx</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ZSTD_DCtx* clod_decompressor::zstd_dctx</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="decompress_8c_source.html#l00016">16</a> of file <a class="el" href="decompress_8c_source.html">decompress.c</a>.</p>
 
 </div>
 </div>

@@ -111,8 +111,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "allocator_8h_source.html",
-"group__hash.html#ga688b5c7889b654506285770e8bad203b",
-"structclod__process__linux.html"
+"group__hash.html#ga782634ee3a769de564fa0f998c3a607e",
+"structclod__process__opts.html#a52faea760964f3edc22fdb37d9956839"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronization';

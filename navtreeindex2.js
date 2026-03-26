@@ -1,8 +1,5 @@
 var NAVTREEINDEX2 =
 {
-"structclod__process__linux.html":[4,0,10],
-"structclod__process__opts.html":[3,8,0],
-"structclod__process__opts.html#a45f9f50c437bf7f443ae3052c02161f5":[3,8,0,2],
 "structclod__process__opts.html#a52faea760964f3edc22fdb37d9956839":[3,8,0,3],
 "structclod__process__opts.html#a61e073221699bf2632d72de96a86ce01":[3,8,0,4],
 "structclod__process__opts.html#a74792480f25a72b97efcfb91e971ac9c":[3,8,0,5],
