@@ -6,62 +6,152 @@
 
 #ifdef CLOD_HAVE_X86_64
 
-#pragma GCC diagnostic push
-#if __clang__
-#pragma GCC diagnostic ignored "-Wlanguage-extension-token"
-#endif
-#pragma GCC diagnostic ignored "-Wunused-parameter"
-
-__attribute__((naked))
-static long syscall_impl(long arg1, long arg2, long arg3, long arg4, long arg5, long arg6) {
+long syscall0(int number) {
+	long res;
 	asm volatile(
-		"mov %%rcx, %%r10\n"
-		"syscall\n"
-		"ret"
-		: : : "rax", "rcx", "r11", "memory"
+		"syscall\n\t"
+		: "=a" (res)
+		: "0" (number)
+		: "memory", "cc", "r11", "rcx"
 	);
+	return res;
 }
 
-static long syscall(int number, long arg1, long arg2, long arg3, long arg4, long arg5, long arg6) {
-	asm volatile("mov %[number], %%eax" : : [number] "r" (number) : "rax");
-	return syscall_impl(arg1, arg2, arg3, arg4, arg5, arg6);
+long syscall1(long _1, int number) {
+	long res;
+
+	register long r1 asm ("rdi") = _1;
+
+	asm volatile(
+		"syscall\n\t"
+		: "=a" (res)
+		: "0" (number), "r" (r1)
+		: "memory", "cc", "r11", "rcx"
+	);
+	return res;
 }
 
-#pragma GCC diagnostic pop
+long syscall2(long _1, long _2, int number) {
+	long res;
+
+	register long r1 asm ("rdi") = _1;
+	register long r2 asm ("rsi") = _2;
+
+	asm volatile(
+		"syscall\n\t"
+		: "=a" (res)
+		: "0" (number), "r" (r1), "r" (r2)
+		: "memory", "cc", "r11", "rcx"
+	);
+	return res;
+}
+
+long syscall3(long _1, long _2, long _3, int number) {
+	long res;
+
+	register long r1 asm ("rdi") = _1;
+	register long r2 asm ("rsi") = _2;
+	register long r3 asm ("rdx") = _3;
+
+	asm volatile(
+		"syscall\n\t"
+		: "=a" (res)
+		: "0" (number), "r" (r1), "r" (r2), "r" (r3)
+		: "memory", "cc", "r11", "rcx"
+	);
+	return res;
+}
+
+long syscall4(long _1, long _2, long _3, long _4, int number) {
+	long res;
+
+	register long r1 asm ("rdi") = _1;
+	register long r2 asm ("rsi") = _2;
+	register long r3 asm ("rdx") = _3;
+	register long r4 asm ("r10") = _4;
+
+	asm volatile(
+		"syscall\n\t"
+		: "=a" (res)
+		: "0" (number), "r" (r1), "r" (r2), "r" (r3), "r" (r4)
+		: "memory", "cc", "r11", "rcx"
+	);
+	return res;
+}
+
+long syscall5(long _1, long _2, long _3, long _4, long _5, int number) {
+	long res;
+
+	register long r1 asm ("rdi") = _1;
+	register long r2 asm ("rsi") = _2;
+	register long r3 asm ("rdx") = _3;
+	register long r4 asm ("r10") = _4;
+	register long r5 asm ("r8") = _5;
+
+	asm volatile(
+		"syscall\n\t"
+		: "=a" (res)
+		: "0" (number), "r" (r1), "r" (r2), "r" (r3), "r" (r4), "r" (r5)
+		: "memory", "cc", "r11", "rcx"
+	);
+	return res;
+}
+
+long syscall6(long _1, long _2, long _3, long _4, long _5, long _6, int number) {
+	long res;
+
+	register long r1 asm ("rdi") = _1;
+	register long r2 asm ("rsi") = _2;
+	register long r3 asm ("rdx") = _3;
+	register long r4 asm ("r10") = _4;
+	register long r5 asm ("r8") = _5;
+	register long r6 asm ("r9") = _6;
+
+	asm volatile(
+		"syscall\n\t"
+		: "=a" (res)
+		: "0" (number), "r" (r1), "r" (r2), "r" (r3), "r" (r4), "r" (r5), "r" (r6)
+		: "memory", "cc", "r11", "rcx"
+	);
+	return res;
+}
+
+#define _syscall_switch(_1, _2, _3, _4, _5, _6, N, ...) N
+#define syscall(number, ...) _syscall_switch(__VA_ARGS__, syscall6, syscall5, syscall4, syscall3, syscall2, syscall1, syscall0) (__VA_ARGS__ __VA_OPT__(,) number)
 
 #else
 #error "Linux syscalls not implemented on this architecture"
 #endif
 
 int syscall_futex_wait(const int *addr, const int expected, struct timespec *timeout) {
-	return (int)syscall(__NR_futex, (long)addr, __NR_futex_wait, expected, (long)timeout, 0, 0);
+	return (int)syscall(__NR_futex, (long)addr, __NR_futex_wait, expected, (long)timeout);
 }
 
 int syscall_futex_wake(const int *addr, const int num) {
-	return (int)syscall(__NR_futex, (long)addr, __NR_futex_wake, num, 0, 0, 0);
+	return (int)syscall(__NR_futex, (long)addr, __NR_futex_wake, num);
 }
 
-ssize_t syscall_read(const int fd, void *buff, const size_t size) {
-	return (ssize_t)syscall(__NR_read, fd, (long)buff, (long)size, 0, 0, 0);
+long syscall_read(const int fd, void *buff, const size_t size) {
+	return syscall(__NR_read, fd, (long)buff, (long)size);
 }
 
-ssize_t syscall_write(const int fd, const void *buff, const size_t size) {
-	return (ssize_t)syscall(__NR_write, fd, (long)buff, (long)size, 0, 0, 0);
+long syscall_write(const int fd, const void *buff, const size_t size) {
+	return syscall(__NR_write, fd, (long)buff, (long)size);
 }
 
 int syscall_close(const int fd) {
-	return (int)syscall(__NR_close, fd, 0, 0, 0, 0, 0);
+	return (int)syscall(__NR_close, fd);
 }
 
-void *syscall_mmap(void *addr, const size_t length, const int prot, const int flags, const int fd, const off_t offset) {
+void *syscall_mmap(void *addr, const size_t length, const int prot, const int flags, const int fd, const long offset) {
 	return (void*)syscall(__NR_mmap, (long)addr, (long)length, prot, flags, fd, offset);
 }
 
 int syscall_munmap(void *addr, const size_t length) {
-	return (int)syscall(__NR_munmap, (long)addr, (long)length, 0, 0, 0, 0);
+	return (int)syscall(__NR_munmap, (long)addr, (long)length);
 }
 
 void clod_exit(const int code) {
-	syscall(__NR_exit, code, 0, 0, 0, 0, 0);
+	syscall(__NR_exit, code);
 	__builtin_unreachable();
 }
