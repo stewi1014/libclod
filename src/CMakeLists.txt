@@ -30,6 +30,7 @@ endmacro()
 
 add_subdirectory(compression)
 add_subdirectory(hash)
+add_subdirectory(math)
 add_subdirectory(memory)
 #add_subdirectory(region)
 #add_subdirectory(region_format)

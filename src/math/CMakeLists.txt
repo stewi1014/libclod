@@ -1,3 +1,3 @@
 clod_sources(
-    tree.c
+    fft.c
 )

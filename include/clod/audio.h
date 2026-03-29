@@ -7,11 +7,11 @@
 
 #define CLOD_AUDIO_OUT 1
 #define CLOD_AUDIO_IN 2
-#define CLOD_AUDIO_NONBLOCK 3
+#define CLOD_AUDIO_NONBLOCK 4
 
 /**
  * Open the default input or output audio device.
- * The audio is in 16-bit signed PCM format.
+ * Audio format uses a 32-bit float for each sample.
  *
  * @param[out] stream_out New audio stream.
  * @param[in] flags Audio open flags.

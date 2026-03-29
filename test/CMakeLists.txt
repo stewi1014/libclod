@@ -4,7 +4,8 @@ set(CLOD_TESTS
     hash/expected.c
     hash/replace.c
     hash/stream.c
-    include/endian.c
+    math/fft.c
+    serialise/integer.c
     string/basic_format.c
     structures/nbt/benchmark.c
     structures/nbt/parse_level.c

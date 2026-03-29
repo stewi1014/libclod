@@ -66,7 +66,7 @@ static bool is_empty(const uint8_t *ptr, size_t size) {
 	return true;
 }
 
-int include_endian(int, char[]) {
+int serialise_integer(int, char[]) {
 	uint8_t buff[10];
 
 	for (uint64_t i = 0; i < NUM_TEST; i++) {
