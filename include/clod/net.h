@@ -37,36 +37,40 @@ struct clod_socket {
 	clod_stream stream;
 	/// Local IP address.
 	unsigned char local_addr[16];
+	/// Local port number.
+	unsigned short local_port;
 	/// Remote IP address.
 	unsigned char remote_addr[16];
+	/// Remote port number.
+	unsigned short remote_port;
 };
 
 /**
- * Open a UDP socket for reading and writing.
- * @param[out] socket_out New TCP socket.
- * @param[in] ip Ip address to connect to.
+ * Initialise a UDP socket for reading and writing.
+ * @param[in,out] socket New TCP socket.
  * @param[in] flags Configuration flags.
  * @return 0 on success, non-zero on error.
  */
 CLOD_API CLOD_NONNULL(1)
-int clod_udp(
-	clod_socket *socket_out,
-	unsigned char ip[16],
-	int flags
-);
+int clod_udp(clod_socket *socket, int flags);
 
 /**
- * Open a TCP client-side socket for reading and writing.
- * @param[out] socket_out New TCP socket.
- * @param[in] ip Ip address to connect to.
+ * Initialise a TCP client-side socket for reading and writing.
+ * Upon a successful connection, the stream transfers bytes between
+ * @param[in,out] socket New TCP socket.
  * @param[in] flags Configuration flags.
  * @return 0 on success, non-zero on error.
  */
 CLOD_API CLOD_NONNULL(1)
-int clod_tcp(
-	clod_socket **socket_out,
-	unsigned char ip[16],
-	int flags
-);
+int clod_tcp_client(clod_socket *socket, int flags);
+
+/**
+ * Initialise a TCP
+ * @param[in,out] socket New TCP socket.
+ * @param[in] flags Configuration flags.
+ * @return 0 on success, non-zero on error.
+ */
+CLOD_API CLOD_NONNULL(1)
+int clod_tcp_server(clod_socket *socket, int flags);
 
 #endif
