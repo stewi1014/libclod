@@ -2,12 +2,14 @@
 #define LIBCLOD_AUDIO_H
 
 #include <clod/lib.h>
-#include <clod/memory.h>
 #include <clod/stream.h>
 
 #define CLOD_AUDIO_OUT 1
 #define CLOD_AUDIO_IN 2
-#define CLOD_AUDIO_NONBLOCK 4
+
+#define CLOD_AUDIO_CHANNELS 0x100
+#define CLOD_AUDIO_1_CHANNELS (CLOD_AUDIO_CHANNELS * 1)
+#define CLOD_AUDIO_2_CHANNELS (CLOD_AUDIO_CHANNELS * 2)
 
 /**
  * Open the default input or output audio device.
@@ -15,10 +17,9 @@
  *
  * @param[out] stream_out New audio stream.
  * @param[in] flags Audio open flags.
- * @param[in] allocator Memory allocator.
  * @return 0 on success, non-zero on error.
  */
-CLOD_API CLOD_NONNULL(1, 3)
-int clod_audio(clod_stream **stream_out, int flags, clod_allocator *allocator);
+CLOD_API CLOD_NONNULL(1)
+int clod_audio(clod_stream *stream_out, int flags);
 
 #endif

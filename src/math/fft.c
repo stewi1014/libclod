@@ -10,33 +10,20 @@
 #define R 0
 #define I 1
 
-static float fft_floor(const float n) {
-	const float i = (float)(int)n;
-	return i > n ? i - 1.0f : i;
-}
-static float fft_sin(float n) {
-	n = n - 2.0f * PI * fft_floor(n / 2.0f / PI);
+
+static float fft_sin(const float n) {
 	float res = n;
 	float s = n;
-	for (int i = 1; i <= 11; i += 2) {
+	for (int i = 1; i <= 17; i += 2) {
 		res += s = -s * n * n / (float)((i + 1) * (i + 2));
 	}
 	return res;
 }
-static float fft_cos(float n) {
-	n = n - 2.0f * PI * fft_floor(n / 2.0f / PI);
+static float fft_cos(const float n) {
 	float res = 1.0f;
-	float s = n;
-	for (int i = 0; i <= 10; i += 2) {
+	float s = 1.0f;
+	for (int i = 0; i <= 16; i += 2) {
 		res += s = -s * n * n / (float)((i + 1) * (i + 2));
-	}
-	return res;
-}
-static size_t bit_count(size_t n) {
-	size_t res = 0;
-	while (n) {
-		res++;
-		n >>= 1;
 	}
 	return res;
 }
@@ -59,16 +46,15 @@ void clod_fft(float *restrict data, size_t len, bool invert) {
 	assert_fatal(CLOD_DEBUG, len > 0 && (len & (len - 1)) == 0,
 		"Length for fast fourier transform array must be power of two. Given %size.", len);
 
-	const size_t bits = bit_count(len);
-	for (size_t i = 0; i < len; i++) {
-		size_t reversed = 0;
-		for (size_t b = 0; b < bits; b++) {
-			if (i & (1 << b)) {
-				reversed |= len >> (bits - b - 1);
-			}
+	for (size_t i = 1, rev = 0; i < len; i++) {
+		size_t b = len >> 1;
+		while (rev & b) {
+			rev ^= b;
+			b >>= 1;
 		}
-		if (reversed < i) {
-			swap(data + i * 2, data + reversed * 2);
+		rev ^= b;
+		if (i < rev) {
+			swap(data + i * 2, data + rev * 2);
 		}
 	}
 
