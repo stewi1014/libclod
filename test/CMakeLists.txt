@@ -4,7 +4,10 @@ set(CLOD_TESTS
     hash/expected.c
     hash/replace.c
     hash/stream.c
-    math/fft.c
+    math/fft_freq_complex.c
+    math/fft_freq_mag.c
+    math/fft_freq_mag_packed.c
+    math/taylor_approximations.c
     serialise/integer.c
     string/basic_format.c
     structures/nbt/benchmark.c

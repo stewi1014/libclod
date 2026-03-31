@@ -6,65 +6,56 @@
 
 #ifdef CLOD_HAVE_X86_64
 
-long syscall0(int number) {
-	long res;
+long syscall0(long number) {
 	asm volatile(
 		"syscall\n\t"
-		: "=a" (res)
-		: "0" (number)
+		: "+a" (number)
+		:
 		: "memory", "cc", "r11", "rcx"
 	);
-	return res;
+	return number;
 }
 
-long syscall1(long _1, int number) {
-	long res;
-
+long syscall1(long _1, long number) {
 	register long r1 asm ("rdi") = _1;
 
 	asm volatile(
 		"syscall\n\t"
-		: "=a" (res)
-		: "0" (number), "r" (r1)
+		: "+a" (number)
+		: "D" (r1)
 		: "memory", "cc", "r11", "rcx"
 	);
-	return res;
+	return number;
 }
 
-long syscall2(long _1, long _2, int number) {
-	long res;
-
+long syscall2(long _1, long _2, long number) {
 	register long r1 asm ("rdi") = _1;
 	register long r2 asm ("rsi") = _2;
 
 	asm volatile(
 		"syscall\n\t"
-		: "=a" (res)
-		: "0" (number), "r" (r1), "r" (r2)
+		: "+a" (number)
+		: "D" (r1), "S" (r2)
 		: "memory", "cc", "r11", "rcx"
 	);
-	return res;
+	return number;
 }
 
-long syscall3(long _1, long _2, long _3, int number) {
-	long res;
-
+long syscall3(long _1, long _2, long _3, long number) {
 	register long r1 asm ("rdi") = _1;
 	register long r2 asm ("rsi") = _2;
 	register long r3 asm ("rdx") = _3;
 
 	asm volatile(
 		"syscall\n\t"
-		: "=a" (res)
-		: "0" (number), "r" (r1), "r" (r2), "r" (r3)
+		: "+a" (number)
+		: "D" (r1), "S" (r2), "d" (r3)
 		: "memory", "cc", "r11", "rcx"
 	);
-	return res;
+	return number;
 }
 
-long syscall4(long _1, long _2, long _3, long _4, int number) {
-	long res;
-
+long syscall4(long _1, long _2, long _3, long _4, long number) {
 	register long r1 asm ("rdi") = _1;
 	register long r2 asm ("rsi") = _2;
 	register long r3 asm ("rdx") = _3;
@@ -72,16 +63,14 @@ long syscall4(long _1, long _2, long _3, long _4, int number) {
 
 	asm volatile(
 		"syscall\n\t"
-		: "=a" (res)
-		: "0" (number), "r" (r1), "r" (r2), "r" (r3), "r" (r4)
+		: "+a" (number)
+		: "D" (r1), "S" (r2), "d" (r3), "r" (r4)
 		: "memory", "cc", "r11", "rcx"
 	);
-	return res;
+	return number;
 }
 
-long syscall5(long _1, long _2, long _3, long _4, long _5, int number) {
-	long res;
-
+long syscall5(long _1, long _2, long _3, long _4, long _5, long number) {
 	register long r1 asm ("rdi") = _1;
 	register long r2 asm ("rsi") = _2;
 	register long r3 asm ("rdx") = _3;
@@ -90,16 +79,14 @@ long syscall5(long _1, long _2, long _3, long _4, long _5, int number) {
 
 	asm volatile(
 		"syscall\n\t"
-		: "=a" (res)
-		: "0" (number), "r" (r1), "r" (r2), "r" (r3), "r" (r4), "r" (r5)
+		: "+a" (number)
+		: "D" (r1), "S" (r2), "d" (r3), "r" (r4), "r" (r5)
 		: "memory", "cc", "r11", "rcx"
 	);
-	return res;
+	return number;
 }
 
-long syscall6(long _1, long _2, long _3, long _4, long _5, long _6, int number) {
-	long res;
-
+long syscall6(long _1, long _2, long _3, long _4, long _5, long _6, long number) {
 	register long r1 asm ("rdi") = _1;
 	register long r2 asm ("rsi") = _2;
 	register long r3 asm ("rdx") = _3;
@@ -109,11 +96,11 @@ long syscall6(long _1, long _2, long _3, long _4, long _5, long _6, int number) 
 
 	asm volatile(
 		"syscall\n\t"
-		: "=a" (res)
-		: "0" (number), "r" (r1), "r" (r2), "r" (r3), "r" (r4), "r" (r5), "r" (r6)
+		: "+a" (number)
+		: "D" (r1), "S" (r2), "d" (r3), "r" (r4), "r" (r5), "r" (r6)
 		: "memory", "cc", "r11", "rcx"
 	);
-	return res;
+	return number;
 }
 
 #else

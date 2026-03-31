@@ -1,26 +1,12 @@
 #include <clod/audio.h>
 #include <clod/math/fft.h>
 
-#define NUM_SAMPLES 128
+#include "clod/file.h"
+
+#define NUM_SAMPLES 256
 
 void apply_effect(float *fft) {
-	for (size_t i = 0; i < NUM_SAMPLES; i++) {
-		float real = fft[i * 2];
-		float imag = fft[i * 2 + 1];
-		
-		float freq = (float)i / (float)NUM_SAMPLES;
-		
-		if (freq > 0.2f && freq < 0.8f) {
-			real *= 3.0f;
-			imag *= 3.0f;
-		} else if (freq < 0.1f) {
-			real *= 0.1f;
-			imag *= 0.1f;
-		}
-		
-		fft[i * 2] = real;
-		fft[i * 2 + 1] = imag;
-	}
+
 }
 
 void slide(float *data) {
@@ -29,10 +15,13 @@ void slide(float *data) {
 	}
 }
 
-int main() {
+int main(int argc, char **argv) {
 	clod_stream in, out;
 
-	int res = clod_audio(&in, CLOD_AUDIO_IN);
+	char *file_path = "../../../examples/vocoder/out.pcm";
+	if (argv[1]) file_path = argv[1];
+
+	int res = clod_file(&in, nullptr, file_path, CLOD_FILE_READ);
 	if (res != 0) {
 		return res;
 	}
@@ -44,33 +33,43 @@ int main() {
 
 	float input[NUM_SAMPLES * 2];
 	float output[NUM_SAMPLES * 2];
-	for (size_t i = 0; i < NUM_SAMPLES * 2; i++) output[i] = 0.0f;
+	for (size_t i = 0; i < NUM_SAMPLES * 2; i++) {
+		input[i] = 0.0f;
+		output[i] = 0.0f;
+	}
 
 	while (1) {
 		slide(input);
 		slide(output);
 
-		in.read(&in, &(struct clod_string){ .ptr = (char*)input, .len = 0, .cap = NUM_SAMPLES * sizeof(float) });
+		int res = in.read(&in, &(struct clod_string){ .ptr = (char*)input, .len = 0, .cap = NUM_SAMPLES * sizeof(float) });
+		if (res == CLOD_STREAM_EOF) break;
+		if (res != CLOD_STREAM_OK) return res;
 
 		float fft[NUM_SAMPLES * 4];
 		for (size_t i = 0; i < NUM_SAMPLES * 2; i++) {
-			fft[i * 2] = input[i];
-			fft[i * 2 + 1] = 0.0f;
+			fft[i] = input[i];
 		}
 
-		clod_fft(fft, NUM_SAMPLES * 2, false);
+		clod_fft(fft, NUM_SAMPLES * 2, CLOD_FFT_INPUT * CLOD_FFT_TIME_MAG_PACKED + CLOD_FFT_OUTPUT * CLOD_FFT_FREQ_MAG);
 
 		apply_effect(fft);
 
-		clod_fft(fft, NUM_SAMPLES * 2, true);
+		clod_fft(fft, NUM_SAMPLES * 2, CLOD_FFT_INPUT * CLOD_FFT_FREQ_MAG + CLOD_FFT_OUTPUT * CLOD_FFT_TIME_MAG_PACKED);
 
 		for (size_t i = 0; i < NUM_SAMPLES; i++) {
-			output[i] = fft[i * 2] * (float)i / (float) NUM_SAMPLES;
+			output[i] = fft[i] * (float)i / (float) NUM_SAMPLES;
 		}
 		for (size_t i = NUM_SAMPLES; i < NUM_SAMPLES * 2; i++) {
-			output[i] += fft[i * 2] * (float)(NUM_SAMPLES * 2 - i) / (float) NUM_SAMPLES;
+			output[i] += fft[i] * (float)(NUM_SAMPLES * 2 - i) / (float) NUM_SAMPLES;
 		}
 
-		out.write(&out, &(struct clod_string){ .ptr = (char*)(output + NUM_SAMPLES), .len = NUM_SAMPLES * sizeof(float), .cap = 0 });
+		res = out.write(&out, &(struct clod_string){ .ptr = (char*)(output + NUM_SAMPLES), .len = NUM_SAMPLES * sizeof(float), .cap = 0 });
+		if (res != CLOD_STREAM_OK) return res;
 	}
+
+	in.close(&in);
+	out.close(&out);
+
+	return 0;
 }

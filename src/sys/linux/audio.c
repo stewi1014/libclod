@@ -49,7 +49,7 @@ int clod_audio_close(clod_stream *self) {
 	if ((snd_pcm_t*)(void*)self->impl) {
 		snd_pcm_drain((void*)self->impl);
 		res = snd_pcm_close((void*)self->impl);
-		debug(CLOD_DEBUG, "Audio stream close error: %s", snd_strerror(res));
+		if (res != 0) debug(CLOD_DEBUG, "Audio stream close error: %s", snd_strerror(res));
 	}
 
 	return CLOD_STREAM_OK;

@@ -37,7 +37,7 @@ static inline int debug_print(
 }
 
 #if defined(__GNUC__)
-#define _debug_assume(expr) ((expr) ? 0 : (__builtin_unreachable(), 0))
+#define _debug_assume(expr) ((expr) ? (void)0 : __builtin_unreachable())
 #elif defined(_MSC_VER)
 #define _debug_assume(expr) __assume(expr)
 #endif
@@ -45,7 +45,7 @@ static inline int debug_print(
 #define CLOD_TEST 1
 
 #define debug(context, msg, ...) (!(context) ? (void)0 : (debug_print(#context, __FILE__, __LINE__, __func__, msg __VA_OPT__(,) __VA_ARGS__), (void)0))
-#define fatal(context, msg, ...) (!(context) ? 0 : (debug_print(#context, __FILE__, __LINE__, __func__, msg __VA_OPT__(,) __VA_ARGS__), clod_exit(1), _debug_assume(0)))
-#define assert_fatal(context, expr, msg, ...) (!(context) ? _debug_assume(expr) : (expr) ? 0 : (debug_print(#context, __FILE__, __LINE__, __func__, "Assertion \""#expr"\" failed: "msg __VA_OPT__(,) __VA_ARGS__), clod_exit(1), _debug_assume(0)))
+#define fatal(context, msg, ...) (!(context) ? (void)0 : (debug_print(#context, __FILE__, __LINE__, __func__, msg __VA_OPT__(,) __VA_ARGS__), clod_exit(1), _debug_assume(0)))
+#define assert_fatal(context, expr, msg, ...) (!(context) ? _debug_assume(expr) : (expr) ? (void)0 : (debug_print(#context, __FILE__, __LINE__, __func__, "Assertion \""#expr"\" failed: "msg __VA_OPT__(,) __VA_ARGS__), clod_exit(1), _debug_assume(0)))
 
 #endif

@@ -98,9 +98,10 @@ int clod_file_stream_read(clod_stream *self, struct clod_string *dst) {
 		return CLOD_STREAM_OK;
 
 	const long ret = syscall(__NR_read, (long)self->impl, (long)(dst->ptr + dst->len), dst->cap - dst->len);
-
 	if (ret < 0) return (int)-ret;
-	if (ret == 0) return CLOD_STREAM_EOF;
+	if (ret == 0) {
+		return CLOD_STREAM_EOF;
+	}
 	dst->len += ret;
 	return CLOD_STREAM_OK;
 }

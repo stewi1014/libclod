@@ -33,15 +33,15 @@ void compression_test_level(
 	size_t dec_size;
 
 	switch (method) {
-		case CLOD_UNCOMPRESSED: debug(CLOD_TEST, "Testing compression method CLOD_UNCOMPRESSED level %d\n", level); break;
-		case CLOD_GZIP: debug(CLOD_TEST, "Testing compression method CLOD_GZIP level %d\n", level); break;
-		case CLOD_ZLIB: debug(CLOD_TEST, "Testing compression method CLOD_ZLIB level %d\n", level); break;
-		case CLOD_DEFLATE: debug(CLOD_TEST, "Testing compression method CLOD_DEFLATE level %d\n", level); break;
-		case CLOD_LZ4F: debug(CLOD_TEST, "Testing compression method CLOD_LZ4F level %d\n", level); break;
-		case CLOD_XZ: debug(CLOD_TEST, "Testing compression method CLOD_XZ level %d\n", level); break;
-		case CLOD_ZSTD: debug(CLOD_TEST, "Testing compression method CLOD_ZSTD level %d\n", level); break;
-		case CLOD_MINECRAFT_LZ4: debug(CLOD_TEST, "Testing compression method CLOD_MINECRAFT_LZ4 level %d\n", level); break;
-		default: debug(CLOD_TEST, "Compression method %d name hasn't been added to the test's logging\n", method); break;
+		case CLOD_UNCOMPRESSED: debug(CLOD_TEST, "Testing compression method CLOD_UNCOMPRESSED level %i\n", level); break;
+		case CLOD_GZIP: debug(CLOD_TEST, "Testing compression method CLOD_GZIP level %i\n", level); break;
+		case CLOD_ZLIB: debug(CLOD_TEST, "Testing compression method CLOD_ZLIB level %i\n", level); break;
+		case CLOD_DEFLATE: debug(CLOD_TEST, "Testing compression method CLOD_DEFLATE level %i\n", level); break;
+		case CLOD_LZ4F: debug(CLOD_TEST, "Testing compression method CLOD_LZ4F level %i\n", level); break;
+		case CLOD_XZ: debug(CLOD_TEST, "Testing compression method CLOD_XZ level %i\n", level); break;
+		case CLOD_ZSTD: debug(CLOD_TEST, "Testing compression method CLOD_ZSTD level %i\n", level); break;
+		case CLOD_MINECRAFT_LZ4: debug(CLOD_TEST, "Testing compression method CLOD_MINECRAFT_LZ4 level %i\n", level); break;
+		default: debug(CLOD_TEST, "Compression method %i name hasn't been added to the test's logging\n", method); break;
 	}
 
 	// Zero size payload
