@@ -15,6 +15,7 @@ set(CLOD_TESTS
     structures/nbt/print_level.c
     structures/table/set_get_many.c
     structures/table/simple_all_methods.c
+    structures/tree/set_get_many.c
     thread/background.c
     thread/benchmark.c
     thread/mutex.c

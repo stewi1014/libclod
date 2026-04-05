@@ -14,7 +14,7 @@ static inline int debug_print(
 	const char *msg,
 	...
 ) {
-	struct clod_string buff = CLOD_STRING_NEW(256);
+	struct clod_string buff = CLOD_STRING_NEW(512);
 	clod_string_cat(&buff, clod_string_from_cstr(context));
 	clod_string_cat(&buff, CLOD_STRING_C(":"));
 	clod_string_cat(&buff, clod_string_from_cstr(file));
@@ -22,7 +22,7 @@ static inline int debug_print(
 	clod_string_put_uint(&buff, (uintmax_t)line, CLOD_STRING_DIGIT_ALPHABET, 10, 0, 0);
 	clod_string_cat(&buff, CLOD_STRING_C(" "));
 	clod_string_cat(&buff, clod_string_from_cstr(func));
-	clod_string_cat(&buff, CLOD_STRING_C("(): "));
+	clod_string_cat(&buff, CLOD_STRING_C("():\n\t"));
 
 	va_list args;
 	va_start(args, msg);

@@ -23,14 +23,14 @@ typedef struct {
 	 * @param[in] size Size in bytes of the memory to allocate.
 	 * @return Pointer to the newly allocated memory.
 	 */
-	void *(*allocate)(void *self, size_t size);
+	void *(*allocate)(size_t size, void *self);
 
 	/**
 	 * Free memory.
-	 * @param[in] self Implementation defined value.
 	 * @param[in] ptr Pointer previously returned from \p allocate to free.
+	 * @param[in] self Implementation defined value.
 	 */
-	void (*free)(void *self, void *ptr);
+	void (*free)(void *ptr, void *self);
 } clod_allocator;
 
 /// Configuration options for libclod's memory allocator.
