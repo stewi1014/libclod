@@ -1,5 +1,6 @@
 var dir_565cdd2637a496adff24344f738a7244 =
 [
+    [ "math", "dir_f2d9b0e0dcea1613265a841980936c11.html", "dir_f2d9b0e0dcea1613265a841980936c11" ],
     [ "structures", "dir_b746fcba7340699cd0abfb9e39579fd9.html", "dir_b746fcba7340699cd0abfb9e39579fd9" ],
     [ "sys", "dir_11539220284b331af956dd572b3656c7.html", "dir_11539220284b331af956dd572b3656c7" ],
     [ "audio.h", "audio_8h_source.html", null ],

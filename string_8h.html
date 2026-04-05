@@ -114,8 +114,6 @@ Macros</h2></td></tr>
 <tr class="memdesc:af04254fac02a863302c7fa84dea9d255"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a new empty string with the given capacity on the stack.  <br /></td></tr>
 <tr class="memitem:a2182838bce054960ad07ccb3112a4b1e" id="r_a2182838bce054960ad07ccb3112a4b1e"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a2182838bce054960ad07ccb3112a4b1e">CLOD_STRING_OBJECT</a>(object)</td></tr>
 <tr class="memdesc:a2182838bce054960ad07ccb3112a4b1e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the string representation of an object.  <br /></td></tr>
-<tr class="memitem:a8fdcec7ca6cfcffa97049d67f7ef511c" id="r_a8fdcec7ca6cfcffa97049d67f7ef511c"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a8fdcec7ca6cfcffa97049d67f7ef511c">CLOD_STRING_DIGIT_ALPHABET</a>&#160;&#160;&#160;<a class="el" href="#a15356fad035fc3638ca80a277f59d413">CLOD_STRING_C</a>(&quot;0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-_&quot;)</td></tr>
-<tr class="memitem:acbb79e23b33109a6538bbf46c30dc2b2" id="r_acbb79e23b33109a6538bbf46c30dc2b2"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#acbb79e23b33109a6538bbf46c30dc2b2">CLOD_STRING_DIGIT_ALPHABET_CAPS</a>&#160;&#160;&#160;<a class="el" href="#a15356fad035fc3638ca80a277f59d413">CLOD_STRING_C</a>(&quot;0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-_&quot;)</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
@@ -130,22 +128,19 @@ Functions</h2></td></tr>
 <tr class="memdesc:aa7e67dce2d74355ba31543bc0f336ba8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove a single char from the start of the string.  <br /></td></tr>
 <tr class="memitem:ab736da2e89e3fac71bd264036515856f" id="r_ab736da2e89e3fac71bd264036515856f"><td class="memItemLeft">char&#160;</td><td class="memItemRight"><a class="el" href="#ab736da2e89e3fac71bd264036515856f">clod_string_peek_char</a> (struct <a class="el" href="structclod__string.html">clod_string</a> str)</td></tr>
 <tr class="memdesc:ab736da2e89e3fac71bd264036515856f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the first char in the string.  <br /></td></tr>
-<tr class="memitem:acbb18d67fbe7ab0fc99c36168ad04fb4" id="r_acbb18d67fbe7ab0fc99c36168ad04fb4"><td class="memItemLeft">size_t&#160;</td><td class="memItemRight"><a class="el" href="#acbb18d67fbe7ab0fc99c36168ad04fb4">clod_string_format</a> (struct <a class="el" href="structclod__string.html">clod_string</a> *dst, struct <a class="el" href="structclod__string.html">clod_string</a> fmt,...)</td></tr>
-<tr class="memitem:a2d9a0d626e2dbab2b7ec15b8b65bfc4c" id="r_a2d9a0d626e2dbab2b7ec15b8b65bfc4c"><td class="memItemLeft">size_t&#160;</td><td class="memItemRight"><a class="el" href="#a2d9a0d626e2dbab2b7ec15b8b65bfc4c">clod_string_vformat</a> (struct <a class="el" href="structclod__string.html">clod_string</a> *dst, struct <a class="el" href="structclod__string.html">clod_string</a> fmt, va_list args)</td></tr>
-<tr class="memdesc:a2d9a0d626e2dbab2b7ec15b8b65bfc4c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Same as clod_string_format, but takes a va_list argument instead of '...'.  <br /></td></tr>
-<tr class="memitem:a1c8b1a466cbb9f9af33b14793d55d7c1" id="r_a1c8b1a466cbb9f9af33b14793d55d7c1"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a1c8b1a466cbb9f9af33b14793d55d7c1">clod_string_parse</a> (struct <a class="el" href="structclod__string.html">clod_string</a> src, struct <a class="el" href="structclod__string.html">clod_string</a> fmt,...)</td></tr>
-<tr class="memitem:ae1a8ad9fa3902fde82635985d539c285" id="r_ae1a8ad9fa3902fde82635985d539c285"><td class="memItemLeft"><a id="ae1a8ad9fa3902fde82635985d539c285" name="ae1a8ad9fa3902fde82635985d539c285"></a>
-int&#160;</td><td class="memItemRight"><b>clod_string_vparse</b> (struct <a class="el" href="structclod__string.html">clod_string</a> src, struct <a class="el" href="structclod__string.html">clod_string</a> fmt, va_list args)</td></tr>
-<tr class="memdesc:ae1a8ad9fa3902fde82635985d539c285"><td class="mdescLeft">&#160;</td><td class="mdescRight">Same as clod_string_parse but takes a va-list argument instead of '...'. <br /></td></tr>
-<tr class="memitem:aee652847deafb02a89d4054670a4f3fe" id="r_aee652847deafb02a89d4054670a4f3fe"><td class="memItemLeft">struct <a class="el" href="structclod__string.html">clod_string</a>&#160;</td><td class="memItemRight"><a class="el" href="#aee652847deafb02a89d4054670a4f3fe">clod_string_contains</a> (struct <a class="el" href="structclod__string.html">clod_string</a> str, struct <a class="el" href="structclod__string.html">clod_string</a> elem)</td></tr>
-<tr class="memitem:a13ebf23d11182c8b28ca90087c2d121e" id="r_a13ebf23d11182c8b28ca90087c2d121e"><td class="memItemLeft">struct <a class="el" href="structclod__string.html">clod_string</a>&#160;</td><td class="memItemRight"><a class="el" href="#a13ebf23d11182c8b28ca90087c2d121e">clod_string_find</a> (struct <a class="el" href="structclod__string.html">clod_string</a> str, char elem, int occurrence)</td></tr>
-<tr class="memitem:a48ae7d54ab9474f6677af3db724c6bcd" id="r_a48ae7d54ab9474f6677af3db724c6bcd"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a48ae7d54ab9474f6677af3db724c6bcd">clod_string_remove_prefix</a> (struct <a class="el" href="structclod__string.html">clod_string</a> *str, struct <a class="el" href="structclod__string.html">clod_string</a> prefix)</td></tr>
-<tr class="memitem:abcbab040ee04b67cfb842129f3e043b6" id="r_abcbab040ee04b67cfb842129f3e043b6"><td class="memItemLeft">size_t&#160;</td><td class="memItemRight"><a class="el" href="#abcbab040ee04b67cfb842129f3e043b6">clod_string_put_int</a> (struct <a class="el" href="structclod__string.html">clod_string</a> *dst, intmax_t val, struct <a class="el" href="structclod__string.html">clod_string</a> alphabet, unsigned char base, unsigned char min_digits, unsigned char max_digits)</td></tr>
-<tr class="memitem:af1068877b6b56bace5611761d3b0ad8e" id="r_af1068877b6b56bace5611761d3b0ad8e"><td class="memItemLeft">intmax_t&#160;</td><td class="memItemRight"><a class="el" href="#af1068877b6b56bace5611761d3b0ad8e">clod_string_get_int</a> (struct <a class="el" href="structclod__string.html">clod_string</a> *str, unsigned char base, struct <a class="el" href="structclod__string.html">clod_string</a> alphabet)</td></tr>
-<tr class="memitem:a07117d0de8a61bfa55a52ca0441b7b93" id="r_a07117d0de8a61bfa55a52ca0441b7b93"><td class="memItemLeft">size_t&#160;</td><td class="memItemRight"><a class="el" href="#a07117d0de8a61bfa55a52ca0441b7b93">clod_string_put_uint</a> (struct <a class="el" href="structclod__string.html">clod_string</a> *dst, uintmax_t val, struct <a class="el" href="structclod__string.html">clod_string</a> alphabet, unsigned char base, unsigned char min_digits, unsigned char max_digits)</td></tr>
-<tr class="memitem:a33fc7220c4f6666eea55af1886bf2d34" id="r_a33fc7220c4f6666eea55af1886bf2d34"><td class="memItemLeft">uintmax_t&#160;</td><td class="memItemRight"><a class="el" href="#a33fc7220c4f6666eea55af1886bf2d34">clod_string_get_uint</a> (struct <a class="el" href="structclod__string.html">clod_string</a> *str, unsigned char base, struct <a class="el" href="structclod__string.html">clod_string</a> alphabet)</td></tr>
-<tr class="memitem:af161dd6b92dca90fdee0238a87ed9808" id="r_af161dd6b92dca90fdee0238a87ed9808"><td class="memItemLeft">size_t&#160;</td><td class="memItemRight"><a class="el" href="#af161dd6b92dca90fdee0238a87ed9808">clod_string_put_double</a> (struct <a class="el" href="structclod__string.html">clod_string</a> *dst, double val, struct <a class="el" href="structclod__string.html">clod_string</a> alphabet, unsigned char base, unsigned char min_digits, unsigned char max_digits)</td></tr>
-<tr class="memitem:a15d4dd90e9891c6f74f533de455a79f1" id="r_a15d4dd90e9891c6f74f533de455a79f1"><td class="memItemLeft">double&#160;</td><td class="memItemRight"><a class="el" href="#a15d4dd90e9891c6f74f533de455a79f1">clod_string_get_double</a> (struct <a class="el" href="structclod__string.html">clod_string</a> *str, unsigned char base, struct <a class="el" href="structclod__string.html">clod_string</a> alphabet)</td></tr>
+<tr class="memitem:ab5fee89becc208a423660fe63845926b" id="r_ab5fee89becc208a423660fe63845926b"><td class="memItemLeft">CLOD_API int&#160;</td><td class="memItemRight"><a class="el" href="#ab5fee89becc208a423660fe63845926b">clod_string_parse</a> (struct <a class="el" href="structclod__string.html">clod_string</a> src, struct <a class="el" href="structclod__string.html">clod_string</a> fmt,...)</td></tr>
+<tr class="memitem:ac8bf8770ae8fd4b1dc69688b99ad453b" id="r_ac8bf8770ae8fd4b1dc69688b99ad453b"><td class="memItemLeft"><a id="ac8bf8770ae8fd4b1dc69688b99ad453b" name="ac8bf8770ae8fd4b1dc69688b99ad453b"></a>
+CLOD_API int&#160;</td><td class="memItemRight"><b>clod_string_vparse</b> (struct <a class="el" href="structclod__string.html">clod_string</a> src, struct <a class="el" href="structclod__string.html">clod_string</a> fmt, va_list args)</td></tr>
+<tr class="memdesc:ac8bf8770ae8fd4b1dc69688b99ad453b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Same as clod_string_parse but takes a va-list argument instead of '...'. <br /></td></tr>
+<tr class="memitem:a770ac5725a100cc29949441ee4f19373" id="r_a770ac5725a100cc29949441ee4f19373"><td class="memItemLeft">CLOD_API struct <a class="el" href="structclod__string.html">clod_string</a>&#160;</td><td class="memItemRight"><a class="el" href="#a770ac5725a100cc29949441ee4f19373">clod_string_contains</a> (struct <a class="el" href="structclod__string.html">clod_string</a> str, struct <a class="el" href="structclod__string.html">clod_string</a> elem)</td></tr>
+<tr class="memitem:a6715515897b7cd2c96926cfc2c1ba809" id="r_a6715515897b7cd2c96926cfc2c1ba809"><td class="memItemLeft">CLOD_API struct <a class="el" href="structclod__string.html">clod_string</a>&#160;</td><td class="memItemRight"><a class="el" href="#a6715515897b7cd2c96926cfc2c1ba809">clod_string_find</a> (struct <a class="el" href="structclod__string.html">clod_string</a> str, char elem, int occurrence)</td></tr>
+<tr class="memitem:a00e0cbd22d8c9c37ce433873bdfcb1b6" id="r_a00e0cbd22d8c9c37ce433873bdfcb1b6"><td class="memItemLeft">CLOD_API bool&#160;</td><td class="memItemRight"><a class="el" href="#a00e0cbd22d8c9c37ce433873bdfcb1b6">clod_string_remove_prefix</a> (struct <a class="el" href="structclod__string.html">clod_string</a> *str, struct <a class="el" href="structclod__string.html">clod_string</a> prefix)</td></tr>
+<tr class="memitem:a5ab65a698efe4137679ddd6467570bcd" id="r_a5ab65a698efe4137679ddd6467570bcd"><td class="memItemLeft">CLOD_API size_t&#160;</td><td class="memItemRight"><a class="el" href="#a5ab65a698efe4137679ddd6467570bcd">clod_string_put_int</a> (struct <a class="el" href="structclod__string.html">clod_string</a> *dst, intmax_t val, struct <a class="el" href="structclod__string.html">clod_string</a> alphabet, unsigned char base, unsigned char min_digits, unsigned char max_digits)</td></tr>
+<tr class="memitem:af50b3600194e76024c3934c55615cc60" id="r_af50b3600194e76024c3934c55615cc60"><td class="memItemLeft">CLOD_API intmax_t&#160;</td><td class="memItemRight"><a class="el" href="#af50b3600194e76024c3934c55615cc60">clod_string_get_int</a> (struct <a class="el" href="structclod__string.html">clod_string</a> *str, struct <a class="el" href="structclod__string.html">clod_string</a> alphabet, unsigned char base)</td></tr>
+<tr class="memitem:a5f31cc8b83e7ae0d1707914fafafba46" id="r_a5f31cc8b83e7ae0d1707914fafafba46"><td class="memItemLeft">CLOD_API size_t&#160;</td><td class="memItemRight"><a class="el" href="#a5f31cc8b83e7ae0d1707914fafafba46">clod_string_put_uint</a> (struct <a class="el" href="structclod__string.html">clod_string</a> *dst, uintmax_t val, struct <a class="el" href="structclod__string.html">clod_string</a> alphabet, unsigned char base, unsigned char min_digits, unsigned char max_digits)</td></tr>
+<tr class="memitem:aaef93fec7b182252154327f48d96cb56" id="r_aaef93fec7b182252154327f48d96cb56"><td class="memItemLeft">CLOD_API uintmax_t&#160;</td><td class="memItemRight"><a class="el" href="#aaef93fec7b182252154327f48d96cb56">clod_string_get_uint</a> (struct <a class="el" href="structclod__string.html">clod_string</a> *str, struct <a class="el" href="structclod__string.html">clod_string</a> alphabet, unsigned char base)</td></tr>
+<tr class="memitem:a81e3dfed87f7f661d0f49799d66bf488" id="r_a81e3dfed87f7f661d0f49799d66bf488"><td class="memItemLeft">CLOD_API size_t&#160;</td><td class="memItemRight"><a class="el" href="#a81e3dfed87f7f661d0f49799d66bf488">clod_string_put_double</a> (struct <a class="el" href="structclod__string.html">clod_string</a> *dst, double val, struct <a class="el" href="structclod__string.html">clod_string</a> alphabet, unsigned char base, unsigned char min_digits, unsigned char max_digits)</td></tr>
+<tr class="memitem:aaca946eb074adb71ad52053678ca47c6" id="r_aaca946eb074adb71ad52053678ca47c6"><td class="memItemLeft">CLOD_API double&#160;</td><td class="memItemRight"><a class="el" href="#aaca946eb074adb71ad52053678ca47c6">clod_string_get_double</a> (struct <a class="el" href="structclod__string.html">clod_string</a> *str, struct <a class="el" href="structclod__string.html">clod_string</a> alphabet, unsigned char base)</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Sized string helpers. </p>
@@ -236,38 +231,6 @@ int&#160;</td><td class="memItemRight"><b>clod_string_vparse</b> (struct <a clas
 <p>Get the string representation of an object. </p>
 
 <p class="definition">Definition at line <a class="el" href="string_8h_source.html#l00049">49</a> of file <a class="el" href="string_8h_source.html">string.h</a>.</p>
-
-</div>
-</div>
-<a id="a8fdcec7ca6cfcffa97049d67f7ef511c" name="a8fdcec7ca6cfcffa97049d67f7ef511c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8fdcec7ca6cfcffa97049d67f7ef511c">&#9670;&#160;</a></span>CLOD_STRING_DIGIT_ALPHABET</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define CLOD_STRING_DIGIT_ALPHABET&#160;&#160;&#160;<a class="el" href="#a15356fad035fc3638ca80a277f59d413">CLOD_STRING_C</a>(&quot;0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-_&quot;)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="string_8h_source.html#l00212">212</a> of file <a class="el" href="string_8h_source.html">string.h</a>.</p>
-
-</div>
-</div>
-<a id="acbb79e23b33109a6538bbf46c30dc2b2" name="acbb79e23b33109a6538bbf46c30dc2b2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acbb79e23b33109a6538bbf46c30dc2b2">&#9670;&#160;</a></span>CLOD_STRING_DIGIT_ALPHABET_CAPS</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define CLOD_STRING_DIGIT_ALPHABET_CAPS&#160;&#160;&#160;<a class="el" href="#a15356fad035fc3638ca80a277f59d413">CLOD_STRING_C</a>(&quot;0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-_&quot;)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="string_8h_source.html#l00213">213</a> of file <a class="el" href="string_8h_source.html">string.h</a>.</p>
 
 </div>
 </div>
@@ -457,16 +420,16 @@ int&#160;</td><td class="memItemRight"><b>clod_string_vparse</b> (struct <a clas
 
 </div>
 </div>
-<a id="acbb18d67fbe7ab0fc99c36168ad04fb4" name="acbb18d67fbe7ab0fc99c36168ad04fb4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acbb18d67fbe7ab0fc99c36168ad04fb4">&#9670;&#160;</a></span>clod_string_format()</h2>
+<a id="ab5fee89becc208a423660fe63845926b" name="ab5fee89becc208a423660fe63845926b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab5fee89becc208a423660fe63845926b">&#9670;&#160;</a></span>clod_string_parse()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">size_t clod_string_format </td>
+          <td class="memname">CLOD_API int clod_string_parse </td>
           <td>(</td>
-          <td class="paramtype">struct <a class="el" href="structclod__string.html">clod_string</a> *</td>          <td class="paramname"><span class="paramname"><em>dst</em></span>, </td>
+          <td class="paramtype">struct <a class="el" href="structclod__string.html">clod_string</a></td>          <td class="paramname"><span class="paramname"><em>src</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -480,18 +443,28 @@ int&#160;</td><td class="memItemRight"><b>clod_string_vparse</b> (struct <a clas
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Format a string.</p>
-<p>%[flags][width][.precision]&lt;type&gt;</p>
-<p>The format specifier differs from printf in a few ways.</p>
-<ul>
-<li>Flags; Options for changing formatting.</li>
-<li>Width; the minimum size of the number as formatted.</li>
-<li>Precision; the maximum size of the number as formatted.</li>
-<li>Type; the type of the value passed as argument.</li>
+<p>Format a string similarly to snprintf. The format specification differs from the standard library in a few ways.</p>
+<div class="fragment"><div class="line">%[flags][width][.precision]&lt;type&gt;</div>
+</div><!-- fragment --><ul>
+<li><b>Flags</b> Options for changing formatting.</li>
+<li><b>Width</b> the minimum size of the number as formatted.</li>
+<li><b>Precision</b> the maximum size of the number as formatted.</li>
+<li><b>Type</b> the type of the value passed as argument.</li>
 </ul>
-<p>Notably there is only one specific type for a given C type, with the role of duplicate type specifiers (i.e. u, x or o in printf) switching formatting instead being played by flags.</p>
-<p>I.e. printing an unsigned int in hexadecimal is xu instead of x, and printing an unsigned int in octal is ou instead of o.</p>
-<p>In addition, sized integer types are supported as type specifiers. For example, an int64_t can be printed with i64, xi64, oi64 for decimal, hexadecimal and octal notation respectively.</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadLeft">Flag  </th><th class="markdownTableHeadLeft">Description  </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft">0  </td><td class="markdownTableBodyLeft">Pad with zeroes instead of spaces.  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyLeft">X  </td><td class="markdownTableBodyLeft">Base 16, uppercase.  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft">x  </td><td class="markdownTableBodyLeft">Base 16, lowercase.  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyLeft">o  </td><td class="markdownTableBodyLeft">Base 8  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft">b  </td><td class="markdownTableBodyLeft">Base 2  </td></tr>
+</table>
 <table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadLeft">Type  </th><th class="markdownTableHeadRight">Specifier  </th></tr>
@@ -536,66 +509,9 @@ int&#160;</td><td class="memItemRight"><b>clod_string_vparse</b> (struct <a clas
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The number of characters that have been, or would have been, written to <code class="param">dst</code>. </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="string_2format_8c_source.html#l00105">105</a> of file <a class="el" href="string_2format_8c_source.html">format.c</a>.</p>
-
-</div>
-</div>
-<a id="a2d9a0d626e2dbab2b7ec15b8b65bfc4c" name="a2d9a0d626e2dbab2b7ec15b8b65bfc4c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2d9a0d626e2dbab2b7ec15b8b65bfc4c">&#9670;&#160;</a></span>clod_string_vformat()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">size_t clod_string_vformat </td>
-          <td>(</td>
-          <td class="paramtype">struct <a class="el" href="structclod__string.html">clod_string</a> *</td>          <td class="paramname"><span class="paramname"><em>dst</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">struct <a class="el" href="structclod__string.html">clod_string</a></td>          <td class="paramname"><span class="paramname"><em>fmt</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">va_list</td>          <td class="paramname"><span class="paramname"><em>args</em></span>&#160;)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Same as clod_string_format, but takes a va_list argument instead of '...'. </p>
-
-<p class="definition">Definition at line <a class="el" href="string_2format_8c_source.html#l00113">113</a> of file <a class="el" href="string_2format_8c_source.html">format.c</a>.</p>
-
-</div>
-</div>
-<a id="a1c8b1a466cbb9f9af33b14793d55d7c1" name="a1c8b1a466cbb9f9af33b14793d55d7c1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1c8b1a466cbb9f9af33b14793d55d7c1">&#9670;&#160;</a></span>clod_string_parse()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int clod_string_parse </td>
-          <td>(</td>
-          <td class="paramtype">struct <a class="el" href="structclod__string.html">clod_string</a></td>          <td class="paramname"><span class="paramname"><em>src</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">struct <a class="el" href="structclod__string.html">clod_string</a></td>          <td class="paramname"><span class="paramname"><em>fmt</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>...</em></span>&#160;)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Parses values in a string into the provided arguments. Attempts to be as close to a reverse of clod_string_format as possible.</p>
+<dl class="section return"><dt>Returns</dt><dd>The number of characters that have been, or would have been, written to <code class="param">dst</code>. */ CLOD_API size_t clod_string_format(struct clod_string *dst, struct clod_string fmt, ...);</dd></dl>
+<p>/ Same as clod_string_format, but takes a va_list argument instead of '...'. CLOD_API size_t clod_string_vformat(struct clod_string *dst, struct clod_string fmt, va_list args);</p>
+<p>/** Parses values in a string into the provided arguments. Attempts to be as close to a reverse of clod_string_format as possible.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">src</td><td>Source string to parse. </td></tr>
@@ -608,14 +524,14 @@ int&#160;</td><td class="memItemRight"><b>clod_string_vparse</b> (struct <a clas
 
 </div>
 </div>
-<a id="aee652847deafb02a89d4054670a4f3fe" name="aee652847deafb02a89d4054670a4f3fe"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aee652847deafb02a89d4054670a4f3fe">&#9670;&#160;</a></span>clod_string_contains()</h2>
+<a id="a770ac5725a100cc29949441ee4f19373" name="a770ac5725a100cc29949441ee4f19373"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a770ac5725a100cc29949441ee4f19373">&#9670;&#160;</a></span>clod_string_contains()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">struct <a class="el" href="structclod__string.html">clod_string</a> clod_string_contains </td>
+          <td class="memname">CLOD_API struct <a class="el" href="structclod__string.html">clod_string</a> clod_string_contains </td>
           <td>(</td>
           <td class="paramtype">struct <a class="el" href="structclod__string.html">clod_string</a></td>          <td class="paramname"><span class="paramname"><em>str</em></span>, </td>
         </tr>
@@ -640,14 +556,14 @@ int&#160;</td><td class="memItemRight"><b>clod_string_vparse</b> (struct <a clas
 
 </div>
 </div>
-<a id="a13ebf23d11182c8b28ca90087c2d121e" name="a13ebf23d11182c8b28ca90087c2d121e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a13ebf23d11182c8b28ca90087c2d121e">&#9670;&#160;</a></span>clod_string_find()</h2>
+<a id="a6715515897b7cd2c96926cfc2c1ba809" name="a6715515897b7cd2c96926cfc2c1ba809"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6715515897b7cd2c96926cfc2c1ba809">&#9670;&#160;</a></span>clod_string_find()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">struct <a class="el" href="structclod__string.html">clod_string</a> clod_string_find </td>
+          <td class="memname">CLOD_API struct <a class="el" href="structclod__string.html">clod_string</a> clod_string_find </td>
           <td>(</td>
           <td class="paramtype">struct <a class="el" href="structclod__string.html">clod_string</a></td>          <td class="paramname"><span class="paramname"><em>str</em></span>, </td>
         </tr>
@@ -678,14 +594,14 @@ int&#160;</td><td class="memItemRight"><b>clod_string_vparse</b> (struct <a clas
 
 </div>
 </div>
-<a id="a48ae7d54ab9474f6677af3db724c6bcd" name="a48ae7d54ab9474f6677af3db724c6bcd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a48ae7d54ab9474f6677af3db724c6bcd">&#9670;&#160;</a></span>clod_string_remove_prefix()</h2>
+<a id="a00e0cbd22d8c9c37ce433873bdfcb1b6" name="a00e0cbd22d8c9c37ce433873bdfcb1b6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a00e0cbd22d8c9c37ce433873bdfcb1b6">&#9670;&#160;</a></span>clod_string_remove_prefix()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool clod_string_remove_prefix </td>
+          <td class="memname">CLOD_API bool clod_string_remove_prefix </td>
           <td>(</td>
           <td class="paramtype">struct <a class="el" href="structclod__string.html">clod_string</a> *</td>          <td class="paramname"><span class="paramname"><em>str</em></span>, </td>
         </tr>
@@ -709,14 +625,14 @@ int&#160;</td><td class="memItemRight"><b>clod_string_vparse</b> (struct <a clas
 
 </div>
 </div>
-<a id="abcbab040ee04b67cfb842129f3e043b6" name="abcbab040ee04b67cfb842129f3e043b6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abcbab040ee04b67cfb842129f3e043b6">&#9670;&#160;</a></span>clod_string_put_int()</h2>
+<a id="a5ab65a698efe4137679ddd6467570bcd" name="a5ab65a698efe4137679ddd6467570bcd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5ab65a698efe4137679ddd6467570bcd">&#9670;&#160;</a></span>clod_string_put_int()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">size_t clod_string_put_int </td>
+          <td class="memname">CLOD_API size_t clod_string_put_int </td>
           <td>(</td>
           <td class="paramtype">struct <a class="el" href="structclod__string.html">clod_string</a> *</td>          <td class="paramname"><span class="paramname"><em>dst</em></span>, </td>
         </tr>
@@ -753,26 +669,26 @@ int&#160;</td><td class="memItemRight"><b>clod_string_vparse</b> (struct <a clas
 
 </div>
 </div>
-<a id="af1068877b6b56bace5611761d3b0ad8e" name="af1068877b6b56bace5611761d3b0ad8e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af1068877b6b56bace5611761d3b0ad8e">&#9670;&#160;</a></span>clod_string_get_int()</h2>
+<a id="af50b3600194e76024c3934c55615cc60" name="af50b3600194e76024c3934c55615cc60"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af50b3600194e76024c3934c55615cc60">&#9670;&#160;</a></span>clod_string_get_int()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">intmax_t clod_string_get_int </td>
+          <td class="memname">CLOD_API intmax_t clod_string_get_int </td>
           <td>(</td>
           <td class="paramtype">struct <a class="el" href="structclod__string.html">clod_string</a> *</td>          <td class="paramname"><span class="paramname"><em>str</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">unsigned char</td>          <td class="paramname"><span class="paramname"><em>base</em></span>, </td>
+          <td class="paramtype">struct <a class="el" href="structclod__string.html">clod_string</a></td>          <td class="paramname"><span class="paramname"><em>alphabet</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">struct <a class="el" href="structclod__string.html">clod_string</a></td>          <td class="paramname"><span class="paramname"><em>alphabet</em></span>&#160;)</td>
+          <td class="paramtype">unsigned char</td>          <td class="paramname"><span class="paramname"><em>base</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -782,14 +698,14 @@ int&#160;</td><td class="memItemRight"><b>clod_string_vparse</b> (struct <a clas
 
 </div>
 </div>
-<a id="a07117d0de8a61bfa55a52ca0441b7b93" name="a07117d0de8a61bfa55a52ca0441b7b93"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a07117d0de8a61bfa55a52ca0441b7b93">&#9670;&#160;</a></span>clod_string_put_uint()</h2>
+<a id="a5f31cc8b83e7ae0d1707914fafafba46" name="a5f31cc8b83e7ae0d1707914fafafba46"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f31cc8b83e7ae0d1707914fafafba46">&#9670;&#160;</a></span>clod_string_put_uint()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">size_t clod_string_put_uint </td>
+          <td class="memname">CLOD_API size_t clod_string_put_uint </td>
           <td>(</td>
           <td class="paramtype">struct <a class="el" href="structclod__string.html">clod_string</a> *</td>          <td class="paramname"><span class="paramname"><em>dst</em></span>, </td>
         </tr>
@@ -826,26 +742,26 @@ int&#160;</td><td class="memItemRight"><b>clod_string_vparse</b> (struct <a clas
 
 </div>
 </div>
-<a id="a33fc7220c4f6666eea55af1886bf2d34" name="a33fc7220c4f6666eea55af1886bf2d34"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a33fc7220c4f6666eea55af1886bf2d34">&#9670;&#160;</a></span>clod_string_get_uint()</h2>
+<a id="aaef93fec7b182252154327f48d96cb56" name="aaef93fec7b182252154327f48d96cb56"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaef93fec7b182252154327f48d96cb56">&#9670;&#160;</a></span>clod_string_get_uint()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uintmax_t clod_string_get_uint </td>
+          <td class="memname">CLOD_API uintmax_t clod_string_get_uint </td>
           <td>(</td>
           <td class="paramtype">struct <a class="el" href="structclod__string.html">clod_string</a> *</td>          <td class="paramname"><span class="paramname"><em>str</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">unsigned char</td>          <td class="paramname"><span class="paramname"><em>base</em></span>, </td>
+          <td class="paramtype">struct <a class="el" href="structclod__string.html">clod_string</a></td>          <td class="paramname"><span class="paramname"><em>alphabet</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">struct <a class="el" href="structclod__string.html">clod_string</a></td>          <td class="paramname"><span class="paramname"><em>alphabet</em></span>&#160;)</td>
+          <td class="paramtype">unsigned char</td>          <td class="paramname"><span class="paramname"><em>base</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -855,14 +771,14 @@ int&#160;</td><td class="memItemRight"><b>clod_string_vparse</b> (struct <a clas
 
 </div>
 </div>
-<a id="af161dd6b92dca90fdee0238a87ed9808" name="af161dd6b92dca90fdee0238a87ed9808"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af161dd6b92dca90fdee0238a87ed9808">&#9670;&#160;</a></span>clod_string_put_double()</h2>
+<a id="a81e3dfed87f7f661d0f49799d66bf488" name="a81e3dfed87f7f661d0f49799d66bf488"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a81e3dfed87f7f661d0f49799d66bf488">&#9670;&#160;</a></span>clod_string_put_double()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">size_t clod_string_put_double </td>
+          <td class="memname">CLOD_API size_t clod_string_put_double </td>
           <td>(</td>
           <td class="paramtype">struct <a class="el" href="structclod__string.html">clod_string</a> *</td>          <td class="paramname"><span class="paramname"><em>dst</em></span>, </td>
         </tr>
@@ -895,36 +811,36 @@ int&#160;</td><td class="memItemRight"><b>clod_string_vparse</b> (struct <a clas
 </div><div class="memdoc">
 <p>Writes a double value to the string. The value is truncated if the destination is not large enough. </p><dl class="section return"><dt>Returns</dt><dd>The number of characters that have been, or would have been written to <code class="param">dst</code>. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="serialise_8c_source.html#l00088">88</a> of file <a class="el" href="serialise_8c_source.html">serialise.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="string_8c_source.html#l00168">168</a> of file <a class="el" href="string_8c_source.html">string.c</a>.</p>
 
 </div>
 </div>
-<a id="a15d4dd90e9891c6f74f533de455a79f1" name="a15d4dd90e9891c6f74f533de455a79f1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a15d4dd90e9891c6f74f533de455a79f1">&#9670;&#160;</a></span>clod_string_get_double()</h2>
+<a id="aaca946eb074adb71ad52053678ca47c6" name="aaca946eb074adb71ad52053678ca47c6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaca946eb074adb71ad52053678ca47c6">&#9670;&#160;</a></span>clod_string_get_double()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">double clod_string_get_double </td>
+          <td class="memname">CLOD_API double clod_string_get_double </td>
           <td>(</td>
           <td class="paramtype">struct <a class="el" href="structclod__string.html">clod_string</a> *</td>          <td class="paramname"><span class="paramname"><em>str</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">unsigned char</td>          <td class="paramname"><span class="paramname"><em>base</em></span>, </td>
+          <td class="paramtype">struct <a class="el" href="structclod__string.html">clod_string</a></td>          <td class="paramname"><span class="paramname"><em>alphabet</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">struct <a class="el" href="structclod__string.html">clod_string</a></td>          <td class="paramname"><span class="paramname"><em>alphabet</em></span>&#160;)</td>
+          <td class="paramtype">unsigned char</td>          <td class="paramname"><span class="paramname"><em>base</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 <p>Consumes a double value in the string with the given base. If no value could be decoded, the string is not incremented. </p>
 
-<p class="definition">Definition at line <a class="el" href="serialise_8c_source.html#l00092">92</a> of file <a class="el" href="serialise_8c_source.html">serialise.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="string_8c_source.html#l00174">174</a> of file <a class="el" href="string_8c_source.html">string.c</a>.</p>
 
 </div>
 </div>

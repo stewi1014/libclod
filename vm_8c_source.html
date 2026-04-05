@@ -103,24 +103,22 @@ $(function(){initNavTree('vm_8c_source.html','',''); });
 </div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
 <div class="foldopen" id="foldopen00009" data-start="{" data-end="}">
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno"><a class="line" href="vm_8h.html#af92e37a44db15de1eb916d4791bda731">    9</a></span><span class="keywordtype">void</span> *<a class="code hl_function" href="vm_8h.html#af92e37a44db15de1eb916d4791bda731">clod_vm_alloc</a>(<span class="keywordtype">size_t</span> size) {</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    <span class="keywordtype">void</span> *ptr = syscall_mmap(<span class="keyword">nullptr</span>, size, PROT_READ | PROT_WRITE, MAP_PRIVATE | MAP_ANONYMOUS, -1, 0);</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    <span class="keywordtype">long</span> ret = (long)ptr;</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    <span class="keywordflow">if</span> (ret &lt; 0 &amp;&amp; ret &gt;= -4096) {</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    }</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <span class="keywordflow">return</span> ptr;</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>}</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno"><a class="line" href="vm_8h.html#af92e37a44db15de1eb916d4791bda731">    9</a></span><span class="keywordtype">void</span> *<a class="code hl_function" href="vm_8h.html#af92e37a44db15de1eb916d4791bda731">clod_vm_alloc</a>(<span class="keyword">const</span> <span class="keywordtype">size_t</span> size) {</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    <span class="keyword">const</span> <span class="keywordtype">long</span> ret = syscall(__NR_mmap, 0, (<span class="keywordtype">long</span>)size, PROT_READ | PROT_WRITE, MAP_PRIVATE | MAP_ANONYMOUS, -1, 0);</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    <span class="keywordflow">if</span> (ret &lt; 0 &amp;&amp; ret &gt;= -4096) {</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    }</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    <span class="keywordflow">return</span> (<span class="keywordtype">void</span>*)ret;</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>}</div>
 </div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
-<div class="foldopen" id="foldopen00019" data-start="{" data-end="}">
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="vm_8h.html#a3cdb16e5ddb00f63fdb5e0e6a47602d9">   19</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="vm_8h.html#a3cdb16e5ddb00f63fdb5e0e6a47602d9">clod_vm_free</a>(<span class="keywordtype">void</span> *ptr, <span class="keyword">const</span> <span class="keywordtype">size_t</span> size) {</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    syscall_munmap(ptr, size);</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>}</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
+<div class="foldopen" id="foldopen00017" data-start="{" data-end="}">
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="vm_8h.html#a3cdb16e5ddb00f63fdb5e0e6a47602d9">   17</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="vm_8h.html#a3cdb16e5ddb00f63fdb5e0e6a47602d9">clod_vm_free</a>(<span class="keywordtype">void</span> *ptr, <span class="keyword">const</span> <span class="keywordtype">size_t</span> size) {</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    syscall(__NR_munmap, (<span class="keywordtype">long</span>)ptr, (<span class="keywordtype">long</span>)size);</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>}</div>
 </div>
 <div class="ttc" id="avm_8h_html"><div class="ttname"><a href="vm_8h.html">vm.h</a></div></div>
-<div class="ttc" id="avm_8h_html_a3cdb16e5ddb00f63fdb5e0e6a47602d9"><div class="ttname"><a href="vm_8h.html#a3cdb16e5ddb00f63fdb5e0e6a47602d9">clod_vm_free</a></div><div class="ttdeci">void clod_vm_free(void *ptr, size_t size)</div><div class="ttdef"><b>Definition</b> <a href="#l00019">vm.c:19</a></div></div>
+<div class="ttc" id="avm_8h_html_a3cdb16e5ddb00f63fdb5e0e6a47602d9"><div class="ttname"><a href="vm_8h.html#a3cdb16e5ddb00f63fdb5e0e6a47602d9">clod_vm_free</a></div><div class="ttdeci">void clod_vm_free(void *ptr, size_t size)</div><div class="ttdef"><b>Definition</b> <a href="#l00017">vm.c:17</a></div></div>
 <div class="ttc" id="avm_8h_html_a442a6bf402876c10dafa2191c67e2397"><div class="ttname"><a href="vm_8h.html#a442a6bf402876c10dafa2191c67e2397">clod_vm_page_size</a></div><div class="ttdeci">size_t clod_vm_page_size()</div><div class="ttdef"><b>Definition</b> <a href="#l00005">vm.c:5</a></div></div>
 <div class="ttc" id="avm_8h_html_af92e37a44db15de1eb916d4791bda731"><div class="ttname"><a href="vm_8h.html#af92e37a44db15de1eb916d4791bda731">clod_vm_alloc</a></div><div class="ttdeci">void * clod_vm_alloc(size_t size)</div><div class="ttdoc">Allocate virtual memory.</div><div class="ttdef"><b>Definition</b> <a href="#l00009">vm.c:9</a></div></div>
 </div><!-- fragment --></div><!-- contents -->

@@ -5,7 +5,7 @@ var searchData=
   ['clod_5fallocator_5fopts_2',['clod_allocator_opts',['../structclod__allocator__opts.html',1,'']]],
   ['clod_5fcompressor_3',['clod_compressor',['../structclod__compressor.html',1,'']]],
   ['clod_5fdecompressor_4',['clod_decompressor',['../structclod__decompressor.html',1,'']]],
-  ['clod_5ffile_5',['clod_file',['../structclod__file.html',1,'']]],
+  ['clod_5fdirent_5',['clod_dirent',['../structclod__dirent.html',1,'']]],
   ['clod_5fnbt_5fiter_6',['clod_nbt_iter',['../structclod__nbt__iter.html',1,'']]],
   ['clod_5fprocess_5fargs_7',['clod_process_args',['../structclod__process__args.html',1,'']]],
   ['clod_5fprocess_5fcommon_8',['clod_process_common',['../structclod__process__common.html',1,'']]],

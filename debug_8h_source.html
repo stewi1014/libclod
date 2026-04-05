@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.16.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>libclod: src/include/clod/debug.h Source File</title>
+<title>libclod: src/debug.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -113,14 +113,14 @@ $(function(){initNavTree('debug_8h_source.html','',''); });
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <a class="code hl_function" href="string_8h.html#a27c6c514f193cd981e5868d61fbcedf2">clod_string_cat</a>(&amp;buff, <a class="code hl_define" href="string_8h.html#a15356fad035fc3638ca80a277f59d413">CLOD_STRING_C</a>(<span class="stringliteral">&quot;:&quot;</span>));</div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <a class="code hl_function" href="string_8h.html#a27c6c514f193cd981e5868d61fbcedf2">clod_string_cat</a>(&amp;buff, <a class="code hl_function" href="string_8h.html#a92c75a5869de9e311c535138b899069c">clod_string_from_cstr</a>(<a class="code hl_struct" href="structfile.html">file</a>));</div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <a class="code hl_function" href="string_8h.html#a27c6c514f193cd981e5868d61fbcedf2">clod_string_cat</a>(&amp;buff, <a class="code hl_define" href="string_8h.html#a15356fad035fc3638ca80a277f59d413">CLOD_STRING_C</a>(<span class="stringliteral">&quot;:&quot;</span>));</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <a class="code hl_function" href="string_8h.html#a07117d0de8a61bfa55a52ca0441b7b93">clod_string_put_uint</a>(&amp;buff, (uintmax_t)line, CLOD_STRING_DIGIT_ALPHABET, 10, 0, 0);</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <a class="code hl_function" href="string_8h.html#a5f31cc8b83e7ae0d1707914fafafba46">clod_string_put_uint</a>(&amp;buff, (uintmax_t)line, CLOD_STRING_DIGIT_ALPHABET, 10, 0, 0);</div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <a class="code hl_function" href="string_8h.html#a27c6c514f193cd981e5868d61fbcedf2">clod_string_cat</a>(&amp;buff, <a class="code hl_define" href="string_8h.html#a15356fad035fc3638ca80a277f59d413">CLOD_STRING_C</a>(<span class="stringliteral">&quot; &quot;</span>));</div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <a class="code hl_function" href="string_8h.html#a27c6c514f193cd981e5868d61fbcedf2">clod_string_cat</a>(&amp;buff, <a class="code hl_function" href="string_8h.html#a92c75a5869de9e311c535138b899069c">clod_string_from_cstr</a>(func));</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <a class="code hl_function" href="string_8h.html#a27c6c514f193cd981e5868d61fbcedf2">clod_string_cat</a>(&amp;buff, <a class="code hl_define" href="string_8h.html#a15356fad035fc3638ca80a277f59d413">CLOD_STRING_C</a>(<span class="stringliteral">&quot;(): &quot;</span>));</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <a class="code hl_function" href="string_8h.html#a27c6c514f193cd981e5868d61fbcedf2">clod_string_cat</a>(&amp;buff, <a class="code hl_define" href="string_8h.html#a15356fad035fc3638ca80a277f59d413">CLOD_STRING_C</a>(<span class="stringliteral">&quot;():\n\t&quot;</span>));</div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    va_list args;</div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    va_start(args, msg);</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <a class="code hl_function" href="string_8h.html#a2d9a0d626e2dbab2b7ec15b8b65bfc4c">clod_string_vformat</a>(&amp;buff, <a class="code hl_function" href="string_8h.html#a92c75a5869de9e311c535138b899069c">clod_string_from_cstr</a>(msg), args);</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    clod_string_vformat(&amp;buff, <a class="code hl_function" href="string_8h.html#a92c75a5869de9e311c535138b899069c">clod_string_from_cstr</a>(msg), args);</div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    va_end(args);</div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <span class="keywordflow">if</span> (buff.<a class="code hl_variable" href="structclod__string.html#ab729e7d1c2a02c4fcad1d9dfa384e895">len</a> == buff.<a class="code hl_variable" href="structclod__string.html#ab905df32573cbfe1c8e49b1ea2bcb0c1">cap</a>) buff.<a class="code hl_variable" href="structclod__string.html#ab729e7d1c2a02c4fcad1d9dfa384e895">len</a>--;</div>
@@ -131,7 +131,7 @@ $(function(){initNavTree('debug_8h_source.html','',''); });
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>}</div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="preprocessor">#if defined(__GNUC__)</span></div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="preprocessor">#define _debug_assume(expr) ((expr) ? 0 : (__builtin_unreachable(), 0))</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="preprocessor">#define _debug_assume(expr) ((expr) ? (void)0 : __builtin_unreachable())</span></div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="preprocessor">#elif defined(_MSC_VER)</span></div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="preprocessor">#define _debug_assume(expr) __assume(expr)</span></div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="preprocessor">#endif</span></div>
@@ -139,16 +139,15 @@ $(function(){initNavTree('debug_8h_source.html','',''); });
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="preprocessor">#define CLOD_TEST 1</span></div>
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="preprocessor">#define debug(context, msg, ...) (!(context) ? (void)0 : (debug_print(#context, __FILE__, __LINE__, __func__, msg __VA_OPT__(,) __VA_ARGS__), (void)0))</span></div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="preprocessor">#define fatal(context, msg, ...) (!(context) ? 0 : (debug_print(#context, __FILE__, __LINE__, __func__, msg __VA_OPT__(,) __VA_ARGS__), clod_exit(1), _debug_assume(0)))</span></div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="preprocessor">#define assert_fatal(context, expr, msg, ...) (!(context) ? _debug_assume(expr) : (expr) ? 0 : (debug_print(#context, __FILE__, __LINE__, __func__, &quot;Assertion \&quot;&quot;#expr&quot;\&quot; failed: &quot;msg __VA_OPT__(,) __VA_ARGS__), clod_exit(1), _debug_assume(0)))</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="preprocessor">#define fatal(context, msg, ...) (!(context) ? (void)0 : (debug_print(#context, __FILE__, __LINE__, __func__, msg __VA_OPT__(,) __VA_ARGS__), clod_exit(1), _debug_assume(0)))</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="preprocessor">#define assert_fatal(context, expr, msg, ...) (!(context) ? _debug_assume(expr) : (expr) ? (void)0 : (debug_print(#context, __FILE__, __LINE__, __func__, &quot;Assertion \&quot;&quot;#expr&quot;\&quot; failed: &quot;msg __VA_OPT__(,) __VA_ARGS__), clod_exit(1), _debug_assume(0)))</span></div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="alib_8h_html"><div class="ttname"><a href="lib_8h.html">lib.h</a></div></div>
 <div class="ttc" id="astring_8h_html"><div class="ttname"><a href="string_8h.html">string.h</a></div><div class="ttdoc">Sized string helpers.</div></div>
-<div class="ttc" id="astring_8h_html_a07117d0de8a61bfa55a52ca0441b7b93"><div class="ttname"><a href="string_8h.html#a07117d0de8a61bfa55a52ca0441b7b93">clod_string_put_uint</a></div><div class="ttdeci">size_t clod_string_put_uint(struct clod_string *dst, uintmax_t val, struct clod_string alphabet, unsigned char base, unsigned char min_digits, unsigned char max_digits)</div><div class="ttdef"><b>Definition</b> <a href="serialise_8c_source.html#l00050">serialise.c:50</a></div></div>
 <div class="ttc" id="astring_8h_html_a15356fad035fc3638ca80a277f59d413"><div class="ttname"><a href="string_8h.html#a15356fad035fc3638ca80a277f59d413">CLOD_STRING_C</a></div><div class="ttdeci">#define CLOD_STRING_C(cstr)</div><div class="ttdoc">String literal constant.</div><div class="ttdef"><b>Definition</b> <a href="string_8h_source.html#l00043">string.h:43</a></div></div>
 <div class="ttc" id="astring_8h_html_a27c6c514f193cd981e5868d61fbcedf2"><div class="ttname"><a href="string_8h.html#a27c6c514f193cd981e5868d61fbcedf2">clod_string_cat</a></div><div class="ttdeci">size_t clod_string_cat(struct clod_string *dst, struct clod_string src)</div><div class="ttdef"><b>Definition</b> <a href="string_8c_source.html#l00017">string.c:17</a></div></div>
-<div class="ttc" id="astring_8h_html_a2d9a0d626e2dbab2b7ec15b8b65bfc4c"><div class="ttname"><a href="string_8h.html#a2d9a0d626e2dbab2b7ec15b8b65bfc4c">clod_string_vformat</a></div><div class="ttdeci">size_t clod_string_vformat(struct clod_string *dst, struct clod_string fmt, va_list args)</div><div class="ttdoc">Same as clod_string_format, but takes a va_list argument instead of &#39;...&#39;.</div><div class="ttdef"><b>Definition</b> <a href="string_2format_8c_source.html#l00113">format.c:113</a></div></div>
+<div class="ttc" id="astring_8h_html_a5f31cc8b83e7ae0d1707914fafafba46"><div class="ttname"><a href="string_8h.html#a5f31cc8b83e7ae0d1707914fafafba46">clod_string_put_uint</a></div><div class="ttdeci">CLOD_API size_t clod_string_put_uint(struct clod_string *dst, uintmax_t val, struct clod_string alphabet, unsigned char base, unsigned char min_digits, unsigned char max_digits)</div><div class="ttdef"><b>Definition</b> <a href="serialise_8c_source.html#l00050">serialise.c:50</a></div></div>
 <div class="ttc" id="astring_8h_html_a92c75a5869de9e311c535138b899069c"><div class="ttname"><a href="string_8h.html#a92c75a5869de9e311c535138b899069c">clod_string_from_cstr</a></div><div class="ttdeci">struct clod_string clod_string_from_cstr(const char *cstr)</div><div class="ttdoc">Make a string from a C string.</div><div class="ttdef"><b>Definition</b> <a href="string_8c_source.html#l00005">string.c:5</a></div></div>
 <div class="ttc" id="astring_8h_html_af04254fac02a863302c7fa84dea9d255"><div class="ttname"><a href="string_8h.html#af04254fac02a863302c7fa84dea9d255">CLOD_STRING_NEW</a></div><div class="ttdeci">#define CLOD_STRING_NEW(size)</div><div class="ttdoc">Create a new empty string with the given capacity on the stack.</div><div class="ttdef"><b>Definition</b> <a href="string_8h_source.html#l00046">string.h:46</a></div></div>
 <div class="ttc" id="astructclod__string_html"><div class="ttname"><a href="structclod__string.html">clod_string</a></div><div class="ttdef"><b>Definition</b> <a href="string_8h_source.html#l00025">string.h:25</a></div></div>
@@ -162,7 +161,7 @@ $(function(){initNavTree('debug_8h_source.html','',''); });
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><b>src</b></li><li class="navelem"><b>include</b></li><li class="navelem"><b>clod</b></li><li class="navelem"><b>debug.h</b></li>
+    <li class="navelem"><b>src</b></li><li class="navelem"><b>debug.h</b></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
   </ul>
 </div>

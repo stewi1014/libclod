@@ -7,6 +7,7 @@ var topics =
     [ "Locks", "group__lock.html", "group__lock" ],
     [ "System Methods", "group__sys.html", "group__sys" ],
     [ "NBT", "group__nbt.html", "group__nbt" ],
-    [ "Hash table", "group__table.html", "group__table" ],
+    [ "Hash Table", "group__table.html", "group__table" ],
+    [ "Tree", "group__tree.html", null ],
     [ "Threading", "group__thread.html", "group__thread" ]
 ];

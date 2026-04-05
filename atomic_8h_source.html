@@ -97,7 +97,7 @@ $(function(){initNavTree('atomic_8h_source.html','',''); });
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#if defined(__GNUC__)</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;<a class="code" href="endian__big_8h.html">endian_big.h</a>&quot;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;endian_big.h&quot;</span></div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;assert.h&gt;</span></div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
@@ -106,24 +106,24 @@ $(function(){initNavTree('atomic_8h_source.html','',''); });
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="keyword">static</span> <span class="keyword">inline</span> uint32_t atomic_beu32_load(<span class="keyword">const</span> uint8_t *ptr) {</div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    assert((uintptr_t)ptr % 4 == 0);</div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    uint32_t val = __atomic_load_n((uint32_t*)ptr, __ATOMIC_SEQ_CST);</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="endian__big_8h.html#a382a8fbb03e1dcb70f36957d3e1877dd">beu32_dec</a>((uint8_t*)&amp;val);</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <span class="keywordflow">return</span> beu32_dec((uint8_t*)&amp;val);</div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>}</div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> atomic_beu32_store(uint8_t *ptr, uint32_t val) {</div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    assert((uintptr_t)ptr % 4 == 0);</div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    uint32_t be;</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <a class="code hl_function" href="endian__big_8h.html#aae9d198f3121663c7080000d99223c1e">beu32_enc</a>((uint8_t*)&amp;be, val);</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    beu32_enc((uint8_t*)&amp;be, val);</div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    __atomic_store_n((uint32_t*)ptr, be, __ATOMIC_SEQ_CST);</div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>}</div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">bool</span> atomic_beu32_cas(uint8_t *ptr, uint32_t *expected, uint32_t desired) {</div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    assert((uintptr_t)ptr % 4 == 0);</div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    uint32_t expected_be, desired_be;</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <a class="code hl_function" href="endian__big_8h.html#aae9d198f3121663c7080000d99223c1e">beu32_enc</a>((uint8_t*)&amp;expected_be, *expected);</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <a class="code hl_function" href="endian__big_8h.html#aae9d198f3121663c7080000d99223c1e">beu32_enc</a>((uint8_t*)&amp;desired_be, desired);</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    beu32_enc((uint8_t*)&amp;expected_be, *expected);</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    beu32_enc((uint8_t*)&amp;desired_be, desired);</div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="keyword">const</span> <span class="keywordtype">bool</span> success = __atomic_compare_exchange_n((uint32_t*)ptr, &amp;expected_be, desired_be, <span class="keyword">false</span>, __ATOMIC_SEQ_CST, __ATOMIC_SEQ_CST);</div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="keywordflow">if</span> (!success) {</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        *expected = <a class="code hl_function" href="endian__big_8h.html#a382a8fbb03e1dcb70f36957d3e1877dd">beu32_dec</a>((uint8_t*)&amp;expected_be);</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        *expected = beu32_dec((uint8_t*)&amp;expected_be);</div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    }</div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <span class="keywordflow">return</span> success;</div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>}</div>
@@ -147,9 +147,6 @@ $(function(){initNavTree('atomic_8h_source.html','',''); });
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="preprocessor">#endif</span></div>
-<div class="ttc" id="aendian__big_8h_html"><div class="ttname"><a href="endian__big_8h.html">endian_big.h</a></div><div class="ttdoc">Methods for big-endian encoding numbers.</div></div>
-<div class="ttc" id="aendian__big_8h_html_a382a8fbb03e1dcb70f36957d3e1877dd"><div class="ttname"><a href="endian__big_8h.html#a382a8fbb03e1dcb70f36957d3e1877dd">beu32_dec</a></div><div class="ttdeci">static uint32_t beu32_dec(const uint8_t ptr[4])</div><div class="ttdoc">Decode a 32-bit unsigned integer in big-endian format.</div><div class="ttdef"><b>Definition</b> <a href="endian__big_8h_source.html#l00058">endian_big.h:58</a></div></div>
-<div class="ttc" id="aendian__big_8h_html_aae9d198f3121663c7080000d99223c1e"><div class="ttname"><a href="endian__big_8h.html#aae9d198f3121663c7080000d99223c1e">beu32_enc</a></div><div class="ttdeci">static void beu32_enc(uint8_t ptr[4], const uint32_t val)</div><div class="ttdoc">Encode a 32-bit unsigned integer into big-endian format.</div><div class="ttdef"><b>Definition</b> <a href="endian__big_8h_source.html#l00041">endian_big.h:41</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 </div><!-- container -->

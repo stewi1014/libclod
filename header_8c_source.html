@@ -93,7 +93,7 @@ $(function(){initNavTree('header_8c_source.html','',''); });
 </div><!--header-->
 <div class="contents">
 <div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &quot;format.h&quot;</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &quot;<a class="code" href="endian__big_8h.html">endian_big.h</a>&quot;</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &quot;endian_big.h&quot;</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;<a class="code" href="string_8h.html">string.h</a>&gt;</span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#define TABLE_SIZE 4192u</span></div>
@@ -150,17 +150,14 @@ $(function(){initNavTree('header_8c_source.html','',''); });
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>}</div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="keywordtype">void</span> sector_size_set(<span class="keyword">struct</span> <a class="code hl_struct" href="structclod__rfmt.html">clod_rfmt</a> *rfmt, uint32_t sector_size) {</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <a class="code hl_function" href="endian__big_8h.html#aae9d198f3121663c7080000d99223c1e">beu32_enc</a>(rfmt-&gt;data + SECTOR_SIZE_OFF, sector_size);</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    beu32_enc(rfmt-&gt;data + SECTOR_SIZE_OFF, sector_size);</div>
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>}</div>
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
 <div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>uint32_t sector_size_get(<span class="keyword">const</span> <span class="keyword">struct</span> <a class="code hl_struct" href="structclod__rfmt.html">clod_rfmt</a> *rfmt) {</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="endian__big_8h.html#a382a8fbb03e1dcb70f36957d3e1877dd">beu32_dec</a>(rfmt-&gt;data + SECTOR_SIZE_OFF);</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    <span class="keywordflow">return</span> beu32_dec(rfmt-&gt;data + SECTOR_SIZE_OFF);</div>
 <div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>}</div>
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
 <div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
-<div class="ttc" id="aendian__big_8h_html"><div class="ttname"><a href="endian__big_8h.html">endian_big.h</a></div><div class="ttdoc">Methods for big-endian encoding numbers.</div></div>
-<div class="ttc" id="aendian__big_8h_html_a382a8fbb03e1dcb70f36957d3e1877dd"><div class="ttname"><a href="endian__big_8h.html#a382a8fbb03e1dcb70f36957d3e1877dd">beu32_dec</a></div><div class="ttdeci">static uint32_t beu32_dec(const uint8_t ptr[4])</div><div class="ttdoc">Decode a 32-bit unsigned integer in big-endian format.</div><div class="ttdef"><b>Definition</b> <a href="endian__big_8h_source.html#l00058">endian_big.h:58</a></div></div>
-<div class="ttc" id="aendian__big_8h_html_aae9d198f3121663c7080000d99223c1e"><div class="ttname"><a href="endian__big_8h.html#aae9d198f3121663c7080000d99223c1e">beu32_enc</a></div><div class="ttdeci">static void beu32_enc(uint8_t ptr[4], const uint32_t val)</div><div class="ttdoc">Encode a 32-bit unsigned integer into big-endian format.</div><div class="ttdef"><b>Definition</b> <a href="endian__big_8h_source.html#l00041">endian_big.h:41</a></div></div>
 <div class="ttc" id="astring_8h_html"><div class="ttname"><a href="string_8h.html">string.h</a></div><div class="ttdoc">Sized string helpers.</div></div>
 <div class="ttc" id="astructclod__rfmt_html"><div class="ttname"><a href="structclod__rfmt.html">clod_rfmt</a></div><div class="ttdef"><b>Definition</b> <a href="format_8h_source.html#l00018">format.h:18</a></div></div>
 </div><!-- fragment --></div><!-- contents -->

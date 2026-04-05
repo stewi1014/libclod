@@ -12,7 +12,7 @@ var searchData=
   ['file_5fsync_9',['file_sync',['../structclod__rfmt__opts.html#aa67dd86da0b41921122dd4e703cd5ea3',1,'clod_rfmt_opts']]],
   ['format_10',['Format',['../region_format.html',1,'Region File Format'],['../region_format.html#autotoc_md10',1,'Region File Format'],['../group__region__format.html',1,'Region Format']]],
   ['format_5fspecifier_11',['format_specifier',['../structformat__specifier.html',1,'']]],
-  ['free_12',['free',['../structclod__allocator.html#adb822e4b3f6ac2f7c43754082d427054',1,'clod_allocator::free'],['../structclod__tree.html#aca9e48c541d6779091f54c4b7bbe314e',1,'clod_tree::free']]],
+  ['free_12',['free',['../structclod__allocator.html#abb936851e9c71d3e390ddfc66fa725c6',1,'clod_allocator']]],
   ['free_20list_13',['Slab Free list',['../md_src_2memory_2allocator.html#autotoc_md4',1,'']]],
   ['free_20tree_14',['Free tree',['../md_src_2memory_2allocator.html#autotoc_md2',1,'']]],
   ['free_5ffunc_15',['free_func',['../structclod__rfmt__opts.html#aa930eaecc89239628e84dd00e870a91e',1,'clod_rfmt_opts::free_func'],['../structclod__table__opts.html#abc9b5288c82565692d51c7550b1c50af',1,'clod_table_opts::free_func']]],
