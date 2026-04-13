@@ -1,11 +1,11 @@
 #include "debug.h"
 #include <string.h>
-#include <clod/structures/table.h>
+#include <../../include/clod/table.h>
 
 #define STR "abcd"
 #define LEN strlen(STR)
 
-int structures_table_simple_all_methods(int, char[]) {
+int table_simple_all_methods(int, char[]) {
 	const char *val = STR;
 	const char *val2 = STR;
 	struct clod_table_iter iter;

@@ -1,0 +1,10 @@
+clod_sources(
+    find.c
+    insert.c
+    integrity.c
+    node.h
+    print.c
+    remove.c
+    step.c
+    tree.c
+)

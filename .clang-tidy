@@ -1,0 +1,12 @@
+# Generated from CLion Inspection settings
+---
+Checks: '
+-*,
+bugprone-*,
+performance-*,
+modernize-*,
+readability-*,
+-readability-magic-numbers,
+-readability-math-missing-parentheses'
+
+HeaderFilterRegex: 'include/.*'

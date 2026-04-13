@@ -1,4 +1,4 @@
-#include <clod/structures/nbt.h>
+#include <../../include/clod/nbt.h>
 #include <time.h>
 #include <stdlib.h>
 #include <stdint.h>
@@ -13,7 +13,7 @@ const unsigned char level_data[] = {
 #define NS_IN_SEC 1000000000
 #define BYTE_IN_GB 1000000000
 
-int structures_nbt_benchmark(int, char[]) {
+int nbt_benchmark(int, char[]) {
 	struct timespec start;
 	clock_gettime(CLOCK_MONOTONIC, &start);
 

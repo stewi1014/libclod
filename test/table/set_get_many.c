@@ -1,5 +1,5 @@
 #include "debug.h"
-#include <clod/structures/table.h>
+#include <../../include/clod/table.h>
 #include <string.h>
 
 #define NUM_ELEMS 100000
@@ -7,7 +7,7 @@
 // I can't be fucked with updating all the tests to use assert_fatal right now.
 #define check(a, b) assert_fatal(CLOD_TEST, b, a)
 
-int structures_table_set_get_many(int, char[]) {
+int table_set_get_many(int, char[]) {
 	int elems[NUM_ELEMS];
 	int elems2[NUM_ELEMS];
 	for (int i = 0; i < NUM_ELEMS; i++) {

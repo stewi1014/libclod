@@ -6,14 +6,19 @@
 #include <alsa/asoundlib.h>
 
 int clod_audio_read(clod_stream *self, struct clod_string *dst) {
-	if (dst->cap <= 0) return CLOD_STREAM_INVALID;
-	if (dst->len >= dst->cap) return CLOD_STREAM_INVALID;
+	if (dst->cap <= 0) {
+		return CLOD_STREAM_INVALID;
+	}
+
+	if (dst->len >= dst->cap) {
+		return CLOD_STREAM_INVALID;
+	}
 
 again:
-	int64_t n = snd_pcm_readi((void*)self->impl, dst->ptr + dst->len, (size_t)(dst->cap - dst->len) / sizeof(float));
+	int64_t n = snd_pcm_readi(self->impl_ptr, dst->ptr + dst->len, (size_t)(dst->cap - dst->len) / sizeof(float));
 	if (n < 0 && n != -EAGAIN) {
 		debug(CLOD_DEBUG, "Audio read error: %s", snd_strerror((int)n));
-		n = snd_pcm_recover((void*)self->impl, (int)n, 0);
+		n = snd_pcm_recover(self->impl_ptr, (int)n, 0);
 		if (n < 0) {
 			return -(int)n;
 		}
@@ -25,13 +30,15 @@ again:
 	return CLOD_STREAM_OK;
 }
 int clod_audio_write(clod_stream *self, struct clod_string *src) {
-	if (src->len < 0) return CLOD_STREAM_INVALID;
+	if (src->len < 0) {
+		return CLOD_STREAM_INVALID;
+	}
 
 again:
-	int64_t n = snd_pcm_writei((void*)self->impl, src->ptr, (size_t)(src->len) / sizeof(float));
+	int64_t n = snd_pcm_writei(self->impl_ptr, src->ptr, (size_t)(src->len) / sizeof(float));
 	if (n < 0 && n != -EAGAIN) {
 		debug(CLOD_DEBUG, "Audio write error: %s", snd_strerror((int)n));
-		n = snd_pcm_recover((void*)self->impl, (int)n, 0);
+		n = snd_pcm_recover(self->impl_ptr, (int)n, 0);
 		if (n < 0) {
 			return -(int)n;
 		}
@@ -46,13 +53,15 @@ again:
 int clod_audio_close(clod_stream *self) {
 	int res = CLOD_STREAM_OK;
 
-	if ((snd_pcm_t*)(void*)self->impl) {
-		snd_pcm_drain((void*)self->impl);
-		res = snd_pcm_close((void*)self->impl);
-		if (res != 0) debug(CLOD_DEBUG, "Audio stream close error: %s", snd_strerror(res));
+	if (self->impl_ptr) {
+		snd_pcm_drain(self->impl_ptr);
+		res = snd_pcm_close(self->impl_ptr);
+		if (res != 0) {
+			debug(CLOD_DEBUG, "Audio stream close error: %s", snd_strerror(res));
+		}
 	}
 
-	return CLOD_STREAM_OK;
+	return res;
 }
 int clod_audio(clod_stream *stream_out, int flags) {
 	if (flags & CLOD_AUDIO_IN && flags & CLOD_AUDIO_OUT) {
@@ -86,12 +95,12 @@ int clod_audio(clod_stream *stream_out, int flags) {
 	check_error(snd_pcm_prepare(pcm));
 
 	if (flags & CLOD_AUDIO_IN) {
-		stream_out->impl = (uintptr_t)(void*)pcm;
+		stream_out->impl_ptr = pcm;
 		stream_out->read = clod_audio_read;
 		stream_out->write = nullptr;
 		stream_out->close = clod_audio_close;
 	} else {
-		stream_out->impl = (uintptr_t)(void*)pcm;
+		stream_out->impl_ptr = pcm;
 		stream_out->read = nullptr;
 		stream_out->write = clod_audio_write;
 		stream_out->close = clod_audio_close;
@@ -100,7 +109,9 @@ int clod_audio(clod_stream *stream_out, int flags) {
 
 	#undef check_error
 error:
-	if (pcm) snd_pcm_close(pcm);
+	if (pcm) {
+		snd_pcm_close(pcm);
+	}
 	return -res;
 }
 #else

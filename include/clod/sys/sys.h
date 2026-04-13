@@ -3,8 +3,10 @@
 
 #include <clod/lib.h>
 
-CLOD_API
-__attribute__((noreturn))
+CLOD_API CLOD_NORETURN
 void clod_exit(int code);
+
+CLOD_API
+void clod_debugbreak();
 
 #endif

@@ -1,3 +1,0 @@
-clod_sources(
-    tree.c
-)

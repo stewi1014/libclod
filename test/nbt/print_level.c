@@ -1,7 +1,7 @@
 #include <stdlib.h>
 
 #include "debug.h"
-#include <clod/structures/nbt.h>
+#include <../../include/clod/nbt.h>
 #include <clod/string.h>
 
 const uint8_t print_level_data[] = {
@@ -25,7 +25,7 @@ void print_recursive(const uint8_t *payload, void *end, const uint8_t type, cons
 	}
 }
 
-int structures_nbt_print_level(int, char[]) {
+int nbt_print_level(int, char[]) {
 	const size_t res = clod_nbt_tag_size((void*)print_level_data, print_level_data + sizeof(print_level_data));
 	assert_fatal(CLOD_TEST, res == sizeof(print_level_data), "correct NBT size");
 

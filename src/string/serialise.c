@@ -41,21 +41,31 @@ intmax_t clod_string_get_int(struct clod_string *str, const struct clod_string a
 		return 0;
 	}
 
-	if (str->ptr[0] == '+') {
-		return (intmax_t)clod_string_get_uint(str, alphabet, base);
-	} else {
+	if (str->ptr[0] == '-') {
 		return -(intmax_t)clod_string_get_uint(str, alphabet, base);
 	}
+	return (intmax_t)clod_string_get_uint(str, alphabet, base);
 }
-size_t clod_string_put_uint(struct clod_string *dst, uintmax_t val,
-	const struct clod_string alphabet, const unsigned char base, const unsigned char min_digits, const unsigned char max_digits) {
+size_t clod_string_put_uint(
+	struct clod_string *dst,
+	uintmax_t val,
+	const struct clod_string alphabet,
+	const unsigned char base,
+	const unsigned char min_digits,
+	const unsigned char max_digits
+) {
 	if (!dst->ptr || !base_valid(base, alphabet)) {
 		return 0;
 	}
 
 	int size = digit_count(val, base);
-	if (max_digits && size > max_digits) size = max_digits;
-	if (size < min_digits) size = min_digits;
+	if (max_digits && size > max_digits) {
+		size = max_digits;
+	}
+
+	if (size < min_digits) {
+		size = min_digits;
+	}
 
 	for (int i = size - 1; i >= 0; i--) {
 		if (dst->cap - dst->len - i > 0) {
@@ -74,8 +84,10 @@ uintmax_t clod_string_get_uint(struct clod_string *str, const struct clod_string
 
 	uintmax_t result = 0;
 	while (str->len > 0) {
-		struct clod_string digit = clod_string_find(alphabet, str->ptr[0], 1);
-		if (!digit.ptr || digit.ptr - alphabet.ptr >= base) break;
+		const struct clod_string digit = clod_string_find(alphabet, str->ptr[0], 1);
+		if (!digit.ptr || digit.ptr - alphabet.ptr >= base) {
+			break;
+		}
 
 		result *= (uintmax_t)base;
 		result += (uintmax_t)(digit.ptr - alphabet.ptr);

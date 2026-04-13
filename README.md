@@ -12,13 +12,12 @@ and ergonomic API for the features it supports with minimal dependencies.
 #### [Documentation](https://stewi1014.github.io/libclod/)
 #### [Source](https://github.com/stewi1014/libclod)
 
- - [Data Sturctures](#data-structures) A number of data structures useful for storing data in memory or storage.
  - [Compression API](#compression-api) Methods for compressing data with a uniform API across different compression methods.
  - [File IO](#file-io) Streaming methods for file, network and other IO.
  - [Hash Functions](#hash-functions) Streamable hash methods.
  - [Memory Allocator](#memory-allocator) Libclod includes its own custom memory allocator.
  - [Region Storage](#region-storage) Concurrent data storage system with exceptional performance.
- - [Threading API](#threading) Libclod's own custom threading API built from scratch.
+ - [Threading API](#threading-api) Libclod's own custom threading API built from scratch.
 
 ## Building
 
@@ -27,19 +26,18 @@ Libclod is built using cmake.
 
 ## Features
 
-### Data Structures
-#### [NBT](https://stewi1014.github.io/libclod/group__nbt.html)
+### [NBT](https://stewi1014.github.io/libclod/group__nbt.html)
 The NBT format is a depth-first serialised tree structure supporting various data types.
 The NBT parser is fast and doesn't use any memory.
 It doesn't provide an intermediate data structure; I don't believe the
 want for an intermediate data structure is borne out of sound reasoning.
 It recursively steps through NBT data at approx 6GB/s on my machine.
 
-#### [Hash Table](https://stewi1014.github.io/libclod/group__table.html)
+### [Hash Table](https://stewi1014.github.io/libclod/group__table.html)
 The hash table has decent performance and uses SipHash by default.
 It supports keys and values of any size and custom hash and comparison functions.
 
-#### [Tree](https://stewi1014.github.io/libclod/group__tree.html)
+### [Tree](https://stewi1014.github.io/libclod/group__tree.html)
 A tree structure based on B-Trees that supports variable node, key and value sizes.
 
 ### [Compression API](https://stewi1014.github.io/libclod/group__compression.html)
@@ -81,10 +79,10 @@ Libclod provides a threading API.
 
 ## Dependencies
 
-All library dependencies are optional!
+All external dependencies are optional.
 They can be enabled or disabled at build time,
 thereby omitting the features said dependency provided.
-The only exception is the C standard library.
+libc is a dependency, and 
 
 That being said, omitting the majority of compression libraries
 will make most file formats that this library interacts with unreadable.

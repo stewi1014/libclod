@@ -82,14 +82,24 @@ if(CLOD_NATIVE)
     target_compile_definitions(clod INTERFACE _GNU_SOURCE)
 endif()
 
-option(CLOD_SANITISERS "Enable sanitisers" OFF)
+option(CLOD_SANITISERS "Enable sanitisers" ON)
 if(CLOD_SANITISERS)
     add_compile_options(-fsanitize=address,undefined)
     add_link_options(-fsanitize=address,undefined)
 endif()
 
 if(CMAKE_BUILD_TYPE STREQUAL "Debug")
-    target_compile_options(clod INTERFACE "-Wall" "-Wextra" "-Wpedantic" "-Wshadow" "-Wconversion" "-Wdouble-promotion" "-Wnull-dereference" "-Werror")
+    target_compile_options(clod INTERFACE
+        -Wall
+        -Wextra
+        -Wpedantic
+        -Wshadow
+        -Wconversion
+        -Wdouble-promotion
+        -Wnull-dereference
+        -Werror
+        -fverbose-asm
+    )
 endif()
 
 ################
