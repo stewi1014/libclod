@@ -1,2 +1,13 @@
 CompileFlags:
-  Add: [-std=c23]
+  Add: [-std=c23, -Iinclude, -Isrc, -Wno-unused-function]
+
+Index:
+  Background: Build
+
+Diagnostics:
+  UnusedIncludes: Strict
+
+InlayHints:
+  Enabled: true
+  ParameterNames: true
+  Designators: true

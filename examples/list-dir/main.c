@@ -6,9 +6,9 @@
 int main() {
 	clod_stream dir;
 
-	int res = clod_file(&dir, nullptr, "./", CLOD_FILE_DIRECTORY | CLOD_FILE_READ);
+	int res = clod_stream_file(&dir, nullptr, "./", CLOD_FILE_DIRECTORY | CLOD_FILE_READ);
 	if (res < 0) {
-		clod_stream_format(clod_stderr, CLOD_STRING_C("Failed to open directory \"./\": %i\n"), res);
+		clod_stream_format(clod_stream_stderr, CLOD_STRING_C("Failed to open directory \"./\": %i\n"), res);
 		clod_exit(1);
 	}
 
@@ -17,7 +17,7 @@ int main() {
 
 		struct clod_dirent *ent = (void*)buff.ptr;
 		while (ent) {
-			clod_stream_format(clod_stdout, CLOD_STRING_C("type %i, id: %u64, %s\n"), ent->type, (uint64_t)ent->id, ent->name);
+			clod_stream_format(clod_stream_stdout, CLOD_STRING_C("type %i, id: %u64, %s\n"), ent->type, (uint64_t)ent->id, ent->name);
 			ent = ent->next;
 		}
 

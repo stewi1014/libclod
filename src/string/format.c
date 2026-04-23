@@ -1,6 +1,7 @@
 #include <clod/string.h>
 #include "debug.h"
 #include <stdarg.h>
+#include <string.h>
 
 extern bool digit_valid(char digit, int base);
 
@@ -13,19 +14,21 @@ enum format_type {
 	type_signed_int64, type_unsigned_int64,         // i64/u64
 	type_signed_size, type_unsigned_size,           // ptrdiff/size
 	type_ptr,                                       // ptr
+	type_mem,                                       // mem
 	type_double,                                    // d
 	type_clod_string,                               // str
 	type_string,                                    // s
 };
 
 struct format_specifier {
-	enum format_type type : 5;
-	unsigned int max_precision: 12;
-	unsigned int pad_width: 6;
-	unsigned int base: 6;
-	unsigned int zero_pad: 1;
-	unsigned int capitalise: 1;
-	unsigned int have_precision: 1;
+	enum format_type type;
+	unsigned short max_precision;
+	unsigned char pad_width;
+	unsigned char base;
+	bool zero_pad: 1;
+	bool capitalise: 1;
+	bool have_precision: 1;
+	bool dynamic_precision: 1;
 };
 
 struct format_specifier parse_format(struct clod_string *fmt) {
@@ -41,6 +44,7 @@ struct format_specifier parse_format(struct clod_string *fmt) {
 			case 'x': specifier.base = 16; break;
 			case 'o': specifier.base = 8; break;
 			case 'b': specifier.base = 2; break;
+			case 'B': specifier.base = 1; break;
 			default: goto read_width;
 		}
 
@@ -53,8 +57,16 @@ read_width:
 
 	// Max precision
 	if (clod_string_peek_char(parse) == '.') {
-		specifier.max_precision = clod_string_get_uint(&parse, CLOD_STRING_DIGIT_ALPHABET, 10) & 4095;
-		specifier.have_precision = 1;
+		clod_string_get_char(&parse);
+
+		if (clod_string_peek_char(parse) == '*') {
+			clod_string_get_char(&parse);
+			specifier.have_precision = true;
+			specifier.dynamic_precision = true;
+		} else {
+			specifier.max_precision = clod_string_get_uint(&parse, CLOD_STRING_DIGIT_ALPHABET, 10) & 4095;
+			specifier.have_precision = true;
+		}
 	} else {
 		specifier.max_precision = 0;
 		specifier.have_precision = false;
@@ -66,7 +78,7 @@ read_width:
 		specifier.type = type_signed_size;
 	} else if (clod_string_remove_prefix(&parse, CLOD_STRING_C("size"))) {
 		specifier.type = type_unsigned_size;
-	} else  if (clod_string_remove_prefix(&parse, CLOD_STRING_C("i32"))) {
+	} else if (clod_string_remove_prefix(&parse, CLOD_STRING_C("i32"))) {
 		specifier.type = type_signed_int32;
 	} else if (clod_string_remove_prefix(&parse, CLOD_STRING_C("u32"))) {
 		specifier.type = type_unsigned_int32;
@@ -76,6 +88,9 @@ read_width:
 		specifier.type = type_unsigned_int64;
 	} else if (clod_string_remove_prefix(&parse, CLOD_STRING_C("ptr"))) {
 		specifier.type = type_ptr;
+	} else if (clod_string_remove_prefix(&parse, CLOD_STRING_C("mem"))) {
+		specifier.type = type_mem;
+		specifier.capitalise = true;
 	} else if (clod_string_remove_prefix(&parse, CLOD_STRING_C("str"))) {
 		specifier.type = type_clod_string;
 	} else if (clod_string_remove_prefix(&parse, CLOD_STRING_C("ll"))) {
@@ -103,9 +118,16 @@ read_width:
 size_t clod_string_format(struct clod_string *dst, struct clod_string fmt, ...) {
 	va_list args;
 	va_start(args, fmt);
-	size_t size = clod_string_vformat(dst, fmt, args);
+	const size_t size = clod_string_vformat(dst, fmt, args);
 	va_end(args);
 	return size;
+}
+
+static unsigned char round_size(const size_t size) {
+	if (size >= 256) {
+		return 255;
+	}
+	return (unsigned char)size;
 }
 
 size_t clod_string_vformat(struct clod_string *dst, struct clod_string fmt, va_list args) {
@@ -126,8 +148,9 @@ size_t clod_string_vformat(struct clod_string *dst, struct clod_string fmt, va_l
 		}
 
 		struct format_specifier specifier = parse_format(&fmt);
+
 		if (specifier.base == 0) {
-			if (specifier.type == type_ptr) {
+			if (specifier.type == type_ptr || specifier.type == type_mem) {
 				specifier.base = 16;
 			} else {
 				specifier.base = 10;
@@ -138,69 +161,207 @@ size_t clod_string_vformat(struct clod_string *dst, struct clod_string fmt, va_l
 
 		switch (specifier.type) {
 			case type_signed_int:
-				size += clod_string_put_int(dst, va_arg(args, signed int),
-					digit_alphabet, specifier.base, specifier.pad_width, (unsigned char)specifier.max_precision);
+				size += clod_string_put_int(
+					dst,
+					va_arg(args, signed int),
+					digit_alphabet,
+					specifier.base,
+					specifier.pad_width,
+					specifier.dynamic_precision ? round_size(va_arg(args, size_t)) : round_size(specifier.max_precision)
+				);
 				break;
 			case type_unsigned_int:
-				size += clod_string_put_uint(dst, va_arg(args, unsigned int),
-					digit_alphabet, specifier.base, specifier.pad_width, (unsigned char)specifier.max_precision);
+				size += clod_string_put_uint(
+					dst,
+					va_arg(args, unsigned int),
+					digit_alphabet,
+					specifier.base,
+					specifier.pad_width,
+					specifier.dynamic_precision ? round_size(va_arg(args, size_t)) : round_size(specifier.max_precision)
+				);
 				break;
 			case type_signed_long:
-				size += clod_string_put_int(dst, va_arg(args, signed long),
-					digit_alphabet, specifier.base, specifier.pad_width, (unsigned char)specifier.max_precision);
+				size += clod_string_put_int(
+					dst,
+					va_arg(args, signed long),
+					digit_alphabet,
+					specifier.base,
+					specifier.pad_width,
+					specifier.dynamic_precision ? round_size(va_arg(args, size_t)) : round_size(specifier.max_precision)
+				);
 				break;
 			case type_unsigned_long:
-				size += clod_string_put_uint(dst, va_arg(args, unsigned long),
-					digit_alphabet, specifier.base, specifier.pad_width, (unsigned char)specifier.max_precision);
+				size += clod_string_put_uint(
+					dst,
+					va_arg(args, unsigned long),
+					digit_alphabet,
+					specifier.base,
+					specifier.pad_width,
+					specifier.dynamic_precision ? round_size(va_arg(args, size_t)) : round_size(specifier.max_precision)
+				);
 				break;
 			case type_signed_long_long:
-				size += clod_string_put_int(dst, va_arg(args, signed long long),
-					digit_alphabet, specifier.base, specifier.pad_width, (unsigned char)specifier.max_precision);
+				size += clod_string_put_int(
+					dst,
+					va_arg(args, signed long long),
+					digit_alphabet,
+					specifier.base,
+					specifier.pad_width,
+					specifier.dynamic_precision ? round_size(va_arg(args, size_t)) : round_size(specifier.max_precision)
+				);
 				break;
 			case type_unsigned_long_long:
-				size += clod_string_put_uint(dst, va_arg(args, unsigned long long),
-					digit_alphabet, specifier.base, specifier.pad_width, (unsigned char)specifier.max_precision);
+				size += clod_string_put_uint(
+					dst,
+					va_arg(args, unsigned long long),
+					digit_alphabet,
+					specifier.base,
+					specifier.pad_width,
+					specifier.dynamic_precision ? round_size(va_arg(args, size_t)) : round_size(specifier.max_precision)
+				);
 				break;
 			case type_signed_int32:
-				size += clod_string_put_int(dst, va_arg(args, int32_t),
-					digit_alphabet, specifier.base, specifier.pad_width, (unsigned char)specifier.max_precision);
+				size += clod_string_put_int(
+					dst,
+					va_arg(args, int32_t),
+					digit_alphabet,
+					specifier.base,
+					specifier.pad_width,
+					specifier.dynamic_precision ? round_size(va_arg(args, size_t)) : round_size(specifier.max_precision)
+				);
 				break;
 			case type_unsigned_int32:
-				size += clod_string_put_uint(dst, va_arg(args, uint32_t),
-					digit_alphabet, specifier.base, specifier.pad_width, (unsigned char)specifier.max_precision);
+				size += clod_string_put_uint(
+					dst,
+					va_arg(args, uint32_t),
+					digit_alphabet,
+					specifier.base,
+					specifier.pad_width,
+					specifier.dynamic_precision ? round_size(va_arg(args, size_t)) : round_size(specifier.max_precision)
+				);
 				break;
 			case type_signed_int64:
-				size += clod_string_put_int(dst, va_arg(args, int64_t),
-					digit_alphabet, specifier.base, specifier.pad_width, (unsigned char)specifier.max_precision);
+				size += clod_string_put_int(
+					dst,
+					va_arg(args, int64_t),
+					digit_alphabet,
+					specifier.base,
+					specifier.pad_width,
+					specifier.dynamic_precision ? round_size(va_arg(args, size_t)) : round_size(specifier.max_precision)
+				);
 				break;
 			case type_unsigned_int64:
-				size += clod_string_put_uint(dst, va_arg(args, uint64_t),
-					digit_alphabet, specifier.base, specifier.pad_width, (unsigned char)specifier.max_precision);
+				size += clod_string_put_uint(
+					dst,
+					va_arg(args, uint64_t),
+					digit_alphabet,
+					specifier.base,
+					specifier.pad_width,
+					specifier.dynamic_precision ? round_size(va_arg(args, size_t)) : round_size(specifier.max_precision)
+				);
 				break;
 			case type_signed_size:
-				size += clod_string_put_int(dst, va_arg(args, ptrdiff_t),
-					digit_alphabet, specifier.base, specifier.pad_width, (unsigned char)specifier.max_precision);
+				size += clod_string_put_int(
+					dst,
+					va_arg(args, ptrdiff_t),
+					digit_alphabet,
+					specifier.base,
+					specifier.pad_width,
+					specifier.dynamic_precision ? round_size(va_arg(args, size_t)) : round_size(specifier.max_precision)
+				);
 				break;
 			case type_unsigned_size:
-				size += clod_string_put_uint(dst, va_arg(args, size_t),
-					digit_alphabet, specifier.base, specifier.pad_width, (unsigned char)specifier.max_precision);
+				size += clod_string_put_uint(
+					dst,
+					va_arg(args, size_t),
+					digit_alphabet,
+					specifier.base,
+					specifier.pad_width,
+					specifier.dynamic_precision ? round_size(va_arg(args, size_t)) : round_size(specifier.max_precision)
+				);
 				break;
 			case type_ptr:
 				clod_string_put_char(dst, '0');
 				clod_string_put_char(dst, 'x');
-				size += 2 + clod_string_put_uint(dst, (uintptr_t)va_arg(args, void*),
-					digit_alphabet, specifier.base, specifier.pad_width, (unsigned char)specifier.max_precision);
+				size += 2 + clod_string_put_uint(
+					dst,
+					(uintptr_t)va_arg(args, void*),
+					digit_alphabet,
+					specifier.base,
+					specifier.pad_width,
+					specifier.dynamic_precision ? round_size(va_arg(args, size_t)) : round_size(specifier.max_precision)
+				);
 				break;
+			case type_mem: {
+				const unsigned char *data = va_arg(args, void *);
+				size_t len = specifier.max_precision;
+				if (specifier.dynamic_precision) {
+					len = va_arg(args, size_t);
+				}
+
+				if (len == 0) {
+					break;
+				}
+
+				if (data == nullptr) {
+					size += clod_string_cat(dst, CLOD_STRING_C("NULL"));
+					break;
+				}
+
+				size += clod_string_put_uint(dst, data[0], digit_alphabet, specifier.base, 2, 0);
+				for (size_t i = 1; i < len; i++) {
+					clod_string_put_char(dst, ' ');
+					size += 1 + clod_string_put_uint(dst, data[i], digit_alphabet, specifier.base, 2, 0);
+				}
+				break;
+			}
 			case type_double:
-				size += clod_string_put_double(dst, va_arg(args, double),
-					digit_alphabet, specifier.base, specifier.pad_width, (unsigned char)specifier.max_precision);
+				size += clod_string_put_double(
+					dst,
+					va_arg(args, double),
+					digit_alphabet,
+					specifier.base,
+					specifier.pad_width,
+					specifier.dynamic_precision ? round_size(va_arg(args, size_t)) : round_size(specifier.max_precision)
+				);
 				break;
-			case type_clod_string:
-				size += clod_string_cat(dst, va_arg(args, struct clod_string));
+			case type_clod_string: {
+				struct clod_string arg_str = va_arg(args, struct clod_string);
+				if (specifier.dynamic_precision) {
+					const ptrdiff_t string_max = (ptrdiff_t)va_arg(args, size_t);
+					if (arg_str.len > string_max) {
+						arg_str.len = string_max;
+					}
+				} else if (specifier.have_precision) {
+					if (arg_str.len > specifier.max_precision) {
+						arg_str.len = specifier.max_precision;
+					}
+				}
+				size += clod_string_cat(dst, arg_str);
 				break;
-			case type_string:
-				size += clod_string_cat(dst, clod_string_from_cstr(va_arg(args, const char *)));
+			}
+			case type_string: {
+				struct clod_string arg_str = {0};
+				arg_str.ptr = va_arg(args, char *);
+
+				if (specifier.dynamic_precision) {
+					arg_str.len = (ptrdiff_t)va_arg(args, size_t);
+				} else if (specifier.have_precision) {
+					arg_str.len = specifier.max_precision;
+				} else if (arg_str.ptr != nullptr) {
+					while (arg_str.ptr[arg_str.len] != '\0') {
+						arg_str.len++;
+					}
+				}
+
+				if (arg_str.ptr == nullptr) {
+					size += clod_string_cat(dst, CLOD_STRING_C("NULL"));
+					break;
+				}
+
+				size += clod_string_cat(dst, arg_str);
 				break;
+			}
 			default:
 				clod_string_put_char(dst, clod_string_get_char(&fmt));
 				size++;

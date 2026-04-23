@@ -1,9 +1,9 @@
 /**
- * @file clod/sys/futex.h
- * @defgroup sys System Methods
+ * @file stream.h
+ * @defgroup stream Data streaming methods.
  */
-#ifndef LIBCLOD_IO_H
-#define LIBCLOD_IO_H
+#ifndef LIBCLOD_STREAM_H
+#define LIBCLOD_STREAM_H
 
 #include <clod/lib.h>
 #include <clod/string.h>
@@ -21,20 +21,20 @@ typedef struct clod_stream clod_stream;
 
 /// Standard input.
 CLOD_API
-extern clod_stream *clod_stdin;
+extern clod_stream *clod_stream_stdin;
 
 /// Standard output.
 CLOD_API
-extern clod_stream *clod_stdout;
+extern clod_stream *clod_stream_stdout;
 
 /// Standard error.
 CLOD_API
-extern clod_stream *clod_stderr;
+extern clod_stream *clod_stream_stderr;
 
 /**
  * Stream of data.
  * It roughly replaces libc's FILE, but aims to support user implementations,
- * and has additional implementations not supported by FILE such as networking.
+ * and has additional library implementations not supported by FILE such as networking.
  *
  * All members are optional and may be omitted for streams to whom they have no relevance.
  * A stream that supports no methods is valid, for example a directory for whom the user has no read permission
@@ -54,18 +54,13 @@ extern clod_stream *clod_stderr;
  */
 struct clod_stream {
 	/**
-	 * Implementation-defined data;
-	 */
-	uintptr_t impl;
-
-	/**
 	 * A stream's read method shall read a portion of data from the stream
 	 * or return a non-zero error code. If \p read is null the stream does not
 	 * support reading.
 	 *
 	 * The new data is appended to the destination buffer using its free capacity.
 	 *
-	 * @param[in] self Implementation-dependent data.
+	 * @param[in] self Pointer to this stream.
 	 * @param[in] dst Destination buffer.
 	 * @return 0 on success, non-zero error code on failure.
 	 */
@@ -81,7 +76,7 @@ struct clod_stream {
 	 * The written data is removed from the source buffer by incrementing its pointer
 	 * and adjusting other parameters as such.
 	 *
-	 * @param[in] self Implementation-dependent data.
+	 * @param[in] self Pointer to this stream.
 	 * @param[in] src Source buffer.
 	 * @return 0 on success, non-zero error code on failure.
 	 */
@@ -96,10 +91,18 @@ struct clod_stream {
 	 * @note The stream cannot be interacted with following a call to \p close.
 	 * Conversely, close should free the clod_stream from memory if relevant.
 	 *
-	 * @param[in] self Implementation-dependent data.
+	 * @param[in] self Pointer to this stream.
 	 * @return 0 on success, non-zero error code on failure.
 	 */
 	int (*close)(clod_stream *self);
+
+	/**
+	 * Implementation-specific data.
+	 */
+	union {
+		void *impl_ptr;
+		uintptr_t impl_uintptr;
+	};
 };
 
 /**
@@ -126,7 +129,7 @@ int clod_stream_copy(clod_stream *dst, clod_stream *src, void *buffer, size_t bu
  * @param[out] pipe2_out Second half of the pipe.
  */
 CLOD_API CLOD_NONNULL(1, 2)
-void clod_pipe(clod_stream *pipe1_out, clod_stream *pipe2_out);
+void clod_stream_pipe(clod_stream *pipe1_out, clod_stream *pipe2_out);
 
 /**
  * Write a formatted string to the given stream.

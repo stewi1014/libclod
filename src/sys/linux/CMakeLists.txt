@@ -4,4 +4,5 @@ clod_sources(
     stream.c
     syscall.c
     syscall.h
+    vm.c
 )

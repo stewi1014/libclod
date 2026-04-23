@@ -1,6 +1,6 @@
 /**
  * @file clod/table.h
- * @defgroup table Hash table
+ * @defgroup table Hash Table
  *
  * A hash table implementation.
  * It's a pure set at heart, but since methods never return a pointer not supplied by the user,

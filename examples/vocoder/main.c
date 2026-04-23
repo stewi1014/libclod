@@ -21,12 +21,12 @@ int main(int argc, char **argv) {
 	char *file_path = "../../../examples/vocoder/out.pcm";
 	if (argv[1]) file_path = argv[1];
 
-	int res = clod_file(&in, nullptr, file_path, CLOD_FILE_READ);
+	int res = clod_stream_file(&in, nullptr, file_path, CLOD_FILE_READ);
 	if (res != 0) {
 		return res;
 	}
 
-	res = clod_audio(&out, CLOD_AUDIO_OUT);
+	res = clod_stream_audio(&out, CLOD_AUDIO_OUT);
 	if (res != 0) {
 		return res;
 	}

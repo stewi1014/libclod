@@ -89,7 +89,17 @@ if(CLOD_SANITISERS)
 endif()
 
 if(CMAKE_BUILD_TYPE STREQUAL "Debug")
-    target_compile_options(clod INTERFACE "-Wall" "-Wextra" "-Wpedantic" "-Wshadow" "-Wconversion" "-Wdouble-promotion" "-Wnull-dereference" "-Werror")
+    target_compile_options(clod INTERFACE
+        -Wall
+        -Wextra
+        -Wpedantic
+        -Wshadow
+        -Wconversion
+        -Wdouble-promotion
+        -Wnull-dereference
+        -Werror
+        -fverbose-asm
+    )
 endif()
 
 ################

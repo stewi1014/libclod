@@ -5,12 +5,12 @@
 int main() {
 	clod_stream in, out;
 
-	int res = clod_audio(&in, CLOD_AUDIO_IN);
+	int res = clod_stream_audio(&in, CLOD_AUDIO_IN);
 	if (res != 0) {
 		return res;
 	}
 
-	res = clod_audio(&out, CLOD_AUDIO_OUT);
+	res = clod_stream_audio(&out, CLOD_AUDIO_OUT);
 	if (res != 0) {
 		return res;
 	}

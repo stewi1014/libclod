@@ -3,7 +3,6 @@
 
 #include <clod/lib.h>
 #include <clod/stream.h>
-#include <clod/memory.h>
 
 #define CLOD_FILE_READ 1
 #define CLOD_FILE_WRITE 2
@@ -44,7 +43,7 @@ struct clod_dirent {
  * @return 0 on success, non-zero on error.
  */
 CLOD_API CLOD_NONNULL(1)
-int clod_file(
+int clod_stream_file(
 	clod_stream *stream_out,
 	const clod_stream *directory,
 	const char *path,

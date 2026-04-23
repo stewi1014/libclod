@@ -13,7 +13,7 @@
 #include <stdint.h>
 #include <limits.h>
 
-#if defined(_WIN32)
+#ifdef _WIN32
 	#ifdef CLOD_BUILD_STATIC
 		#define CLOD_API
 	#elifdef CLOD_BUILD_SHARED
@@ -29,16 +29,20 @@
 	#endif
 #endif
 
-#if defined(__GNUC__) // GCC and Clang
+#ifdef __GNUC__
 	#define CLOD_NONNULL(...) __attribute__((nonnull(__VA_ARGS__)))
-	#define CLOD_PRINTF(fmt_arg, var_args) __attribute__((format(printf, fmt_arg, var_args)))
 	#define CLOD_USE_RETURN __attribute__((warn_unused_result))
+	#define CLOD_DEPRECATED __attribute__((deprecated))
+
+	#define CLOD_NORETURN __attribute__((noreturn))
 	#define CLOD_CONST __attribute__((const))
 	#define CLOD_PURE __attribute__((pure))
 #else
 	#define CLOD_NONNULL(...)
-	#define CLOD_PRINTF(fmt_arg, var_args)
 	#define CLOD_USE_RETURN
+	#define CLOD_DEPRECATED
+
+	#define CLOD_NORETURN
 	#define CLOD_CONST
 	#define CLOD_PURE
 #endif

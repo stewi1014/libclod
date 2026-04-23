@@ -20,6 +20,6 @@
  * @return 0 on success, non-zero on error.
  */
 CLOD_API CLOD_NONNULL(1)
-int clod_audio(clod_stream *stream_out, int flags);
+int clod_stream_audio(clod_stream *stream_out, int flags);
 
 #endif

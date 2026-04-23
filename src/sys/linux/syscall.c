@@ -3,6 +3,7 @@
 #include <clod/sys/sys.h>
 #include <linux/time.h>
 #include <linux/unistd.h>
+#include <linux/signal.h>
 
 #ifdef CLOD_HAVE_X86_64
 
@@ -107,43 +108,15 @@ long syscall6(long _1, long _2, long _3, long _4, long _5, long _6, long number)
 #error "Linux syscalls not implemented on this architecture"
 #endif
 
-[[deprecated]]
-int syscall_futex_wait(const int *addr, const int expected, struct timespec *timeout) {
-	return (int)syscall(__NR_futex, (long)addr, __NR_futex_wait, expected, (long)timeout);
-}
-
-[[deprecated]]
-int syscall_futex_wake(const int *addr, const int num) {
-	return (int)syscall(__NR_futex, (long)addr, __NR_futex_wake, num);
-}
-
-[[deprecated]]
-long syscall_read(const int fd, void *buff, const size_t size) {
-	return syscall(__NR_read, fd, (long)buff, (long)size);
-}
-
-[[deprecated]]
-long syscall_write(const int fd, const void *buff, const size_t size) {
-	return syscall(__NR_write, fd, (long)buff, (long)size);
-}
-
-[[deprecated]]
-int syscall_close(const int fd) {
-	return (int)syscall(__NR_close, fd);
-}
-
-[[deprecated]]
-void *syscall_mmap(void *addr, const size_t length, const int prot, const int flags, const int fd, const long offset) {
-	return (void*)syscall(__NR_mmap, (long)addr, (long)length, prot, flags, fd, offset);
-}
-
-[[deprecated]]
-int syscall_munmap(void *addr, const size_t length) {
-	return (int)syscall(__NR_munmap, (long)addr, (long)length);
-}
-
-[[deprecated]]
 void clod_exit(const int code) {
+	//#if CLOD_DEBUG
+		clod_debugbreak();
+	//#endif
 	syscall(__NR_exit, code);
 	__builtin_unreachable();
+}
+
+void clod_debugbreak() {
+	const long pid = syscall(__NR_getpid);
+	syscall(__NR_kill, pid, SIGTRAP);
 }

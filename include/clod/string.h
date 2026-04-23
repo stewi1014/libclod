@@ -104,7 +104,7 @@ char clod_string_peek_char(struct clod_string str);
  * Format a string similarly to snprintf.
  * The format specification differs from the standard library in a few ways.
  *
- * ```%[flags][width][.precision]<type>```
+ * ```%[flags][width][.precision|*]<type>```
  *
  * - **Flags** Options for changing formatting.
  * - **Width** the minimum size of the number as formatted.
@@ -134,6 +134,7 @@ char clod_string_peek_char(struct clod_string str);
  * | size_t               | size      |
  * | ptrdiff_t            | ptrdiff   |
  * | void *               | ptr       |
+ * | void *               | mem       |
  * | double               | d         |
  * | struct clod_string * | str       |
  * | C string             | s         |
