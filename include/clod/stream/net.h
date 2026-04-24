@@ -10,9 +10,9 @@
 #define LIBCLOD_NET_H
 
 #include <clod/lib.h>
-#include <clod/stream.h>
+#include <clod/stream/stream.h>
 
-typedef struct clod_socker clod_socket;
+typedef struct clod_socket clod_socket;
 
 /// Helper for crating IPv4-mapped IPv6 address.
 #define clod_ipv4(a, b, c, d) ((char[16]){0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0xFF, a, b, c, d})
@@ -52,7 +52,7 @@ struct clod_socket {
  * @return 0 on success, non-zero on error.
  */
 CLOD_API CLOD_NONNULL(1)
-int clod_udp(clod_socket *socket, int flags);
+int clod_stream_udp(clod_socket *socket, int flags);
 
 /**
  * Initialise a TCP client-side socket for reading and writing.
@@ -62,7 +62,7 @@ int clod_udp(clod_socket *socket, int flags);
  * @return 0 on success, non-zero on error.
  */
 CLOD_API CLOD_NONNULL(1)
-int clod_tcp_client(clod_socket *socket, int flags);
+int clod_stream_tcp_client(clod_socket *socket, int flags);
 
 /**
  * Initialise a TCP
@@ -71,6 +71,6 @@ int clod_tcp_client(clod_socket *socket, int flags);
  * @return 0 on success, non-zero on error.
  */
 CLOD_API CLOD_NONNULL(1)
-int clod_tcp_server(clod_socket *socket, int flags);
+int clod_stream_tcp_server(clod_socket *socket, int flags);
 
 #endif

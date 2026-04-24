@@ -36,17 +36,17 @@ struct clod_string {
 	ptrdiff_t cap;
 };
 
+/// Create a new string.
+#define CLOD_STRING(ptr_, len_, cap_) ((struct clod_string){ .ptr = (char*)(ptr_), .len = (ptrdiff_t)(len_), .cap = (ptrdiff_t)(cap_) })
+
 /// Null string.
 #define CLOD_STRING_NULL ((struct clod_string){0})
 
 /// String literal constant.
-#define CLOD_STRING_C(cstr) ((struct clod_string){ .ptr = (char*)(cstr), .len = sizeof((char[]){cstr}) - 1, .cap = 0 })
+#define CLOD_STRING_C(cstr) CLOD_STRING(cstr, sizeof((char[]){cstr}) - 1, 0)
 
 /// Create a new empty string with the given capacity on the stack.
-#define CLOD_STRING_NEW(size) ((struct clod_string){ .ptr = (char[size]){0}, .len = 0, .cap = (size) })
-
-/// Get the string representation of an object.
-#define CLOD_STRING_OBJECT(object) ((struct clod_string){ .ptr = (char*)(object), .len = sizeof(*(object)), .cap = sizeof(*(object)) })
+#define CLOD_STRING_NEW(size) CLOD_STRING((char[size]){0}, 0, size)
 
 /// Make a string from a C string.
 CLOD_API

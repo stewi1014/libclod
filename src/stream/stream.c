@@ -1,21 +1,21 @@
 #include "config.h"
 #include "debug.h"
-#include <clod/stream.h>
+#include <clod/stream/stream.h>
 
 int clod_stream_copy(clod_stream *dst, clod_stream *src, void *const buffer, const size_t buffer_size, size_t *total_transferred) {
 	if (buffer_size == 0) {
 		debug(CLOD_DEBUG, "Invalid buffer size for stream copy.");
-		return CLOD_STREAM_INVALID;
+		return CLOD_ERR_INVALID;
 	}
 
 	if (dst->write == nullptr) {
 		debug(CLOD_DEBUG, "Provided stream %ptr doesn't support writing.", (void*)dst);
-		return CLOD_STREAM_INVALID;
+		return CLOD_ERR_INVALID;
 	}
 
 	if (src->read == nullptr) {
 		debug(CLOD_DEBUG, "Provided stream %ptr doesn't support reading.", (void*)src);
-		 return CLOD_STREAM_INVALID;
+		 return CLOD_ERR_INVALID;
 	}
 
 	size_t transferred = 0;
@@ -33,17 +33,26 @@ int clod_stream_copy(clod_stream *dst, clod_stream *src, void *const buffer, con
 			debug(CLOD_DEBUG, "Short write to stream %ptr.", (void*)dst);
 		}
 
-		if (read_res == CLOD_STREAM_EOF) {
-			if (total_transferred) *total_transferred = transferred;
+		if (read_res == CLOD_ERR_EOF) {
+			if (total_transferred) {
+				*total_transferred = transferred;
+			}
+
 			return 0;
 		}
 
-		if (read_res != CLOD_STREAM_OK) {
-			if (total_transferred) *total_transferred = transferred;
+		if (read_res != CLOD_ERR_OK) {
+			if (total_transferred) {
+				*total_transferred = transferred;
+			}
+
 			return read_res;
 		}
-		if (write_res != CLOD_STREAM_OK) {
-			if (total_transferred) *total_transferred = transferred;
+		if (write_res != CLOD_ERR_OK) {
+			if (total_transferred) {
+				*total_transferred = transferred;
+			}
+
 			return write_res;
 		}
 	}

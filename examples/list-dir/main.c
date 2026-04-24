@@ -1,10 +1,9 @@
-#include <clod/stream.h>
-
-#include "clod/file.h"
-#include "clod/sys/sys.h"
+#include <clod/stream/stream.h>
+#include <clod/stream/file.h>
+#include <clod/sys/sys.h>
 
 int main() {
-	clod_stream dir;
+	clod_file dir;
 
 	int res = clod_stream_file(&dir, nullptr, "./", CLOD_FILE_DIRECTORY | CLOD_FILE_READ);
 	if (res < 0) {
@@ -13,7 +12,7 @@ int main() {
 	}
 
 	struct clod_string buff = CLOD_STRING_NEW(1024);
-	while (dir.read(&dir, &buff) == CLOD_STREAM_OK) {
+	while (dir.stream.read(&dir.stream, &buff) == CLOD_ERR_OK) {
 
 		struct clod_dirent *ent = (void*)buff.ptr;
 		while (ent) {
@@ -24,5 +23,5 @@ int main() {
 		buff.len = 0;
 	}
 
-	dir.close(&dir);
+	dir.stream.close(&dir.stream);
 }

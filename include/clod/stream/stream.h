@@ -7,15 +7,7 @@
 
 #include <clod/lib.h>
 #include <clod/string.h>
-
-/// No worries
-#define CLOD_STREAM_OK 0
-/// Reached the end of the stream.
-#define CLOD_STREAM_EOF (-1)
-/// Invalid arguments.
-#define CLOD_STREAM_INVALID (-2)
-/// Interrupted by a signal.
-#define CLOD_STREAM_INTERRUPTED (-3)
+#include <clod/errors.h>
 
 typedef struct clod_stream clod_stream;
 
@@ -95,14 +87,6 @@ struct clod_stream {
 	 * @return 0 on success, non-zero error code on failure.
 	 */
 	int (*close)(clod_stream *self);
-
-	/**
-	 * Implementation-specific data.
-	 */
-	union {
-		void *impl_ptr;
-		uintptr_t impl_uintptr;
-	};
 };
 
 /**

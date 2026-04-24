@@ -1,4 +1,4 @@
-#include <clod/stream.h>
+#include <clod/stream/stream.h>
 
 int clod_stream_format(clod_stream *dst, struct clod_string fmt, ...) {
 	va_list args;

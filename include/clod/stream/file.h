@@ -2,7 +2,7 @@
 #define LIBCLOD_FILE_H
 
 #include <clod/lib.h>
-#include <clod/stream.h>
+#include <clod/stream/stream.h>
 
 #define CLOD_FILE_READ 1
 #define CLOD_FILE_WRITE 2
@@ -34,9 +34,18 @@ struct clod_dirent {
 	char name[];
 };
 
+typedef struct {
+	clod_stream stream;
+
+	union {
+		int unix_fd;
+		void *_reserved;
+	};
+} clod_file;
+
 /**
  * Open a file for reading and/or writing with the stream API.
- * @param[out] stream_out New file stream.
+ * @param[out] file_out New file stream.
  * @param[in] directory (nullable) Directory from which path will be resolved.
  * @param[in] path (nullable) Path to the file. Reopens directory if null.
  * @param[in] flags Open flags.
@@ -44,8 +53,8 @@ struct clod_dirent {
  */
 CLOD_API CLOD_NONNULL(1)
 int clod_stream_file(
-	clod_stream *stream_out,
-	const clod_stream *directory,
+	clod_file *file_out,
+	const clod_file *directory,
 	const char *path,
 	int flags
 );

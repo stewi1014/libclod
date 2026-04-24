@@ -2,7 +2,7 @@
 #define LIBCLOD_CLOD_DEBUG_H
 
 #include <clod/lib.h>
-#include <clod/stream.h>
+#include <clod/stream/stream.h>
 #include <clod/string.h>
 #include <clod/sys/sys.h>
 

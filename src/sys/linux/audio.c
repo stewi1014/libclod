@@ -1,4 +1,4 @@
-#include <clod/audio.h>
+#include <clod/stream/audio.h>
 #include "config.h"
 #include "debug.h"
 
@@ -7,18 +7,18 @@
 
 int clod_audio_read(clod_stream *self, struct clod_string *dst) {
 	if (dst->cap <= 0) {
-		return CLOD_STREAM_INVALID;
+		return CLOD_ERR_INVALID;
 	}
 
 	if (dst->len >= dst->cap) {
-		return CLOD_STREAM_INVALID;
+		return CLOD_ERR_INVALID;
 	}
 
 again:
-	int64_t n = snd_pcm_readi(self->impl_ptr, dst->ptr + dst->len, (size_t)(dst->cap - dst->len) / sizeof(float));
+	int64_t n = snd_pcm_readi(((clod_audio*)self)->device, dst->ptr + dst->len, (size_t)(dst->cap - dst->len) / sizeof(float));
 	if (n < 0 && n != -EAGAIN) {
 		debug(CLOD_DEBUG, "Audio read error: %s", snd_strerror((int)n));
-		n = snd_pcm_recover(self->impl_ptr, (int)n, 0);
+		n = snd_pcm_recover(((clod_audio*)self)->device, (int)n, 0);
 		if (n < 0) {
 			return -(int)n;
 		}
@@ -27,18 +27,18 @@ again:
 	}
 
 	dst->len += n * (ptrdiff_t)sizeof(float);
-	return CLOD_STREAM_OK;
+	return CLOD_ERR_OK;
 }
 int clod_audio_write(clod_stream *self, struct clod_string *src) {
 	if (src->len < 0) {
-		return CLOD_STREAM_INVALID;
+		return CLOD_ERR_INVALID;
 	}
 
 again:
-	int64_t n = snd_pcm_writei(self->impl_ptr, src->ptr, (size_t)(src->len) / sizeof(float));
+	int64_t n = snd_pcm_writei(((clod_audio*)self)->device, src->ptr, (size_t)(src->len) / sizeof(float));
 	if (n < 0 && n != -EAGAIN) {
 		debug(CLOD_DEBUG, "Audio write error: %s", snd_strerror((int)n));
-		n = snd_pcm_recover(self->impl_ptr, (int)n, 0);
+		n = snd_pcm_recover(((clod_audio*)self)->device, (int)n, 0);
 		if (n < 0) {
 			return -(int)n;
 		}
@@ -48,14 +48,14 @@ again:
 
 	src->ptr += n * (ptrdiff_t)sizeof(float);
 	src->len -= n * (ptrdiff_t)sizeof(float);
-	return CLOD_STREAM_OK;
+	return CLOD_ERR_OK;
 }
 int clod_audio_close(clod_stream *self) {
-	int res = CLOD_STREAM_OK;
+	int res = CLOD_ERR_OK;
 
-	if (self->impl_ptr) {
-		snd_pcm_drain(self->impl_ptr);
-		res = snd_pcm_close(self->impl_ptr);
+	if (((clod_audio*)self)->device) {
+		snd_pcm_drain(((clod_audio*)self)->device);
+		res = snd_pcm_close(((clod_audio*)self)->device);
 		if (res != 0) {
 			debug(CLOD_DEBUG, "Audio stream close error: %s", snd_strerror(res));
 		}
@@ -63,10 +63,10 @@ int clod_audio_close(clod_stream *self) {
 
 	return res;
 }
-int clod_stream_audio(clod_stream *stream_out, int flags) {
+int clod_stream_audio(clod_audio *audio_out, int flags) {
 	if (flags & CLOD_AUDIO_IN && flags & CLOD_AUDIO_OUT) {
 		debug(CLOD_DEBUG, "A single audio stream cannot be both input and output.");
-		return CLOD_STREAM_INVALID;
+		return CLOD_ERR_INVALID;
 	}
 
 	int res;
@@ -95,15 +95,15 @@ int clod_stream_audio(clod_stream *stream_out, int flags) {
 	check_error(snd_pcm_prepare(pcm));
 
 	if (flags & CLOD_AUDIO_IN) {
-		stream_out->impl_ptr = pcm;
-		stream_out->read = clod_audio_read;
-		stream_out->write = nullptr;
-		stream_out->close = clod_audio_close;
+		audio_out->device = pcm;
+		audio_out->stream.read = clod_audio_read;
+		audio_out->stream.write = nullptr;
+		audio_out->stream.close = clod_audio_close;
 	} else {
-		stream_out->impl_ptr = pcm;
-		stream_out->read = nullptr;
-		stream_out->write = clod_audio_write;
-		stream_out->close = clod_audio_close;
+		audio_out->device = pcm;
+		audio_out->stream.read = nullptr;
+		audio_out->stream.write = clod_audio_write;
+		audio_out->stream.close = clod_audio_close;
 	}
 	return 0;
 
@@ -115,7 +115,7 @@ error:
 	return -res;
 }
 #else
-int clod_audio(clod_stream *, int) {
-	return CLOD_STREAM_INVALID;
+int clod_stream_audio(clod_audio *, int) {
+	return CLOD_ERR_INVALID;
 }
 #endif

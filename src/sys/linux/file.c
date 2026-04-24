@@ -1,6 +1,7 @@
-#include <clod/stream.h>
+#include <clod/stream/stream.h>
+#include <clod/stream/file.h>
+
 #include "syscall.h"
-#include "clod/file.h"
 #include <dirent.h>
 
 int clod_file_stream_close(clod_stream *self);
@@ -26,8 +27,8 @@ struct linux_dirent {
 static_assert(offsetof(struct linux_dirent, name) == offsetof(struct clod_dirent, name));
 
 int clod_stream_file(
-	clod_stream *stream_out,
-	const clod_stream *directory,
+	clod_file *file_out,
+	const clod_file *directory,
 	const char *path,
 	const int flags
 ) {
@@ -49,7 +50,7 @@ int clod_stream_file(
 			o_flags |= O_DIRECTORY; break;
 
 		default:
-			return CLOD_STREAM_INVALID;
+			return CLOD_ERR_INVALID;
 	}
 
 	if (flags & CLOD_FILE_CREATE) {
@@ -62,77 +63,85 @@ int clod_stream_file(
 
 	long res;
 	if (directory) {
-		res = syscall(__NR_openat, (long)directory->impl_uintptr, (long)path, o_flags, 0664);
+		res = syscall(__NR_openat, directory->unix_fd, (long)path, o_flags, 0664);
 	} else {
 		res = syscall(__NR_open, (long)path, o_flags, 0664);
 	}
 
 	if (res == -EINVAL || res == -EFAULT || res == -EBADF) {
-		return CLOD_STREAM_INVALID;
+		return CLOD_ERR_INVALID;
 	}
 
 	if (res == -ENOENT) {
-		return CLOD_STREAM_EOF;
+		return CLOD_ERR_EOF;
 	}
 
 	if (res < 0) {
 		return (int)-res;
 	}
 
-	stream_out->impl_uintptr = (uintptr_t)res;
+	file_out->unix_fd = (int)res;
 
 	if (flags & CLOD_FILE_READ) {
 		if (flags & CLOD_FILE_DIRECTORY) {
-			stream_out->read = clod_file_stream_readdir;
+			file_out->stream.read = clod_file_stream_readdir;
 		} else {
-			stream_out->read = clod_file_stream_read;
+			file_out->stream.read = clod_file_stream_read;
 		}
 	} else {
-		stream_out->read = nullptr;
+		file_out->stream.read = nullptr;
 	}
 
 	if (flags & CLOD_FILE_WRITE) {
-		stream_out->write = clod_file_stream_write;
+		file_out->stream.write = clod_file_stream_write;
 	} else {
-		stream_out->write = nullptr;
+		file_out->stream.write = nullptr;
 	}
 
-	stream_out->close = clod_file_stream_close;
+	file_out->stream.close = clod_file_stream_close;
 
-	return CLOD_STREAM_OK;
+	return CLOD_ERR_OK;
 }
 
 int clod_file_stream_read(clod_stream *self, struct clod_string *dst) {
 	if (dst->cap <= dst->len) {
-		return CLOD_STREAM_OK;
+		return CLOD_ERR_OK;
 	}
 
-	const long ret = syscall(__NR_read, (long)self->impl_uintptr, (long)(dst->ptr + dst->len), dst->cap - dst->len);
+	const long ret = syscall(__NR_read,
+		((clod_file*)self)->unix_fd,
+		(long)(dst->ptr + dst->len),
+		dst->cap - dst->len
+	);
 
 	if (ret < 0) {
 		return (int)-ret;
 	}
 
 	if (ret == 0) {
-		return CLOD_STREAM_EOF;
+		return CLOD_ERR_EOF;
 	}
 
 	dst->len += ret;
-	return CLOD_STREAM_OK;
+	return CLOD_ERR_OK;
 }
 int clod_file_stream_readdir(clod_stream *self, struct clod_string *dst) {
 	if (dst->cap <= dst->len) {
-		return CLOD_STREAM_OK;
+		return CLOD_ERR_OK;
 	}
 
-	const long res = syscall(__NR_getdents64, (long)self->impl_uintptr, (long)(dst->ptr + dst->len), dst->cap - dst->len);
+	const long res = syscall(__NR_getdents64,
+		((clod_file*)self)->unix_fd,
+		(long)(dst->ptr + dst->len),
+		dst->cap - dst->len
+	);
 
 	if (res == 0) {
-		return CLOD_STREAM_EOF;
+		return CLOD_ERR_EOF;
 	}
 
 	if (res == -EBADF) {
-		return CLOD_STREAM_INVALID;
+		return CLOD_ERR_INVALID;
 	}
 
 	if (res < 0) {
@@ -156,15 +165,15 @@ int clod_file_stream_readdir(clod_stream *self, struct clod_string *dst) {
 			default: clod_ent->type = ent.type;
 		}
 	}
-	return CLOD_STREAM_OK;
+	return CLOD_ERR_OK;
 }
 int clod_file_stream_write(clod_stream *self, struct clod_string *src) {
 	if (src->len == 0) {
-		return CLOD_STREAM_OK;
+		return CLOD_ERR_OK;
 	}
 
 	while (src->len) {
-		const long ret = syscall(__NR_write, (long)self->impl_uintptr, (long)src->ptr, src->len);
+		const long ret = syscall(__NR_write, ((clod_file*)self)->unix_fd, (long)src->ptr, src->len);
 
 		if (ret > 0) {
 			src->ptr += ret;
@@ -179,31 +188,31 @@ int clod_file_stream_write(clod_stream *self, struct clod_string *src) {
 		}
 	}
 
-	return CLOD_STREAM_OK;
+	return CLOD_ERR_OK;
 }
 
 int clod_file_stream_close(clod_stream *self) {
-	const long ret = syscall(__NR_close, (long)self->impl_uintptr);
+	const long ret = syscall(__NR_close, ((clod_file*)self)->unix_fd);
 	if (ret < 0) {
 		return (int)-ret;
 	}
-	return CLOD_STREAM_OK;
+	return CLOD_ERR_OK;
 }
 
-clod_stream *clod_stream_stdin = &(clod_stream){
-	.impl_uintptr = 0,
-	.read = clod_file_stream_read,
-	.close = clod_file_stream_close,
-};
+clod_stream *clod_stream_stdin = &(clod_file){
+	.unix_fd = 0,
+	.stream.read = clod_file_stream_read,
+	.stream.close = clod_file_stream_close,
+}.stream;
 
-clod_stream *clod_stream_stdout = &(clod_stream){
-	.impl_uintptr = 1,
-	.write = clod_file_stream_write,
-	.close = clod_file_stream_close
-};
+clod_stream *clod_stream_stdout = &(clod_file){
+	.unix_fd = 1,
+	.stream.write = clod_file_stream_write,
+	.stream.close = clod_file_stream_close
+}.stream;
 
-clod_stream *clod_stream_stderr = &(clod_stream){
-	.impl_uintptr = 2,
-	.write = clod_file_stream_write,
-	.close = clod_file_stream_close,
-};
+clod_stream *clod_stream_stderr = &(clod_file){
+	.unix_fd = 2,
+	.stream.write = clod_file_stream_write,
+	.stream.close = clod_file_stream_close,
+}.stream;

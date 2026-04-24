@@ -1,6 +1,6 @@
 #include <clod/string.h>
 #include <string.h>
-#include <clod/structures/nbt.h>
+#include <clod/nbt.h>
 #include "serialise/integer_be.h"
 
 constexpr size_t payload_zero_sizes[] = {

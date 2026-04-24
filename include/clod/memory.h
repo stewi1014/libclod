@@ -84,7 +84,7 @@ struct clod_allocator_opts {
  *
  * The contents of allocated memory is undefined.
  *
- * Allocating a size of zero returns a non-null non-unique pointer that can be freed.
+ * Allocating a size of zero returns a non-null pointer that can be freed.
  * Freeing nullptr does nothing.
  *
  * @param[in] opts (nullable) Allocator configuration options.

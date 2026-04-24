@@ -70,7 +70,7 @@ typedef struct {
 	uint64_t _v2;
 	uint64_t _v3;
 	uint8_t _size;
-	unsigned char _buf[7];
+	uint8_t _buf[7];
 } clod_sip64_state;
 
 /**

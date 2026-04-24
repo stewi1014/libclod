@@ -1,7 +1,6 @@
-#include <clod/audio.h>
 #include <clod/math/fft.h>
-
-#include "clod/file.h"
+#include <clod/stream/file.h>
+#include <clod/stream/audio.h>
 
 #define NUM_SAMPLES 256
 
@@ -16,7 +15,8 @@ void slide(float *data) {
 }
 
 int main(int argc, char **argv) {
-	clod_stream in, out;
+	clod_file in;
+	clod_audio out;
 
 	char *file_path = "../../../examples/vocoder/out.pcm";
 	if (argv[1]) file_path = argv[1];
@@ -42,9 +42,9 @@ int main(int argc, char **argv) {
 		slide(input);
 		slide(output);
 
-		int res = in.read(&in, &(struct clod_string){ .ptr = (char*)input, .len = 0, .cap = NUM_SAMPLES * sizeof(float) });
-		if (res == CLOD_STREAM_EOF) break;
-		if (res != CLOD_STREAM_OK) return res;
+		int res = in.stream.read(&in.stream, &(struct clod_string){ .ptr = (char*)input, .len = 0, .cap = NUM_SAMPLES * sizeof(float) });
+		if (res == CLOD_ERR_EOF) break;
+		if (res != CLOD_ERR_OK) return res;
 
 		float fft[NUM_SAMPLES * 4];
 		for (size_t i = 0; i < NUM_SAMPLES * 2; i++) {
@@ -64,12 +64,14 @@ int main(int argc, char **argv) {
 			output[i] += fft[i] * (float)(NUM_SAMPLES * 2 - i) / (float) NUM_SAMPLES;
 		}
 
-		res = out.write(&out, &(struct clod_string){ .ptr = (char*)(output + NUM_SAMPLES), .len = NUM_SAMPLES * sizeof(float), .cap = 0 });
-		if (res != CLOD_STREAM_OK) return res;
+		res = out.stream.write(&out.stream, &(struct clod_string){ .ptr = (char*)(output + NUM_SAMPLES), .len = NUM_SAMPLES * sizeof(float), .cap = 0 });
+		if (res != CLOD_ERR_OK) {
+			return res;
+		}
 	}
 
-	in.close(&in);
-	out.close(&out);
+	in.stream.close(&in.stream);
+	out.stream.close(&out.stream);
 
 	return 0;
 }
