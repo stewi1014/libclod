@@ -28,6 +28,7 @@ macro(clod_sources)
     target_sources(clod INTERFACE ${ARGV})
 endmacro()
 
+add_subdirectory(btree)
 add_subdirectory(compression)
 add_subdirectory(hash)
 add_subdirectory(math)

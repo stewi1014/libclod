@@ -1,4 +1,0 @@
-#ifndef LIBCLOD_MEMORY_TREE_H
-#define LIBCLOD_MEMORY_TREE_H
-
-#endif

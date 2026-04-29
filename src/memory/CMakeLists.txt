@@ -1,3 +1,4 @@
 clod_sources(
-    memory.c
+#    memory.c
+#    tree.c
 )

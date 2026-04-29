@@ -7,31 +7,30 @@
 
 #include <clod/lib.h>
 
+typedef struct clod_allocator clod_allocator;
+
 /**
  * Memory allocator methods.
  * Libclod provides a way to create an allocator built using system virtual memory.
  * Methods that take an allocator for internal usage do not assume the implementation is libclod's.
  * As such, custom allocations methods can be provided everywhere clod_allocator is used unless stated otherwise.
  */
-typedef struct {
-	/// Value passed to invocations of \p allocate and \p free.
-	void *self;
-
+struct clod_allocator {
 	/**
 	 * Allocate memory.
 	 * @param[in] self Implementation defined value.
 	 * @param[in] size Size in bytes of the memory to allocate.
 	 * @return Pointer to the newly allocated memory.
 	 */
-	void *(*allocate)(size_t size, void *self);
+	void *(*allocate)(clod_allocator *self, size_t size);
 
 	/**
 	 * Free memory.
 	 * @param[in] ptr Pointer previously returned from \p allocate to free.
 	 * @param[in] self Implementation defined value.
 	 */
-	void (*free)(void *ptr, void *self);
-} clod_allocator;
+	void (*free)(clod_allocator *self, void *ptr);
+};
 
 /// Configuration options for libclod's memory allocator.
 struct clod_allocator_opts {

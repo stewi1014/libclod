@@ -8,6 +8,7 @@ set(CLOD_TESTS
     math/fft_freq_mag.c
     math/fft_freq_mag_packed.c
     math/taylor_approximations.c
+    memory/basic_test.c
     serialise/integer.c
     string/basic_format.c
     nbt/benchmark.c

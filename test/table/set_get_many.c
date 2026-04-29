@@ -1,5 +1,5 @@
 #include "debug.h"
-#include <../../include/clod/table.h>
+#include <clod/table.h>
 #include <string.h>
 
 #define NUM_ELEMS 100000
