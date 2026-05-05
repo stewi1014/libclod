@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['page_5fsize_0',['page_size',['../structclod__allocator__opts.html#a2a77b9ec867e451954f639c33e2a7ec6',1,'clod_allocator_opts']]],
-  ['payload_1',['payload',['../structclod__nbt__iter.html#aa53e57c6c442e9d64246964e73ed8e6f',1,'clod_nbt_iter']]],
-  ['prefix_2',['prefix',['../structclod__region__opts.html#abaceb9aa2a1f50b1ced8783d3daa875d',1,'clod_region_opts']]],
-  ['ptr_3',['ptr',['../structclod__string.html#a286d5814f7eb379534b99df916813f12',1,'clod_string::ptr'],['../structbranch.html#acb6155cb4d9919917e50e524578db920',1,'branch::ptr']]]
+  ['read_0',['read',['../structclod__stream.html#ac1a4d3d1c44a32142cb09708fba36e6d',1,'clod_stream']]],
+  ['region_5fext_1',['region_ext',['../structclod__region__opts.html#a9db86be91ea361acfc5ee7784c7efe6f',1,'clod_region_opts']]],
+  ['remote_5faddr_2',['remote_addr',['../structclod__socket.html#a292a3c0f2348bc026ff040df2cd0d9d5',1,'clod_socket']]],
+  ['remote_5fport_3',['remote_port',['../structclod__socket.html#a31c505f7989121b312941ca989c4cba7',1,'clod_socket']]]
 ];

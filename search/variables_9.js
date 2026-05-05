@@ -1,8 +1,7 @@
 var searchData=
 [
-  ['name_0',['name',['../structclod__dirent.html#ac226d0e96806add783ed39e84d37d1ce',1,'clod_dirent::name'],['../structclod__process__opts.html#aace5b0a885df90f7b76e9bf9b3d21f6b',1,'clod_process_opts::name']]],
-  ['name_5fsize_1',['name_size',['../structclod__dirent.html#aaf7acc74b01c4c1ad29b9bb78627dd8f',1,'clod_dirent']]],
-  ['next_2',['next',['../structclod__dirent.html#a7d7ccaae7c7f3bd0ea64cd97885f009a',1,'clod_dirent::next'],['../structclod__allocator.html#a239c9f5a8d4679ae1199ab534d6546bc',1,'clod_allocator::next']]],
-  ['no_5fgrow_3',['no_grow',['../structclod__allocator__opts.html#a23400d1d94c2fdc4cc2dee03ca79d907',1,'clod_allocator_opts']]],
-  ['node_5fsize_4',['node_size',['../structclod__tree.html#a9e509396444b619ec620250d9c967745',1,'clod_tree']]]
+  ['page_5fsize_0',['page_size',['../structclod__allocator__opts.html#a2a77b9ec867e451954f639c33e2a7ec6',1,'clod_allocator_opts']]],
+  ['payload_1',['payload',['../structclod__nbt__iter.html#aa53e57c6c442e9d64246964e73ed8e6f',1,'clod_nbt_iter']]],
+  ['prefix_2',['prefix',['../structclod__region__opts.html#abaceb9aa2a1f50b1ced8783d3daa875d',1,'clod_region_opts']]],
+  ['ptr_3',['ptr',['../structclod__string.html#a286d5814f7eb379534b99df916813f12',1,'clod_string']]]
 ];

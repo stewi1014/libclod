@@ -1,31 +1,4 @@
 var searchData=
 [
-  ['chunk_5floc_0',['chunk_loc',['../structchunk__loc.html',1,'']]],
-  ['clod_5fallocator_1',['clod_allocator',['../structclod__allocator.html',1,'']]],
-  ['clod_5fallocator_5fopts_2',['clod_allocator_opts',['../structclod__allocator__opts.html',1,'']]],
-  ['clod_5fcompressor_3',['clod_compressor',['../structclod__compressor.html',1,'']]],
-  ['clod_5fdecompressor_4',['clod_decompressor',['../structclod__decompressor.html',1,'']]],
-  ['clod_5fdirent_5',['clod_dirent',['../structclod__dirent.html',1,'']]],
-  ['clod_5fnbt_5fiter_6',['clod_nbt_iter',['../structclod__nbt__iter.html',1,'']]],
-  ['clod_5fprocess_5fargs_7',['clod_process_args',['../structclod__process__args.html',1,'']]],
-  ['clod_5fprocess_5fcommon_8',['clod_process_common',['../structclod__process__common.html',1,'']]],
-  ['clod_5fprocess_5flinux_9',['clod_process_linux',['../structclod__process__linux.html',1,'']]],
-  ['clod_5fprocess_5fopts_10',['clod_process_opts',['../structclod__process__opts.html',1,'']]],
-  ['clod_5fprocess_5fpthread_11',['clod_process_pthread',['../structclod__process__pthread.html',1,'']]],
-  ['clod_5fprocess_5fstdthreads_12',['clod_process_stdthreads',['../structclod__process__stdthreads.html',1,'']]],
-  ['clod_5fregion_13',['clod_region',['../structclod__region.html',1,'']]],
-  ['clod_5fregion_5fopts_14',['clod_region_opts',['../structclod__region__opts.html',1,'']]],
-  ['clod_5frfmt_15',['clod_rfmt',['../structclod__rfmt.html',1,'']]],
-  ['clod_5frfmt_5fopts_16',['clod_rfmt_opts',['../structclod__rfmt__opts.html',1,'']]],
-  ['clod_5fsip64_5fstate_17',['clod_sip64_state',['../structclod__sip64__state.html',1,'']]],
-  ['clod_5fsocket_18',['clod_socket',['../structclod__socket.html',1,'']]],
-  ['clod_5fstream_19',['clod_stream',['../structclod__stream.html',1,'']]],
-  ['clod_5fstring_20',['clod_string',['../structclod__string.html',1,'']]],
-  ['clod_5ftable_21',['clod_table',['../structclod__table.html',1,'']]],
-  ['clod_5ftable_5fiter_22',['clod_table_iter',['../structclod__table__iter.html',1,'']]],
-  ['clod_5ftable_5fopts_23',['clod_table_opts',['../structclod__table__opts.html',1,'']]],
-  ['clod_5ftree_24',['clod_tree',['../structclod__tree.html',1,'']]],
-  ['clod_5ftree_5flocation_25',['clod_tree_location',['../structclod__tree__location.html',1,'']]],
-  ['clod_5ftree_5fnode_26',['clod_tree_node',['../structclod__tree__node.html',1,'']]],
-  ['crc_5fdetails_27',['crc_details',['../structcrc__details.html',1,'']]]
+  ['element_0',['element',['../structelement.html',1,'']]]
 ];

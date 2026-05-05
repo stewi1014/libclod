@@ -25,64 +25,48 @@
 var NAVTREE =
 [
   [ "libclod", "index.html", [
-    [ "libclod", "index.html#autotoc_md27", [
-      [ "Building", "index.html#autotoc_md30", null ],
-      [ "Features", "index.html#autotoc_md31", [
-        [ "Data Structures", "index.html#autotoc_md32", [
-          [ "<a href=\"https://stewi1014.github.io/libclod/group__nbt.html\">NBT</a>", "index.html#autotoc_md33", null ],
-          [ "<a href=\"https://stewi1014.github.io/libclod/group__table.html\">Hash Table</a>", "index.html#autotoc_md34", null ],
-          [ "<a href=\"https://stewi1014.github.io/libclod/group__tree.html\">Tree</a>", "index.html#autotoc_md35", null ]
-        ] ],
-        [ "<a href=\"https://stewi1014.github.io/libclod/group__compression.html\">Compression API</a>", "index.html#autotoc_md36", null ],
-        [ "<a href=\"https://stewi1014.github.io/libclod/group__file.html\">File IO</a>", "index.html#autotoc_md37", null ],
-        [ "<a href=\"https://stewi1014.github.io/libclod/group__hash.html\">Hash Functions</a>", "index.html#autotoc_md38", null ],
-        [ "<a href=\"https://stewi1014.github.io/libclod/group__memory.html\">Memory Allocator</a>", "index.html#autotoc_md39", null ],
-        [ "<a href=\"https://stewi1014.github.io/libclod/group__region.html\">Region Storage</a>", "index.html#autotoc_md40", null ],
-        [ "<a href=\"https://stewi1014.github.io/libclod/group__threading.html\">Threading API</a>", "index.html#autotoc_md41", null ]
+    [ "libclod", "index.html#autotoc_md17", [
+      [ "Building", "index.html#autotoc_md20", null ],
+      [ "Features", "index.html#autotoc_md21", [
+        [ "<a href=\"https://stewi1014.github.io/libclod/group__nbt.html\">NBT</a>", "index.html#autotoc_md22", null ],
+        [ "<a href=\"https://stewi1014.github.io/libclod/group__table.html\">Hash Table</a>", "index.html#autotoc_md23", null ],
+        [ "<a href=\"https://stewi1014.github.io/libclod/group__tree.html\">Tree</a>", "index.html#autotoc_md24", null ],
+        [ "<a href=\"https://stewi1014.github.io/libclod/group__compression.html\">Compression API</a>", "index.html#autotoc_md25", null ],
+        [ "<a href=\"https://stewi1014.github.io/libclod/group__file.html\">File IO</a>", "index.html#autotoc_md26", null ],
+        [ "<a href=\"https://stewi1014.github.io/libclod/group__hash.html\">Hash Functions</a>", "index.html#autotoc_md27", null ],
+        [ "<a href=\"https://stewi1014.github.io/libclod/group__memory.html\">Memory Allocator</a>", "index.html#autotoc_md28", null ],
+        [ "<a href=\"https://stewi1014.github.io/libclod/group__region.html\">Region Storage</a>", "index.html#autotoc_md29", null ],
+        [ "<a href=\"https://stewi1014.github.io/libclod/group__threading.html\">Threading API</a>", "index.html#autotoc_md30", null ]
       ] ],
-      [ "Dependencies", "index.html#autotoc_md42", [
-        [ "Linux", "index.html#autotoc_md43", null ],
-        [ "BSD", "index.html#autotoc_md44", null ],
-        [ "macOS", "index.html#autotoc_md45", null ],
-        [ "Windows", "index.html#autotoc_md46", null ]
-      ] ]
-    ] ],
-    [ "libclod memory allocator", "md_src_2memory_2allocator.html", [
-      [ "Tree", "md_src_2memory_2allocator.html#autotoc_md1", [
-        [ "Free tree", "md_src_2memory_2allocator.html#autotoc_md2", null ],
-        [ "Used tree", "md_src_2memory_2allocator.html#autotoc_md3", null ]
-      ] ],
-      [ "Slab Free list", "md_src_2memory_2allocator.html#autotoc_md4", null ],
-      [ "Block", "md_src_2memory_2allocator.html#autotoc_md5", [
-        [ "Slab", "md_src_2memory_2allocator.html#autotoc_md6", null ]
-      ] ],
-      [ "Internal Pointer", "md_src_2memory_2allocator.html#autotoc_md7", null ],
-      [ "Slabs", "md_src_2memory_2allocator.html#autotoc_md8", [
-        [ "Split slab", "md_src_2memory_2allocator.html#autotoc_md9", null ]
+      [ "Dependencies", "index.html#autotoc_md31", [
+        [ "Linux", "index.html#autotoc_md32", null ],
+        [ "BSD", "index.html#autotoc_md33", null ],
+        [ "macOS", "index.html#autotoc_md34", null ],
+        [ "Windows", "index.html#autotoc_md35", null ]
       ] ]
     ] ],
     [ "Region File Format", "region_format.html", [
-      [ "Region File Format", "region_format.html#autotoc_md10", [
-        [ "Prior Reading", "region_format.html#autotoc_md11", null ],
-        [ "Structure", "region_format.html#autotoc_md12", [
-          [ "Chunk Location", "region_format.html#autotoc_md13", null ],
-          [ "Chunk Data", "region_format.html#autotoc_md14", null ]
+      [ "Region File Format", "region_format.html#autotoc_md0", [
+        [ "Prior Reading", "region_format.html#autotoc_md1", null ],
+        [ "Structure", "region_format.html#autotoc_md2", [
+          [ "Chunk Location", "region_format.html#autotoc_md3", null ],
+          [ "Chunk Data", "region_format.html#autotoc_md4", null ]
         ] ]
       ] ],
-      [ "Reading", "region_format.html#autotoc_md15", null ],
-      [ "Writing", "region_format.html#autotoc_md16", null ],
-      [ "File Operations", "region_format.html#autotoc_md17", [
-        [ "File Creation", "region_format.html#autotoc_md18", null ],
-        [ "File resizing", "region_format.html#autotoc_md19", null ]
+      [ "Reading", "region_format.html#autotoc_md5", null ],
+      [ "Writing", "region_format.html#autotoc_md6", null ],
+      [ "File Operations", "region_format.html#autotoc_md7", [
+        [ "File Creation", "region_format.html#autotoc_md8", null ],
+        [ "File resizing", "region_format.html#autotoc_md9", null ]
       ] ],
-      [ "Maintenance Operations", "region_format.html#autotoc_md20", [
-        [ "Checkpointing", "region_format.html#autotoc_md21", null ],
-        [ "Compaction", "region_format.html#autotoc_md22", null ]
+      [ "Maintenance Operations", "region_format.html#autotoc_md10", [
+        [ "Checkpointing", "region_format.html#autotoc_md11", null ],
+        [ "Compaction", "region_format.html#autotoc_md12", null ]
       ] ],
-      [ "Recovery", "region_format.html#autotoc_md23", null ],
-      [ "Locking", "region_format.html#autotoc_md24", [
-        [ "Structure", "region_format.html#autotoc_md25", null ],
-        [ "Lock Requirements", "region_format.html#autotoc_md26", null ]
+      [ "Recovery", "region_format.html#autotoc_md13", null ],
+      [ "Locking", "region_format.html#autotoc_md14", [
+        [ "Structure", "region_format.html#autotoc_md15", null ],
+        [ "Lock Requirements", "region_format.html#autotoc_md16", null ]
       ] ]
     ] ],
     [ "Topics", "topics.html", "topics" ],
@@ -99,6 +83,7 @@ var NAVTREE =
       [ "File Members", "globals.html", [
         [ "All", "globals.html", null ],
         [ "Functions", "globals_func.html", null ],
+        [ "Variables", "globals_vars.html", null ],
         [ "Typedefs", "globals_type.html", null ],
         [ "Enumerations", "globals_enum.html", null ],
         [ "Enumerator", "globals_eval.html", null ],
@@ -110,8 +95,8 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"allocator_8h_source.html",
-"nbt_8h.html"
+"annotated.html",
+"region__format_2format_8c_source.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronization';

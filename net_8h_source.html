@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.16.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>libclod: include/clod/net.h Source File</title>
+<title>libclod: include/clod/stream/net.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -92,16 +92,16 @@ $(function(){initNavTree('net_8h_source.html','',''); });
   <div class="headertitle"><div class="title">net.h</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="net_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span></div>
+<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span></div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#ifndef LIBCLOD_NET_H</span></div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#define LIBCLOD_NET_H</span></div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &lt;<a class="code" href="lib_8h.html">clod/lib.h</a>&gt;</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &lt;clod/stream.h&gt;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &lt;<a class="code" href="stream_8h.html">clod/stream/stream.h</a>&gt;</span></div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="keyword">typedef</span> <span class="keyword">struct </span>clod_socker <a class="code hl_struct" href="structclod__socket.html">clod_socket</a>;</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="structclod__socket.html">clod_socket</a> <a class="code hl_struct" href="structclod__socket.html">clod_socket</a>;</div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="net_8h.html#ae8c7e882e24af920939fb86611f712d7">   18</a></span><span class="preprocessor">#define clod_ipv4(a, b, c, d) ((char[16]){0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0xFF, a, b, c, d})</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#define clod_ipv4(a, b, c, d) ((char[16]){0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0xFF, a, b, c, d})</span></div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span></div>
 <div class="foldopen" id="foldopen00036" data-start="{" data-end="};">
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="structclod__socket.html">   36</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structclod__socket.html">clod_socket</a> {</div>
@@ -114,32 +114,30 @@ $(function(){initNavTree('net_8h_source.html','',''); });
 </div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span></div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>CLOD_API CLOD_NONNULL(1)</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="net_8h.html#af74b0b2f0ec273d60d05f81dcd29a9e0">   55</a></span>int <a class="code hl_function" href="net_8h.html#af74b0b2f0ec273d60d05f81dcd29a9e0">clod_udp</a>(<a class="code hl_struct" href="structclod__socket.html">clod_socket</a> *socket, <span class="keywordtype">int</span> flags);</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>int clod_stream_udp(<a class="code hl_struct" href="structclod__socket.html">clod_socket</a> *socket, <span class="keywordtype">int</span> flags);</div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span></div>
 <div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>CLOD_API CLOD_NONNULL(1)</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno"><a class="line" href="net_8h.html#a754563adbb7d8aacb0d6d6a64535f074">   65</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="net_8h.html#a754563adbb7d8aacb0d6d6a64535f074">clod_tcp_client</a>(<a class="code hl_struct" href="structclod__socket.html">clod_socket</a> *socket, <span class="keywordtype">int</span> flags);</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="keywordtype">int</span> clod_stream_tcp_client(<a class="code hl_struct" href="structclod__socket.html">clod_socket</a> *socket, <span class="keywordtype">int</span> flags);</div>
 <div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span></div>
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>CLOD_API CLOD_NONNULL(1)</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno"><a class="line" href="net_8h.html#a41423c67765acc287958f1a24394a3d2">   74</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="net_8h.html#a41423c67765acc287958f1a24394a3d2">clod_tcp_server</a>(<a class="code hl_struct" href="structclod__socket.html">clod_socket</a> *socket, <span class="keywordtype">int</span> flags);</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><span class="keywordtype">int</span> clod_stream_tcp_server(<a class="code hl_struct" href="structclod__socket.html">clod_socket</a> *socket, <span class="keywordtype">int</span> flags);</div>
 <div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
 <div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="alib_8h_html"><div class="ttname"><a href="lib_8h.html">lib.h</a></div></div>
-<div class="ttc" id="anet_8h_html_a41423c67765acc287958f1a24394a3d2"><div class="ttname"><a href="net_8h.html#a41423c67765acc287958f1a24394a3d2">clod_tcp_server</a></div><div class="ttdeci">int clod_tcp_server(clod_socket *socket, int flags)</div></div>
-<div class="ttc" id="anet_8h_html_a754563adbb7d8aacb0d6d6a64535f074"><div class="ttname"><a href="net_8h.html#a754563adbb7d8aacb0d6d6a64535f074">clod_tcp_client</a></div><div class="ttdeci">int clod_tcp_client(clod_socket *socket, int flags)</div></div>
-<div class="ttc" id="anet_8h_html_af74b0b2f0ec273d60d05f81dcd29a9e0"><div class="ttname"><a href="net_8h.html#af74b0b2f0ec273d60d05f81dcd29a9e0">clod_udp</a></div><div class="ttdeci">int clod_udp(clod_socket *socket, int flags)</div></div>
+<div class="ttc" id="astream_8h_html"><div class="ttname"><a href="stream_8h.html">stream.h</a></div></div>
 <div class="ttc" id="astructclod__socket_html"><div class="ttname"><a href="structclod__socket.html">clod_socket</a></div><div class="ttdef"><b>Definition</b> <a href="#l00036">net.h:36</a></div></div>
 <div class="ttc" id="astructclod__socket_html_a292a3c0f2348bc026ff040df2cd0d9d5"><div class="ttname"><a href="structclod__socket.html#a292a3c0f2348bc026ff040df2cd0d9d5">clod_socket::remote_addr</a></div><div class="ttdeci">unsigned char remote_addr[16]</div><div class="ttdoc">Remote IP address.</div><div class="ttdef"><b>Definition</b> <a href="#l00043">net.h:43</a></div></div>
 <div class="ttc" id="astructclod__socket_html_a31c505f7989121b312941ca989c4cba7"><div class="ttname"><a href="structclod__socket.html#a31c505f7989121b312941ca989c4cba7">clod_socket::remote_port</a></div><div class="ttdeci">unsigned short remote_port</div><div class="ttdoc">Remote port number.</div><div class="ttdef"><b>Definition</b> <a href="#l00045">net.h:45</a></div></div>
 <div class="ttc" id="astructclod__socket_html_a85bee05fef48c4b5a409866b2b591ae7"><div class="ttname"><a href="structclod__socket.html#a85bee05fef48c4b5a409866b2b591ae7">clod_socket::local_port</a></div><div class="ttdeci">unsigned short local_port</div><div class="ttdoc">Local port number.</div><div class="ttdef"><b>Definition</b> <a href="#l00041">net.h:41</a></div></div>
 <div class="ttc" id="astructclod__socket_html_a8a9f04fe287b73074fa572ba5126b468"><div class="ttname"><a href="structclod__socket.html#a8a9f04fe287b73074fa572ba5126b468">clod_socket::local_addr</a></div><div class="ttdeci">unsigned char local_addr[16]</div><div class="ttdoc">Local IP address.</div><div class="ttdef"><b>Definition</b> <a href="#l00039">net.h:39</a></div></div>
-<div class="ttc" id="astructclod__stream_html"><div class="ttname"><a href="structclod__stream.html">clod_stream</a></div><div class="ttdef"><b>Definition</b> <a href="stream_8h_source.html#l00055">stream.h:55</a></div></div>
+<div class="ttc" id="astructclod__stream_html"><div class="ttname"><a href="structclod__stream.html">clod_stream</a></div><div class="ttdef"><b>Definition</b> <a href="stream_8h_source.html#l00047">stream.h:47</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 </div><!-- container -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><b>include</b></li><li class="navelem"><b>clod</b></li><li class="navelem"><a href="net_8h.html">net.h</a></li>
+    <li class="navelem"><b>include</b></li><li class="navelem"><b>clod</b></li><li class="navelem"><b>stream</b></li><li class="navelem"><b>net.h</b></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
   </ul>
 </div>

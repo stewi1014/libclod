@@ -93,49 +93,9 @@ $(function(){initNavTree('memory_8c_source.html','',''); });
 </div><!--header-->
 <div class="contents">
 <div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &lt;<a class="code" href="memory_8h.html">clod/memory.h</a>&gt;</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &lt;<a class="code" href="vm_8h.html">clod/sys/vm.h</a>&gt;</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;allocator.h&quot;</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
-<div class="foldopen" id="foldopen00006" data-start="{" data-end="}">
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno"><a class="line" href="memory_8h.html#a415b24a82f1fb8a33b83eed53aa4ed85">    6</a></span><a class="code hl_struct" href="structclod__allocator.html">clod_allocator</a> *<a class="code hl_function" href="memory_8h.html#a415b24a82f1fb8a33b83eed53aa4ed85">clod_allocator_create</a>(<span class="keyword">const</span> <span class="keyword">struct</span> <a class="code hl_struct" href="structclod__allocator__opts.html">clod_allocator_opts</a> *opts) {</div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>    <span class="keywordflow">if</span> (opts == <span class="keyword">nullptr</span>) {</div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>        opts = &amp;(<span class="keyword">struct </span><a class="code hl_struct" href="structclod__allocator__opts.html">clod_allocator_opts</a>){0};</div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (opts-&gt;<a class="code hl_variable" href="structclod__allocator__opts.html#aac2966223625da3ea881cc2a2e42c4aa">allocator_opts_size</a> &lt; <span class="keyword">sizeof</span>(*opts)) {</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    }</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>}</div>
-</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="keywordtype">void</span> *clod_alloc(<a class="code hl_struct" href="structclod__allocator.html">clod_allocator</a> *allocator, <span class="keyword">const</span> <span class="keywordtype">size_t</span> size) {</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <span class="keywordflow">if</span> (size == 0) {</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>        <span class="keywordflow">return</span> (<span class="keywordtype">char</span>*)allocator + allocator-&gt;<a class="code hl_variable" href="structclod__allocator.html#af8ed0d9d867f3f51333a8cbc7b9c6a51">size</a>;</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    }</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>}</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="keywordtype">void</span> clod_free(<a class="code hl_struct" href="structclod__allocator.html">clod_allocator</a> *allocator, <span class="keywordtype">void</span> *ptr) {</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="keywordflow">if</span> (ptr == <span class="keyword">nullptr</span>) <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <span class="keywordflow">if</span> (ptr == (<span class="keywordtype">char</span>*)allocator + allocator-&gt;<a class="code hl_variable" href="structclod__allocator.html#af8ed0d9d867f3f51333a8cbc7b9c6a51">size</a>) <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>}</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
-<div class="foldopen" id="foldopen00030" data-start="{" data-end="}">
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="memory_8h.html#a0b6aec7f72c808580db72c982b656628">   30</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="memory_8h.html#a0b6aec7f72c808580db72c982b656628">clod_allocator_destroy</a>(<a class="code hl_struct" href="structclod__allocator.html">clod_allocator</a> *allocator) {</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>}</div>
-</div>
 <div class="ttc" id="amemory_8h_html"><div class="ttname"><a href="memory_8h.html">memory.h</a></div><div class="ttdoc">Memory allocation methods.</div></div>
-<div class="ttc" id="amemory_8h_html_a0b6aec7f72c808580db72c982b656628"><div class="ttname"><a href="memory_8h.html#a0b6aec7f72c808580db72c982b656628">clod_allocator_destroy</a></div><div class="ttdeci">void clod_allocator_destroy(clod_allocator *allocator)</div><div class="ttdef"><b>Definition</b> <a href="#l00030">memory.c:30</a></div></div>
-<div class="ttc" id="amemory_8h_html_a415b24a82f1fb8a33b83eed53aa4ed85"><div class="ttname"><a href="memory_8h.html#a415b24a82f1fb8a33b83eed53aa4ed85">clod_allocator_create</a></div><div class="ttdeci">clod_allocator * clod_allocator_create(const struct clod_allocator_opts *opts)</div><div class="ttdef"><b>Definition</b> <a href="#l00006">memory.c:6</a></div></div>
-<div class="ttc" id="astructclod__allocator__opts_html"><div class="ttname"><a href="structclod__allocator__opts.html">clod_allocator_opts</a></div><div class="ttdoc">Configuration options for libclod&#39;s memory allocator.</div><div class="ttdef"><b>Definition</b> <a href="memory_8h_source.html#l00037">memory.h:37</a></div></div>
-<div class="ttc" id="astructclod__allocator__opts_html_aac2966223625da3ea881cc2a2e42c4aa"><div class="ttname"><a href="structclod__allocator__opts.html#aac2966223625da3ea881cc2a2e42c4aa">clod_allocator_opts::allocator_opts_size</a></div><div class="ttdeci">size_t allocator_opts_size</div><div class="ttdoc">Size of this struct for future-proofing.</div><div class="ttdef"><b>Definition</b> <a href="memory_8h_source.html#l00039">memory.h:39</a></div></div>
-<div class="ttc" id="astructclod__allocator_html"><div class="ttname"><a href="structclod__allocator.html">clod_allocator</a></div><div class="ttdoc">Allocator.</div><div class="ttdef"><b>Definition</b> <a href="memory_8h_source.html#l00016">memory.h:16</a></div></div>
-<div class="ttc" id="astructclod__allocator_html_af8ed0d9d867f3f51333a8cbc7b9c6a51"><div class="ttname"><a href="structclod__allocator.html#af8ed0d9d867f3f51333a8cbc7b9c6a51">clod_allocator::size</a></div><div class="ttdeci">uint32_t size</div><div class="ttdoc">Size of backing memory.</div><div class="ttdef"><b>Definition</b> <a href="allocator_8h_source.html#l00173">allocator.h:173</a></div></div>
-<div class="ttc" id="avm_8h_html"><div class="ttname"><a href="vm_8h.html">vm.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 </div><!-- container -->

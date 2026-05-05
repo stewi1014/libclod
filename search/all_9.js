@@ -1,18 +1,12 @@
 var searchData=
 [
-  ['last_5fslab_5fbranch_0',['last_slab_branch',['../structclod__allocator.html#a68979dc2eaae1147127f0e526e2f9ad2',1,'clod_allocator']]],
-  ['len_1',['len',['../structclod__string.html#ab729e7d1c2a02c4fcad1d9dfa384e895',1,'clod_string']]],
-  ['lib_2eh_2',['lib.h',['../lib_8h.html',1,'']]],
-  ['libclod_3',['libclod',['../index.html',1,'libclod'],['../index.html#autotoc_md27',1,'libclod']]],
-  ['libclod_20memory_20allocator_4',['libclod memory allocator',['../md_src_2memory_2allocator.html',1,'']]],
-  ['linux_5',['Linux',['../index.html#autotoc_md43',1,'']]],
-  ['linux_5fdirent_6',['linux_dirent',['../structlinux__dirent.html',1,'']]],
-  ['list_7',['Slab Free list',['../md_src_2memory_2allocator.html#autotoc_md4',1,'']]],
-  ['local_5faddr_8',['local_addr',['../structclod__socket.html#a8a9f04fe287b73074fa572ba5126b468',1,'clod_socket']]],
-  ['local_5fport_9',['local_port',['../structclod__socket.html#a85bee05fef48c4b5a409866b2b591ae7',1,'clod_socket']]],
-  ['location_10',['Chunk Location',['../region_format.html#autotoc_md13',1,'']]],
-  ['lock_11',['lock',['../structlock.html',1,'']]],
-  ['lock_20requirements_12',['Lock Requirements',['../region_format.html#autotoc_md26',1,'']]],
-  ['locking_13',['Locking',['../region_format.html#autotoc_md24',1,'']]],
-  ['locks_14',['Locks',['../group__lock.html',1,'']]]
+  ['macos_0',['macOS',['../index.html#autotoc_md34',1,'']]],
+  ['main_1',['main',['../structclod__process__opts.html#a45f9f50c437bf7f443ae3052c02161f5',1,'clod_process_opts']]],
+  ['maintenance_20operations_2',['Maintenance Operations',['../region_format.html#autotoc_md10',1,'']]],
+  ['malloc_5ffunc_3',['malloc_func',['../structclod__rfmt__opts.html#a21d0511ba90f5cbb4b05ba0d8b68305d',1,'clod_rfmt_opts::malloc_func'],['../structclod__table__opts.html#a69dab072af6c0d8244d200cbde9283db',1,'clod_table_opts::malloc_func']]],
+  ['memory_20allocator_4',['&lt;a href=&quot;https://stewi1014.github.io/libclod/group__memory.html&quot;&gt;Memory Allocator&lt;/a&gt;',['../index.html#autotoc_md28',1,'']]],
+  ['memory_2eh_5',['memory.h',['../memory_8h.html',1,'']]],
+  ['methods_6',['methods',['../group__stream.html',1,'Data streaming methods.'],['../group__hash.html',1,'Hash methods']]],
+  ['min_5fcapacity_7',['min_capacity',['../structclod__table__opts.html#a43e5fd77a335eee620c7092e8ccecfea',1,'clod_table_opts']]],
+  ['mode_8',['mode',['../structclod__region__opts.html#a28035120dc32ffc93355cf4223027a67',1,'clod_region_opts']]]
 ];

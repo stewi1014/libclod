@@ -1,19 +1,13 @@
 var searchData=
 [
-  ['read_0',['read',['../structclod__stream.html#ac1a4d3d1c44a32142cb09708fba36e6d',1,'clod_stream']]],
-  ['reading_1',['Reading',['../region_format.html#autotoc_md11',1,'Prior Reading'],['../region_format.html#autotoc_md15',1,'Reading']]],
-  ['recovery_2',['Recovery',['../region_format.html#autotoc_md23',1,'']]],
-  ['region_20file_20format_3',['Region File Format',['../region_format.html',1,'Region File Format'],['../region_format.html#autotoc_md10',1,'Region File Format']]],
-  ['region_20format_4',['Region Format',['../group__region__format.html',1,'']]],
-  ['region_20storage_5',['Region Storage',['../index.html#autotoc_md40',1,'&lt;a href=&quot;https://stewi1014.github.io/libclod/group__region.html&quot;&gt;Region Storage&lt;/a&gt;'],['../group__region.html',1,'Region Storage']]],
-  ['region_2eh_6',['region.h',['../region_8h.html',1,'']]],
-  ['region_5fext_7',['region_ext',['../structclod__region__opts.html#a9db86be91ea361acfc5ee7784c7efe6f',1,'clod_region_opts']]],
-  ['region_5ffile_8',['region_file',['../structregion__file.html',1,'']]],
-  ['region_5fformat_2eh_9',['region_format.h',['../region__format_8h.html',1,'']]],
-  ['remote_5faddr_10',['remote_addr',['../structclod__socket.html#a292a3c0f2348bc026ff040df2cd0d9d5',1,'clod_socket']]],
-  ['remote_5fport_11',['remote_port',['../structclod__socket.html#a31c505f7989121b312941ca989c4cba7',1,'clod_socket']]],
-  ['requirements_12',['Lock Requirements',['../region_format.html#autotoc_md26',1,'']]],
-  ['resizing_13',['File resizing',['../region_format.html#autotoc_md19',1,'']]],
-  ['root_14',['root',['../structclod__tree.html#ad89f1b7dcc76f5799b0b3f03da4c17ed',1,'clod_tree']]],
-  ['rwseq_2eh_15',['rwseq.h',['../rwseq_8h.html',1,'']]]
+  ['sector_5fsize_0',['sector_size',['../structclod__region__opts.html#ae0f50676a3a0357aee7f5f8e604feb92',1,'clod_region_opts']]],
+  ['self_1',['self',['../structclod__allocator.html#a90b02a5434c9afe7373bb75abf523f35',1,'clod_allocator']]],
+  ['size_2',['size',['../structclod__nbt__iter.html#a598e1d583b0d6ad771c0137bcc58aafc',1,'clod_nbt_iter']]],
+  ['source_3',['&lt;a href=&quot;https://github.com/stewi1014/libclod&quot;&gt;Source&lt;/a&gt;',['../index.html#autotoc_md19',1,'']]],
+  ['stack_5fsize_4',['stack_size',['../structclod__process__opts.html#a92c3f6030a97cb30ed2343478b712bbb',1,'clod_process_opts']]],
+  ['storage_5',['Storage',['../index.html#autotoc_md29',1,'&lt;a href=&quot;https://stewi1014.github.io/libclod/group__region.html&quot;&gt;Region Storage&lt;/a&gt;'],['../group__region.html',1,'Region Storage']]],
+  ['stream_2eh_6',['stream.h',['../stream_8h.html',1,'']]],
+  ['streaming_20methods_7',['Data streaming methods.',['../group__stream.html',1,'']]],
+  ['string_2eh_8',['string.h',['../string_8h.html',1,'']]],
+  ['structure_9',['Structure',['../region_format.html#autotoc_md2',1,'Structure'],['../region_format.html#autotoc_md15',1,'Structure']]]
 ];

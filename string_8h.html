@@ -106,14 +106,14 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-define-members" class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
+<tr class="memitem:aef6cd87a8fa2225b1e99fcdda79b2f02" id="r_aef6cd87a8fa2225b1e99fcdda79b2f02"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#aef6cd87a8fa2225b1e99fcdda79b2f02">CLOD_STRING</a>(ptr_,  len_,  cap_)</td></tr>
+<tr class="memdesc:aef6cd87a8fa2225b1e99fcdda79b2f02"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a new string.  <br /></td></tr>
 <tr class="memitem:a19c048671e4102dc4c77fef6d3830081" id="r_a19c048671e4102dc4c77fef6d3830081"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a19c048671e4102dc4c77fef6d3830081">CLOD_STRING_NULL</a>&#160;&#160;&#160;((struct <a class="el" href="structclod__string.html">clod_string</a>){0})</td></tr>
 <tr class="memdesc:a19c048671e4102dc4c77fef6d3830081"><td class="mdescLeft">&#160;</td><td class="mdescRight">Null string.  <br /></td></tr>
 <tr class="memitem:a15356fad035fc3638ca80a277f59d413" id="r_a15356fad035fc3638ca80a277f59d413"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a15356fad035fc3638ca80a277f59d413">CLOD_STRING_C</a>(cstr)</td></tr>
 <tr class="memdesc:a15356fad035fc3638ca80a277f59d413"><td class="mdescLeft">&#160;</td><td class="mdescRight">String literal constant.  <br /></td></tr>
 <tr class="memitem:af04254fac02a863302c7fa84dea9d255" id="r_af04254fac02a863302c7fa84dea9d255"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#af04254fac02a863302c7fa84dea9d255">CLOD_STRING_NEW</a>(size)</td></tr>
 <tr class="memdesc:af04254fac02a863302c7fa84dea9d255"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a new empty string with the given capacity on the stack.  <br /></td></tr>
-<tr class="memitem:a2182838bce054960ad07ccb3112a4b1e" id="r_a2182838bce054960ad07ccb3112a4b1e"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a2182838bce054960ad07ccb3112a4b1e">CLOD_STRING_OBJECT</a>(object)</td></tr>
-<tr class="memdesc:a2182838bce054960ad07ccb3112a4b1e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the string representation of an object.  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
@@ -149,6 +149,38 @@ CLOD_API int&#160;</td><td class="memItemRight"><b>clod_string_vparse</b> (struc
 
 <p class="definition">Definition in file <a class="el" href="string_8h_source.html">string.h</a>.</p>
 </div><a name="doc-define-members" id="doc-define-members"></a><h2 id="header-doc-define-members" class="groupheader">Macro Definition Documentation</h2>
+<a id="aef6cd87a8fa2225b1e99fcdda79b2f02" name="aef6cd87a8fa2225b1e99fcdda79b2f02"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aef6cd87a8fa2225b1e99fcdda79b2f02">&#9670;&#160;</a></span>CLOD_STRING</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define CLOD_STRING</td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>ptr_</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>len_</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>cap_</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line">((<span class="keyword">struct </span><a class="code hl_struct" href="structclod__string.html">clod_string</a>){ .ptr = (<span class="keywordtype">char</span>*)(ptr_), .len = (ptrdiff_t)(len_), .cap = (ptrdiff_t)(cap_) })</div>
+<div class="ttc" id="astructclod__string_html"><div class="ttname"><a href="structclod__string.html">clod_string</a></div><div class="ttdef"><b>Definition</b> <a href="string_8h_source.html#l00025">string.h:25</a></div></div>
+</div><!-- fragment -->
+<p>Create a new string. </p>
+
+<p class="definition">Definition at line <a class="el" href="string_8h_source.html#l00040">40</a> of file <a class="el" href="string_8h_source.html">string.h</a>.</p>
+
+</div>
+</div>
 <a id="a19c048671e4102dc4c77fef6d3830081" name="a19c048671e4102dc4c77fef6d3830081"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a19c048671e4102dc4c77fef6d3830081">&#9670;&#160;</a></span>CLOD_STRING_NULL</h2>
 
@@ -163,7 +195,7 @@ CLOD_API int&#160;</td><td class="memItemRight"><b>clod_string_vparse</b> (struc
 
 <p>Null string. </p>
 
-<p class="definition">Definition at line <a class="el" href="string_8h_source.html#l00040">40</a> of file <a class="el" href="string_8h_source.html">string.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="string_8h_source.html#l00043">43</a> of file <a class="el" href="string_8h_source.html">string.h</a>.</p>
 
 </div>
 </div>
@@ -181,12 +213,12 @@ CLOD_API int&#160;</td><td class="memItemRight"><b>clod_string_vparse</b> (struc
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">((<span class="keyword">struct </span><a class="code hl_struct" href="structclod__string.html">clod_string</a>){ .ptr = (<span class="keywordtype">char</span>*)(cstr), .len = <span class="keyword">sizeof</span>((<span class="keywordtype">char</span>[]){cstr}) - 1, .cap = 0 })</div>
-<div class="ttc" id="astructclod__string_html"><div class="ttname"><a href="structclod__string.html">clod_string</a></div><div class="ttdef"><b>Definition</b> <a href="string_8h_source.html#l00025">string.h:25</a></div></div>
+<b>Value:</b><div class="fragment"><div class="line"><a class="code hl_define" href="#aef6cd87a8fa2225b1e99fcdda79b2f02">CLOD_STRING</a>(cstr, <span class="keyword">sizeof</span>((<span class="keywordtype">char</span>[]){cstr}) - 1, 0)</div>
+<div class="ttc" id="astring_8h_html_aef6cd87a8fa2225b1e99fcdda79b2f02"><div class="ttname"><a href="#aef6cd87a8fa2225b1e99fcdda79b2f02">CLOD_STRING</a></div><div class="ttdeci">#define CLOD_STRING(ptr_, len_, cap_)</div><div class="ttdoc">Create a new string.</div><div class="ttdef"><b>Definition</b> <a href="string_8h_source.html#l00040">string.h:40</a></div></div>
 </div><!-- fragment -->
 <p>String literal constant. </p>
 
-<p class="definition">Definition at line <a class="el" href="string_8h_source.html#l00043">43</a> of file <a class="el" href="string_8h_source.html">string.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="string_8h_source.html#l00046">46</a> of file <a class="el" href="string_8h_source.html">string.h</a>.</p>
 
 </div>
 </div>
@@ -204,31 +236,9 @@ CLOD_API int&#160;</td><td class="memItemRight"><b>clod_string_vparse</b> (struc
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">((<span class="keyword">struct </span><a class="code hl_struct" href="structclod__string.html">clod_string</a>){ .ptr = (<span class="keywordtype">char</span>[size]){0}, .len = 0, .cap = (size) })</div>
+<b>Value:</b><div class="fragment"><div class="line"><a class="code hl_define" href="#aef6cd87a8fa2225b1e99fcdda79b2f02">CLOD_STRING</a>((<span class="keywordtype">char</span>[size]){0}, 0, size)</div>
 </div><!-- fragment -->
 <p>Create a new empty string with the given capacity on the stack. </p>
-
-<p class="definition">Definition at line <a class="el" href="string_8h_source.html#l00046">46</a> of file <a class="el" href="string_8h_source.html">string.h</a>.</p>
-
-</div>
-</div>
-<a id="a2182838bce054960ad07ccb3112a4b1e" name="a2182838bce054960ad07ccb3112a4b1e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2182838bce054960ad07ccb3112a4b1e">&#9670;&#160;</a></span>CLOD_STRING_OBJECT</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define CLOD_STRING_OBJECT</td>
-          <td>(</td>
-          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>object</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">((<span class="keyword">struct </span><a class="code hl_struct" href="structclod__string.html">clod_string</a>){ .ptr = (<span class="keywordtype">char</span>*)(<span class="keywordtype">object</span>), .len = <span class="keyword">sizeof</span>(*(<span class="keywordtype">object</span>)), .cap = <span class="keyword">sizeof</span>(*(<span class="keywordtype">object</span>)) })</div>
-</div><!-- fragment -->
-<p>Get the string representation of an object. </p>
 
 <p class="definition">Definition at line <a class="el" href="string_8h_source.html#l00049">49</a> of file <a class="el" href="string_8h_source.html">string.h</a>.</p>
 
@@ -444,7 +454,7 @@ CLOD_API int&#160;</td><td class="memItemRight"><b>clod_string_vparse</b> (struc
       </table>
 </div><div class="memdoc">
 <p>Format a string similarly to snprintf. The format specification differs from the standard library in a few ways.</p>
-<div class="fragment"><div class="line">%[flags][width][.precision]&lt;type&gt;</div>
+<div class="fragment"><div class="line">%[flags][width][.precision|*]&lt;type&gt;</div>
 </div><!-- fragment --><ul>
 <li><b>Flags</b> Options for changing formatting.</li>
 <li><b>Width</b> the minimum size of the number as formatted.</li>
@@ -495,10 +505,12 @@ CLOD_API int&#160;</td><td class="memItemRight"><b>clod_string_vparse</b> (struc
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyLeft">void *  </td><td class="markdownTableBodyRight">ptr  </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyLeft">double  </td><td class="markdownTableBodyRight">d  </td></tr>
+<td class="markdownTableBodyLeft">void *  </td><td class="markdownTableBodyRight">mem  </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyLeft">struct <a class="el" href="structclod__string.html">clod_string</a> *  </td><td class="markdownTableBodyRight">str  </td></tr>
+<td class="markdownTableBodyLeft">double  </td><td class="markdownTableBodyRight">d  </td></tr>
 <tr class="markdownTableRowEven">
+<td class="markdownTableBodyLeft">struct <a class="el" href="structclod__string.html">clod_string</a> *  </td><td class="markdownTableBodyRight">str  </td></tr>
+<tr class="markdownTableRowOdd">
 <td class="markdownTableBodyLeft">C string  </td><td class="markdownTableBodyRight">s  </td></tr>
 </table>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -738,7 +750,7 @@ CLOD_API int&#160;</td><td class="memItemRight"><b>clod_string_vparse</b> (struc
 </div><div class="memdoc">
 <p>Writes an unsigned integer value to the string. The value is truncated if the destination is not large enough. </p><dl class="section return"><dt>Returns</dt><dd>The number of characters that have been, or would have been written to <code class="param">dst</code>. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="serialise_8c_source.html#l00050">50</a> of file <a class="el" href="serialise_8c_source.html">serialise.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="serialise_8c_source.html#l00049">49</a> of file <a class="el" href="serialise_8c_source.html">serialise.c</a>.</p>
 
 </div>
 </div>
@@ -767,7 +779,7 @@ CLOD_API int&#160;</td><td class="memItemRight"><b>clod_string_vparse</b> (struc
 </div><div class="memdoc">
 <p>Consumes an unsigned integer value in the string with the given base. If no value could be decoded, the string is not incremented. </p>
 
-<p class="definition">Definition at line <a class="el" href="serialise_8c_source.html#l00070">70</a> of file <a class="el" href="serialise_8c_source.html">serialise.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="serialise_8c_source.html#l00080">80</a> of file <a class="el" href="serialise_8c_source.html">serialise.c</a>.</p>
 
 </div>
 </div>

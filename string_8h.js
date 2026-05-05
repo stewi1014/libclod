@@ -1,10 +1,10 @@
 var string_8h =
 [
     [ "clod_string", "structclod__string.html", "structclod__string" ],
+    [ "CLOD_STRING", "string_8h.html#aef6cd87a8fa2225b1e99fcdda79b2f02", null ],
     [ "CLOD_STRING_NULL", "string_8h.html#a19c048671e4102dc4c77fef6d3830081", null ],
     [ "CLOD_STRING_C", "string_8h.html#a15356fad035fc3638ca80a277f59d413", null ],
     [ "CLOD_STRING_NEW", "string_8h.html#af04254fac02a863302c7fa84dea9d255", null ],
-    [ "CLOD_STRING_OBJECT", "string_8h.html#a2182838bce054960ad07ccb3112a4b1e", null ],
     [ "clod_string_from_cstr", "string_8h.html#a92c75a5869de9e311c535138b899069c", null ],
     [ "clod_string_cat", "string_8h.html#a27c6c514f193cd981e5868d61fbcedf2", null ],
     [ "clod_string_insert", "string_8h.html#afa5de52241057b250c33dea2cf8a0dcb", null ],

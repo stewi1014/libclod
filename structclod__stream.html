@@ -97,36 +97,18 @@ $(function(){initNavTree('structclod__stream.html','','structclod__stream-member
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a361432813c4c3b845dba1b473f5a7e26" id="r_a361432813c4c3b845dba1b473f5a7e26"><td class="memItemLeft">uintptr_t&#160;</td><td class="memItemRight"><a class="el" href="#a361432813c4c3b845dba1b473f5a7e26">impl</a></td></tr>
 <tr class="memitem:ac1a4d3d1c44a32142cb09708fba36e6d" id="r_ac1a4d3d1c44a32142cb09708fba36e6d"><td class="memItemLeft">int(*&#160;</td><td class="memItemRight"><a class="el" href="#ac1a4d3d1c44a32142cb09708fba36e6d">read</a> )(<a class="el" href="structclod__stream.html">clod_stream</a> *self, struct <a class="el" href="structclod__string.html">clod_string</a> *dst)</td></tr>
 <tr class="memitem:a111f4e9d652a7b93b278de826b7674d6" id="r_a111f4e9d652a7b93b278de826b7674d6"><td class="memItemLeft">int(*&#160;</td><td class="memItemRight"><a class="el" href="#a111f4e9d652a7b93b278de826b7674d6">write</a> )(<a class="el" href="structclod__stream.html">clod_stream</a> *self, struct <a class="el" href="structclod__string.html">clod_string</a> *src)</td></tr>
 <tr class="memitem:adbcf71dba9dec5777fc259adbd2afacc" id="r_adbcf71dba9dec5777fc259adbd2afacc"><td class="memItemLeft">int(*&#160;</td><td class="memItemRight"><a class="el" href="#adbcf71dba9dec5777fc259adbd2afacc">close</a> )(<a class="el" href="structclod__stream.html">clod_stream</a> *self)</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Stream of data. It roughly replaces libc's FILE, but aims to support user implementations, and has additional implementations not supported by FILE such as networking.</p>
+<div class="textblock"><p>Stream of data. It roughly replaces libc's FILE, but aims to support user implementations, and has additional library implementations not supported by FILE such as networking.</p>
 <p>All members are optional and may be omitted for streams to whom they have no relevance. A stream that supports no methods is valid, for example a directory for whom the user has no read permission can be opened, and such a directory is only useful as a relative path reference for opening files.</p>
 <p>Negative error codes are standardised across all stream implementations and platforms, and are defined at the top of this file, while positive error codes are implementation and platform-dependent. The absolute minimum number of translated error codes shall be used, and only when there is a clear case for runtime code path switching should they be used. They are not to be used as debugging tools or user messages. They are exclusively for programs to change their behaviour based on the error code.</p>
 <p>For example, distinguishing between EBADF, EFAULT, EINVAL... from linux file write syscall should not be implemented, as none of them provide useful information to the program at runtime. The only thing the program needs to know is "the file does not work" e.g. to avoid an infinite loop. On the other hand, distinguishing the normal end of a TCP connection from other errors can be important, as, instead of treating the connection as failed, the program may which to attempt to reconnect. To that end EPIPE is translated to CLOD_STREAM_EOF. </p>
 
-<p class="definition">Definition at line <a class="el" href="stream_8h_source.html#l00055">55</a> of file <a class="el" href="stream_8h_source.html">stream.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="stream_8h_source.html#l00047">47</a> of file <a class="el" href="stream_8h_source.html">stream.h</a>.</p>
 </div><a name="doc-variable-members" id="doc-variable-members"></a><h2 id="header-doc-variable-members" class="groupheader">Member Data Documentation</h2>
-<a id="a361432813c4c3b845dba1b473f5a7e26" name="a361432813c4c3b845dba1b473f5a7e26"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a361432813c4c3b845dba1b473f5a7e26">&#9670;&#160;</a></span>impl</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">uintptr_t clod_stream::impl</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Implementation-defined data; </p>
-
-<p class="definition">Definition at line <a class="el" href="stream_8h_source.html#l00059">59</a> of file <a class="el" href="stream_8h_source.html">stream.h</a>.</p>
-
-</div>
-</div>
 <a id="ac1a4d3d1c44a32142cb09708fba36e6d" name="ac1a4d3d1c44a32142cb09708fba36e6d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac1a4d3d1c44a32142cb09708fba36e6d">&#9670;&#160;</a></span>read</h2>
 
@@ -142,14 +124,14 @@ Public Attributes</h2></td></tr>
 <p>The new data is appended to the destination buffer using its free capacity.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">self</td><td>Implementation-dependent data. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">self</td><td>Pointer to this stream. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">dst</td><td>Destination buffer. </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>0 on success, non-zero error code on failure. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="stream_8h_source.html#l00072">72</a> of file <a class="el" href="stream_8h_source.html">stream.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="stream_8h_source.html#l00059">59</a> of file <a class="el" href="stream_8h_source.html">stream.h</a>.</p>
 
 </div>
 </div>
@@ -168,14 +150,14 @@ Public Attributes</h2></td></tr>
 <p>The written data is removed from the source buffer by incrementing its pointer and adjusting other parameters as such.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">self</td><td>Implementation-dependent data. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">self</td><td>Pointer to this stream. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">src</td><td>Source buffer. </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>0 on success, non-zero error code on failure. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="stream_8h_source.html#l00088">88</a> of file <a class="el" href="stream_8h_source.html">stream.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="stream_8h_source.html#l00075">75</a> of file <a class="el" href="stream_8h_source.html">stream.h</a>.</p>
 
 </div>
 </div>
@@ -194,18 +176,18 @@ Public Attributes</h2></td></tr>
 <dl class="section note"><dt>Note</dt><dd>The stream cannot be interacted with following a call to <code class="param">close</code>. Conversely, close should free the <a class="el" href="structclod__stream.html">clod_stream</a> from memory if relevant.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">self</td><td>Implementation-dependent data. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">self</td><td>Pointer to this stream. </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>0 on success, non-zero error code on failure. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="stream_8h_source.html#l00102">102</a> of file <a class="el" href="stream_8h_source.html">stream.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="stream_8h_source.html#l00089">89</a> of file <a class="el" href="stream_8h_source.html">stream.h</a>.</p>
 
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
-<li>include/clod/<a class="el" href="stream_8h_source.html">stream.h</a></li>
+<li>include/clod/stream/<a class="el" href="stream_8h_source.html">stream.h</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

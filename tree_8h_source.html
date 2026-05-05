@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.16.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>libclod: include/clod/structures/tree.h Source File</title>
+<title>libclod: src/memory/tree.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -92,96 +92,17 @@ $(function(){initNavTree('tree_8h_source.html','',''); });
   <div class="headertitle"><div class="title">tree.h</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="tree_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#ifndef LIBCLOD_TREE_H</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#define LIBCLOD_TREE_H</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;<a class="code" href="lib_8h.html">clod/lib.h</a>&gt;</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;<a class="code" href="memory_8h.html">clod/memory.h</a>&quot;</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span></div>
-<div class="foldopen" id="foldopen00023" data-start="{" data-end="};">
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="structclod__tree.html">   23</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structclod__tree.html">clod_tree</a> {</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="structclod__tree.html#ad89f1b7dcc76f5799b0b3f03da4c17ed">   25</a></span>    <span class="keyword">struct </span><a class="code hl_struct" href="structclod__tree__node.html">clod_tree_node</a> *<a class="code hl_variable" href="structclod__tree.html#ad89f1b7dcc76f5799b0b3f03da4c17ed">root</a>;</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span></div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="structclod__tree.html#ad2a6de26b7f6105c575ef0a8ef5d0728">   28</a></span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> <a class="code hl_variable" href="structclod__tree.html#ad2a6de26b7f6105c575ef0a8ef5d0728">key_size</a>;</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span></div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="structclod__tree.html#a74466258a0d78eed83fcee2fb934870b">   31</a></span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> <a class="code hl_variable" href="structclod__tree.html#a74466258a0d78eed83fcee2fb934870b">val_size</a>;</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span></div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="structclod__tree.html#ac8a9de5ab703b3d0964677782f333776">   34</a></span>    <span class="keywordtype">bool</span> <a class="code hl_variable" href="structclod__tree.html#ac8a9de5ab703b3d0964677782f333776">disable_checksum</a>;</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span></div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="structclod__tree.html#a9e509396444b619ec620250d9c967745">   37</a></span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> <a class="code hl_variable" href="structclod__tree.html#a9e509396444b619ec620250d9c967745">node_size</a>;</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span></div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="structclod__tree.html#abeb4ec923abfd4132604d1faf08e646c">   40</a></span>    <span class="keywordtype">void</span> *<a class="code hl_variable" href="structclod__tree.html#abeb4ec923abfd4132604d1faf08e646c">compare_user</a>;</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span></div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="structclod__tree.html#a0556f67093151942862d1e550d30cdce">   43</a></span>    int (*<a class="code hl_variable" href="structclod__tree.html#a0556f67093151942862d1e550d30cdce">compare</a>)(<span class="keyword">const</span> <span class="keywordtype">void</span> *key1, <span class="keyword">const</span> <span class="keywordtype">void</span> *key2, <span class="keywordtype">void</span> *user);</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span></div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="structclod__tree.html#afaca514465882732705d95e80285d6a5">   47</a></span>    <a class="code hl_struct" href="structclod__allocator.html">clod_allocator</a> <a class="code hl_variable" href="structclod__tree.html#afaca514465882732705d95e80285d6a5">allocator</a>;</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>};</div>
-</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span></div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>CLOD_API CLOD_NONNULL(1)</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>bool <a class="code hl_function" href="tree_8h.html#a2911e8f4418027f0c6f932d2cf3f82e7">clod_tree_create</a>(struct <a class="code hl_struct" href="structclod__tree.html">clod_tree</a> *tree);</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span></div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>CLOD_API CLOD_NONNULL(1)</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="keywordtype">void</span> <a class="code hl_function" href="tree_8h.html#a3f5c8bbc604904244aa17d4636936428">clod_tree_destroy</a>(struct <a class="code hl_struct" href="structclod__tree.html">clod_tree</a> *tree);</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span></div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>CLOD_API CLOD_NONNULL(1, 2, 3)</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span><span class="keywordtype">bool</span> <a class="code hl_function" href="tree_8h.html#ae53117f96576196d196005423d186d90">clod_tree_add</a>(const struct <a class="code hl_struct" href="structclod__tree.html">clod_tree</a> *tree, const <span class="keywordtype">void</span> *key, const <span class="keywordtype">void</span> *val, <span class="keywordtype">void</span> *key_out, <span class="keywordtype">void</span> *val_out);</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span></div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>CLOD_API CLOD_NONNULL(1, 2)</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span><span class="keywordtype">bool</span> <a class="code hl_function" href="tree_8h.html#a6cd86b7fd0b0b97a709bf210697e3579">clod_tree_get</a>(const struct <a class="code hl_struct" href="structclod__tree.html">clod_tree</a> *tree, const <span class="keywordtype">void</span> *key, <span class="keywordtype">void</span> *key_out, <span class="keywordtype">void</span> *val_out);</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span></div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>CLOD_API CLOD_NONNULL(1, 2)</div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span><span class="keywordtype">bool</span> <a class="code hl_function" href="tree_8h.html#a37a6ac8c4f687a1c154983a8e476bb26">clod_tree_del</a>(const struct <a class="code hl_struct" href="structclod__tree.html">clod_tree</a> *tree, const <span class="keywordtype">void</span> *key, <span class="keywordtype">void</span> *key_out, <span class="keywordtype">void</span> *val_out);</div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span></div>
-<div class="foldopen" id="foldopen00109" data-start="{" data-end="};">
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno"><a class="line" href="structclod__tree__location.html">  109</a></span>struct <a class="code hl_struct" href="structclod__tree__location.html">clod_tree_location</a> {</div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    <span class="keyword">struct </span><a class="code hl_struct" href="structclod__tree__node.html">clod_tree_node</a> *node;</div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    <span class="keyword">const</span> <span class="keywordtype">void</span> *key;</div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    <span class="keywordtype">void</span> *val;</div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>};</div>
-</div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span></div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>CLOD_API CLOD_NONNULL(1, 2, 3)</div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno"><a class="line" href="tree_8h.html#a1a4d0effa6cc525698fe7b89e24fc5dd">  125</a></span>bool <a class="code hl_function" href="tree_8h.html#a1a4d0effa6cc525698fe7b89e24fc5dd">clod_tree_find</a>(struct <a class="code hl_struct" href="structclod__tree.html">clod_tree</a> *tree, struct <a class="code hl_struct" href="structclod__tree__location.html">clod_tree_location</a> *location, const <span class="keywordtype">void</span> *key);</div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span></div>
-<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>CLOD_API CLOD_NONNULL(1, 2)</div>
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno"><a class="line" href="tree_8h.html#a6b989a9780322e79daa05b6ce04a74e1">  135</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="tree_8h.html#a6b989a9780322e79daa05b6ce04a74e1">clod_tree_next</a>(struct <a class="code hl_struct" href="structclod__tree.html">clod_tree</a> *tree, struct <a class="code hl_struct" href="structclod__tree__location.html">clod_tree_location</a> *location);</div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span></div>
-<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>CLOD_API CLOD_NONNULL(1, 2)</div>
-<div class="line"><a id="l00145" name="l00145"></a><span class="lineno"><a class="line" href="tree_8h.html#a4ba914f2c0d884a1e7d1b62a08799d69">  145</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="tree_8h.html#a4ba914f2c0d884a1e7d1b62a08799d69">clod_tree_prev</a>(struct <a class="code hl_struct" href="structclod__tree.html">clod_tree</a> *tree, struct <a class="code hl_struct" href="structclod__tree__location.html">clod_tree_location</a> *location);</div>
-<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span> </div>
-<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span><span class="preprocessor">#endif</span></div>
-<div class="ttc" id="alib_8h_html"><div class="ttname"><a href="lib_8h.html">lib.h</a></div></div>
-<div class="ttc" id="amemory_8h_html"><div class="ttname"><a href="memory_8h.html">memory.h</a></div><div class="ttdoc">Memory allocation methods.</div></div>
-<div class="ttc" id="astructclod__allocator_html"><div class="ttname"><a href="structclod__allocator.html">clod_allocator</a></div><div class="ttdoc">Allocator.</div><div class="ttdef"><b>Definition</b> <a href="memory_8h_source.html#l00016">memory.h:16</a></div></div>
-<div class="ttc" id="astructclod__tree__location_html"><div class="ttname"><a href="structclod__tree__location.html">clod_tree_location</a></div><div class="ttdef"><b>Definition</b> <a href="#l00109">tree.h:109</a></div></div>
-<div class="ttc" id="astructclod__tree__node_html"><div class="ttname"><a href="structclod__tree__node.html">clod_tree_node</a></div><div class="ttdef"><b>Definition</b> <a href="tree_8c_source.html#l00011">tree.c:11</a></div></div>
-<div class="ttc" id="astructclod__tree_html"><div class="ttname"><a href="structclod__tree.html">clod_tree</a></div><div class="ttdef"><b>Definition</b> <a href="#l00023">tree.h:23</a></div></div>
-<div class="ttc" id="astructclod__tree_html_a0556f67093151942862d1e550d30cdce"><div class="ttname"><a href="structclod__tree.html#a0556f67093151942862d1e550d30cdce">clod_tree::compare</a></div><div class="ttdeci">int(* compare)(const void *key1, const void *key2, void *user)</div><div class="ttdoc">Comparison function.</div><div class="ttdef"><b>Definition</b> <a href="#l00043">tree.h:43</a></div></div>
-<div class="ttc" id="astructclod__tree_html_a74466258a0d78eed83fcee2fb934870b"><div class="ttname"><a href="structclod__tree.html#a74466258a0d78eed83fcee2fb934870b">clod_tree::val_size</a></div><div class="ttdeci">unsigned char val_size</div><div class="ttdoc">Size of values in the tree.</div><div class="ttdef"><b>Definition</b> <a href="#l00031">tree.h:31</a></div></div>
-<div class="ttc" id="astructclod__tree_html_a9e509396444b619ec620250d9c967745"><div class="ttname"><a href="structclod__tree.html#a9e509396444b619ec620250d9c967745">clod_tree::node_size</a></div><div class="ttdeci">unsigned short node_size</div><div class="ttdoc">Size of each node in the tree.</div><div class="ttdef"><b>Definition</b> <a href="#l00037">tree.h:37</a></div></div>
-<div class="ttc" id="astructclod__tree_html_abeb4ec923abfd4132604d1faf08e646c"><div class="ttname"><a href="structclod__tree.html#abeb4ec923abfd4132604d1faf08e646c">clod_tree::compare_user</a></div><div class="ttdeci">void * compare_user</div><div class="ttdoc">User variable passed to invocations of compare.</div><div class="ttdef"><b>Definition</b> <a href="#l00040">tree.h:40</a></div></div>
-<div class="ttc" id="astructclod__tree_html_ac8a9de5ab703b3d0964677782f333776"><div class="ttname"><a href="structclod__tree.html#ac8a9de5ab703b3d0964677782f333776">clod_tree::disable_checksum</a></div><div class="ttdeci">bool disable_checksum</div><div class="ttdoc">Disables the checksum used to validate each node.</div><div class="ttdef"><b>Definition</b> <a href="#l00034">tree.h:34</a></div></div>
-<div class="ttc" id="astructclod__tree_html_ad2a6de26b7f6105c575ef0a8ef5d0728"><div class="ttname"><a href="structclod__tree.html#ad2a6de26b7f6105c575ef0a8ef5d0728">clod_tree::key_size</a></div><div class="ttdeci">unsigned char key_size</div><div class="ttdoc">Size of keys in the tree.</div><div class="ttdef"><b>Definition</b> <a href="#l00028">tree.h:28</a></div></div>
-<div class="ttc" id="astructclod__tree_html_ad89f1b7dcc76f5799b0b3f03da4c17ed"><div class="ttname"><a href="structclod__tree.html#ad89f1b7dcc76f5799b0b3f03da4c17ed">clod_tree::root</a></div><div class="ttdeci">struct clod_tree_node * root</div><div class="ttdoc">Pointer to the root node.</div><div class="ttdef"><b>Definition</b> <a href="#l00025">tree.h:25</a></div></div>
-<div class="ttc" id="astructclod__tree_html_afaca514465882732705d95e80285d6a5"><div class="ttname"><a href="structclod__tree.html#afaca514465882732705d95e80285d6a5">clod_tree::allocator</a></div><div class="ttdeci">clod_allocator allocator</div><div class="ttdef"><b>Definition</b> <a href="#l00047">tree.h:47</a></div></div>
-<div class="ttc" id="atree_8h_html_a1a4d0effa6cc525698fe7b89e24fc5dd"><div class="ttname"><a href="tree_8h.html#a1a4d0effa6cc525698fe7b89e24fc5dd">clod_tree_find</a></div><div class="ttdeci">bool clod_tree_find(struct clod_tree *tree, struct clod_tree_location *location, const void *key)</div></div>
-<div class="ttc" id="atree_8h_html_a2911e8f4418027f0c6f932d2cf3f82e7"><div class="ttname"><a href="tree_8h.html#a2911e8f4418027f0c6f932d2cf3f82e7">clod_tree_create</a></div><div class="ttdeci">bool clod_tree_create(struct clod_tree *tree)</div><div class="ttdef"><b>Definition</b> <a href="tree_8c_source.html#l00521">tree.c:521</a></div></div>
-<div class="ttc" id="atree_8h_html_a37a6ac8c4f687a1c154983a8e476bb26"><div class="ttname"><a href="tree_8h.html#a37a6ac8c4f687a1c154983a8e476bb26">clod_tree_del</a></div><div class="ttdeci">bool clod_tree_del(const struct clod_tree *tree, const void *key, void *key_out, void *val_out)</div><div class="ttdef"><b>Definition</b> <a href="tree_8c_source.html#l00734">tree.c:734</a></div></div>
-<div class="ttc" id="atree_8h_html_a3f5c8bbc604904244aa17d4636936428"><div class="ttname"><a href="tree_8h.html#a3f5c8bbc604904244aa17d4636936428">clod_tree_destroy</a></div><div class="ttdeci">void clod_tree_destroy(struct clod_tree *tree)</div><div class="ttdef"><b>Definition</b> <a href="tree_8c_source.html#l00559">tree.c:559</a></div></div>
-<div class="ttc" id="atree_8h_html_a4ba914f2c0d884a1e7d1b62a08799d69"><div class="ttname"><a href="tree_8h.html#a4ba914f2c0d884a1e7d1b62a08799d69">clod_tree_prev</a></div><div class="ttdeci">bool clod_tree_prev(struct clod_tree *tree, struct clod_tree_location *location)</div></div>
-<div class="ttc" id="atree_8h_html_a6b989a9780322e79daa05b6ce04a74e1"><div class="ttname"><a href="tree_8h.html#a6b989a9780322e79daa05b6ce04a74e1">clod_tree_next</a></div><div class="ttdeci">bool clod_tree_next(struct clod_tree *tree, struct clod_tree_location *location)</div></div>
-<div class="ttc" id="atree_8h_html_a6cd86b7fd0b0b97a709bf210697e3579"><div class="ttname"><a href="tree_8h.html#a6cd86b7fd0b0b97a709bf210697e3579">clod_tree_get</a></div><div class="ttdeci">bool clod_tree_get(const struct clod_tree *tree, const void *key, void *key_out, void *val_out)</div><div class="ttdef"><b>Definition</b> <a href="tree_8c_source.html#l00718">tree.c:718</a></div></div>
-<div class="ttc" id="atree_8h_html_ae53117f96576196d196005423d186d90"><div class="ttname"><a href="tree_8h.html#ae53117f96576196d196005423d186d90">clod_tree_add</a></div><div class="ttdeci">bool clod_tree_add(const struct clod_tree *tree, const void *key, const void *val, void *key_out, void *val_out)</div><div class="ttdef"><b>Definition</b> <a href="tree_8c_source.html#l00586">tree.c:586</a></div></div>
+<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef LIBCLOD_MEMORY_TREE_H</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define LIBCLOD_MEMORY_TREE_H</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 </div><!-- container -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><b>include</b></li><li class="navelem"><b>clod</b></li><li class="navelem"><b>structures</b></li><li class="navelem"><a href="tree_8h.html">tree.h</a></li>
+    <li class="navelem"><b>src</b></li><li class="navelem"><b>memory</b></li><li class="navelem"><b>tree.h</b></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
   </ul>
 </div>

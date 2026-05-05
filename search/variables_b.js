@@ -1,8 +1,7 @@
 var searchData=
 [
-  ['read_0',['read',['../structclod__stream.html#ac1a4d3d1c44a32142cb09708fba36e6d',1,'clod_stream']]],
-  ['region_5fext_1',['region_ext',['../structclod__region__opts.html#a9db86be91ea361acfc5ee7784c7efe6f',1,'clod_region_opts']]],
-  ['remote_5faddr_2',['remote_addr',['../structclod__socket.html#a292a3c0f2348bc026ff040df2cd0d9d5',1,'clod_socket']]],
-  ['remote_5fport_3',['remote_port',['../structclod__socket.html#a31c505f7989121b312941ca989c4cba7',1,'clod_socket']]],
-  ['root_4',['root',['../structclod__tree.html#ad89f1b7dcc76f5799b0b3f03da4c17ed',1,'clod_tree']]]
+  ['sector_5fsize_0',['sector_size',['../structclod__region__opts.html#ae0f50676a3a0357aee7f5f8e604feb92',1,'clod_region_opts']]],
+  ['self_1',['self',['../structclod__allocator.html#a90b02a5434c9afe7373bb75abf523f35',1,'clod_allocator']]],
+  ['size_2',['size',['../structclod__nbt__iter.html#a598e1d583b0d6ad771c0137bcc58aafc',1,'clod_nbt_iter']]],
+  ['stack_5fsize_3',['stack_size',['../structclod__process__opts.html#a92c3f6030a97cb30ed2343478b712bbb',1,'clod_process_opts']]]
 ];

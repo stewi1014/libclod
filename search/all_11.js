@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['unix_5ffd_0',['unix_fd',['../structclod__region__opts.html#a50fa8c75fe1eb9526b1e9f367160842c',1,'clod_region_opts']]],
-  ['unix_5ffile_5fperms_1',['unix_file_perms',['../structclod__region__opts.html#ab90dfb75626c0a15366333ca9399df83',1,'clod_region_opts']]],
-  ['used_20tree_2',['Used tree',['../md_src_2memory_2allocator.html#autotoc_md3',1,'']]],
-  ['user_3',['user',['../structclod__rfmt__opts.html#aa0e149b4ef13d672ee9addeef2c22770',1,'clod_rfmt_opts::user'],['../structclod__table__opts.html#a4223d472ba3cc1e3edaa788b7239acb0',1,'clod_table_opts::user']]]
+  ['vm_2eh_0',['vm.h',['../vm_8h.html',1,'']]],
+  ['vm_5falloc_1',['vm_alloc',['../structclod__allocator__opts.html#a8f5d0fbe643cba06db240b7989af7b03',1,'clod_allocator_opts']]],
+  ['vm_5ffree_2',['vm_free',['../structclod__allocator__opts.html#aa660d1516f379bb37c956587ac26c816',1,'clod_allocator_opts']]],
+  ['vm_5fuser_3',['vm_user',['../structclod__allocator__opts.html#a8d668e35f0764c39c0d3c3d8a56a815e',1,'clod_allocator_opts']]]
 ];

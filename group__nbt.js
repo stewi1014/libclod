@@ -7,13 +7,10 @@ var group__nbt =
       [ "type", "structclod__nbt__iter.html#a753294f39f877dddff301e6d71d50333", null ],
       [ "index", "structclod__nbt__iter.html#a41e6e82218283fd0d2707eafd28b71ba", null ]
     ] ],
-    [ "clod_nbt_payload_size", "group__nbt.html#ga59d93be8be6ef3e3701904ae76fd8984", null ],
-    [ "clod_nbt_tag_size", "group__nbt.html#ga64f924dfedd5794cc5e9e039272c32fe", null ],
-    [ "clod_nbt_tag_payload", "group__nbt.html#gae80268caccc2348662cc6ba392393a7d", null ],
-    [ "clod_nbt_tag_name", "group__nbt.html#gad177128eed03a613367d92355c43c3b0", null ],
-    [ "clod_nbt_iter_next", "group__nbt.html#ga3425103f984c05f76a61d1f84aa0f463", null ],
-    [ "clod_nbt_compound_get", "group__nbt.html#gaf498f39c8c3a554f958bb2c1644488da", null ],
-    [ "clod_nbt_compound_add", "group__nbt.html#ga984f1a6f59e31baae01871e358300927", null ],
-    [ "clod_nbt_compound_del", "group__nbt.html#gae64a3fb761bd0024cbb5ab3b2daaee08", null ],
-    [ "clod_nbt_list_resize", "group__nbt.html#gac725856b871d65c5042406dfe7abcf04", null ]
+    [ "CLOD_NONNULL", "group__nbt.html#ga6893028e48f9c04e6aa6475a9eb8150a", null ],
+    [ "CLOD_NONNULL", "group__nbt.html#ga06c92e98c0cff3b033b76b3a57fff11b", null ],
+    [ "CLOD_NONNULL", "group__nbt.html#ga12e345fb4335e33774c8b4ca72f6a963", null ],
+    [ "CLOD_NONNULL", "group__nbt.html#gad16235fb2db204c2536a28f102331cac", null ],
+    [ "CLOD_NONNULL", "group__nbt.html#ga82395da368550abcb6ec0323fdb17226", null ],
+    [ "CLOD_NONNULL", "group__nbt.html#ga8078ddb895e61e7c7907e354b3ed2f1e", null ]
 ];

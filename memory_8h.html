@@ -102,7 +102,6 @@ $(function(){initNavTree('memory_8h.html','',''); });
 <tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:clod_5Fallocator" id="r_clod_5Fallocator"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structclod__allocator.html">clod_allocator</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allocator.  <a href="structclod__allocator.html#details">More...</a><br /></td></tr>
 <tr class="memitem:clod_5Fallocator_5Fopts" id="r_clod_5Fallocator_5Fopts"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structclod__allocator__opts.html">clod_allocator_opts</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configuration options for libclod's memory allocator.  <a href="structclod__allocator__opts.html#details">More...</a><br /></td></tr>
 </table><table class="memberdecls">
@@ -134,7 +133,7 @@ Functions</h2></td></tr>
 <p>It is not thread safe. Instead, make a dedicated allocator for each thread, and if you need to free memory in a different thread from where it was allocated - fix your program architecture.</p>
 <p>Allocations are aligned to either the power of two equal to or greater than <code class="param">size</code> or the configured page size; whichever is smaller.</p>
 <p>The contents of allocated memory is undefined.</p>
-<p>Allocating a size of zero returns a non-null non-unique pointer that can be freed. Freeing nullptr does nothing.</p>
+<p>Allocating a size of zero returns a non-null pointer that can be freed. Freeing nullptr does nothing.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">opts</td><td>(nullable) Allocator configuration options. </td></tr>
@@ -142,8 +141,6 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>New allocator, or nullptr on allocation failure or invalid options. </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="memory_8c_source.html#l00006">6</a> of file <a class="el" href="memory_8c_source.html">memory.c</a>.</p>
 
 </div>
 </div>
@@ -167,8 +164,6 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-
-<p class="definition">Definition at line <a class="el" href="memory_8c_source.html#l00030">30</a> of file <a class="el" href="memory_8c_source.html">memory.c</a>.</p>
 
 </div>
 </div>

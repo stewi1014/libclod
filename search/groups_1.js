@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['format_0',['Region Format',['../group__region__format.html',1,'']]]
+  ['data_20streaming_20methods_0',['Data streaming methods.',['../group__stream.html',1,'']]]
 ];

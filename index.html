@@ -92,17 +92,16 @@ $(function(){initNavTree('index.html','',''); });
   <div class="headertitle"><div class="title">libclod </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h1 class="doxsection"><a class="anchor" id="autotoc_md27"></a>
+<div class="textblock"><h1 class="doxsection"><a class="anchor" id="autotoc_md17"></a>
 libclod</h1>
 <p>Libclod is still a work in progress.</p>
 <p>Libclod is licenced under the <a href="./LICENCE.txt">GNU Affero General Public License v3.0</a> or later. For alternate licencing contact me.</p>
 <p>Libclod is a library aimed at data storage and manipulation. It aims to provide a high-performance and ergonomic API for the features it supports with minimal dependencies.</p>
-<h4 class="doxsection"><a class="anchor" id="autotoc_md28"></a>
+<h4 class="doxsection"><a class="anchor" id="autotoc_md18"></a>
 <a href="https://stewi1014.github.io/libclod/">Documentation</a></h4>
-<h4 class="doxsection"><a class="anchor" id="autotoc_md29"></a>
+<h4 class="doxsection"><a class="anchor" id="autotoc_md19"></a>
 <a href="https://github.com/stewi1014/libclod">Source</a></h4>
 <ul>
-<li>Data Sturctures A number of data structures useful for storing data in memory or storage.</li>
 <li>Compression API Methods for compressing data with a uniform API across different compression methods.</li>
 <li>File IO Streaming methods for file, network and other IO.</li>
 <li>Hash Functions Streamable hash methods.</li>
@@ -110,44 +109,42 @@ libclod</h1>
 <li>Region Storage Concurrent data storage system with exceptional performance.</li>
 <li>Threading API Libclod's own custom threading API built from scratch.</li>
 </ul>
-<h2 class="doxsection"><a class="anchor" id="autotoc_md30"></a>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md20"></a>
 Building</h2>
 <p>Libclod is built using cmake. <span class="tt">cmake -B build &amp;&amp; cmake --build build -j 32 &amp;&amp; ctest build &amp;&amp; sudo cmake --install build</span></p>
-<h2 class="doxsection"><a class="anchor" id="autotoc_md31"></a>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md21"></a>
 Features</h2>
-<h3 class="doxsection"><a class="anchor" id="autotoc_md32"></a>
-Data Structures</h3>
-<h4 class="doxsection"><a class="anchor" id="autotoc_md33"></a>
-<a href="https://stewi1014.github.io/libclod/group__nbt.html">NBT</a></h4>
+<h3 class="doxsection"><a class="anchor" id="autotoc_md22"></a>
+<a href="https://stewi1014.github.io/libclod/group__nbt.html">NBT</a></h3>
 <p>The NBT format is a depth-first serialised tree structure supporting various data types. The NBT parser is fast and doesn't use any memory. It doesn't provide an intermediate data structure; I don't believe the want for an intermediate data structure is borne out of sound reasoning. It recursively steps through NBT data at approx 6GB/s on my machine.</p>
-<h4 class="doxsection"><a class="anchor" id="autotoc_md34"></a>
-<a href="https://stewi1014.github.io/libclod/group__table.html">Hash Table</a></h4>
+<h3 class="doxsection"><a class="anchor" id="autotoc_md23"></a>
+<a href="https://stewi1014.github.io/libclod/group__table.html">Hash Table</a></h3>
 <p>The hash table has decent performance and uses SipHash by default. It supports keys and values of any size and custom hash and comparison functions.</p>
-<h4 class="doxsection"><a class="anchor" id="autotoc_md35"></a>
-<a href="https://stewi1014.github.io/libclod/group__tree.html">Tree</a></h4>
+<h3 class="doxsection"><a class="anchor" id="autotoc_md24"></a>
+<a href="https://stewi1014.github.io/libclod/group__tree.html">Tree</a></h3>
 <p>A tree structure based on B-Trees that supports variable node, key and value sizes.</p>
-<h3 class="doxsection"><a class="anchor" id="autotoc_md36"></a>
+<h3 class="doxsection"><a class="anchor" id="autotoc_md25"></a>
 <a href="https://stewi1014.github.io/libclod/group__compression.html">Compression API</a></h3>
 <p>Libclod wraps some compression libraries to provide a single compress and decompress method with uniform behaviour across all compression methods it supports. Most compression methods attempt to be compatible with some existing format. It is used internally and might be helpful for FFI users who have slow native compression libraries. Shoutout to libdeflate for being a work of art.</p>
-<h3 class="doxsection"><a class="anchor" id="autotoc_md37"></a>
+<h3 class="doxsection"><a class="anchor" id="autotoc_md26"></a>
 <a href="https://stewi1014.github.io/libclod/group__file.html">File IO</a></h3>
 <p>Libclod provides a streaming interface, much like libc, but enables users to implement streams as well. Some things streams support are file IO, network IO and audio playback and recording.</p>
-<h3 class="doxsection"><a class="anchor" id="autotoc_md38"></a>
+<h3 class="doxsection"><a class="anchor" id="autotoc_md27"></a>
 <a href="https://stewi1014.github.io/libclod/group__hash.html">Hash Functions</a></h3>
 <p>Libclod provides a few high-performance hash functions for use with data. For CRC checksums, it provides a method to update checksums with arbitrary sections of previous data replaced by leveraging the math CRCs are built on. I.e. update a checksum of 1GB of data by only rehashing the modified section.</p>
-<h3 class="doxsection"><a class="anchor" id="autotoc_md39"></a>
+<h3 class="doxsection"><a class="anchor" id="autotoc_md28"></a>
 <a href="https://stewi1014.github.io/libclod/group__memory.html">Memory Allocator</a></h3>
 <p>Libclod's memory allocator is designed to have good performance for general use, and operate with minimal overhead. It intentionally avoids support for concurrent usage, with the low overhead instead supporting each thread having its own dedicated memory allocator.</p>
-<h3 class="doxsection"><a class="anchor" id="autotoc_md40"></a>
+<h3 class="doxsection"><a class="anchor" id="autotoc_md29"></a>
 <a href="https://stewi1014.github.io/libclod/group__region.html">Region Storage</a></h3>
 <p>Libclod's region storage is a high-performance N-dimension position-&gt;data storage system that supports data integrity through program and system crashes and massive concurrent access from both processes and threads. Multiple processes and threads can access the same storage simultaneously without any additional coordination with extremely high performance facilitated by custom-built synchronisation primitives that allow access, including concurrent writes, with almost no blocking at all. In addition, it uses almost no memory except for data compression buffers, and does not require a dedicated process like other database software.</p>
 <p>It borrows its name from Minecraft's region files, as part of the original inspiration for this project was to re-implement Minecraft's region file format in C. This project and its data structures are far removed from Minecraft's implementation and are more in line with modern database techniques despite backwards compatibility with minecraft being supported under specific configurations.</p>
-<h3 class="doxsection"><a class="anchor" id="autotoc_md41"></a>
+<h3 class="doxsection"><a class="anchor" id="autotoc_md30"></a>
 <a href="https://stewi1014.github.io/libclod/group__threading.html">Threading API</a></h3>
 <p>Libclod provides a threading API.</p>
-<h2 class="doxsection"><a class="anchor" id="autotoc_md42"></a>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md31"></a>
 Dependencies</h2>
-<p>All library dependencies are optional! They can be enabled or disabled at build time, thereby omitting the features said dependency provided. The only exception is the C standard library.</p>
+<p>All external dependencies are optional. They can be enabled or disabled at build time, thereby omitting the features said dependency provided. libc is a dependency, and</p>
 <p>That being said, omitting the majority of compression libraries will make most file formats that this library interacts with unreadable. Vendoring compression libraries is a future goal.</p>
 <p>I reserve the right to use the entire feature set of these dependencies; using libclod with dependencies that have features intentionally disabled is, in general, not supported, although many specific cases would be fine.</p>
 <ul>
@@ -160,16 +157,16 @@ Dependencies</h2>
 <li>sqlite3 <span class="tt">-DUSE_SQLITE3=ON/OFF</span></li>
 <li>libpq <span class="tt">-DUSE_LIBPQ=ON/OFF</span></li>
 </ul>
-<h3 class="doxsection"><a class="anchor" id="autotoc_md43"></a>
+<h3 class="doxsection"><a class="anchor" id="autotoc_md32"></a>
 Linux</h3>
 <p>Linux is tested. Some linux-specific optimisations are used if they are available.</p>
-<h3 class="doxsection"><a class="anchor" id="autotoc_md44"></a>
+<h3 class="doxsection"><a class="anchor" id="autotoc_md33"></a>
 BSD</h3>
 <p>BSD variants are untested but expected to work with minimal changes, if any. They support everything libclod needs, so the only barrier to support is getting things plugged in properly if they aren't already.</p>
-<h3 class="doxsection"><a class="anchor" id="autotoc_md45"></a>
+<h3 class="doxsection"><a class="anchor" id="autotoc_md34"></a>
 macOS</h3>
 <p>macOS is untested but expected to work with minimal changes, if any. The lowest common denominator is 14.4 where they added a public API for a futex-style feature, which libclod needs. Before then, projects would use a private and undocumented API for this (yuck!). Other than that, macOS seems to have a reasonably strong feature set and robust public API. The only barrier to support is getting things plugged in properly if they aren't already.</p>
-<h3 class="doxsection"><a class="anchor" id="autotoc_md46"></a>
+<h3 class="doxsection"><a class="anchor" id="autotoc_md35"></a>
 Windows</h3>
 <p>Unfortunately, this project highlights Windows's weakness as an operating system and platform. Not only does Windows lack support for the standardised APIs that other operating systems share, requiring maintaining duplicate code for Windows vs everything else, but functionality ubiquitous among other systems is often missing in Windows. Due to this lack of functionality, it might not be possible to implement libclod for Windows without significant feature culling. To top it off, Windows also lacks a modern C compiler or toolchain without 3rd party software. Libclod is written in modern C.</p>
 <p>Libclod is attempting to implement some database-like features, and there's a reason why robust support for Windows by database software is almost unheard of. While it won't be easy, and I'm far from finished complaining about it, I'm not willing to write Windows off yet. Hopefully there's a way to work around most of the problems and get libclod working on Windows. </p>

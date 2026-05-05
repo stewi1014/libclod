@@ -93,29 +93,17 @@ $(function(){initNavTree('structclod__allocator.html','','structclod__allocator-
 </div><!--header-->
 <div class="contents">
 
-<p>Allocator.  
- <a href="#details">More...</a></p>
-
 <p><code>#include &lt;<a class="el" href="memory_8h_source.html">memory.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:a90b02a5434c9afe7373bb75abf523f35" id="r_a90b02a5434c9afe7373bb75abf523f35"><td class="memItemLeft">void *&#160;</td><td class="memItemRight"><a class="el" href="#a90b02a5434c9afe7373bb75abf523f35">self</a></td></tr>
 <tr class="memdesc:a90b02a5434c9afe7373bb75abf523f35"><td class="mdescLeft">&#160;</td><td class="mdescRight">Value passed to invocations of <code class="param">allocate</code> and <code class="param">free</code>.  <br /></td></tr>
-<tr class="memitem:afbd9a2ea612cca5bd74cb831bfc3f227" id="r_afbd9a2ea612cca5bd74cb831bfc3f227"><td class="memItemLeft">void *(*&#160;</td><td class="memItemRight"><a class="el" href="#afbd9a2ea612cca5bd74cb831bfc3f227">allocate</a> )(size_t <a class="el" href="#af8ed0d9d867f3f51333a8cbc7b9c6a51">size</a>, void *<a class="el" href="#a90b02a5434c9afe7373bb75abf523f35">self</a>)</td></tr>
+<tr class="memitem:afbd9a2ea612cca5bd74cb831bfc3f227" id="r_afbd9a2ea612cca5bd74cb831bfc3f227"><td class="memItemLeft">void *(*&#160;</td><td class="memItemRight"><a class="el" href="#afbd9a2ea612cca5bd74cb831bfc3f227">allocate</a> )(size_t size, void *<a class="el" href="#a90b02a5434c9afe7373bb75abf523f35">self</a>)</td></tr>
 <tr class="memitem:abb936851e9c71d3e390ddfc66fa725c6" id="r_abb936851e9c71d3e390ddfc66fa725c6"><td class="memItemLeft">void(*&#160;</td><td class="memItemRight"><a class="el" href="#abb936851e9c71d3e390ddfc66fa725c6">free</a> )(void *ptr, void *<a class="el" href="#a90b02a5434c9afe7373bb75abf523f35">self</a>)</td></tr>
-<tr class="memitem:a1615260613f9409c79515bbce69ea8ef" id="r_a1615260613f9409c79515bbce69ea8ef"><td class="memItemLeft">uint32_t&#160;</td><td class="memItemRight"><a class="el" href="#a1615260613f9409c79515bbce69ea8ef">checksum</a></td></tr>
-<tr class="memdesc:a1615260613f9409c79515bbce69ea8ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checksum.  <br /></td></tr>
-<tr class="memitem:af8ed0d9d867f3f51333a8cbc7b9c6a51" id="r_af8ed0d9d867f3f51333a8cbc7b9c6a51"><td class="memItemLeft">uint32_t&#160;</td><td class="memItemRight"><a class="el" href="#af8ed0d9d867f3f51333a8cbc7b9c6a51">size</a></td></tr>
-<tr class="memdesc:af8ed0d9d867f3f51333a8cbc7b9c6a51"><td class="mdescLeft">&#160;</td><td class="mdescRight">Size of backing memory.  <br /></td></tr>
-<tr class="memitem:a239c9f5a8d4679ae1199ab534d6546bc" id="r_a239c9f5a8d4679ae1199ab534d6546bc"><td class="memItemLeft"><a class="el" href="structclod__allocator.html">clod_allocator</a> *&#160;</td><td class="memItemRight"><a class="el" href="#a239c9f5a8d4679ae1199ab534d6546bc">next</a></td></tr>
-<tr class="memitem:a68979dc2eaae1147127f0e526e2f9ad2" id="r_a68979dc2eaae1147127f0e526e2f9ad2"><td class="memItemLeft">block_ptr&#160;</td><td class="memItemRight"><a class="el" href="#a68979dc2eaae1147127f0e526e2f9ad2">last_slab_branch</a> [13]</td></tr>
-<tr class="memitem:a7d55d00a8ae0cc0b8fd0c46dc2f29a5a" id="r_a7d55d00a8ae0cc0b8fd0c46dc2f29a5a"><td class="memItemLeft">struct <a class="el" href="structnode.html">node</a>&#160;</td><td class="memItemRight"><a class="el" href="#a7d55d00a8ae0cc0b8fd0c46dc2f29a5a">free</a></td></tr>
-<tr class="memitem:a814d6c78cb3738a194fd9e5494e49914" id="r_a814d6c78cb3738a194fd9e5494e49914"><td class="memItemLeft">struct <a class="el" href="structnode.html">node</a>&#160;</td><td class="memItemRight"><a class="el" href="#a814d6c78cb3738a194fd9e5494e49914">used</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Allocator. </p>
-<p>Memory allocator methods. Libclod provides a way to create an allocator built using system virtual memory. Methods that take an allocator for internal usage do not assume the implementation is libclod's. As such, custom allocations methods can be provided everywhere <a class="el" href="structclod__allocator.html" title="Allocator.">clod_allocator</a> is used unless stated otherwise. </p>
+<div class="textblock"><p>Memory allocator methods. Libclod provides a way to create an allocator built using system virtual memory. Methods that take an allocator for internal usage do not assume the implementation is libclod's. As such, custom allocations methods can be provided everywhere <a class="el" href="structclod__allocator.html">clod_allocator</a> is used unless stated otherwise. </p>
 
 <p class="definition">Definition at line <a class="el" href="memory_8h_source.html#l00016">16</a> of file <a class="el" href="memory_8h_source.html">memory.h</a>.</p>
 </div><a name="doc-variable-members" id="doc-variable-members"></a><h2 id="header-doc-variable-members" class="groupheader">Member Data Documentation</h2>
@@ -144,14 +132,14 @@ Public Attributes</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void *(* clod_allocator::allocate) (size_t <a class="el" href="#af8ed0d9d867f3f51333a8cbc7b9c6a51">size</a>, void *<a class="el" href="#a90b02a5434c9afe7373bb75abf523f35">self</a>)</td>
+          <td class="memname">void *(* clod_allocator::allocate) (size_t size, void *<a class="el" href="#a90b02a5434c9afe7373bb75abf523f35">self</a>)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 <p>Allocate memory. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname"><a class="el" href="#a90b02a5434c9afe7373bb75abf523f35" title="Value passed to invocations of allocate and free.">self</a></td><td>Implementation defined value. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname"><a class="el" href="#af8ed0d9d867f3f51333a8cbc7b9c6a51" title="Size of backing memory.">size</a></td><td>Size in bytes of the memory to allocate. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">size</td><td>Size in bytes of the memory to allocate. </td></tr>
   </table>
   </dd>
 </dl>
@@ -162,7 +150,7 @@ Public Attributes</h2></td></tr>
 </div>
 </div>
 <a id="abb936851e9c71d3e390ddfc66fa725c6" name="abb936851e9c71d3e390ddfc66fa725c6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abb936851e9c71d3e390ddfc66fa725c6">&#9670;&#160;</a></span>free <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#abb936851e9c71d3e390ddfc66fa725c6">&#9670;&#160;</a></span>free</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -184,112 +172,8 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a1615260613f9409c79515bbce69ea8ef" name="a1615260613f9409c79515bbce69ea8ef"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1615260613f9409c79515bbce69ea8ef">&#9670;&#160;</a></span>checksum</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint32_t clod_allocator::checksum</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Checksum. </p>
-
-<p class="definition">Definition at line <a class="el" href="allocator_8h_source.html#l00170">170</a> of file <a class="el" href="allocator_8h_source.html">allocator.h</a>.</p>
-
-</div>
-</div>
-<a id="af8ed0d9d867f3f51333a8cbc7b9c6a51" name="af8ed0d9d867f3f51333a8cbc7b9c6a51"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af8ed0d9d867f3f51333a8cbc7b9c6a51">&#9670;&#160;</a></span>size</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint32_t clod_allocator::size</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Size of backing memory. </p>
-
-<p class="definition">Definition at line <a class="el" href="allocator_8h_source.html#l00173">173</a> of file <a class="el" href="allocator_8h_source.html">allocator.h</a>.</p>
-
-</div>
-</div>
-<a id="a239c9f5a8d4679ae1199ab534d6546bc" name="a239c9f5a8d4679ae1199ab534d6546bc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a239c9f5a8d4679ae1199ab534d6546bc">&#9670;&#160;</a></span>next</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="structclod__allocator.html">clod_allocator</a>* clod_allocator::next</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>The allocator may need to create more than one backing memory instance. This forms a circular linked list between all of them. </p>
-
-<p class="definition">Definition at line <a class="el" href="allocator_8h_source.html#l00177">177</a> of file <a class="el" href="allocator_8h_source.html">allocator.h</a>.</p>
-
-</div>
-</div>
-<a id="a68979dc2eaae1147127f0e526e2f9ad2" name="a68979dc2eaae1147127f0e526e2f9ad2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a68979dc2eaae1147127f0e526e2f9ad2">&#9670;&#160;</a></span>last_slab_branch</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">block_ptr clod_allocator::last_slab_branch[13]</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Pointer to the tree branch containing the slab that was most recently used to fulfill an allocation. Allows repeated slab-sized allocations to (usually) quickly find a slab with free space instead of searching the used tree.</p>
-<p>They should not blindly be used, as the tree may have been restructured. So the usual checks as done when searching the used tree for slabs should still be performed. </p>
-
-<p class="definition">Definition at line <a class="el" href="allocator_8h_source.html#l00186">186</a> of file <a class="el" href="allocator_8h_source.html">allocator.h</a>.</p>
-
-</div>
-</div>
-<a id="a7d55d00a8ae0cc0b8fd0c46dc2f29a5a" name="a7d55d00a8ae0cc0b8fd0c46dc2f29a5a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7d55d00a8ae0cc0b8fd0c46dc2f29a5a">&#9670;&#160;</a></span>free <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">struct <a class="el" href="structnode.html">node</a> clod_allocator::free</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="allocator_8h_source.html#l00188">188</a> of file <a class="el" href="allocator_8h_source.html">allocator.h</a>.</p>
-
-</div>
-</div>
-<a id="a814d6c78cb3738a194fd9e5494e49914" name="a814d6c78cb3738a194fd9e5494e49914"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a814d6c78cb3738a194fd9e5494e49914">&#9670;&#160;</a></span>used</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">struct <a class="el" href="structnode.html">node</a> clod_allocator::used</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="allocator_8h_source.html#l00189">189</a> of file <a class="el" href="allocator_8h_source.html">allocator.h</a>.</p>
-
-</div>
-</div>
-<hr/>The documentation for this struct was generated from the following files:<ul>
+<hr/>The documentation for this struct was generated from the following file:<ul>
 <li>include/clod/<a class="el" href="memory_8h_source.html">memory.h</a></li>
-<li>src/memory/<a class="el" href="allocator_8h_source.html">allocator.h</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
